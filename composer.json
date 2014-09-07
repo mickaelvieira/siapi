@@ -1,0 +1,29 @@
+{
+    "name": "SIAPI/SIAPI",
+    "description": "Space Images API",
+    "minimum-stability": "stable",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Mickael Vieira",
+            "email": "contact@mickael-vieira.com"
+        }
+    ],
+    "require": {
+        "php": "~5.4"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        },
+        "psr-4": {
+            "SIAPI\\": "src/"
+        }
+    }
+}
