@@ -1,10 +1,10 @@
 <?php
 
-namespace SIAPI\Entity\Http\Header;
+namespace SIAPI\Entity\Http\Request\Header;
 
 /**
  * Class MediaRange
- * @package SIAPI\Entity\Http\Header
+ * @package SIAPI\Entity\Http\Request\Header
  */
 class MediaRange
 {

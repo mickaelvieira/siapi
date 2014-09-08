@@ -2,7 +2,7 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Entity\Http\Header\AcceptLanguage;
+use SIAPI\Entity\Http\Request\Header\AcceptLanguage;
 use SIAPI\Negotiation\Negotiator;
 
 class Language extends Negotiator
