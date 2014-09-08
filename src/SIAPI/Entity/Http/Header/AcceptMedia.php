@@ -3,10 +3,10 @@
 namespace SIAPI\Entity\Http\Header;
 
 /**
- * Class Accept
+ * Class AcceptMedia
  * @package SIAPI\Entity\Http\Header
  */
-class Accept
+class AcceptMedia
 {
     /**
      * @var MediaRange

@@ -17,7 +17,6 @@ class Collection implements \Countable, \IteratorAggregate
     public function __construct(array $collection)
     {
         $this->collection = $collection;
-
     }
 
     /**

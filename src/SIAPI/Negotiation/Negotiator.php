@@ -5,7 +5,6 @@ namespace SIAPI\Negotiation;
 use SIAPI\Entity\Http\Header\AcceptLanguage;
 use SIAPI\Entity\Http\Header\Collection;
 
-
 /**
  * Interface Negotiator
  */
