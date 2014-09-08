@@ -7,20 +7,6 @@ use JsonSerializable;
 abstract class JsonConvertible implements JsonSerializable
 {
     /**
-     * @param array $data
-     * @return array
-     */
-    private function filterNullAndEmptyData($data)
-    {
-        return array_filter(
-            $data,
-            function ($value) {
-                return (!is_null($value) && !empty($value));
-            }
-        );
-    }
-
-    /**
      * @return array
      */
     public function jsonSerialize()
@@ -34,4 +20,18 @@ abstract class JsonConvertible implements JsonSerializable
      * @return mixed
      */
     abstract protected function getObjectData();
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    private function filterNullAndEmptyData($data)
+    {
+        return array_filter(
+            $data,
+            function ($value) {
+                return (!is_null($value) && !empty($value));
+            }
+        );
+    }
 }
