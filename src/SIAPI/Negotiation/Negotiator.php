@@ -2,7 +2,7 @@
 
 namespace SIAPI\Negotiation;
 
-use SIAPI\Entity\Http\Header\AcceptLanguage;
+use SIAPI\Entity\Http\Header\AcceptBase;
 use SIAPI\Entity\Http\Header\Collection;
 
 /**
@@ -86,7 +86,7 @@ abstract class Negotiator
     {
         usort(
             $accepts,
-            function (AcceptLanguage $value1, AcceptLanguage $value2) {
+            function (AcceptBase $value1, AcceptBase $value2) {
 
                 $quality1 = $value1->quality;
                 $quality2 = $value2->quality;

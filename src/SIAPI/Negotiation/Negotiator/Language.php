@@ -23,6 +23,7 @@ class Language extends Negotiator
     {
         $accept = null;
         $regex = $this->getParsingRegex();
+
         if (preg_match($regex, $value, $matches)) {
 
             array_shift($matches);

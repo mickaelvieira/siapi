@@ -6,17 +6,12 @@ namespace SIAPI\Entity\Http\Header;
  * Class AcceptMedia
  * @package SIAPI\Entity\Http\Header
  */
-class AcceptMedia
+class AcceptMedia extends AcceptBase
 {
     /**
      * @var MediaRange
      */
     public $mediaRange;
-
-    /**
-     * @var int
-     */
-    public $quality = 1;
 
     /**
      * @var int
