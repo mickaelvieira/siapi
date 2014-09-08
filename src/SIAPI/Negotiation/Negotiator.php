@@ -32,10 +32,9 @@ abstract class Negotiator
     }
 
     /**
-     * @param array $headers
      * @return string
      */
-    abstract protected function getHeaderString(array $headers);
+    abstract protected function getHeaderName();
 
     /**
      * @return string
@@ -47,6 +46,16 @@ abstract class Negotiator
      * @return array
      */
     abstract protected function parseAcceptedValue($value);
+
+    /**
+     * @param array $headers
+     * @return string
+     */
+    protected function getHeaderString(array $headers)
+    {
+        $name = $this->getHeaderName();
+        return array_key_exists($name, $headers) ? $headers[$name] : '';
+    }
 
     /**
      * @param $header
@@ -75,24 +84,20 @@ abstract class Negotiator
      */
     private function sortAcceptedValuesByQuality(array $accepts)
     {
-        usort($accepts, array($this, 'filterValuesQuality'));
+        usort(
+            $accepts,
+            function (AcceptLanguage $value1, AcceptLanguage $value2) {
+
+                $quality1 = $value1->quality;
+                $quality2 = $value2->quality;
+
+                if ($quality1 === $quality2) {
+                    return 0;
+                }
+                return ($quality1 > $quality2) ? -1 : 1;
+            }
+        );
 
         return $accepts;
-    }
-
-    /**
-     * @param AcceptLanguage $value1
-     * @param AcceptLanguage $value2
-     * @return int
-     */
-    private function filterValuesQuality(AcceptLanguage $value1, AcceptLanguage $value2)
-    {
-        $quality1 = $value1->quality;
-        $quality2 = $value2->quality;
-
-        if ($quality1 === $quality2) {
-            return 0;
-        }
-        return ($quality1 > $quality2) ? -1 : 1;
     }
 }

@@ -10,11 +10,9 @@ class Encoding extends Negotiator
     /**
      * {@inheritDoc}
      */
-    protected function getHeaderString(array $headers)
+    protected function getHeaderName()
     {
-        return array_key_exists('Accept-Encoding', $headers) ?
-            $headers['Accept-Encoding'] :
-            '';
+        return 'Accept-Encoding';
     }
 
     /**

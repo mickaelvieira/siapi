@@ -10,11 +10,9 @@ class Language extends Negotiator
     /**
      * {@inheritDoc}
      */
-    protected function getHeaderString(array $headers)
+    protected function getHeaderName()
     {
-        return array_key_exists('Accept-Language', $headers) ?
-            $headers['Accept-Language'] :
-            '';
+        return 'Accept-Language';
     }
 
     /**
@@ -31,12 +29,11 @@ class Language extends Negotiator
 
             $accept = new AcceptLanguage();
             if (isset($matches[0])) {
-                $accept->language = $matches[0];
+                $accept->language = (string)$matches[0];
             }
             if (isset($matches[1])) {
                 $accept->quality = (float)$matches[1];
             }
-
         }
         return $accept;
     }

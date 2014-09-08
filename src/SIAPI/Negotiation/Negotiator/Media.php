@@ -10,11 +10,9 @@ class Media extends Negotiator
     /**
      * {@inheritDoc}
      */
-    protected function getHeaderString(array $headers)
+    protected function getHeaderName()
     {
-        return array_key_exists('Accept', $headers) ?
-            $headers['Accept'] :
-            '';
+        return 'Accept';
     }
 
     /**

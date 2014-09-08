@@ -10,11 +10,9 @@ class Charset extends Negotiator
     /**
      * {@inheritDoc}
      */
-    protected function getHeaderString(array $headers)
+    protected function getHeaderName()
     {
-        return array_key_exists('Accept-Charset', $headers) ?
-            $headers['Accept-Charset'] :
-            '';
+        return 'Accept-Charset';
     }
 
     /**
