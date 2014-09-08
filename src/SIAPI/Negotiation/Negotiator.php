@@ -20,7 +20,9 @@ abstract class Negotiator
      */
     public function __construct(array $headers)
     {
-        $this->parseHeaderString($this->getHeaderString($headers));
+        $this->acceptedValues = $this->parseHeaderString(
+            $this->getHeaderString($headers)
+        );
     }
 
     /**
@@ -59,6 +61,7 @@ abstract class Negotiator
 
     /**
      * @param $header
+     * @return Collection
      */
     protected function parseHeaderString($header)
     {
@@ -75,7 +78,7 @@ abstract class Negotiator
         }
         $accepts = $this->sortAcceptedValuesByQuality($accepts);
 
-        $this->acceptedValues = new Collection($accepts);
+        return new Collection($accepts);
     }
 
     /**
