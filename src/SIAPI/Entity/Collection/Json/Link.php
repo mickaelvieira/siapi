@@ -2,14 +2,14 @@
 
 namespace SIAPI\Entity\Collection\Json;
 
-use JsonSerializable;
+use SIAPI\Entity\Collection\JsonConvertible;
 
 /**
  * Class Link
  * @package SIAPI\Entity\Collection\Json
  * @docs http://amundsen.com/media-types/collection/format/
  */
-class Link implements JsonSerializable
+class Link extends JsonConvertible
 {
     /**
      * @var string
@@ -26,6 +26,21 @@ class Link implements JsonSerializable
      * @docs http://code.ge/media-types/collection-next-json/#properties
      */
     private $type;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $render;
+
+    /**
+     * @var string
+     */
+    private $prompt;
 
     /**
      * @param string $href
@@ -76,10 +91,58 @@ class Link implements JsonSerializable
     }
 
     /**
-     * @return mixed|void
+     * @param string $name
      */
-    public function jsonSerialize()
+    public function setName($name)
     {
-        // @TODO need to write the logic here
+        $this->name = (string)$name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $prompt
+     */
+    public function setPrompt($prompt)
+    {
+        $this->prompt = (string)$prompt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrompt()
+    {
+        return $this->prompt;
+    }
+
+    /**
+     * @param string $render
+     */
+    public function setRender($render)
+    {
+        $this->render = (string)$render;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRender()
+    {
+        return $this->render;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getObjectData()
+    {
+        return get_object_vars($this);
     }
 }

@@ -1,14 +1,14 @@
 <?php
 namespace SIAPI\Entity\Collection\Json;
 
-use JsonSerializable;
+use SIAPI\Entity\Collection\JsonConvertible;
 
 /**
  * Class Message
  * @package SIAPI\Entity\Collection\Json
  * @docs http://code.ge/media-types/collection-next-json/
  */
-class Message implements JsonSerializable
+class Message extends JsonConvertible
 {
     /**
      * @var string
@@ -74,10 +74,10 @@ class Message implements JsonSerializable
     }
 
     /**
-     * @return mixed|void
+     * {@inheritdoc}
      */
-    public function jsonSerialize()
+    protected function getObjectData()
     {
-        // @TODO need to write the logic here
+        return get_object_vars($this);
     }
 }

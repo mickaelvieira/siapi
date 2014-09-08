@@ -2,14 +2,14 @@
 
 namespace SIAPI\Entity\Collection\Json;
 
-use JsonSerializable;
+use SIAPI\Entity\Collection\JsonConvertible;
 
 /**
  * Class Data
  * @package SIAPI\Entity\Collection\Json
  * @docs http://amundsen.com/media-types/collection/format/
  */
-class Data implements JsonSerializable
+class Data extends JsonConvertible
 {
     /**
      * @var string
@@ -119,10 +119,10 @@ class Data implements JsonSerializable
     }
 
     /**
-     * @return mixed|void
+     * {@inheritdoc}
      */
-    public function jsonSerialize()
+    protected function getObjectData()
     {
-        // @TODO need to write the logic here
+        return get_object_vars($this);
     }
 }
