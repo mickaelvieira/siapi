@@ -19,12 +19,12 @@ class Item extends JsonConvertible
     /**
      * @var array
      */
-    private $data = array();
+    private $data = [];
 
     /**
      * @var array
      */
-    private $links = array();
+    private $links = [];
 
     /**
      * @param string $href

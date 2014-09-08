@@ -65,7 +65,7 @@ abstract class Negotiator
      */
     protected function parseHeaderString($header)
     {
-        $accepts = array();
+        $accepts = [];
 
         $header = preg_replace("/\s/", "", $header);
         $values = explode(",", $header);

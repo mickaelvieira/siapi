@@ -14,7 +14,7 @@ class Enctype extends JsonConvertible
     /**
      * @var array
      */
-    private $options = array();
+    private $options = [];
 
     /**
      * @param \SIAPI\Entity\Collection\Json\Option $option

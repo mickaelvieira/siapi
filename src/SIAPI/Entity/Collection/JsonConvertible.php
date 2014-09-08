@@ -12,7 +12,7 @@ abstract class JsonConvertible implements JsonSerializable
      */
     private function filterNullAndEmptyProperties($properties)
     {
-        $data = array();
+        $data = [];
         foreach ($properties as $name => $value) {
             if (!is_null($value) && !empty($value)) {
                 $data[$name] = $value;

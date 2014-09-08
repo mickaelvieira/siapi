@@ -34,7 +34,7 @@ class Query extends JsonConvertible
     /**
      * @var array
      */
-    private $data = array();
+    private $data = [];
 
     /**
      * @param string $href

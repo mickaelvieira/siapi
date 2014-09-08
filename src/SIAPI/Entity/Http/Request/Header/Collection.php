@@ -9,7 +9,7 @@ class Collection implements \Countable, \IteratorAggregate
     /**
      * @var array
      */
-    private $collection = array();
+    private $collection = [];
 
     /**
      * @param array $collection

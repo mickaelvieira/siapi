@@ -24,17 +24,17 @@ class Collection extends JsonConvertible
     /**
      * @var array
      */
-    private $links = array();
+    private $links = [];
 
     /**
      * @var array
      */
-    private $items = array();
+    private $items = [];
 
     /**
      * @var array
      */
-    private $queries = array();
+    private $queries = [];
 
     /**
      * @var \SIAPI\Entity\Collection\Json\Error

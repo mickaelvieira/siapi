@@ -14,7 +14,7 @@ class Template extends JsonConvertible
     /**
      * @var array
      */
-    private $data = array();
+    private $data = [];
 
     /**
      * @var \SIAPI\Entity\Collection\Json\Method

@@ -25,7 +25,7 @@ class ListData extends JsonConvertible
     /**
      * @var array
      */
-    private $options = array();
+    private $options = [];
 
     /**
      * @param boolean $multiple

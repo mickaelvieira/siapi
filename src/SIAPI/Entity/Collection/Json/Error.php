@@ -30,7 +30,7 @@ class Error extends JsonConvertible
      * @var array
      * @docs http://code.ge/media-types/collection-next-json/#arrays
      */
-    private $messages = array();
+    private $messages = [];
 
     /**
      * @param string $code
