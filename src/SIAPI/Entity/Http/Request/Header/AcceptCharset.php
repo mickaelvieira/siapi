@@ -11,5 +11,21 @@ class AcceptCharset extends AcceptBase
     /**
      * @var string
      */
-    public $charset;
+    private $charset;
+
+    /**
+     * @param string $charset
+     */
+    public function setCharset($charset)
+    {
+        $this->charset = (string)$charset;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCharset()
+    {
+        return $this->charset;
+    }
 }

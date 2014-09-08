@@ -38,9 +38,10 @@ class LanguageSpec extends ObjectBehavior
          * @TODO this loop does not work
          */
         foreach ($this->getAcceptedValues() as $key => $value) {
+            /** @var \SIAPI\Entity\Http\Request\Header\AcceptLanguage $value */
             $values = $returned[$key];
-            $value->language->shouldBeEqualTo($values['language']);
-            $value->quality->shouldBeEqualTo($values['quality']);
+            $value->getLanguage()->shouldBeEqualTo($values['language']);
+            $value->getQuality()->shouldBeEqualTo($values['quality']);
         }
     }
 

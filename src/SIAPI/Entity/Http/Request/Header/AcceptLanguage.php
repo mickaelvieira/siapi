@@ -11,5 +11,21 @@ class AcceptLanguage extends AcceptBase
     /**
      * @var string
      */
-    public $language;
+    private $language;
+
+    /**
+     * @param string $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = (string)$language;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
 }

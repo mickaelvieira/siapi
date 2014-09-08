@@ -9,7 +9,23 @@ namespace SIAPI\Entity\Http\Request\Header;
 class AcceptBase
 {
     /**
-     * @var int
+     * @var float
      */
-    public $quality = 1;
+    protected $quality = 1;
+
+    /**
+     * @param float $quality
+     */
+    public function setQuality($quality)
+    {
+        $this->quality = (float)$quality;
+    }
+
+    /**
+     * @return float
+     */
+    public function getQuality()
+    {
+        return $this->quality;
+    }
 }

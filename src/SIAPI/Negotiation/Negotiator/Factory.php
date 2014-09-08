@@ -2,6 +2,10 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
+/**
+ * Class Factory
+ * @package SIAPI\Negotiation\Negotiator
+ */
 final class Factory
 {
     /**

@@ -30,10 +30,10 @@ class Language extends Negotiator
 
             $accept = new AcceptLanguage();
             if (isset($matches[0])) {
-                $accept->language = (string)$matches[0];
+                $accept->setLanguage($matches[0]);
             }
             if (isset($matches[1])) {
-                $accept->quality = (float)$matches[1];
+                $accept->setQuality($matches[1]);
             }
         }
         return $accept;

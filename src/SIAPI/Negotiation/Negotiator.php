@@ -91,8 +91,8 @@ abstract class Negotiator
             $accepts,
             function (AcceptBase $value1, AcceptBase $value2) {
 
-                $quality1 = $value1->quality;
-                $quality2 = $value2->quality;
+                $quality1 = $value1->getQuality();
+                $quality2 = $value2->getQuality();
 
                 if ($quality1 === $quality2) {
                     return 0;
