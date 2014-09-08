@@ -11,7 +11,7 @@ class AcceptBase
     /**
      * @var float
      */
-    protected $quality = 1;
+    protected $quality = 1.0;
 
     /**
      * @param float $quality
