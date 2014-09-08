@@ -7,18 +7,17 @@ use JsonSerializable;
 abstract class JsonConvertible implements JsonSerializable
 {
     /**
-     * @param array $properties
+     * @param array $data
      * @return array
      */
-    private function filterNullAndEmptyProperties($properties)
+    private function filterNullAndEmptyData($data)
     {
-        $data = [];
-        foreach ($properties as $name => $value) {
-            if (!is_null($value) && !empty($value)) {
-                $data[$name] = $value;
+        return array_filter(
+            $data,
+            function ($value) {
+                return (!is_null($value) && !empty($value));
             }
-        }
-        return $data;
+        );
     }
 
     /**
@@ -26,7 +25,7 @@ abstract class JsonConvertible implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        return $this->filterNullAndEmptyProperties(
+        return $this->filterNullAndEmptyData(
             $this->getObjectData()
         );
     }
