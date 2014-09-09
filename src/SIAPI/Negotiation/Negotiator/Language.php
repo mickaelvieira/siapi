@@ -2,6 +2,7 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
+use SIAPI\Entity\Http\Request\Header\ValueRange;
 use SIAPI\Entity\Http\Request\Header\AcceptLanguage;
 use SIAPI\Negotiation\Negotiator;
 
@@ -30,7 +31,10 @@ class Language extends Negotiator
 
             $accept = new AcceptLanguage();
             if (isset($matches[0])) {
-                $accept->setLanguage($matches[0]);
+                $language = new ValueRange(
+                    explode("-", $matches[0])
+                );
+                $accept->setLanguage($language);
             }
             if (isset($matches[1])) {
                 $accept->setQuality($matches[1]);

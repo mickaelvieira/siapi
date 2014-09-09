@@ -6,10 +6,15 @@ use SIAPI\Entity\Http\Request\Header\AcceptBase;
 use SIAPI\Entity\Http\Request\Header\Collection;
 
 /**
- * Interface Negotiator
+ * Class Negotiator
+ * @package SIAPI\Negotiation
+ * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
  */
 abstract class Negotiator
 {
+
+    const STAR = '*';
+
     /**
      * @var Collection;
      */
@@ -97,10 +102,47 @@ abstract class Negotiator
                 if ($quality1 === $quality2) {
                     return 0;
                 }
-                return ($quality1 > $quality2) ? -1 : 1;
+                return ($quality1 < $quality2) ? -1 : 1;
             }
         );
 
         return $accepts;
     }
+
+    /**
+     * @param ValueRange $value1
+     * @param ValueRange $value2
+     * @return bool|int
+     */
+    /*private function compareTypes(ValueRange $value1, ValueRange $value2)
+    {
+        $a_count = count($a['params']);
+        $b_count = count($b['params']);
+        if ($a_count === $b_count) {
+            if ($r = $this->compareValues($a['subtype'], $b['subtype'])) {
+                return $r;
+            } else {
+                return $this->compareValues($a['type'], $b['type']);
+            }
+        } else {
+            return $a_count < $b_count;
+        }
+    }*/
+
+    /**
+     * @param string $a
+     * @param string $b
+     * @return int
+     */
+    /*private function compareValues($a, $b)
+    {
+        if ($a === self::STAR && $b !== self::STAR) {
+            $result = 1;
+        } elseif ($b === self::STAR && $a !== self::STAR) {
+            $result = -1;
+        } else {
+            $result = 0;
+        }
+        return $result;
+    }*/
 }

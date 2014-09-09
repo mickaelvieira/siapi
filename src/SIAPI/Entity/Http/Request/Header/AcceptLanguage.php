@@ -9,20 +9,20 @@ namespace SIAPI\Entity\Http\Request\Header;
 class AcceptLanguage extends AcceptBase
 {
     /**
-     * @var string
+     * @var \SIAPI\Entity\Http\Request\Header\ValueRange
      */
     private $language;
 
     /**
-     * @param string $language
+     * @param \SIAPI\Entity\Http\Request\Header\ValueRange $language
      */
-    public function setLanguage($language)
+    public function setLanguage(ValueRange $language)
     {
-        $this->language = (string)$language;
+        $this->language = $language;
     }
 
     /**
-     * @return string
+     * @return \SIAPI\Entity\Http\Request\Header\ValueRange
      */
     public function getLanguage()
     {

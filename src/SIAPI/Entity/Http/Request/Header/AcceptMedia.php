@@ -9,7 +9,7 @@ namespace SIAPI\Entity\Http\Request\Header;
 class AcceptMedia extends AcceptBase
 {
     /**
-     * @var MediaRange
+     * @var \SIAPI\Entity\Http\Request\Header\ValueRange
      */
     private $mediaRange;
 
@@ -35,9 +35,9 @@ class AcceptMedia extends AcceptBase
     }
 
     /**
-     * @param \SIAPI\Entity\Http\Request\Header\MediaRange $mediaRange
+     * @param \SIAPI\Entity\Http\Request\Header\ValueRange $mediaRange
      */
-    public function setMediaRange(MediaRange $mediaRange)
+    public function setMediaRange(ValueRange $mediaRange)
     {
         $this->mediaRange = $mediaRange;
     }

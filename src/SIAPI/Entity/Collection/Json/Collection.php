@@ -13,7 +13,6 @@ use SIAPI\Entity\Collection\JsonConvertible;
 class Collection extends JsonConvertible
 {
     /**
-     * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-version
      */
     const VERSION = "1.0";
