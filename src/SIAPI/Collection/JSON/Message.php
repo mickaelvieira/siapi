@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Entity\Collection\Json;
+namespace SIAPI\Collection\JSON;
 
-use SIAPI\Entity\Collection\JsonConvertible;
+use SIAPI\Collection\JsonConvertible;
 
 /**
  * Class Message
- * @package SIAPI\Entity\Collection\Json
+ * @package SIAPI\Collection\JSON
  * @docs http://amundsen.com/media-types/collection/format/
  * @docs http://code.ge/media-types/collection-next-json/
  */

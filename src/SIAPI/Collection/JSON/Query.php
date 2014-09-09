@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Entity\Collection\Json;
+namespace SIAPI\Collection\JSON;
 
-use SIAPI\Entity\Collection\JsonConvertible;
+use SIAPI\Collection\JsonConvertible;
 
 /**
  * Class Query
- * @package SIAPI\Entity\Collection\Json
+ * @package SIAPI\Collection\JSON
  * @docs http://amundsen.com/media-types/collection/format/
  * @docs http://code.ge/media-types/collection-next-json/
  */
@@ -107,7 +107,7 @@ class Query extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Entity\Collection\Json\Data $data
+     * @param \SIAPI\Collection\JSON\Data $data
      */
     public function addData(Data $data)
     {

@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Entity\Collection\Json;
+namespace SIAPI\Collection\JSON;
 
-use SIAPI\Entity\Collection\JsonConvertible;
+use SIAPI\Collection\JsonConvertible;
 
 /**
  * Class Template
- * @package SIAPI\Entity\Collection\Json
+ * @package SIAPI\Collection\JSON
  * @docs http://amundsen.com/media-types/collection/format/
  * @docs http://code.ge/media-types/collection-next-json/
  */
@@ -19,19 +19,19 @@ class Template extends JsonConvertible
     private $data = [];
 
     /**
-     * @var \SIAPI\Entity\Collection\Json\Method
+     * @var \SIAPI\Collection\JSON\Method
      * @link http://code.ge/media-types/collection-next-json/#object-method
      */
     private $method;
 
     /**
-     * @var \SIAPI\Entity\Collection\Json\Enctype
+     * @var \SIAPI\Collection\JSON\Enctype
      * @link http://code.ge/media-types/collection-next-json/#object-enctype
      */
     private $enctype;
 
     /**
-     * @param \SIAPI\Entity\Collection\Json\Data $data
+     * @param \SIAPI\Collection\JSON\Data $data
      */
     public function addData(Data $data)
     {
@@ -39,7 +39,7 @@ class Template extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Entity\Collection\Json\Method $method
+     * @param \SIAPI\Collection\JSON\Method $method
      */
     public function setMethod(Method $method)
     {
@@ -47,7 +47,7 @@ class Template extends JsonConvertible
     }
 
     /**
-     * @return \SIAPI\Entity\Collection\Json\Method
+     * @return \SIAPI\Collection\JSON\Method
      */
     public function getMethod()
     {
@@ -55,7 +55,7 @@ class Template extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Entity\Collection\Json\Enctype $enctype
+     * @param \SIAPI\Collection\JSON\Enctype $enctype
      */
     public function setEnctype(Enctype $enctype)
     {
@@ -63,7 +63,7 @@ class Template extends JsonConvertible
     }
 
     /**
-     * @return \SIAPI\Entity\Collection\Json\Enctype
+     * @return \SIAPI\Collection\JSON\Enctype
      */
     public function getEnctype()
     {

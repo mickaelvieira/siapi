@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Entity\Collection\Json;
+namespace SIAPI\Collection\JSON;
 
-use SIAPI\Entity\Collection\JsonConvertible;
+use SIAPI\Collection\JsonConvertible;
 
 /**
  * Class Method
- * @package SIAPI\Entity\Collection\Json
+ * @package SIAPI\Collection\JSON
  * @docs http://amundsen.com/media-types/collection/format/
  * @docs http://code.ge/media-types/collection-next-json/
  */
@@ -19,7 +19,7 @@ class Enctype extends JsonConvertible
     private $options = [];
 
     /**
-     * @param \SIAPI\Entity\Collection\Json\Option $option
+     * @param \SIAPI\Collection\JSON\Option $option
      */
     public function addOption(Option $option)
     {

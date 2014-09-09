@@ -1,6 +1,6 @@
 <?php
 
-namespace SIAPI\Entity\Collection;
+namespace SIAPI\Collection;
 
 use JsonSerializable;
 
