@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\SIAPI\Negotiation\Negotiator;
+namespace spec\SIAPI\Negotiation;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -9,7 +9,7 @@ class FactorySpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('SIAPI\Negotiation\Negotiator\Factory');
+        $this->shouldHaveType('SIAPI\Negotiation\Factory');
     }
 
     function it_should_build_a_language_negotiator()

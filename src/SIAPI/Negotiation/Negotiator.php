@@ -4,6 +4,7 @@ namespace SIAPI\Negotiation;
 
 use SIAPI\Http\Request\Header\AcceptBase;
 use SIAPI\Http\Request\Header\Collection;
+use SIAPI\Http\Request\Header\ValueRange;
 
 /**
  * Class Negotiator
@@ -12,30 +13,40 @@ use SIAPI\Http\Request\Header\Collection;
  */
 abstract class Negotiator
 {
-
-    const STAR = '*';
+    /**
+     * @var \SIAPI\Negotiation\Strategy
+     */
+    protected $strategy;
 
     /**
      * @var Collection;
      */
-    protected $acceptedValues;
+    protected $entities;
 
     /**
      * @param array $headers
      */
     public function __construct(array $headers)
     {
-        $this->acceptedValues = $this->parseHeaderString(
+        $this->entities = $this->parseHeaderString(
             $this->getHeaderString($headers)
         );
     }
 
     /**
+     * @param \SIAPI\Negotiation\Strategy $strategy
+     */
+    public function setStrategy(Strategy $strategy)
+    {
+        $this->strategy = $strategy;
+    }
+
+    /**
      * @return Collection
      */
-    public function getAcceptedValues()
+    public function getEntities()
     {
-        return $this->acceptedValues;
+        return $this->entities;
     }
 
     /**
@@ -44,21 +55,16 @@ abstract class Negotiator
     abstract protected function getHeaderName();
 
     /**
-     * @return string
-     */
-    abstract protected function getParsingRegex();
-
-    /**
      * @param string $value
      * @return array
      */
-    abstract protected function parseAcceptedValue($value);
+    abstract protected function getEntity($value);
 
     /**
      * @param array $headers
      * @return string
      */
-    protected function getHeaderString(array $headers)
+    private function getHeaderString(array $headers)
     {
         $name = $this->getHeaderName();
         return array_key_exists($name, $headers) ? $headers[$name] : '';
@@ -68,20 +74,22 @@ abstract class Negotiator
      * @param $header
      * @return Collection
      */
-    protected function parseHeaderString($header)
+    private function parseHeaderString($header)
     {
         $accepts = [];
 
-        $header = preg_replace("/\s/", "", $header);
-        $values = explode(",", $header);
+        $values = explode(",", preg_replace("/\s/", "", $header));
 
         foreach ($values as $value) {
-            $accept = $this->parseAcceptedValue($value);
+            $accept = $this->getEntity($value);
             if ($accept) {
                 array_push($accepts, $accept);
             }
         }
-        $accepts = $this->sortAcceptedValuesByQuality($accepts);
+
+        //var_dump($accepts);
+
+        //$accepts = $this->sortAcceptedValuesByQuality($accepts);
 
         return new Collection($accepts);
     }
@@ -102,7 +110,7 @@ abstract class Negotiator
                 if ($quality1 === $quality2) {
                     return 0;
                 }
-                return ($quality1 < $quality2) ? -1 : 1;
+                return ($quality1 > $quality2) ? -1 : 1;
             }
         );
 
@@ -134,15 +142,6 @@ abstract class Negotiator
      * @param string $b
      * @return int
      */
-    /*private function compareValues($a, $b)
-    {
-        if ($a === self::STAR && $b !== self::STAR) {
-            $result = 1;
-        } elseif ($b === self::STAR && $a !== self::STAR) {
-            $result = -1;
-        } else {
-            $result = 0;
-        }
-        return $result;
+    /*   return $result;
     }*/
 }

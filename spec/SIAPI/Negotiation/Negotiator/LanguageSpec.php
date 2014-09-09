@@ -20,29 +20,39 @@ class LanguageSpec extends ObjectBehavior
 
     function it_should_return_a_collection_of_accept_language_entities()
     {
-        $this->getAcceptedValues()->shouldImplement('\Traversable');
-        $this->getAcceptedValues()->shouldImplement('\IteratorAggregate');
-        $this->getAcceptedValues()->shouldImplement('\Countable');
-        $this->getAcceptedValues()->shouldHaveCount(3);
+        $this->getEntities()->shouldImplement('\Traversable');
+        $this->getEntities()->shouldImplement('\IteratorAggregate');
+        $this->getEntities()->shouldImplement('\Countable');
+        $this->getEntities()->shouldHaveCount(3);
     }
 
     function it_should_an_collection_of_ordered_accept_language_entities()
     {
         $returned = array(
-            0 => array('language' => 'da', 'quality' => 1),
-            1 => array('language' => 'en-gb', 'quality' => 0.8),
-            2 => array('language' => 'en', 'quality' => 0.5)
+            0 => array('value' => 'da', 'subValue' => null, 'quality' => 1.0),
+            1 => array('value' => 'en', 'subValue' => 'gb', 'quality' => 0.8),
+            2 => array('value' => 'en', 'subValue' => null, 'quality' => 0.5)
         );
 
         /**
          * @TODO this loop does not work
          */
-        foreach ($this->getAcceptedValues() as $key => $value) {
-            /** @var \SIAPI\Entity\Http\Request\Header\AcceptLanguage $value */
+
+        /** @var \SIAPI\Http\Request\Header\AcceptLanguage $value */
+        /*$key   = 0;
+        $value = $this->getAcceptedValues()->first();
+
+        do {
+            var_dump($key);
             $values = $returned[$key];
-            $value->getLanguage()->shouldBeEqualTo($values['language']);
+            var_dump($value);
+
+            $value->getLanguageRange()->getValue()->shouldBeEqualTo($values['value']);
+            $value->getLanguageRange()->getSubValue()->shouldBeEqualTo($values['subValue']);
             $value->getQuality()->shouldBeEqualTo($values['quality']);
-        }
+            $key++;
+        } while ($value = $this->getAcceptedValues()->next());*/
+
     }
 
     private function getTestHeaders()

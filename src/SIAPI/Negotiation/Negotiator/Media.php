@@ -23,23 +23,13 @@ class Media extends Negotiator
      * @param string $value
      * @return array
      */
-    protected function parseAcceptedValue($value)
+    protected function getEntity($value)
     {
-        $accept = null;
+        return new AcceptMedia($value);
         // https://github.com/zendframework/zf2/blob/master/library/Zend/Http/Header/AbstractAccept.php
         // https://github.com/zendframework/zf2/blob/master/library/Zend/Http/Header/Accept.php
         // https://github.com/zendframework/zf2/blob/master/library/Zend/Http/Header/AcceptLanguage.php
         // https://github.com/zendframework/zf2/blob/master/library/Zend/Http/Header/AcceptCharset.php
         // https://github.com/adoy/Accept-Header-Parser/blob/master/AcceptHeader.php
-
-        return $accept;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function getParsingRegex()
-    {
-        return "";
     }
 }

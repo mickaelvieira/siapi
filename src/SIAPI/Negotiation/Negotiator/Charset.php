@@ -23,18 +23,8 @@ class Charset extends Negotiator
      * @param string $value
      * @return array
      */
-    protected function parseAcceptedValue($value)
+    protected function getEntity($value)
     {
-        $accept = null;
-
-        return $accept;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function getParsingRegex()
-    {
-        return "";
+        return new AcceptCharset($value);
     }
 }

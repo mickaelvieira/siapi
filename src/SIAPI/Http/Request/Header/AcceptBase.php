@@ -14,18 +14,27 @@ class AcceptBase
     protected $quality = 1.0;
 
     /**
-     * @param float $quality
-     */
-    public function setQuality($quality)
-    {
-        $this->quality = (float)$quality;
-    }
-
-    /**
      * @return float
      */
     public function getQuality()
     {
         return $this->quality;
+    }
+
+    /**
+     * @param $pieces
+     */
+    protected function addParams(array $pieces)
+    {
+        foreach ($pieces as $piece) {
+
+            $param = explode("=", $piece);
+
+            if (count($param) === 2) {
+                if ($param[0] === 'q') {
+                    $this->quality = $param[1];
+                }
+            }
+        }
     }
 }

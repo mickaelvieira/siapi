@@ -54,6 +54,14 @@ class Collection implements \Countable, \IteratorAggregate
     /**
      * @return mixed
      */
+    public function prev()
+    {
+        return prev($this->collection);
+    }
+
+    /**
+     * @return mixed
+     */
     public function current()
     {
         return current($this->collection);
