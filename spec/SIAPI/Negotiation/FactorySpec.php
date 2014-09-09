@@ -29,9 +29,4 @@ class FactorySpec extends ObjectBehavior
         $this::build('media', array())->shouldHaveType('\SIAPI\Negotiation\Negotiator\Media');
         $this::build('media', array())->shouldHaveType('\SIAPI\Negotiation\Negotiator');
     }
-
-    function it_should_throw_an_exception_when_the_class_does_exist()
-    {
-        $this->shouldThrow('\LogicException')->during('build', array('whatever', array()));
-    }
 }

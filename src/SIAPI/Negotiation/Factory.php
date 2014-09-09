@@ -15,68 +15,33 @@ final class Factory
      */
     public static function build($name, array $headers)
     {
-        $negotiatorClassName = self::getNegotiatorClassName($name);
-        $strategyClassName   = self::getStrategyClassName($name);
+        $negotiator = self::getNegotiatorInstance($name, $headers);
 
-        if (!class_exists($negotiatorClassName)) {
-            self::throwNegotiatorClassNameException($negotiatorClassName);
+        if ($negotiator instanceof Negotiator) {
+            $negotiator->setStrategy(self::getStrategyInstance($name));
         }
-        if (!class_exists($strategyClassName)) {
-            self::throwStrategyClassNameException($strategyClassName);
-        }
-
-        /** @var \SIAPI\Negotiation\Negotiator $negotiator */
-        $negotiator = new $negotiatorClassName($headers);
-        $strategy   = new $strategyClassName();
-
-        $negotiator->setStrategy($strategy);
 
         return $negotiator;
     }
 
     /**
-     * @param string $name
-     * @return string
+     * @param $name
+     * @param $headers
+     * @return \SIAPI\Negotiation\Negotiator
      */
-    private function getNegotiatorClassName($name)
+    private function getNegotiatorInstance($name, $headers)
     {
-        return __NAMESPACE__ . "\\Negotiator\\" . ucfirst(strtolower($name));
+        $className = __NAMESPACE__ . "\\Negotiator\\" . ucfirst(strtolower($name));
+        return new $className($headers);
     }
 
     /**
-     * @param string $name
-     * @return string
+     * @param $name
+     * @return \SIAPI\Negotiation\Strategy
      */
-    private function getStrategyClassName($name)
+    private function getStrategyInstance($name)
     {
-        return __NAMESPACE__ . "\\Strategy\\" . ucfirst(strtolower($name));
-    }
-
-    /**
-     * @param string $className
-     * @throws \LogicException
-     */
-    private function throwNegotiatorClassNameException($className)
-    {
-        throw new \LogicException(
-            sprintf(
-                "Cannot build negotiator. Class %s does not exist",
-                $className
-            )
-        );
-    }
-
-    /**
-     * @param string $className
-     * @throws \LogicException
-     */
-    private function throwStrategyClassNameException($className)
-    {
-        throw new \LogicException(
-            sprintf(
-                "Cannot build negotiator strategy. Class %s does not exist",
-                $className
-            )
-        );
+        $className = __NAMESPACE__ . "\\Strategy\\" . ucfirst(strtolower($name));
+        return new $className();
     }
 }
