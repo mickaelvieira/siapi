@@ -2,9 +2,13 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Entity\Http\Request\Header\AcceptCharset;
+use SIAPI\Http\Request\Header\AcceptCharset;
 use SIAPI\Negotiation\Negotiator;
 
+/**
+ * Class Charset
+ * @package SIAPI\Negotiation\Negotiator
+ */
 class Charset extends Negotiator
 {
     /**

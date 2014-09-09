@@ -1,10 +1,10 @@
 <?php
 
-namespace SIAPI\Entity\Http\Request\Header;
+namespace SIAPI\Http\Request\Header;
 
 /**
  * Class Language
- * @package SIAPI\Entity\Http\Request\Header
+ * @package SIAPI\Http\Request\Header
  */
 class ValueRange
 {

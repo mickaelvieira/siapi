@@ -1,6 +1,6 @@
 <?php
 
-namespace SIAPI\Entity\Http\Request\Header;
+namespace SIAPI\Http\Request\Header;
 
 use ArrayIterator;
 

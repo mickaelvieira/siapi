@@ -2,9 +2,13 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Entity\Http\Request\Header\AcceptMedia;
+use SIAPI\Http\Request\Header\AcceptMedia;
 use SIAPI\Negotiation\Negotiator;
 
+/**
+ * Class Media
+ * @package SIAPI\Negotiation\Negotiator
+ */
 class Media extends Negotiator
 {
     /**

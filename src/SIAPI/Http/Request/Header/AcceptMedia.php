@@ -1,15 +1,15 @@
 <?php
 
-namespace SIAPI\Entity\Http\Request\Header;
+namespace SIAPI\Http\Request\Header;
 
 /**
  * Class AcceptMedia
- * @package SIAPI\Entity\Http\Request\Header
+ * @package SIAPI\Http\Request\Header
  */
 class AcceptMedia extends AcceptBase
 {
     /**
-     * @var \SIAPI\Entity\Http\Request\Header\ValueRange
+     * @var \SIAPI\Http\Request\Header\ValueRange
      */
     private $mediaRange;
 
@@ -35,7 +35,7 @@ class AcceptMedia extends AcceptBase
     }
 
     /**
-     * @param \SIAPI\Entity\Http\Request\Header\ValueRange $mediaRange
+     * @param \SIAPI\Http\Request\Header\ValueRange $mediaRange
      */
     public function setMediaRange(ValueRange $mediaRange)
     {
@@ -43,7 +43,7 @@ class AcceptMedia extends AcceptBase
     }
 
     /**
-     * @return \SIAPI\Entity\Http\Request\Header\MediaRange
+     * @return \SIAPI\Http\Request\Header\MediaRange
      */
     public function getMediaRange()
     {

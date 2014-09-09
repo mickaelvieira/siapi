@@ -2,8 +2,8 @@
 
 namespace SIAPI\Negotiation;
 
-use SIAPI\Entity\Http\Request\Header\AcceptBase;
-use SIAPI\Entity\Http\Request\Header\Collection;
+use SIAPI\Http\Request\Header\AcceptBase;
+use SIAPI\Http\Request\Header\Collection;
 
 /**
  * Class Negotiator

@@ -1,10 +1,10 @@
 <?php
 
-namespace SIAPI\Entity\Http\Request\Header;
+namespace SIAPI\Http\Request\Header;
 
 /**
  * Class AcceptCharset
- * @package SIAPI\Entity\Http\Request\Header
+ * @package SIAPI\Http\Request\Header
  */
 class AcceptCharset extends AcceptBase
 {

@@ -2,10 +2,14 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Entity\Http\Request\Header\ValueRange;
-use SIAPI\Entity\Http\Request\Header\AcceptLanguage;
+use SIAPI\Http\Request\Header\ValueRange;
+use SIAPI\Http\Request\Header\AcceptLanguage;
 use SIAPI\Negotiation\Negotiator;
 
+/**
+ * Class Language
+ * @package SIAPI\Negotiation\Negotiator
+ */
 class Language extends Negotiator
 {
     /**
