@@ -16,7 +16,7 @@ class Collection extends JsonConvertible
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-version
      */
-    private $version = "1.0";
+    const VERSION = "1.0";
 
     /**
      * @var string
@@ -153,6 +153,9 @@ class Collection extends JsonConvertible
      */
     protected function getObjectData()
     {
-        return get_object_vars($this);
+        $data = [
+            'version' => self::VERSION
+        ];
+        return array_merge($data, get_object_vars($this));
     }
 }
