@@ -1,4 +1,5 @@
 <?php
+
 namespace SIAPI\Entity\Collection\Json;
 
 use SIAPI\Entity\Collection\JsonConvertible;
@@ -6,22 +7,26 @@ use SIAPI\Entity\Collection\JsonConvertible;
 /**
  * Class Message
  * @package SIAPI\Entity\Collection\Json
+ * @docs http://amundsen.com/media-types/collection/format/
  * @docs http://code.ge/media-types/collection-next-json/
  */
 class Message extends JsonConvertible
 {
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-code
      */
     private $code;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-name
      */
     private $name;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-message
      */
     private $message;
 

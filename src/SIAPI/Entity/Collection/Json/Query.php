@@ -8,31 +8,37 @@ use SIAPI\Entity\Collection\JsonConvertible;
  * Class Query
  * @package SIAPI\Entity\Collection\Json
  * @docs http://amundsen.com/media-types/collection/format/
+ * @docs http://code.ge/media-types/collection-next-json/
  */
 class Query extends JsonConvertible
 {
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-href
      */
     private $href;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-rel
      */
     private $rel;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-name
      */
     private $name;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-prompt
      */
     private $prompt;
 
     /**
      * @var array
+     * @link http://amundsen.com/media-types/collection/format/#arrays-data
      */
     private $data = [];
 

@@ -7,23 +7,26 @@ use SIAPI\Entity\Collection\JsonConvertible;
 /**
  * Class ListData
  * @package SIAPI\Entity\Collection\Json
+ * @docs http://amundsen.com/media-types/collection/format/
  * @docs http://code.ge/media-types/collection-next-json/
  */
 class ListData extends JsonConvertible
 {
     /**
      * @var bool
+     * @link http://code.ge/media-types/collection-next-json/#property-multiple
      */
     private $multiple;
 
     /**
      * @var string
-     * @docs http://code.ge/media-types/collection-next-json/#properties
+     * @link http://code.ge/media-types/collection-next-json/#property-default
      */
     private $default;
 
     /**
      * @var array
+     * @link http://code.ge/media-types/collection-next-json/#array-options
      */
     private $options = [];
 
@@ -40,7 +43,7 @@ class ListData extends JsonConvertible
      */
     public function isMultiple()
     {
-        return ($this->multiple === true);
+        return (bool)$this->multiple;
     }
 
     /**

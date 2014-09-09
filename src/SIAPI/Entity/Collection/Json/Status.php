@@ -7,17 +7,20 @@ use SIAPI\Entity\Collection\JsonConvertible;
 /**
  * Class Status
  * @package SIAPI\Entity\Collection\Json
+ * @docs http://amundsen.com/media-types/collection/format/
  * @docs http://code.ge/media-types/collection-next-json/
  */
 class Status extends JsonConvertible
 {
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-code
      */
     private $code;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-message
      */
     private $message;
 

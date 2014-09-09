@@ -7,17 +7,20 @@ use SIAPI\Entity\Collection\JsonConvertible;
 /**
  * Class Option
  * @package SIAPI\Entity\Collection\Json
+ * @docs http://amundsen.com/media-types/collection/format/
  * @docs http://code.ge/media-types/collection-next-json/
  */
 class Option extends JsonConvertible
 {
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-value
      */
     private $value;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-prompt
      */
     private $prompt;
 

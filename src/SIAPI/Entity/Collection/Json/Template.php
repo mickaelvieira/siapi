@@ -8,23 +8,25 @@ use SIAPI\Entity\Collection\JsonConvertible;
  * Class Template
  * @package SIAPI\Entity\Collection\Json
  * @docs http://amundsen.com/media-types/collection/format/
+ * @docs http://code.ge/media-types/collection-next-json/
  */
 class Template extends JsonConvertible
 {
     /**
      * @var array
+     * @link http://amundsen.com/media-types/collection/format/#arrays-data
      */
     private $data = [];
 
     /**
      * @var \SIAPI\Entity\Collection\Json\Method
-     * @docs http://code.ge/media-types/collection-next-json/
+     * @link http://code.ge/media-types/collection-next-json/#object-method
      */
     private $method;
 
     /**
      * @var \SIAPI\Entity\Collection\Json\Enctype
-     * @docs http://code.ge/media-types/collection-next-json/
+     * @link http://code.ge/media-types/collection-next-json/#object-enctype
      */
     private $enctype;
 

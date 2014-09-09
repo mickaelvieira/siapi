@@ -7,12 +7,14 @@ use SIAPI\Entity\Collection\JsonConvertible;
 /**
  * Class Method
  * @package SIAPI\Entity\Collection\Json
+ * @docs http://amundsen.com/media-types/collection/format/
  * @docs http://code.ge/media-types/collection-next-json/
  */
 class Method extends JsonConvertible
 {
     /**
      * @var array
+     * @link http://code.ge/media-types/collection-next-json/#array-options
      */
     private $options = [];
 

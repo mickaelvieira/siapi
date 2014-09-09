@@ -8,44 +8,57 @@ use SIAPI\Entity\Collection\JsonConvertible;
  * Class Collection
  * @package SIAPI\Entity\Collection\Json
  * @docs http://amundsen.com/media-types/collection/format/
+ * @docs http://code.ge/media-types/collection-next-json/
  */
 class Collection extends JsonConvertible
 {
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-version
      */
     private $version = "1.0";
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-href
      */
     private $href;
 
     /**
      * @var array
+     * @link http://amundsen.com/media-types/collection/format/#arrays-links
      */
     private $links = [];
 
     /**
      * @var array
+     * @link http://amundsen.com/media-types/collection/format/#arrays-items
      */
     private $items = [];
 
     /**
      * @var array
+     * @link http://amundsen.com/media-types/collection/format/#arrays-queries
      */
     private $queries = [];
 
     /**
      * @var \SIAPI\Entity\Collection\Json\Error
+     * @link http://amundsen.com/media-types/collection/format/#objects-error
      */
     private $error;
 
     /**
      * @var \SIAPI\Entity\Collection\Json\Status
-     * @docs http://code.ge/media-types/collection-next-json/
+     * @link http://code.ge/media-types/collection-next-json/#object-status
      */
     private $status;
+
+    /**
+     * @var \SIAPI\Entity\Collection\Json\Template
+     * @link http://amundsen.com/media-types/collection/format/#ojects-template
+     */
+    private $template;
 
     /**
      * @param string $href
@@ -117,6 +130,22 @@ class Collection extends JsonConvertible
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @param \SIAPI\Entity\Collection\Json\Template $template
+     */
+    public function setTemplate(Template $template)
+    {
+        $this->template = $template;
+    }
+
+    /**
+     * @return \SIAPI\Entity\Collection\Json\Template
+     */
+    public function getTemplate()
+    {
+        return $this->template;
     }
 
     /**

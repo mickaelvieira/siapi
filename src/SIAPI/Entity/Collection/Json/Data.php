@@ -8,33 +8,37 @@ use SIAPI\Entity\Collection\JsonConvertible;
  * Class Data
  * @package SIAPI\Entity\Collection\Json
  * @docs http://amundsen.com/media-types/collection/format/
+ * @docs http://code.ge/media-types/collection-next-json/
  */
 class Data extends JsonConvertible
 {
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-prompt
      */
     private $prompt;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-name
      */
     private $name;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-value
      */
     private $value;
 
     /**
      * @var string
-     * @docs http://code.ge/media-types/collection-next-json/#properties
+     * @link http://code.ge/media-types/collection-next-json/#property-type
      */
     private $type;
 
     /**
      * @var bool
-     * @docs http://code.ge/media-types/collection-next-json/#properties
+     * @link http://code.ge/media-types/collection-next-json/#property-required
      */
     private $required;
 

@@ -8,27 +8,31 @@ use SIAPI\Entity\Collection\JsonConvertible;
  * Class Error
  * @package SIAPI\Entity\Collection\Json
  * @docs http://amundsen.com/media-types/collection/format/
+ * @docs http://code.ge/media-types/collection-next-json/
  */
 class Error extends JsonConvertible
 {
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-title
      */
     private $title;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#property-code
      */
     private $code;
 
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#property-message
      */
     private $message;
 
     /**
      * @var array
-     * @docs http://code.ge/media-types/collection-next-json/#arrays
+     * @link http://code.ge/media-types/collection-next-json/#array-messages
      */
     private $messages = [];
 

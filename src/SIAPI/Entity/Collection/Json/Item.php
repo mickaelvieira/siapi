@@ -8,21 +8,25 @@ use SIAPI\Entity\Collection\JsonConvertible;
  * Class Item
  * @package SIAPI\Entity\Collection\Json
  * @docs http://amundsen.com/media-types/collection/format/
+ * @docs http://code.ge/media-types/collection-next-json/
  */
 class Item extends JsonConvertible
 {
     /**
      * @var string
+     * @link http://amundsen.com/media-types/collection/format/#property-href
      */
     private $href;
 
     /**
      * @var array
+     * @link http://amundsen.com/media-types/collection/format/#arrays-data
      */
     private $data = [];
 
     /**
      * @var array
+     * @link http://amundsen.com/media-types/collection/format/#arrays-links
      */
     private $links = [];
 
