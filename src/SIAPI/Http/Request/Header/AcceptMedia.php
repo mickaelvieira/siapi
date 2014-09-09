@@ -62,7 +62,7 @@ class AcceptMedia extends AcceptBase
             if (count($param) === 2) {
                 if ($param[0] === 'q') {
                     $found = true;
-                    $this->quality = $param[1];
+                    $this->quality = (float)$param[1];
                 } else {
                     if (!$found) {
                         $this->addMediaParam($param[0], $param[1]);

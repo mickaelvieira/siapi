@@ -32,7 +32,7 @@ class AcceptBase
 
             if (count($param) === 2) {
                 if ($param[0] === 'q') {
-                    $this->quality = $param[1];
+                    $this->quality = (float)$param[1];
                 }
             }
         }
