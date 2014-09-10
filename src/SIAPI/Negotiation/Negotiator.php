@@ -2,8 +2,8 @@
 
 namespace SIAPI\Negotiation;
 
+use SIAPI\Collection\Collection;
 use SIAPI\Http\Request\Header\AcceptBase;
-use SIAPI\Http\Request\Header\Collection;
 use SIAPI\Http\Request\Header\ValueRange;
 
 /**

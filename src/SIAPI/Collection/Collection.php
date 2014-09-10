@@ -1,10 +1,12 @@
 <?php
 
-namespace SIAPI\Http\Request\Header;
+namespace SIAPI\Collection;
 
+use Countable;
 use ArrayIterator;
+use IteratorAggregate;
 
-class Collection implements \Countable, \IteratorAggregate
+class Collection implements Countable, IteratorAggregate
 {
     /**
      * @var array
@@ -38,25 +40,9 @@ class Collection implements \Countable, \IteratorAggregate
     /**
      * @return mixed
      */
-    public function last()
-    {
-        return end($this->collection);
-    }
-
-    /**
-     * @return mixed
-     */
     public function key()
     {
         return key($this->collection);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function next()
-    {
-        return next($this->collection);
     }
 
     /**
@@ -73,6 +59,22 @@ class Collection implements \Countable, \IteratorAggregate
     public function current()
     {
         return current($this->collection);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function next()
+    {
+        return next($this->collection);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function last()
+    {
+        return end($this->collection);
     }
 
     /**
