@@ -23,9 +23,7 @@ class AcceptLanguage extends AcceptBase
      */
     public function __construct($pieces)
     {
-        // en-gb;q=0.8
-
-        $pieces   = explode(";", (string)$pieces);
+        $pieces   = explode(";", $this->cleanHeaderString($pieces));
         $language = array_shift($pieces);
 
         if ($language) {
@@ -47,6 +45,7 @@ class AcceptLanguage extends AcceptBase
      */
     public function __toString()
     {
-        return $this->languageRange . ";q=" . $this->quality;
+        $str = (string)$this->languageRange;
+        return $this->joinQuantity($str);
     }
 }

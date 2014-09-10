@@ -11,12 +11,12 @@ class Collection implements Countable, IteratorAggregate
     /**
      * @var array
      */
-    private $collection = [];
+    protected $collection = [];
 
     /**
      * @param array $collection
      */
-    public function __construct(array $collection)
+    public function __construct(array $collection = array())
     {
         $this->collection = $collection;
     }

@@ -38,10 +38,8 @@ class AcceptMedia extends AcceptBase
      */
     public function __construct($pieces)
     {
-        // text/html;level=2;q=0.4
-
-        $pieces = explode(";", (string)$pieces);
-        $media = array_shift($pieces);
+        $pieces = explode(";", $this->cleanHeaderString($pieces));
+        $media  = array_shift($pieces);
 
         if ($media) {
             $this->mediaRange = new ValueRange($media, "/");
@@ -51,6 +49,7 @@ class AcceptMedia extends AcceptBase
 
     /**
      * @param $pieces
+     * @TODO needs some refactoring
      */
     protected function addParams($pieces)
     {
@@ -106,18 +105,19 @@ class AcceptMedia extends AcceptBase
     public function __toString()
     {
         $str = (string)$this->mediaRange;
-        $str .= $this->joinParameters($this->mediaParams);
-        $str .= ";" . "q=" . $this->quality;
-        $str .= $this->joinParameters($this->extParams);
+        $str = $this->joinParameters($str, $this->mediaParams);
+        $str = $this->joinQuantity($str);
+        $str = $this->joinParameters($str, $this->extParams);
 
         return $str;
     }
 
     /**
+     * @param string $str
      * @param array $params
      * @return string
      */
-    private function joinParameters(array $params)
+    private function joinParameters($str, array $params)
     {
         array_walk(
             $params,
@@ -126,6 +126,10 @@ class AcceptMedia extends AcceptBase
             }
         );
 
-        return implode(";", $params);
+        if (!empty($str)) {
+            $str .= !empty($params) ? ';' . implode(";", $params) : '';
+        }
+
+        return $str;
     }
 }
