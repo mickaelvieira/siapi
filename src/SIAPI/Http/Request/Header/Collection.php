@@ -20,6 +20,14 @@ class Collection implements \Countable, \IteratorAggregate
     }
 
     /**
+     * @param $item
+     */
+    public function add($item)
+    {
+        array_push($this->collection, $item);
+    }
+
+    /**
      * @return mixed
      */
     public function first()
