@@ -1,11 +1,15 @@
 <?php
 
-namespace spec\SIAPI\Http\Request\Header\Accept\Entity;
+namespace spec\SIAPI\Negotiation\Header\Accept\Entity;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class AcceptLanguageSpec extends ObjectBehavior
+/**
+ * Class CharsetSpec
+ * @package spec\SIAPI\Negotiation\Header\Accept\Entity
+ */
+class CharsetSpec extends ObjectBehavior
 {
     function let()
     {
@@ -20,6 +24,6 @@ class AcceptLanguageSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('SIAPI\Http\Request\Header\Accept\Entity\AcceptLanguage');
+        $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Entity\Charset');
     }
 }

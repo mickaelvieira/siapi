@@ -3,7 +3,7 @@
 namespace SIAPI\Negotiation\Strategy;
 
 use SIAPI\Negotiation\Strategy;
-use SIAPI\Http\Request\Header\Accept\Collection;
+use SIAPI\Negotiation\Header\Accept\Collection;
 
 /**
  * Class Media
@@ -14,7 +14,7 @@ class Media extends Strategy
     /**
      * {@inheritdoc}
      */
-    public function sort(Collection $collection)
+    public function select(Collection $collection)
     {
         return $collection;
     }

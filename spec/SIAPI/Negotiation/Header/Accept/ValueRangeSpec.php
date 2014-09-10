@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\SIAPI\Http\Request\Header\Accept;
+namespace spec\SIAPI\Negotiation\Header\Accept;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

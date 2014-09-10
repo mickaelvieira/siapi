@@ -1,10 +1,10 @@
 <?php
 
-namespace SIAPI\Http\Request\Header\Accept;
+namespace SIAPI\Negotiation\Header\Accept;
 
 /**
  * Class Entity
- * @package SIAPI\Http\Request\Header\Accept
+ * @package SIAPI\Negotiation\Header\Accept
  */
 abstract class Entity
 {

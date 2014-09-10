@@ -2,7 +2,7 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Http\Request\Header\Accept\Collection\AcceptLanguage;
+//use SIAPI\Negotiation\Header\Accept\Collection\Language;
 use SIAPI\Negotiation\Negotiator;
 
 /**
@@ -14,17 +14,17 @@ class Language extends Negotiator
     /**
      * {@inheritDoc}
      */
-    protected function getHeaderName()
+    /*protected function getHeaderName()
     {
         return 'Accept-Language';
-    }
+    }*/
 
     /**
      * @param string $header
      * @return array
      */
-    protected function getCollection($header)
+    /*protected function getCollection($header)
     {
-        return AcceptLanguage::createFromString($header);
-    }
+        return Language::createFromString($header);
+    }*/
 }

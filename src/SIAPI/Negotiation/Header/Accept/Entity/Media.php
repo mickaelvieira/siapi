@@ -1,15 +1,15 @@
 <?php
 
-namespace SIAPI\Http\Request\Header\Accept\Entity;
+namespace SIAPI\Negotiation\Header\Accept\Entity;
 
-use SIAPI\Http\Request\Header\Accept\Entity;
-use SIAPI\Http\Request\Header\Accept\ValueRange;
+use SIAPI\Negotiation\Header\Accept\Entity;
+use SIAPI\Negotiation\Header\Accept\ValueRange;
 
 /**
- * Class AcceptMedia
- * @package SIAPI\Http\Request\Header\Accept\Entity
+ * Class Media
+ * @package SIAPI\Negotiation\Header\Accept\Entity
  */
-class AcceptMedia extends Entity
+class Media extends Entity
 {
     // Accept         = "Accept" ":"
     //                  #( media-range [ accept-params ] )
@@ -22,7 +22,7 @@ class AcceptMedia extends Entity
     // accept-extension = ";" token [ "=" ( token | quoted-string ) ]
 
     /**
-     * @var \SIAPI\Http\Request\Header\Accept\ValueRange
+     * @var \SIAPI\Negotiation\Header\Accept\ValueRange
      */
     private $mediaRange;
 
@@ -95,7 +95,7 @@ class AcceptMedia extends Entity
     }
 
     /**
-     * @return \SIAPI\Http\Request\Header\Accept\ValueRange
+     * @return \SIAPI\Negotiation\Header\Accept\ValueRange
      */
     public function getMediaRange()
     {

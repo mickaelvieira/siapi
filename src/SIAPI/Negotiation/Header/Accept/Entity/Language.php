@@ -1,15 +1,15 @@
 <?php
 
-namespace SIAPI\Http\Request\Header\Accept\Entity;
+namespace SIAPI\Negotiation\Header\Accept\Entity;
 
-use SIAPI\Http\Request\Header\Accept\Entity;
-use SIAPI\Http\Request\Header\Accept\ValueRange;
+use SIAPI\Negotiation\Header\Accept\Entity;
+use SIAPI\Negotiation\Header\Accept\ValueRange;
 
 /**
- * Class AcceptLanguage
- * @package SIAPI\Http\Request\Header\Accept\Entity
+ * Class Language
+ * @package SIAPI\Negotiation\Header\Accept\Entity
  */
-class AcceptLanguage extends Entity
+class Language extends Entity
 {
 
     // Accept-Language = "Accept-Language" ":"
@@ -17,7 +17,7 @@ class AcceptLanguage extends Entity
     //                   language-range  = ( ( 1*8ALPHA *( "-" 1*8ALPHA ) ) | "*" )
 
     /**
-     * @var \SIAPI\Http\Request\Header\Accept\ValueRange
+     * @var \SIAPI\Negotiation\Header\Accept\ValueRange
      */
     private $languageRange;
 
@@ -36,7 +36,7 @@ class AcceptLanguage extends Entity
     }
 
     /**
-     * @return \SIAPI\Http\Request\Header\Accept\ValueRange
+     * @return \SIAPI\Negotiation\Header\Accept\ValueRange
      */
     public function getLanguageRange()
     {

@@ -1,16 +1,26 @@
 <?php
 
-namespace SIAPI\Http\Request\Header\Accept;
+namespace SIAPI\Negotiation\Header\Accept;
 
+use SIAPI\Collection\Sortable;
 use SIAPI\Collection\Collection as BaseCollection;
-use SIAPI\Http\Request\Header\Accept\Entity;
+use SIAPI\Negotiation\Header\Accept\Entity;
 
 /**
  * Class Collection
- * @package SIAPI\Http\Request\Header\Accept
+ * @package SIAPI\Negotiation\Header\Accept
  */
-abstract class Collection extends BaseCollection
+abstract class Collection extends BaseCollection implements Sortable
 {
+    /**
+     * @param array $entities
+     */
+    public function __construct(array $entities = [])
+    {
+        $this->entities = $entities;
+        $this->sort();
+    }
+
     /**
      * @return string
      */

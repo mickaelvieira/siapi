@@ -2,7 +2,7 @@
 
 namespace SIAPI\Negotiation;
 
-use SIAPI\Http\Request\Header\Accept\Collection;
+use SIAPI\Negotiation\Header\Accept\Collection;
 
 /**
  * Class Strategy
@@ -14,10 +14,10 @@ abstract class Strategy
     const STAR = '*';
 
     /**
-     * @return \SIAPI\Http\Request\Header\Accept\Collection
-     * @param \SIAPI\Http\Request\Header\Accept\Collection
+     * @return \SIAPI\Negotiation\Header\Accept\Collection
+     * @param \SIAPI\Negotiation\Header\Accept\Collection
      */
-    abstract public function sort(Collection $collection);
+    abstract public function select(Collection $collection);
 
     /**
      * @param string $val1

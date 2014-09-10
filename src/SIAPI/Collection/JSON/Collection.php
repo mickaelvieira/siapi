@@ -149,6 +149,9 @@ class Collection extends JsonConvertible
 
     /**
      * {@inheritdoc}
+     * @TODO the official output MUST be
+     * { "collection" : { "href" : "...", "items" [ { "href" : "...", "data" : [...].} } }
+     * But the 'collection' key should add elsewhere
      */
     protected function getObjectData()
     {

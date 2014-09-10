@@ -2,9 +2,10 @@
 
 namespace SIAPI\Negotiation;
 
-use SIAPI\Http\Request\Header\Accept\Entity as AcceptEntity;
-use SIAPI\Http\Request\Header\Accept\ValueRange;
-use SIAPI\Http\Request\Header\Accept\Collection;
+use Traversable;
+use SIAPI\Negotiation\Header\Accept\Entity as AcceptEntity;
+use SIAPI\Negotiation\Header\Accept\ValueRange;
+use SIAPI\Negotiation\Header\Accept\Collection;
 
 /**
  * Class Negotiator
@@ -19,7 +20,7 @@ abstract class Negotiator
     protected $strategy;
 
     /**
-     * @var \SIAPI\Http\Request\Header\Accept\Collection;
+     * @var \SIAPI\Negotiation\Header\Accept\Collection;
      */
     protected $collection;
 
@@ -28,9 +29,9 @@ abstract class Negotiator
      */
     public function __construct(array $headers)
     {
-        $this->collection = $this->getCollection(
+        /*$this->collection = $this->getCollection(
             $this->getHeaderString($headers)
-        );
+        );*/
     }
 
     /**
@@ -42,25 +43,33 @@ abstract class Negotiator
     }
 
     /**
-     * @param string $header
-     * @return \SIAPI\Http\Request\Header\Accept\Collection
+     * @param Traversable $collection
      */
-    abstract protected function getCollection($header);
+    public function setCollection(Traversable $collection)
+    {
+        $this->collection = $collection;
+    }
+
+    /**
+     * @param string $header
+     * @return \SIAPI\Negotiation\Header\Accept\Collection
+     */
+    //abstract protected function getCollection($header);
 
     /**
      * @return string
      */
-    abstract protected function getHeaderName();
+    //abstract protected function getHeaderName();
 
     /**
      * @param array $headers
      * @return string
      */
-    protected function getHeaderString(array $headers)
+    /*protected function getHeaderString(array $headers)
     {
         $name = $this->getHeaderName();
         return array_key_exists($name, $headers) ? $headers[$name] : '';
-    }
+    }*/
 
     /**
      * @param $header

@@ -1,16 +1,20 @@
 <?php
 
-namespace spec\SIAPI\Http\Request\Header\Accept\Entity;
+namespace spec\SIAPI\Negotiation\Header\Accept\Entity;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class AcceptMediaSpec extends ObjectBehavior
+/**
+ * Class MediaSpec
+ * @package spec\SIAPI\Negotiation\Header\Accept\Entity
+ */
+class MediaSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
         $this->beConstructedWith("test");
-        $this->shouldHaveType('SIAPI\Http\Request\Header\Accept\Entity\AcceptMedia');
+        $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Entity\Media');
     }
 
     function it_should_return_an_empty_string_when_input_is_empty()

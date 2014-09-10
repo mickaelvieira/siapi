@@ -5,6 +5,10 @@ namespace spec\SIAPI\Negotiation\Negotiator;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
+/**
+ * Class LanguageSpec
+ * @package spec\SIAPI\Negotiation\Negotiator
+ */
 class LanguageSpec extends ObjectBehavior
 {
     function let()
@@ -38,7 +42,7 @@ class LanguageSpec extends ObjectBehavior
          * @TODO this loop does not work
          */
 
-        /** @var \SIAPI\Http\Request\Header\AcceptLanguage $value */
+        /** @var \SIAPI\Negotiation\Header\Accept\Collection\Language $value */
         /*$key   = 0;
         $value = $this->getAcceptedValues()->first();
 
