@@ -34,14 +34,6 @@ class ValueRange
     }
 
     /**
-     * @param string $value
-     */
-    public function setValue($value)
-    {
-        $this->value = (string)$value;
-    }
-
-    /**
      * @return string
      */
     public function getValue()
@@ -50,33 +42,11 @@ class ValueRange
     }
 
     /**
-     * @param string $subValue
-     */
-    public function setSubValue($subValue)
-    {
-        $this->subValue = (string)$subValue;
-    }
-
-    /**
      * @return string
      */
     public function getSubValue()
     {
         return $this->subValue;
-    }
-
-    /**
-     * @param string $range
-     */
-    private function parseRange($range)
-    {
-        $values = $this->getValues($range);
-        if (isset($values[0]) && !empty($values[0])) {
-            $this->setValue($values[0]);
-        }
-        if (isset($values[1]) && !empty($values[1])) {
-            $this->setSubValue($values[1]);
-        }
     }
 
     /**
@@ -89,7 +59,6 @@ class ValueRange
             'subValue' => $this->subValue,
         ];
     }
-
     /**
      * @return string
      */
@@ -109,6 +78,20 @@ class ValueRange
 
     /**
      * @param string $range
+     */
+    private function parseRange($range)
+    {
+        $values = $this->getValues($range);
+        if (isset($values[0]) && !empty($values[0])) {
+            $this->setValue($values[0]);
+        }
+        if (isset($values[1]) && !empty($values[1])) {
+            $this->setSubValue($values[1]);
+        }
+    }
+
+    /**
+     * @param string $range
      * @return array
      */
     private function getValues($range)
@@ -119,5 +102,21 @@ class ValueRange
             $values = [$range];
         }
         return $values;
+    }
+
+    /**
+     * @param string $value
+     */
+    private function setValue($value)
+    {
+        $this->value = (string)$value;
+    }
+
+    /**
+     * @param string $subValue
+     */
+    private function setSubValue($subValue)
+    {
+        $this->subValue = (string)$subValue;
     }
 }
