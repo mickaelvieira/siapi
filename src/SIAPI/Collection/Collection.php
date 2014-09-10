@@ -6,6 +6,10 @@ use Countable;
 use ArrayIterator;
 use IteratorAggregate;
 
+/**
+ * Class Collection
+ * @package SIAPI\Collection
+ */
 class Collection implements Countable, IteratorAggregate
 {
     /**

@@ -2,6 +2,10 @@
 
 namespace SIAPI\Entity\Input;
 
+/**
+ * Class Type
+ * @package SIAPI\Entity\Input
+ */
 final class Type
 {
     private function __construct()

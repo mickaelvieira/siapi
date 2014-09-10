@@ -4,6 +4,10 @@ namespace SIAPI\Collection;
 
 use JsonSerializable;
 
+/**
+ * Class JsonConvertible
+ * @package SIAPI\Collection
+ */
 abstract class JsonConvertible implements JsonSerializable
 {
     /**

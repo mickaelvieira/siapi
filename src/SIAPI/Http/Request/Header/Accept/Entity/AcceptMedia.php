@@ -95,7 +95,7 @@ class AcceptMedia extends Entity
     }
 
     /**
-     * @return \SIAPI\Http\Request\Header\MediaRange
+     * @return \SIAPI\Http\Request\Header\Accept\ValueRange
      */
     public function getMediaRange()
     {
