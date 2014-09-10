@@ -11,14 +11,14 @@ class Collection implements Countable, IteratorAggregate
     /**
      * @var array
      */
-    protected $collection = [];
+    protected $entities = [];
 
     /**
-     * @param array $collection
+     * @param array $entities
      */
-    public function __construct(array $collection = array())
+    public function __construct(array $entities = array())
     {
-        $this->collection = $collection;
+        $this->entities = $entities;
     }
 
     /**
@@ -26,7 +26,7 @@ class Collection implements Countable, IteratorAggregate
      */
     public function add($item)
     {
-        array_push($this->collection, $item);
+        array_push($this->entities, $item);
     }
 
     /**
@@ -34,7 +34,7 @@ class Collection implements Countable, IteratorAggregate
      */
     public function first()
     {
-        return reset($this->collection);
+        return reset($this->entities);
     }
 
     /**
@@ -42,7 +42,7 @@ class Collection implements Countable, IteratorAggregate
      */
     public function key()
     {
-        return key($this->collection);
+        return key($this->entities);
     }
 
     /**
@@ -50,7 +50,7 @@ class Collection implements Countable, IteratorAggregate
      */
     public function prev()
     {
-        return prev($this->collection);
+        return prev($this->entities);
     }
 
     /**
@@ -58,7 +58,7 @@ class Collection implements Countable, IteratorAggregate
      */
     public function current()
     {
-        return current($this->collection);
+        return current($this->entities);
     }
 
     /**
@@ -66,7 +66,7 @@ class Collection implements Countable, IteratorAggregate
      */
     public function next()
     {
-        return next($this->collection);
+        return next($this->entities);
     }
 
     /**
@@ -74,7 +74,7 @@ class Collection implements Countable, IteratorAggregate
      */
     public function last()
     {
-        return end($this->collection);
+        return end($this->entities);
     }
 
     /**
@@ -82,7 +82,7 @@ class Collection implements Countable, IteratorAggregate
      */
     public function count()
     {
-        return count($this->collection);
+        return count($this->entities);
     }
 
     /**
@@ -90,6 +90,6 @@ class Collection implements Countable, IteratorAggregate
      */
     public function getIterator()
     {
-        return new ArrayIterator($this->collection);
+        return new ArrayIterator($this->entities);
     }
 }

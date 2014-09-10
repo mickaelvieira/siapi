@@ -1,6 +1,6 @@
 <?php
 
-namespace SIAPI\Http\Request\Header;
+namespace SIAPI\Http\Request\Header\Accept;
 
 /**
  * Class Language

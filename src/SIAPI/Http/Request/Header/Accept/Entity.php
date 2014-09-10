@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Http\Request\Header;
+namespace SIAPI\Http\Request\Header\Accept;
 
 /**
  * Class AcceptBase
  * @package SIAPI\Http\Request\Header
  */
-class AcceptBase
+abstract class Entity
 {
     /**
      * @var float
@@ -20,6 +20,11 @@ class AcceptBase
     {
         return $this->quality;
     }
+
+    /**
+     * @return string
+     */
+    abstract public function __toString();
 
     /**
      * @param string $header

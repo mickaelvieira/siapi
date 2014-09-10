@@ -3,8 +3,8 @@
 namespace SIAPI\Negotiation;
 
 use SIAPI\Collection\Collection;
-use SIAPI\Http\Request\Header\AcceptBase;
-use SIAPI\Http\Request\Header\ValueRange;
+use SIAPI\Http\Request\Header\Accept\Entity as AcceptEntity;
+use SIAPI\Http\Request\Header\Accept\ValueRange;
 
 /**
  * Class Negotiator
@@ -102,7 +102,7 @@ abstract class Negotiator
     {
         usort(
             $accepts,
-            function (AcceptBase $value1, AcceptBase $value2) {
+            function (AcceptEntity $value1, AcceptEntity $value2) {
 
                 $quality1 = $value1->getQuality();
                 $quality2 = $value2->getQuality();

@@ -1,11 +1,17 @@
 <?php
 
-namespace SIAPI\Http\Request\Header\Collection;
+namespace SIAPI\Http\Request\Header\Accept;
 
-use SIAPI\Collection\Collection;
+use SIAPI\Collection\Collection as BaseCollection;
+use SIAPI\Http\Request\Header\Accept\Entity;
 
-class Accept extends Collection
+abstract class Collection extends BaseCollection
 {
+    /**
+     * @return string
+     */
+    abstract protected function getAcceptHeaderType();
+
     /**
      * @param string $header
      * @return static
@@ -32,10 +38,10 @@ class Accept extends Collection
      */
     protected function getEntityFullClassName()
     {
-        $entityClassName = static::getEntityClassName();
-        $entityNameSpace = static::getEntityNameSpace();
+        //$entityClassName = static::getEntityClassName();
+        //$entityNameSpace = static::getEntityNameSpace();
 
-        return $entityNameSpace . "\\" . $entityClassName;
+        return __NAMESPACE__ . "\\Entity\\" . static::getAcceptHeaderType();
     }
 
     /**

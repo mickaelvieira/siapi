@@ -1,12 +1,14 @@
 <?php
 
-namespace SIAPI\Http\Request\Header;
+namespace SIAPI\Http\Request\Header\Accept\Entity;
+
+use SIAPI\Http\Request\Header\Accept\Entity;
 
 /**
  * Class AcceptCharset
  * @package SIAPI\Http\Request\Header
  */
-class AcceptCharset extends AcceptBase
+class AcceptCharset extends Entity
 {
     // Accept-Charset = "Accept-Charset" ":"
     //                  1#( ( charset | "*" )[ ";" "q" "=" qvalue ] )
