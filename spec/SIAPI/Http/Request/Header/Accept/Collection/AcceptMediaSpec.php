@@ -14,9 +14,7 @@ class AcceptMediaSpec extends ObjectBehavior
 
     function it_should_return_an_empty_string_when_input_is_empty()
     {
-        $header = '';
-
-        $class = $this::createFromString($header);
+        $class = $this::createFromString('');
         $class->__toString()->shouldBeEqualTo('');
     }
 

@@ -6,7 +6,7 @@ use SIAPI\Http\Request\Header\Accept\Entity;
 
 /**
  * Class AcceptCharset
- * @package SIAPI\Http\Request\Header
+ * @package SIAPI\Http\Request\Header\Accept\Entity
  */
 class AcceptCharset extends Entity
 {

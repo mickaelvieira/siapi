@@ -1,9 +1,13 @@
 <?php
 
-namespace SIAPI\Http\Request\Header\Accept;
+namespace SIAPI\Http\Request\Header\Accept\Collection;
 
 use SIAPI\Http\Request\Header\Accept\Collection;
 
+/**
+ * Class AcceptLanguage
+ * @package SIAPI\Http\Request\Header\Accept\Collection
+ */
 class AcceptLanguage extends Collection
 {
     /**

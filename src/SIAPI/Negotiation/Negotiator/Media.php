@@ -2,7 +2,7 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Http\Request\Header\Accept\Entity\AcceptMedia;
+use SIAPI\Http\Request\Header\Accept\Collection\AcceptMedia;
 use SIAPI\Negotiation\Negotiator;
 
 /**
@@ -20,12 +20,12 @@ class Media extends Negotiator
     }
 
     /**
-     * @param string $value
+     * @param string $header
      * @return array
      */
-    protected function getEntity($value)
+    protected function getCollection($header)
     {
-        return new AcceptMedia($value);
+        return AcceptMedia::createFromString($header);
         // https://github.com/zendframework/zf2/blob/master/library/Zend/Http/Header/AbstractAccept.php
         // https://github.com/zendframework/zf2/blob/master/library/Zend/Http/Header/Accept.php
         // https://github.com/zendframework/zf2/blob/master/library/Zend/Http/Header/AcceptLanguage.php

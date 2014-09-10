@@ -3,8 +3,8 @@
 namespace SIAPI\Http\Request\Header\Accept;
 
 /**
- * Class AcceptBase
- * @package SIAPI\Http\Request\Header
+ * Class Entity
+ * @package SIAPI\Http\Request\Header\Accept
  */
 abstract class Entity
 {

@@ -2,9 +2,9 @@
 
 namespace SIAPI\Negotiation;
 
-use SIAPI\Collection\Collection;
 use SIAPI\Http\Request\Header\Accept\Entity as AcceptEntity;
 use SIAPI\Http\Request\Header\Accept\ValueRange;
+use SIAPI\Http\Request\Header\Accept\Collection;
 
 /**
  * Class Negotiator
@@ -19,16 +19,16 @@ abstract class Negotiator
     protected $strategy;
 
     /**
-     * @var Collection;
+     * @var \SIAPI\Http\Request\Header\Accept\Collection;
      */
-    protected $entities;
+    protected $collection;
 
     /**
      * @param array $headers
      */
     public function __construct(array $headers)
     {
-        $this->entities = $this->parseHeaderString(
+        $this->collection = $this->getCollection(
             $this->getHeaderString($headers)
         );
     }
@@ -42,12 +42,10 @@ abstract class Negotiator
     }
 
     /**
-     * @return Collection
+     * @param string $header
+     * @return \SIAPI\Http\Request\Header\Accept\Collection
      */
-    public function getEntities()
-    {
-        return $this->entities;
-    }
+    abstract protected function getCollection($header);
 
     /**
      * @return string
@@ -55,16 +53,10 @@ abstract class Negotiator
     abstract protected function getHeaderName();
 
     /**
-     * @param string $value
-     * @return array
-     */
-    abstract protected function getEntity($value);
-
-    /**
      * @param array $headers
      * @return string
      */
-    private function getHeaderString(array $headers)
+    protected function getHeaderString(array $headers)
     {
         $name = $this->getHeaderName();
         return array_key_exists($name, $headers) ? $headers[$name] : '';
@@ -74,7 +66,7 @@ abstract class Negotiator
      * @param $header
      * @return Collection
      */
-    private function parseHeaderString($header)
+    /*private function parseHeaderString($header)
     {
         $accepts = [];
 
@@ -92,13 +84,13 @@ abstract class Negotiator
         //$accepts = $this->sortAcceptedValuesByQuality($accepts);
 
         return new Collection($accepts);
-    }
+    }*/
 
     /**
      * @param array
      * @return array
      */
-    private function sortAcceptedValuesByQuality(array $accepts)
+    /*private function sortAcceptedValuesByQuality(array $accepts)
     {
         usort(
             $accepts,
@@ -115,7 +107,7 @@ abstract class Negotiator
         );
 
         return $accepts;
-    }
+    }*/
 
     /**
      * @param ValueRange $value1

@@ -2,26 +2,33 @@
 
 namespace SIAPI\Negotiation;
 
+use SIAPI\Http\Request\Header\Accept\Collection;
+
+/**
+ * Class Strategy
+ * @package SIAPI\Negotiation
+ */
 abstract class Strategy
 {
 
     const STAR = '*';
 
     /**
-     * @return mixed
+     * @return \SIAPI\Http\Request\Header\Accept\Collection
+     * @param \SIAPI\Http\Request\Header\Accept\Collection
      */
-    abstract public function sort();
+    abstract public function sort(Collection $collection);
 
     /**
-     * @param string $a
-     * @param string $b
+     * @param string $val1
+     * @param string $val2
      * @return int
      */
-    private function compareValues($a, $b)
+    protected function compareValues($val1, $val2)
     {
-        if ($a === self::STAR && $b !== self::STAR) {
+        if ($val1 === self::STAR && $val2 !== self::STAR) {
             $result = 1;
-        } elseif ($b === self::STAR && $a !== self::STAR) {
+        } elseif ($val2 === self::STAR && $val1 !== self::STAR) {
             $result = -1;
         } else {
             $result = 0;

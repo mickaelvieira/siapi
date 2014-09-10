@@ -5,6 +5,10 @@ namespace SIAPI\Http\Request\Header\Accept;
 use SIAPI\Collection\Collection as BaseCollection;
 use SIAPI\Http\Request\Header\Accept\Entity;
 
+/**
+ * Class Collection
+ * @package SIAPI\Http\Request\Header\Accept
+ */
 abstract class Collection extends BaseCollection
 {
     /**
@@ -18,7 +22,7 @@ abstract class Collection extends BaseCollection
      */
     public static function createFromString($header)
     {
-        $entities = array();
+        $entities = [];
         $values   = explode(",", (string)$header);
 
         $entityClassName = static::getEntityClassName();

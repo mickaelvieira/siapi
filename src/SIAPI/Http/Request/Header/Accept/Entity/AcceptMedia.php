@@ -7,7 +7,7 @@ use SIAPI\Http\Request\Header\Accept\ValueRange;
 
 /**
  * Class AcceptMedia
- * @package SIAPI\Http\Request\Header
+ * @package SIAPI\Http\Request\Header\Accept\Entity
  */
 class AcceptMedia extends Entity
 {

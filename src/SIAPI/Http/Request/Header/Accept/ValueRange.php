@@ -3,8 +3,8 @@
 namespace SIAPI\Http\Request\Header\Accept;
 
 /**
- * Class Language
- * @package SIAPI\Http\Request\Header
+ * Class ValueRange
+ * @package SIAPI\Http\Request\Header\Accept
  */
 class ValueRange
 {

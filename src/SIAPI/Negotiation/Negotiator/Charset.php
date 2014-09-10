@@ -2,7 +2,7 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Http\Request\Header\Accept\Entity\AcceptCharset;
+use SIAPI\Http\Request\Header\Accept\Collection\AcceptCharset;
 use SIAPI\Negotiation\Negotiator;
 
 /**
@@ -20,11 +20,11 @@ class Charset extends Negotiator
     }
 
     /**
-     * @param string $value
+     * @param string $header
      * @return array
      */
-    protected function getEntity($value)
+    protected function getCollection($header)
     {
-        return new AcceptCharset($value);
+        return AcceptCharset::createFromString($header);
     }
 }

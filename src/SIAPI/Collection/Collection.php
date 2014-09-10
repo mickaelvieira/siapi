@@ -16,7 +16,7 @@ class Collection implements Countable, IteratorAggregate
     /**
      * @param array $entities
      */
-    public function __construct(array $entities = array())
+    public function __construct(array $entities = [])
     {
         $this->entities = $entities;
     }
