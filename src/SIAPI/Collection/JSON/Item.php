@@ -7,8 +7,8 @@ use SIAPI\Collection\JsonConvertible;
 /**
  * Class Item
  * @package SIAPI\Collection\JSON
- * @docs http://amundsen.com/media-types/collection/format/
- * @docs http://code.ge/media-types/collection-next-json/
+ * @link http://amundsen.com/media-types/collection/format/
+ * @link http://code.ge/media-types/collection-next-json/
  */
 class Item extends JsonConvertible
 {
