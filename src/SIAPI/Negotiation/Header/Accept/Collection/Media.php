@@ -13,12 +13,12 @@ class Media extends Collection
     /**
      * @return bool
      */
-    public function acceptAll()
+    public function hasAcceptAll()
     {
         $result = false;
         foreach ($this->entities as $acceptHeader) {
             /** @var \SIAPI\Negotiation\Header\Accept\Entity\Media $acceptHeader */
-            if ($acceptHeader->isAll()) {
+            if ($acceptHeader->hasAcceptAll()) {
                 $result = true;
                 break;
             }

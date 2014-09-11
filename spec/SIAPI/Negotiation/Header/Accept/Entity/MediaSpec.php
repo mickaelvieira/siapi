@@ -11,6 +11,15 @@ use Prophecy\Argument;
  */
 class MediaSpec extends ObjectBehavior
 {
+    /**
+     * *//*
+     * *//*;q=0.7
+     * text/plain; q=0.5
+     * text/html
+     * text/x-dvi; q=0.8
+     * text/x-c
+     */
+
     function it_is_initializable()
     {
         $this->beConstructedWith("test");
@@ -23,14 +32,43 @@ class MediaSpec extends ObjectBehavior
         $this->__toString()->shouldBeEqualTo('');
     }
 
+    function it_should_return_the_media_range_when_it_is_present_in_the_header_string()
+    {
+        $this->beConstructedWith('text/plain');
+        $this->getMediaRange()->shouldBeEqualTo('text/plain');
+    }
+
+    function it_should_have_a_quality_equal_to_one_when_it_is_not_present_in_the_header_string()
+    {
+        $this->beConstructedWith('text/plain');
+        $this->getQuality()->shouldBeEqualTo(1.0);
+    }
+
+    function it_should_return_the_quality_when_it_is_present_in_the_header_string()
+    {
+        $this->beConstructedWith('text/x-dvi; q=0.8');
+        $this->getQuality()->shouldBeEqualTo(0.8);
+    }
+
     function it_should_return_the_string_representation()
     {
         $this->beConstructedWith(
             "text/html;mediaparam1=2;mediaparam2=2; q=0.4; extparam=whatever1; extparam2=whatever2"
         );
-        $this->getQuality()->shouldBeEqualTo(0.4);
         $this->__toString()->shouldBeEqualTo(
             'text/html;mediaparam1=2;mediaparam2=2;q=0.4;extparam=whatever1;extparam2=whatever2'
         );
+    }
+
+    function it_should_be_aware_of_the_match_all_tag()
+    {
+        $this->beConstructedWith('*/*;q=0.4');
+        $this->shouldHaveAcceptAll();
+    }
+
+    function it_should_return_the_quality_when_it_is_present_in_the_header_string_along_the_match_all_tag()
+    {
+        $this->beConstructedWith('*/*;q=0.4');
+        $this->getQuality()->shouldBeEqualTo(0.4);
     }
 }

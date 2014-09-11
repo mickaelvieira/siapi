@@ -32,15 +32,24 @@ class Language extends Entity
         if ($language) {
             $this->languageRange = new ValueRange($language, "-");
             $this->addParams($pieces);
+            $this->forceQualityWhenHasAcceptAll();
         }
     }
 
     /**
      * @return bool
      */
-    public function isAll()
+    public function hasAcceptAll()
     {
         return ($this->languageRange->getValue() === '*');
+    }
+
+    /**
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return (string)$this->languageRange;
     }
 
     /**

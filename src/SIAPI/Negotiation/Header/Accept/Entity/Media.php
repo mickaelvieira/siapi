@@ -53,9 +53,17 @@ class Media extends Entity
     /**
      * @return bool
      */
-    public function isAll()
+    public function hasAcceptAll()
     {
         return (($this->mediaRange->getValue() === '*') && ($this->mediaRange->getSubValue() === '*'));
+    }
+
+    /**
+     * @return string
+     */
+    public function getMediaRange()
+    {
+        return (string)$this->mediaRange;
     }
 
     /**
@@ -150,6 +158,18 @@ class Media extends Entity
             $str .= !empty($params) ? ';' . implode(";", $params) : '';
         }
 
+        return $str;
+    }
+
+    /**
+     * @param string $str
+     * @return string
+     */
+    protected function joinQuantity($str)
+    {
+        if (!empty($str)) {
+            $str .= ";" . "q=" . $this->quality;
+        }
         return $str;
     }
 }

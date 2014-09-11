@@ -31,4 +31,11 @@ class MediaSpec extends ObjectBehavior
             'text/html;q=1,application/xhtml+xml;q=1,application/xml;q=0.9,*/*;q=0.8'
         );
     }
+
+    function it_should_be_aware_when_all_media_type_are_accepted()
+    {
+        $header = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';
+        $class = $this::createFromString($header);
+        $class->shouldHaveAcceptAll();
+    }
 }

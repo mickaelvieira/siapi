@@ -30,7 +30,7 @@ class Charset extends Collection
      */
     private function addISO88591IfNotPresent()
     {
-        if (!$this->acceptAll() && !$this->hasCharset('ISO-8859-1')) {
+        if (!$this->hasAcceptAll() && !$this->hasCharset('ISO-8859-1')) {
             $charset = new CharsetEntity('ISO-8859-1;q=1');
             $this->add($charset);
         }
@@ -39,12 +39,12 @@ class Charset extends Collection
     /**
      * @return bool
      */
-    public function acceptAll()
+    public function hasAcceptAll()
     {
         $result = false;
         foreach ($this->entities as $acceptHeader) {
             /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
-            if ($acceptHeader->isAll()) {
+            if ($acceptHeader->hasAcceptAll()) {
                 $result = true;
                 break;
             }

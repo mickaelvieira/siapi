@@ -37,7 +37,7 @@ abstract class Collection extends BaseCollection implements Sortable
     /**
      * @return bool
      */
-    abstract public function acceptAll();
+    abstract public function hasAcceptAll();
 
     /**
      * @param string $header

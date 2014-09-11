@@ -11,7 +11,7 @@ abstract class Entity
     /**
      * @var float
      */
-    protected $quality = 1;
+    protected $quality = 1.0;
 
     /**
      * @return float
@@ -29,7 +29,7 @@ abstract class Entity
     /**
      * @return bool
      */
-    abstract public function isAll();
+    abstract public function hasAcceptAll();
 
     /**
      * @param string $header
@@ -57,13 +57,20 @@ abstract class Entity
         }
     }
 
+    protected function forceQualityWhenHasAcceptAll()
+    {
+        if ($this->hasAcceptAll()) {
+            $this->quality = 1.0;
+        }
+    }
+
     /**
      * @param string $str
      * @return string
      */
     protected function joinQuantity($str)
     {
-        if (!empty($str)) {
+        if (!empty($str) && !$this->hasAcceptAll()) {
             $str .= ";" . "q=" . $this->quality;
         }
         return $str;

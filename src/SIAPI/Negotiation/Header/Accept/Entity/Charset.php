@@ -3,6 +3,7 @@
 namespace SIAPI\Negotiation\Header\Accept\Entity;
 
 use SIAPI\Negotiation\Header\Accept\Entity;
+use SIAPI\Negotiation\Header\Accept\ValueRange;
 
 /**
  * Class Charset
@@ -14,7 +15,7 @@ class Charset extends Entity
     //                  1#( ( charset | "*" )[ ";" "q" "=" qvalue ] )
 
     /**
-     * @var string
+     * @var \SIAPI\Negotiation\Header\Accept\ValueRange
      */
     private $charset;
 
@@ -27,17 +28,18 @@ class Charset extends Entity
         $charset = array_shift($pieces);
 
         if ($charset) {
-            $this->charset = $charset;
+            $this->charset = new ValueRange($charset);
             $this->addParams($pieces);
+            $this->forceQualityWhenHasAcceptAll();
         }
     }
 
     /**
      * @return bool
      */
-    public function isAll()
+    public function hasAcceptAll()
     {
-        return ($this->charset === '*');
+        return ($this->charset->getValue() === '*');
     }
 
     /**
@@ -45,7 +47,7 @@ class Charset extends Entity
      */
     public function getCharset()
     {
-        return $this->charset;
+        return $this->charset->getValue();
     }
 
     /**
