@@ -22,11 +22,6 @@ class Media extends Entity
     // accept-extension = ";" token [ "=" ( token | quoted-string ) ]
 
     /**
-     * @var \SIAPI\Negotiation\Header\Accept\ValueRange
-     */
-    private $mediaRange;
-
-    /**
      * @var array
      */
     private $mediaParams = [];
@@ -37,17 +32,11 @@ class Media extends Entity
     private $extParams = [];
 
     /**
-     * @param string $pieces
+     * {@inheritdoc}
      */
-    public function __construct($pieces)
+    protected function getValueRangeEntity($values)
     {
-        $pieces = explode(";", $this->cleanHeaderString($pieces));
-        $media  = array_shift($pieces);
-
-        if ($media) {
-            $this->mediaRange = new ValueRange($media, "/");
-            $this->addParams($pieces);
-        }
+        return new ValueRange($values, "/");
     }
 
     /**
@@ -55,23 +44,18 @@ class Media extends Entity
      */
     public function hasAcceptAll()
     {
-        return (($this->mediaRange->getValue() === '*') && ($this->mediaRange->getSubValue() === '*'));
-    }
-
-    /**
-     * @return string
-     */
-    public function getMediaRange()
-    {
-        return (string)$this->mediaRange;
+        return (
+            ($this->valueRange->getValue() === '*') &&
+            ($this->valueRange->getSubValue() === '*')
+        );
     }
 
     /**
      * @return bool
      */
-    public function isAllSubTypes()
+    public function hasAcceptAllSubType()
     {
-        return ($this->mediaRange->getSubValue() === '*');
+        return ($this->valueRange->getSubValue() === '*');
     }
 
     /**
@@ -124,7 +108,7 @@ class Media extends Entity
      */
     public function hasType($type)
     {
-        return ($this->mediaRange->getValue() === $type);
+        return ($this->valueRange->getValue() === $type);
     }
 
     /**
@@ -132,7 +116,7 @@ class Media extends Entity
      */
     public function __toString()
     {
-        $str = (string)$this->mediaRange;
+        $str = $this->getValueRange();
         $str = $this->joinParameters($str, $this->mediaParams);
         $str = $this->joinQuantity($str);
         $str = $this->joinParameters($str, $this->extParams);

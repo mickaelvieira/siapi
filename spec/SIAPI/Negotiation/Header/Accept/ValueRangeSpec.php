@@ -5,6 +5,10 @@ namespace spec\SIAPI\Negotiation\Header\Accept;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
+/**
+ * Class ValueRangeSpec
+ * @package spec\SIAPI\Negotiation\Header\Accept
+ */
 class ValueRangeSpec extends ObjectBehavior
 {
     function it_should_alter_values_when_no_delimiter_is_specified()

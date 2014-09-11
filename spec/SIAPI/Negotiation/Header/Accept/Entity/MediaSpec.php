@@ -35,7 +35,7 @@ class MediaSpec extends ObjectBehavior
     function it_should_return_the_media_range_when_it_is_present_in_the_header_string()
     {
         $this->beConstructedWith('text/plain');
-        $this->getMediaRange()->shouldBeEqualTo('text/plain');
+        $this->getValueRange()->shouldBeEqualTo('text/plain');
     }
 
     function it_should_have_a_quality_equal_to_one_when_it_is_not_present_in_the_header_string()

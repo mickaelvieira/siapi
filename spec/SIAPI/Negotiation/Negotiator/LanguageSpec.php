@@ -13,8 +13,7 @@ class LanguageSpec extends ObjectBehavior
 {
     function let()
     {
-        $headers = $this->getTestHeaders();
-        $this->beConstructedWith($headers);
+        $this->beConstructedWith();
     }
 
     function it_is_initializable()

@@ -9,9 +9,33 @@ namespace SIAPI\Negotiation\Header\Accept;
 abstract class Entity
 {
     /**
+     * @var \SIAPI\Negotiation\Header\Accept\ValueRange
+     */
+    protected $valueRange;
+    /**
      * @var float
      */
     protected $quality = 1.0;
+
+    /**
+     * @param string $pieces
+     */
+    public function __construct($pieces)
+    {
+        $pieces = explode(";", $this->cleanHeaderString($pieces));
+        $values = array_shift($pieces);
+
+        if ($values) {
+            $this->valueRange = $this->getValueRangeEntity($values);
+            $this->addParams($pieces);
+        }
+    }
+
+    /**
+     * @param string $values
+     * @return \SIAPI\Negotiation\Header\Accept\ValueRange
+     */
+    abstract protected function getValueRangeEntity($values);
 
     /**
      * @return float
@@ -24,18 +48,33 @@ abstract class Entity
     /**
      * @return string
      */
-    abstract public function __toString();
+    public function getValueRange()
+    {
+        return (string)$this->valueRange;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $str = $this->getValueRange();
+        return $this->joinQuantity($str);
+    }
 
     /**
      * @return bool
      */
-    abstract public function hasAcceptAll();
+    public function hasAcceptAll()
+    {
+        return ($this->valueRange->getValue() === '*');
+    }
 
     /**
      * @param string $header
      * @return string
      */
-    protected function cleanHeaderString($header)
+    private function cleanHeaderString($header)
     {
         return preg_replace("/\s/", "", (string)$header);
     }

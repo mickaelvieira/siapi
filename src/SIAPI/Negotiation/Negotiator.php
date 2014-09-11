@@ -25,9 +25,9 @@ abstract class Negotiator
     protected $collection;
 
     /**
-     * @param array $headers
+     *
      */
-    public function __construct(array $headers)
+    public function __construct()
     {
         /*$this->collection = $this->getCollection(
             $this->getHeaderString($headers)

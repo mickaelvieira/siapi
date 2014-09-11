@@ -8,6 +8,9 @@ namespace SIAPI\Entity\Input;
  */
 final class Type
 {
+    /**
+     *
+     */
     private function __construct()
     {
     }

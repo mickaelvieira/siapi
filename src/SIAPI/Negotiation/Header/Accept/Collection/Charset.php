@@ -61,7 +61,7 @@ class Charset extends Collection
         $result = false;
         foreach ($this->entities as $acceptHeader) {
             /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
-            if ($acceptHeader->getCharset() === $charset) {
+            if ($acceptHeader->getValueRange() === $charset) {
                 $result = true;
                 break;
             }

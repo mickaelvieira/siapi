@@ -32,7 +32,7 @@ class CharsetSpec extends ObjectBehavior
     function it_should_return_the_charset_when_it_is_present_in_the_header_string()
     {
         $this->beConstructedWith('iso-8859-5');
-        $this->getCharset()->shouldBeEqualTo('iso-8859-5');
+        $this->getValueRange()->shouldBeEqualTo('iso-8859-5');
     }
 
     function it_should_have_a_quality_equal_to_one_when_it_is_not_present_in_the_header_string()

@@ -15,7 +15,7 @@ final class Factory
      */
     public static function build($name, array $headers)
     {
-        $negotiator = self::getNegotiatorInstance($name, $headers);
+        $negotiator = self::getNegotiatorInstance($name);
 
         if ($negotiator instanceof Negotiator) {
             $negotiator->setStrategy(self::getStrategyInstance($name));
@@ -27,13 +27,12 @@ final class Factory
 
     /**
      * @param $name
-     * @param $headers
      * @return \SIAPI\Negotiation\Negotiator
      */
-    private function getNegotiatorInstance($name, array $headers)
+    private function getNegotiatorInstance($name)
     {
         $className = __NAMESPACE__ . "\\Negotiator\\" . ucfirst(strtolower($name));
-        return new $className($headers);
+        return new $className();
     }
 
     /**
