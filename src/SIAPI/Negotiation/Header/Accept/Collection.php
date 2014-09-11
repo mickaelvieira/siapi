@@ -2,17 +2,16 @@
 
 namespace SIAPI\Negotiation\Header\Accept;
 
+use IteratorAggregate;
+use ArrayIterator;
 use SIAPI\Collection\Sortable;
-use SIAPI\Collection\Collection as BaseCollection;
 use SIAPI\Negotiation\Header\Accept\Entity;
 
 /**
  * Class Collection
  * @package SIAPI\Negotiation\Header\Accept
- *
- * @TODO Extending the BaseCollection does not bring any value.
  */
-abstract class Collection extends BaseCollection implements Sortable
+abstract class Collection implements IteratorAggregate, Sortable
 {
     /**
      * @param array $entities
@@ -27,6 +26,14 @@ abstract class Collection extends BaseCollection implements Sortable
          * but abstract method
          */
         $this->sort();
+    }
+
+    /**
+     * @param $item
+     */
+    public function add($item)
+    {
+        array_push($this->entities, $item);
     }
 
     /**
@@ -83,5 +90,13 @@ abstract class Collection extends BaseCollection implements Sortable
             $str .= (string)$entity;
         }
         return $str;
+    }
+
+    /**
+     * @return ArrayIterator
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->entities);
     }
 }
