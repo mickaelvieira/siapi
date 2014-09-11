@@ -33,6 +33,14 @@ class Charset extends Entity
     }
 
     /**
+     * @return bool
+     */
+    public function isAll()
+    {
+        return ($this->charset === '*');
+    }
+
+    /**
      * @return string
      */
     public function getCharset()

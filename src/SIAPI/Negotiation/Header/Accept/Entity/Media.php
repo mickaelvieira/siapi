@@ -51,6 +51,22 @@ class Media extends Entity
     }
 
     /**
+     * @return bool
+     */
+    public function isAll()
+    {
+        return (($this->mediaRange->getValue() === '*') && ($this->mediaRange->getSubValue() === '*'));
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAllSubTypes()
+    {
+        return ($this->mediaRange->getSubValue() === '*');
+    }
+
+    /**
      * @param $pieces
      * @TODO needs some refactoring
      */
@@ -95,11 +111,12 @@ class Media extends Entity
     }
 
     /**
-     * @return \SIAPI\Negotiation\Header\Accept\ValueRange
+     * @param string $type
+     * @return bool
      */
-    public function getMediaRange()
+    public function hasType($type)
     {
-        return $this->mediaRange;
+        return ($this->mediaRange->getValue() === $type);
     }
 
     /**

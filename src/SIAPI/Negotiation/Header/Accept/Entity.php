@@ -27,6 +27,11 @@ abstract class Entity
     abstract public function __toString();
 
     /**
+     * @return bool
+     */
+    abstract public function isAll();
+
+    /**
      * @param string $header
      * @return string
      */

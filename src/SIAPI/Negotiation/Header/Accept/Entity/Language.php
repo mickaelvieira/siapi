@@ -36,11 +36,11 @@ class Language extends Entity
     }
 
     /**
-     * @return \SIAPI\Negotiation\Header\Accept\ValueRange
+     * @return bool
      */
-    public function getLanguageRange()
+    public function isAll()
     {
-        return $this->languageRange;
+        return ($this->languageRange->getValue() === '*');
     }
 
     /**

@@ -11,6 +11,22 @@ use SIAPI\Negotiation\Header\Accept\Collection;
 class Language extends Collection
 {
     /**
+     * @return bool
+     */
+    public function acceptAll()
+    {
+        $result = false;
+        foreach ($this->entities as $acceptHeader) {
+            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Language $acceptHeader */
+            if ($acceptHeader->isAll()) {
+                $result = true;
+                break;
+            }
+        }
+        return $result;
+    }
+
+    /**
      * @return string
      */
     protected function getAcceptHeaderType()

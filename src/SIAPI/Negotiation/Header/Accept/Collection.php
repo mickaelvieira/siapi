@@ -9,6 +9,8 @@ use SIAPI\Negotiation\Header\Accept\Entity;
 /**
  * Class Collection
  * @package SIAPI\Negotiation\Header\Accept
+ *
+ * @TODO Extending the BaseCollection does not bring any value.
  */
 abstract class Collection extends BaseCollection implements Sortable
 {
@@ -18,6 +20,12 @@ abstract class Collection extends BaseCollection implements Sortable
     public function __construct(array $entities = [])
     {
         $this->entities = $entities;
+        /**
+         * does the sort method really need to be public?
+         * The sorting logic seems to be an internal business
+         * If it becomes non-public, it should not be constrain by an interface
+         * but abstract method
+         */
         $this->sort();
     }
 
@@ -27,8 +35,15 @@ abstract class Collection extends BaseCollection implements Sortable
     abstract protected function getAcceptHeaderType();
 
     /**
+     * @return bool
+     */
+    abstract public function acceptAll();
+
+    /**
      * @param string $header
      * @return static
+     * @TODO this does not seem to be useful.
+     * We better use the constructor
      */
     public static function createFromString($header)
     {
