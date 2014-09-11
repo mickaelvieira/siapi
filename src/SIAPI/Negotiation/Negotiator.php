@@ -43,11 +43,27 @@ abstract class Negotiator
     }
 
     /**
+     * @return \SIAPI\Negotiation\Strategy $strategy
+     */
+    public function getStrategy()
+    {
+        return $this->strategy;
+    }
+
+    /**
      * @param Traversable $collection
      */
     public function setCollection(Traversable $collection)
     {
         $this->collection = $collection;
+    }
+
+    /**
+     * @return \Traversable $strategy
+     */
+    public function getCollection()
+    {
+        return $this->collection;
     }
 
     /**
