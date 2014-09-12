@@ -25,43 +25,6 @@ class LanguageSpec extends ObjectBehavior
         $this->shouldHaveType('SIAPI\Negotiation\Negotiator\Language');
     }
 
-    /*function it_should_return_a_collection_of_accept_language_entities()
-    {
-        $this->getCollection()->shouldImplement('\Traversable');
-        $this->getCollection()->shouldImplement('\IteratorAggregate');
-        $this->getCollection()->shouldImplement('\Countable');
-        $this->getCollection()->shouldHaveCount(3);
-    }*/
-
-    /*function it_should_an_collection_of_ordered_accept_language_entities()
-    {
-        $returned = array(
-            0 => array('value' => 'da', 'subValue' => null, 'quality' => 1.0),
-            1 => array('value' => 'en', 'subValue' => 'gb', 'quality' => 0.8),
-            2 => array('value' => 'en', 'subValue' => null, 'quality' => 0.5)
-        );*/
-
-        /**
-         * @TODO this loop does not work
-         */
-
-        /** @var \SIAPI\Negotiation\Header\Accept\Collection\Language $value */
-        /*$key   = 0;
-        $value = $this->getAcceptedValues()->first();
-
-        do {
-            var_dump($key);
-            $values = $returned[$key];
-            var_dump($value);
-
-            $value->getLanguageRange()->getValue()->shouldBeEqualTo($values['value']);
-            $value->getLanguageRange()->getSubValue()->shouldBeEqualTo($values['subValue']);
-            $value->getQuality()->shouldBeEqualTo($values['quality']);
-            $key++;
-        } while ($value = $this->getAcceptedValues()->next());*/
-
-    //}
-
     private function getTestHeaders()
     {
         return array(
