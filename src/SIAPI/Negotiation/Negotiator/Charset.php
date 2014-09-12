@@ -2,7 +2,6 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-//use SIAPI\Negotiation\Header\Accept\Collection\Charset;
 use SIAPI\Negotiation\Negotiator;
 
 /**
@@ -12,19 +11,10 @@ use SIAPI\Negotiation\Negotiator;
 class Charset extends Negotiator
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    /*protected function getHeaderName()
+    public function match(array $supported)
     {
-        return 'Accept-Charset';
-    }*/
 
-    /**
-     * @param string $header
-     * @return array
-     */
-    /*protected function getCollection($header)
-    {
-        return Charset::createFromString($header);
-    }*/
+    }
 }
