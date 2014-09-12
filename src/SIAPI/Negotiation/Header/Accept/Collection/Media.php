@@ -49,7 +49,7 @@ class Media extends Collection
     /**
      *
      */
-    public function sort()
+    protected function sort()
     {
         // @TODO Sortable logic
     }
