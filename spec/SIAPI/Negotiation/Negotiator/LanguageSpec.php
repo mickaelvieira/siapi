@@ -11,9 +11,13 @@ use Prophecy\Argument;
  */
 class LanguageSpec extends ObjectBehavior
 {
-    function let()
+    /**
+     * @param \SIAPI\Negotiation\Header\Accept\Collection\Language $collection
+     * @param \SIAPI\Negotiation\Strategy\Language $strategy
+     */
+    function let($collection, $strategy)
     {
-        $this->beConstructedWith();
+        $this->beConstructedWith($collection, $strategy);
     }
 
     function it_is_initializable()
