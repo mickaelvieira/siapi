@@ -13,7 +13,9 @@
         "php": "~5.4"
     },
     "require-dev": {
-        "phpspec/phpspec": "~2.0"
+        "phpspec/phpspec": "~2.0",
+        "phpspec/nyan-formatters": "1.*",
+        "henrikbjorn/phpspec-code-coverage": "~0.2"
     },
     "config": {
         "bin-dir": "bin"
