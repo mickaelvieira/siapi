@@ -2,7 +2,6 @@
 
 namespace SIAPI\Negotiation\Header\Accept\Collection;
 
-
 use SIAPI\Negotiation\Header\Accept\Collection;
 
 /**

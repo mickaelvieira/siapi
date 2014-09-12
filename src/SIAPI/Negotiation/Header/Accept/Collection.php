@@ -12,7 +12,6 @@ use SIAPI\Negotiation\Header\Accept\Entity;
  */
 abstract class Collection implements IteratorAggregate
 {
-
     /**
      * @var array
      */
