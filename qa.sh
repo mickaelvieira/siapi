@@ -1,6 +1,5 @@
 #!/bin/sh
 
-NEW_LINE="\r\n"
 PHPSPEC_URL="http://www.phpspec.net/"
 PHPCS_URL="http://pear.php.net/package/PHP_CodeSniffer/"
 PHPMD_URL="http://phpmd.org/"
@@ -15,14 +14,17 @@ if ! type "phpmd" > /dev/null; then
 fi
 
 
-echo "Running PhpSpec. See. ${PHPSPEC_URL}\n"
+echo "Running PhpSpec. See. ${PHPSPEC_URL}"
+echo
 ./bin/phpspec run
-echo ${NEW_LINE}
+echo
 
-echo "Running PHP Code Sniffer. See. ${PHPCS_URL}\n"
+echo "Running PHP Code Sniffer. See. ${PHPCS_URL}"
+echo
 phpcs --standard=PSR2 src/
-echo ${NEW_LINE}
+echo
 
-echo "Running Mess Detector. See. ${PHPMD_URL}\n"
+echo "Running Mess Detector. See. ${PHPMD_URL}"
+echo
 phpmd src/ text codesize, controversial, design, naming, unusedcode
-echo ${NEW_LINE}
+echo
