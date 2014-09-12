@@ -4,14 +4,13 @@ namespace SIAPI\Negotiation\Header\Accept;
 
 use IteratorAggregate;
 use ArrayIterator;
-use SIAPI\Collection\Sortable;
 use SIAPI\Negotiation\Header\Accept\Entity;
 
 /**
  * Class Collection
  * @package SIAPI\Negotiation\Header\Accept
  */
-abstract class Collection implements IteratorAggregate, Sortable
+abstract class Collection implements IteratorAggregate
 {
     /**
      * @param array $entities
@@ -19,12 +18,6 @@ abstract class Collection implements IteratorAggregate, Sortable
     public function __construct(array $entities = [])
     {
         $this->entities = $entities;
-        /**
-         * does the sort method really need to be public?
-         * The sorting logic seems to be an internal business
-         * If it becomes non-public, it should not be constrain by an interface
-         * but abstract method
-         */
         $this->sort();
     }
 
@@ -35,6 +28,11 @@ abstract class Collection implements IteratorAggregate, Sortable
     {
         array_push($this->entities, $item);
     }
+
+    /**
+     * @return string
+     */
+    abstract protected function sort();
 
     /**
      * @return string
