@@ -3,7 +3,6 @@
 namespace SIAPI\Negotiation;
 
 use Traversable;
-use SIAPI\Negotiation\Header\Accept\Entity as AcceptEntity;
 use SIAPI\Negotiation\Header\Accept\Collection;
 
 /**
@@ -11,7 +10,7 @@ use SIAPI\Negotiation\Header\Accept\Collection;
  * @package SIAPI\Negotiation
  * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
  */
-abstract class Negotiator implements Matcher
+class Negotiator
 {
     /**
      * @var \SIAPI\Negotiation\Strategy
@@ -24,11 +23,13 @@ abstract class Negotiator implements Matcher
     protected $collection;
 
     /**
-     * @param \SIAPI\Negotiation\Strategy $strategy
+     * @param Traversable $collection
+     * @param Strategy $strategy
      */
-    public function setStrategy(Strategy $strategy)
+    protected function __construct(Traversable $collection, Strategy $strategy)
     {
-        $this->strategy = $strategy;
+        $this->strategy   = $strategy;
+        $this->collection = $collection;
     }
 
     /**
@@ -37,14 +38,6 @@ abstract class Negotiator implements Matcher
     public function getStrategy()
     {
         return $this->strategy;
-    }
-
-    /**
-     * @param Traversable $collection
-     */
-    public function setCollection(Traversable $collection)
-    {
-        $this->collection = $collection;
     }
 
     /**

@@ -15,24 +15,20 @@ final class Factory
      */
     public static function build($name, array $headers)
     {
-        $negotiator = self::getNegotiatorInstance($name);
+        $className  = self::getNegotiatorClassName($name);
+        $collection = self::getCollectionInstance($name, $headers);
+        $strategy   = self::getStrategyInstance($name);
 
-        if ($negotiator instanceof Negotiator) {
-            $negotiator->setStrategy(self::getStrategyInstance($name));
-            $negotiator->setCollection(self::getCollectionInstance($name, $headers));
-        }
-
-        return $negotiator;
+        return new $className($collection, $strategy);
     }
 
     /**
      * @param $name
      * @return \SIAPI\Negotiation\Negotiator
      */
-    private function getNegotiatorInstance($name)
+    private function getNegotiatorClassName($name)
     {
-        $className = __NAMESPACE__ . "\\Negotiator\\" . ucfirst(strtolower($name));
-        return new $className();
+        return __NAMESPACE__ . "\\Negotiator\\" . ucfirst(strtolower($name));
     }
 
     /**

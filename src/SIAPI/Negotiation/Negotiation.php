@@ -2,8 +2,6 @@
 
 namespace SIAPI\Negotiation;
 
-use SIAPI\Negotiation\Exception;
-
 /**
  * Class Negotiation
  * @package SIAPI\Negotiation
