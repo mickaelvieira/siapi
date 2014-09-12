@@ -1,15 +1,40 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mickael
- * Date: 12/09/14
- * Time: 03:33
- */
 
 namespace SIAPI\Negotiation;
 
+use BadFunctionCallException;
 
-class Exception
+/**
+ * Class Exception
+ * @package SIAPI\Negotiation
+ */
+final class Exception
 {
+    /**
+     * @param $name
+     * @throws \BadFunctionCallException
+     */
+    public static function incorrectNegotiatorCall($name)
+    {
+        throw new BadFunctionCallException(
+            sprintf(
+                'Incorrect negotiator name %s.',
+                $name
+            )
+        );
+    }
 
+    /**
+     * @param string $type
+     * @throws \BadFunctionCallException
+     */
+    public static function incorrectSupportedHeaderType($type)
+    {
+        throw new BadFunctionCallException(
+            sprintf(
+                'Supported header argument must be of type array, %s provided',
+                $type
+            )
+        );
+    }
 }
