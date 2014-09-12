@@ -6,7 +6,7 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * Class AcceptMediaSpec
+ * Class MediaSpec
  * @package spec\SIAPI\Negotiation\Header\Accept\Collection
  */
 class MediaSpec extends ObjectBehavior
@@ -16,26 +16,15 @@ class MediaSpec extends ObjectBehavior
         $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Collection\Media');
     }
 
-    function it_should_return_an_empty_string_when_input_is_empty()
+    function it_should_return_the_accept_all_tag_when_the_header_string_is_null()
     {
-        $class = $this::createFromString('');
-        $class->__toString()->shouldBeEqualTo('');
+        $this->beConstructedWith(null);
+        $this->__toString()->shouldBeEqualTo('*/*;q=1');
     }
 
-    function it_should_return_the_header_string_representation()
+    function it_should_return_the_accept_all_tag_when_the_header_string_is_empty()
     {
-        $header = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';
-
-        $class = $this::createFromString($header);
-        $class->__toString()->shouldBeEqualTo(
-            'text/html;q=1,application/xhtml+xml;q=1,application/xml;q=0.9,*/*;q=0.8'
-        );
-    }
-
-    function it_should_be_aware_when_all_media_type_are_accepted()
-    {
-        $header = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';
-        $class = $this::createFromString($header);
-        $class->shouldHaveAcceptAll();
+        $this->beConstructedWith('');
+        $this->__toString()->shouldBeEqualTo('*/*;q=1');
     }
 }

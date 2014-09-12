@@ -2,6 +2,7 @@
 
 namespace SIAPI\Negotiation\Header\Accept\Collection;
 
+
 use SIAPI\Negotiation\Header\Accept\Collection;
 
 /**
@@ -10,6 +11,8 @@ use SIAPI\Negotiation\Header\Accept\Collection;
  */
 class Media extends Collection
 {
+    const DEFAULT_VALUE = '*/*;q=1';
+
     /**
      * @return bool
      */
@@ -45,6 +48,14 @@ class Media extends Collection
     }
 
     /**
+     *
+     */
+    public function sort()
+    {
+        // @TODO Sortable logic
+    }
+
+    /**
      * @return string
      */
     protected function getAcceptHeaderType()
@@ -53,10 +64,10 @@ class Media extends Collection
     }
 
     /**
-     *
+     * @return string
      */
-    public function sort()
+    protected function getDefaultValue()
     {
-        // @TODO Sortable logic
+        return self::DEFAULT_VALUE;
     }
 }

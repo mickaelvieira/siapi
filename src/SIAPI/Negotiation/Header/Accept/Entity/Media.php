@@ -45,6 +45,7 @@ class Media extends Entity
     public function hasAcceptAll()
     {
         return (
+            ($this->valueRange) &&
             ($this->valueRange->getValue() === '*') &&
             ($this->valueRange->getSubValue() === '*')
         );

@@ -12,12 +12,19 @@ use SIAPI\Negotiation\Header\Accept\Entity;
  */
 abstract class Collection implements IteratorAggregate
 {
+
     /**
-     * @param array $entities
+     * @var array
      */
-    public function __construct(array $entities = [])
+    protected $entities = [];
+
+    /**
+     * @param string $headers
+     */
+    public function __construct($headers = '')
     {
-        $this->entities = $entities;
+        $this->entities = $this->parseHeadersString($headers);
+        $this->addDefaultValue();
         $this->sort();
     }
 
@@ -27,6 +34,14 @@ abstract class Collection implements IteratorAggregate
     public function add($item)
     {
         array_push($this->entities, $item);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return (count($this->entities) === 0);
     }
 
     /**
@@ -40,31 +55,46 @@ abstract class Collection implements IteratorAggregate
     abstract protected function getAcceptHeaderType();
 
     /**
+     * @return string
+     */
+    abstract protected function getDefaultValue();
+
+    /**
      * @return bool
      */
     abstract public function hasAcceptAll();
 
     /**
-     * @param string $header
-     * @return static
-     * @TODO this does not seem to be useful.
-     * We better use the constructor
+     * @param string $headers
+     * @return array
      */
-    public static function createFromString($header)
+    protected function parseHeadersString($headers)
     {
         $entities = [];
-        $values   = explode(",", (string)$header);
 
-        $entityClassName = static::getEntityClassName();
+        $values = is_string($headers) && !empty($headers) ? explode(",", $headers) : [];
+
+        $className = static::getEntityClassName();
 
         foreach ($values as $value) {
-            $entity = new $entityClassName($value);
+            $entity = new $className($value);
             if ($entity) {
                 array_push($entities, $entity);
             }
         }
+        return $entities;
+    }
 
-        return new static($entities);
+    /**
+     * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
+     */
+    protected function addDefaultValue()
+    {
+        if ($this->isEmpty()) {
+            $className = static::getEntityClassName();
+            $language = new $className($this->getDefaultValue());
+            $this->add($language);
+        }
     }
 
     /**

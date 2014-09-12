@@ -10,6 +10,8 @@ use SIAPI\Negotiation\Header\Accept\Collection;
  */
 class Language extends Collection
 {
+    const DEFAULT_VALUE = '*';
+
     /**
      * @return bool
      */
@@ -27,6 +29,14 @@ class Language extends Collection
     }
 
     /**
+     *
+     */
+    public function sort()
+    {
+        // @TODO Sortable logic
+    }
+
+    /**
      * @return string
      */
     protected function getAcceptHeaderType()
@@ -35,10 +45,10 @@ class Language extends Collection
     }
 
     /**
-     *
+     * @return string
      */
-    public function sort()
+    protected function getDefaultValue()
     {
-        // @TODO Sortable logic
+        return self::DEFAULT_VALUE;
     }
 }

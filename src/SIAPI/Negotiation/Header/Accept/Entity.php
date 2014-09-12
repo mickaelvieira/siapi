@@ -67,7 +67,10 @@ abstract class Entity
      */
     public function hasAcceptAll()
     {
-        return ($this->valueRange->getValue() === '*');
+        return (
+            $this->valueRange &&
+            $this->valueRange->getValue() === '*'
+        );
     }
 
     /**
