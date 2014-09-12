@@ -38,13 +38,16 @@ class Negotiation
      * @return string|null
      * @throws \BadFunctionCallException
      */
-    public function __call($name, $arguments)
+    public function __call($name, array $arguments)
     {
         if (!in_array($name, $this->negotiators)) {
-            Exception::incorrectNegotiatorCall($name);
+            Exception::invalidNegotiatorNameArgument($name, $this->negotiators);
         }
-        if (!isset($arguments[0]) || !is_array($arguments[0])) {
-            Exception::incorrectSupportedHeaderType(gettype($arguments[0]));
+        if (empty($arguments)) {
+            Exception::missingSupportedHeaderArgument($name);
+        }
+        if (!is_array($arguments[0])) {
+            Exception::invalidSupportedHeaderArgument($name, gettype($arguments[0]));
         }
 
         $negotiator = $this->getNegotiator($name, $this->headers);
