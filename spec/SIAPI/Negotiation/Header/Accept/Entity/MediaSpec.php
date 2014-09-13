@@ -66,9 +66,27 @@ class MediaSpec extends ObjectBehavior
         $this->shouldHaveAcceptAll();
     }
 
+    function it_should_be_aware_of_the_match_all_sub_tag()
+    {
+        $this->beConstructedWith('application/*;q=0.4');
+        $this->shouldHaveAcceptAllSubType();
+    }
+
     function it_should_return_the_quality_when_it_is_present_in_the_header_string_along_the_match_all_tag()
     {
         $this->beConstructedWith('*/*;q=0.4');
         $this->getQuality()->shouldBeEqualTo(0.4);
+    }
+
+    function it_should_be_aware_of_having_a_media_type()
+    {
+        $this->beConstructedWith('application;q=5');
+        $this->shouldHaveMediaType('application');
+    }
+
+    function it_should_be_aware_of_having_a_sub_media_type()
+    {
+        $this->beConstructedWith('application/json;q=5');
+        $this->shouldHaveSubMediaType('json');
     }
 }

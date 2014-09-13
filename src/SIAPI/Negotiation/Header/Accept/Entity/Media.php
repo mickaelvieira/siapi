@@ -46,8 +46,8 @@ class Media extends Entity
     {
         return (
             ($this->valueRange) &&
-            ($this->valueRange->getValue() === '*') &&
-            ($this->valueRange->getSubValue() === '*')
+            $this->hasMediaType('*') &&
+            $this->hasSubMediaType('*')
         );
     }
 
@@ -56,7 +56,7 @@ class Media extends Entity
      */
     public function hasAcceptAllSubType()
     {
-        return ($this->valueRange->getSubValue() === '*');
+        return $this->hasSubMediaType('*');
     }
 
     /**
@@ -107,9 +107,18 @@ class Media extends Entity
      * @param string $type
      * @return bool
      */
-    public function hasType($type)
+    public function hasMediaType($type)
     {
         return ($this->valueRange->getValue() === $type);
+    }
+
+    /**
+     * @param string $subType
+     * @return bool
+     */
+    public function hasSubMediaType($subType)
+    {
+        return ($this->valueRange->getSubValue() === $subType);
     }
 
     /**
