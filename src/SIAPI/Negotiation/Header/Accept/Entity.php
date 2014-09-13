@@ -72,6 +72,24 @@ abstract class Entity
     }
 
     /**
+     * @param string $tag
+     * @return bool
+     */
+    public function hasTag($tag)
+    {
+        return ($this->valueRange->getValue() === $tag);
+    }
+
+    /**
+     * @param string $subTag
+     * @return bool
+     */
+    public function hasSubTag($subTag)
+    {
+        return ($this->valueRange->getSubValue() === $subTag);
+    }
+
+    /**
      * @param string $header
      * @return string
      */

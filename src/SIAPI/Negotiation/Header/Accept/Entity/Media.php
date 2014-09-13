@@ -103,24 +103,6 @@ class Media extends Entity
     }
 
     /**
-     * @param string $type
-     * @return bool
-     */
-    public function hasTag($type)
-    {
-        return ($this->valueRange->getValue() === $type);
-    }
-
-    /**
-     * @param string $subType
-     * @return bool
-     */
-    public function hasSubTag($subType)
-    {
-        return ($this->valueRange->getSubValue() === $subType);
-    }
-
-    /**
      * @return string
      */
     public function __toString()

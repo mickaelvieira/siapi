@@ -35,23 +35,6 @@ class Language extends Entity
     }
 
     /**
-     * @param string $language
-     * @return bool
-     */
-    public function hasTag($language)
-    {
-        return ($this->valueRange->getValue() === $language);
-    }
-
-    /**
-     * @param string $subTag
-     * @return bool
-     */
-    public function hasSubTag($subTag)
-    {
-        return ($this->valueRange->getSubValue() === $subTag);
-    }
-    /**
      * {@inheritdoc}
      */
     protected function getValueRangeEntity($values)
