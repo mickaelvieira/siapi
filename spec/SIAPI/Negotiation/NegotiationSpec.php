@@ -34,4 +34,22 @@ class NegotiationSpec extends ObjectBehavior
         $this->beConstructedWith(array());
         $this->shouldThrow('\BadFunctionCallException')->duringLanguage('supported');
     }
+
+    function it_should_not_throw_any_errors_when_the_method_media_is_called_with_right_arguments()
+    {
+        $this->beConstructedWith(array());
+        $this->shouldNotThrow('\BadFunctionCallException')->duringMedia(array());
+    }
+
+    function it_should_not_throw_any_errors_when_the_method_language_is_called_with_right_arguments()
+    {
+        $this->beConstructedWith(array());
+        $this->shouldNotThrow('\BadFunctionCallException')->duringLanguage(array());
+    }
+
+    function it_should_not_throw_any_errors_when_the_method_charset_is_called_with_right_arguments()
+    {
+        $this->beConstructedWith(array());
+        $this->shouldNotThrow('\BadFunctionCallException')->duringCharset(array());
+    }
 }
