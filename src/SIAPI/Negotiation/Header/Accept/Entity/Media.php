@@ -42,7 +42,7 @@ class Media extends Entity
     /**
      * @return bool
      */
-    public function hasAcceptAll()
+    public function hasAcceptAllTag()
     {
         return (
             ($this->valueRange) &&

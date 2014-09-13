@@ -51,7 +51,7 @@ class LanguageSpec extends ObjectBehavior
     function it_should_be_aware_of_having_the_match_all_tag_when_it_is_present_in_the_header_string()
     {
         $this->beConstructedWith('*; q=0.3');
-        $this->shouldHaveAcceptAll();
+        $this->shouldHaveAcceptAllTag();
     }
 
     function it_should_have_the_quality_equal_to_one_it_has_the_match_all_tag()

@@ -66,7 +66,7 @@ abstract class Entity
     /**
      * @return bool
      */
-    public function hasAcceptAll()
+    public function hasAcceptAllTag()
     {
         return ($this->valueRange->getValue() === '*');
     }
@@ -99,7 +99,7 @@ abstract class Entity
 
     protected function forceQualityWhenHasAcceptAll()
     {
-        if ($this->hasAcceptAll()) {
+        if ($this->hasAcceptAllTag()) {
             $this->quality = 1.0;
         }
     }
@@ -110,7 +110,7 @@ abstract class Entity
      */
     protected function joinQuantity($str)
     {
-        if (!empty($str) && !$this->hasAcceptAll()) {
+        if (!empty($str) && !$this->hasAcceptAllTag()) {
             $str .= ";" . "q=" . $this->quality;
         }
         return $str;

@@ -63,7 +63,7 @@ class MediaSpec extends ObjectBehavior
     function it_should_be_aware_of_the_match_all_tag()
     {
         $this->beConstructedWith('*/*;q=0.4');
-        $this->shouldHaveAcceptAll();
+        $this->shouldHaveAcceptAllTag();
     }
 
     function it_should_be_aware_of_the_match_all_sub_tag()

@@ -20,7 +20,7 @@ class Language extends Collection
         $result = false;
         foreach ($this->entities as $acceptHeader) {
             /** @var \SIAPI\Negotiation\Header\Accept\Entity\Language $acceptHeader */
-            if ($acceptHeader->hasAcceptAll()) {
+            if ($acceptHeader->hasAcceptAllTag()) {
                 $result = true;
                 break;
             }
