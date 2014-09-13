@@ -115,9 +115,9 @@ abstract class Entity
         }
     }
 
-    protected function forceQualityWhenHasAcceptAll()
+    protected function forceQualityWhenHasAcceptAllTag()
     {
-        if ($this->hasAcceptAllTag()) {
+        if ($this->valueRange && $this->hasAcceptAllTag()) {
             $this->quality = 1.0;
         }
     }

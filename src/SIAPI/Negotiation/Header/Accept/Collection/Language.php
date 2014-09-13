@@ -13,22 +13,6 @@ class Language extends Collection
     const DEFAULT_VALUE = '*';
 
     /**
-     * @return bool
-     */
-    public function hasAcceptAll()
-    {
-        $result = false;
-        foreach ($this->entities as $acceptHeader) {
-            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Language $acceptHeader */
-            if ($acceptHeader->hasAcceptAllTag()) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
-
-    /**
      * @param string $tag
      * @return bool
      */

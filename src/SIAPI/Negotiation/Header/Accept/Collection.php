@@ -61,7 +61,18 @@ abstract class Collection implements IteratorAggregate
     /**
      * @return bool
      */
-    abstract public function hasAcceptAll();
+    public function hasAcceptAll()
+    {
+        $result = false;
+        foreach ($this->entities as $acceptHeader) {
+            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
+            if ($acceptHeader->hasAcceptAllTag()) {
+                $result = true;
+                break;
+            }
+        }
+        return $result;
+    }
 
     /**
      * @param string $headers

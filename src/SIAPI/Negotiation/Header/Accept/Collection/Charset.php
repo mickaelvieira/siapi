@@ -13,22 +13,6 @@ class Charset extends Collection
     const DEFAULT_VALUE = 'ISO-8859-1;q=1';
 
     /**
-     * @return bool
-     */
-    public function hasAcceptAll()
-    {
-        $result = false;
-        foreach ($this->entities as $acceptHeader) {
-            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
-            if ($acceptHeader->hasAcceptAllTag()) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
-
-    /**
      * @param string $charset
      * @return bool
      */
@@ -37,7 +21,7 @@ class Charset extends Collection
         $result = false;
         foreach ($this->entities as $acceptHeader) {
             /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
-            if ($acceptHeader->getValueRange() === $charset) {
+            if ($acceptHeader->hasTag($charset)) {
                 $result = true;
                 break;
             }

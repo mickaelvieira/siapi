@@ -13,22 +13,6 @@ class Media extends Collection
     const DEFAULT_VALUE = '*/*;q=1';
 
     /**
-     * @return bool
-     */
-    public function hasAcceptAll()
-    {
-        $result = false;
-        foreach ($this->entities as $acceptHeader) {
-            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Media $acceptHeader */
-            if ($acceptHeader->hasAcceptAllTag()) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
-
-    /**
      * @param string $type
      * @return bool
      */

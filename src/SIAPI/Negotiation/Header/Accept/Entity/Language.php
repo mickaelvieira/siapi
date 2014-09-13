@@ -18,13 +18,11 @@ class Language extends Entity
     /**
      * @param string $pieces
      */
-    public function __construct($pieces)
+    /*public function __construct($pieces)
     {
         parent::__construct($pieces);
-        if ($this->valueRange) {
-            $this->forceQualityWhenHasAcceptAll();
-        }
-    }
+        $this->forceQualityWhenHasAcceptAllTag();
+    }*/
 
     /**
      * @return bool

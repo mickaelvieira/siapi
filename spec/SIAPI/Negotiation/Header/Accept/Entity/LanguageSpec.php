@@ -53,12 +53,15 @@ class LanguageSpec extends ObjectBehavior
         $this->beConstructedWith('*; q=0.3');
         $this->shouldHaveAcceptAllTag();
     }
-
-    function it_should_have_the_quality_equal_to_one_it_has_the_match_all_tag()
+    /**
+     * Can't find where in the spec this is specified
+     * http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
+     */
+    /*function it_should_have_the_quality_equal_to_one_it_has_the_match_all_tag()
     {
         $this->beConstructedWith('*; q=0.3');
         $this->getQuality()->shouldBeEqualTo(1.0);
-    }
+    }*/
 
     function it_should_be_aware_of_having_the_match_all_sub_tag()
     {
