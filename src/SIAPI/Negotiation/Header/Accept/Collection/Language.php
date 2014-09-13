@@ -29,6 +29,24 @@ class Language extends Collection
     }
 
     /**
+     * @param string $tag
+     * @return bool
+     */
+    public function hasAcceptAllSubTag($tag)
+    {
+        $result = false;
+        foreach ($this->entities as $acceptHeader) {
+            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Language $acceptHeader */
+            if ($acceptHeader->hasTag($tag) &&
+                $acceptHeader->hasAcceptAllSubTag()) {
+                $result = true;
+                break;
+            }
+        }
+        return $result;
+    }
+
+    /**
      *
      */
     protected function sort()

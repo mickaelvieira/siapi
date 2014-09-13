@@ -27,4 +27,16 @@ class LanguageSpec extends ObjectBehavior
         $this->beConstructedWith('');
         $this->__toString()->shouldBeEqualTo('*');
     }
+
+    function it_should_be_aware_of_having_the_accept_all_tag()
+    {
+        $this->beConstructedWith('da, en-gb;q=0.8, *, en;q=0.7');
+        $this->shouldHaveAcceptAll();
+    }
+
+    function it_should_be_aware_of_having_the_accept_all_sub_tag_for_a_specific_tag()
+    {
+        $this->beConstructedWith('da, en-gb;q=0.8, *, en;q=0.7');
+        $this->shouldHaveAcceptAllSubTag('da');
+    }
 }
