@@ -38,6 +38,19 @@ class Negotiation
      */
     public function __call($name, array $arguments)
     {
+        $this->checkArguments($name, $arguments);
+
+        $negotiator = $this->getNegotiator($name, $this->headers);
+
+        return $negotiator->match($arguments[0]);
+    }
+
+    /**
+     * @param $name
+     * @param array $arguments
+     */
+    private function checkArguments($name, array $arguments)
+    {
         if (!in_array($name, $this->negotiators)) {
             Exception::invalidNegotiatorNameArgument($name, $this->negotiators);
         }
@@ -47,10 +60,6 @@ class Negotiation
         if (!is_array($arguments[0])) {
             Exception::invalidSupportedHeaderArgument($name, gettype($arguments[0]));
         }
-
-        $negotiator = $this->getNegotiator($name, $this->headers);
-
-        return $negotiator->match($arguments[0]);
     }
 
     /**
