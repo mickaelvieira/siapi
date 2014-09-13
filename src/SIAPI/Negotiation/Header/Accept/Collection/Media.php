@@ -32,7 +32,7 @@ class Media extends Collection
      * @param string $type
      * @return bool
      */
-    public function acceptAllSubTypes($type)
+    public function hasAcceptAllSubTypes($type)
     {
         $result = false;
         foreach ($this->entities as $acceptHeader) {
