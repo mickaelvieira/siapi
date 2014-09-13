@@ -45,7 +45,6 @@ class Media extends Entity
     public function hasAcceptAllTag()
     {
         return (
-            ($this->valueRange) &&
             $this->hasMediaType('*') &&
             $this->hasSubMediaType('*')
         );
