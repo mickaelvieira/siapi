@@ -37,7 +37,7 @@ class Media extends Collection
         $result = false;
         foreach ($this->entities as $acceptHeader) {
             /** @var \SIAPI\Negotiation\Header\Accept\Entity\Media $acceptHeader */
-            if ($acceptHeader->hasMediaType($type) &&
+            if ($acceptHeader->hasTag($type) &&
                 $acceptHeader->hasAcceptAllSubTag()) {
                 $result = true;
                 break;

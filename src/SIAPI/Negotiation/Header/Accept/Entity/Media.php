@@ -45,8 +45,8 @@ class Media extends Entity
     public function hasAcceptAllTag()
     {
         return (
-            $this->hasMediaType('*') &&
-            $this->hasSubMediaType('*')
+            $this->hasTag('*') &&
+            $this->hasSubTag('*')
         );
     }
 
@@ -55,7 +55,7 @@ class Media extends Entity
      */
     public function hasAcceptAllSubTag()
     {
-        return $this->hasSubMediaType('*');
+        return $this->hasSubTag('*');
     }
 
     /**
@@ -106,7 +106,7 @@ class Media extends Entity
      * @param string $type
      * @return bool
      */
-    public function hasMediaType($type)
+    public function hasTag($type)
     {
         return ($this->valueRange->getValue() === $type);
     }
@@ -115,7 +115,7 @@ class Media extends Entity
      * @param string $subType
      * @return bool
      */
-    public function hasSubMediaType($subType)
+    public function hasSubTag($subType)
     {
         return ($this->valueRange->getSubValue() === $subType);
     }
