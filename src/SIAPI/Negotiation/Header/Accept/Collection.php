@@ -90,9 +90,9 @@ abstract class Collection implements IteratorAggregate
     protected function addDefaultValue()
     {
         if ($this->isEmpty()) {
-            $className = static::getEntityClassName();
-            $language = new $className($this->getDefaultValue());
-            $this->add($language);
+            $className  = static::getEntityClassName();
+            $valueRange = new $className($this->getDefaultValue());
+            $this->add($valueRange);
         }
     }
 

@@ -99,7 +99,9 @@ class ValueRange
         if (!empty($this->delimiter)) {
             $values = explode($this->delimiter, $range);
         } else {
-            $values = [$range];
+            $values = [
+                $range
+            ];
         }
         return $values;
     }

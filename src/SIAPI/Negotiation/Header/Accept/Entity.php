@@ -58,8 +58,9 @@ abstract class Entity
      */
     public function __toString()
     {
-        $str = $this->getValueRange();
-        return $this->joinQuantity($str);
+        return $this->joinQuantity(
+            $this->getValueRange()
+        );
     }
 
     /**

@@ -78,9 +78,9 @@ class Charset extends Collection
     protected function addDefaultValue()
     {
         if (!$this->hasAcceptAll() && !$this->hasCharset(self::DEFAULT_VALUE)) {
-            $className = static::getEntityClassName();
-            $charset = new $className($this->getDefaultValue());
-            $this->add($charset);
+            $className  = static::getEntityClassName();
+            $valueRange = new $className($this->getDefaultValue());
+            $this->add($valueRange);
         }
     }
 }
