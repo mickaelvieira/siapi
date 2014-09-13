@@ -81,7 +81,7 @@ class ValueRange
      */
     private function parseRange($range)
     {
-        $values = $this->getValues($range);
+        $values = $this->getValuesFromString($range);
         if (isset($values[0]) && !empty($values[0])) {
             $this->setValue($values[0]);
         }
@@ -94,7 +94,7 @@ class ValueRange
      * @param string $range
      * @return array
      */
-    private function getValues($range)
+    private function getValuesFromString($range)
     {
         if (!empty($this->delimiter)) {
             $values = explode($this->delimiter, $range);
