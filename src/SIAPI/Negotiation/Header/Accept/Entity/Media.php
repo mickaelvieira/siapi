@@ -53,7 +53,7 @@ class Media extends Entity
     /**
      * @return bool
      */
-    public function hasAcceptAllSubType()
+    public function hasAcceptAllSubTag()
     {
         return $this->hasSubMediaType('*');
     }

@@ -69,7 +69,7 @@ class MediaSpec extends ObjectBehavior
     function it_should_be_aware_of_the_match_all_sub_tag()
     {
         $this->beConstructedWith('application/*;q=0.4');
-        $this->shouldHaveAcceptAllSubType();
+        $this->shouldHaveAcceptAllSubTag();
     }
 
     function it_should_return_the_quality_when_it_is_present_in_the_header_string_along_the_match_all_tag()
