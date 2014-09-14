@@ -25,7 +25,7 @@ class CharsetSpec extends ObjectBehavior
         $this->shouldHaveType('SIAPI\Negotiation\Negotiator\Charset');
     }
 
-    function it_should_return_the_charset_when_it_matches_a_supported_format($collection, $strategy)
+    function it_should_return_the_charset_when_it_matches_a_supported_charset($collection, $strategy)
     {
         $collection->hasValueRange('iso-8859-5')->willReturn(false);
         $collection->hasValueRange('iso-8859-1')->willReturn(false);
@@ -48,7 +48,7 @@ class CharsetSpec extends ObjectBehavior
         $this->guess(['iso-8859-5', 'iso-8859-1', 'unicode-1-1'])->shouldReturn(null);
     }
 
-    function it_should_return_the_1st_supported_format_when_it_matches_several($collection, $strategy)
+    function it_should_return_the_1st_supported_charset_when_it_matches_several($collection, $strategy)
     {
         $collection->hasValueRange('iso-8859-5')->willReturn(true);
         $collection->hasValueRange('iso-8859-1')->willReturn(true);
