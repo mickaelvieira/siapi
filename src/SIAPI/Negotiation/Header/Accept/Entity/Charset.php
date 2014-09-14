@@ -15,15 +15,6 @@ class Charset extends Entity
     //                  1#( ( charset | "*" )[ ";" "q" "=" qvalue ] )
 
     /**
-     * @param string $pieces
-     */
-    /*public function __construct($pieces)
-    {
-        parent::__construct($pieces);
-        $this->forceQualityWhenHasAcceptAllTag();
-    }*/
-
-    /**
      * {@inheritdoc}
      */
     protected function getValueRangeEntity($values)
