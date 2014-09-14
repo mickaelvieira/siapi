@@ -32,7 +32,7 @@ class CharsetSpec extends ObjectBehavior
     function it_should_be_aware_of_having_a_specific_charset()
     {
         $this->beConstructedWith('iso-8859-5, *, unicode-1-1;q=0.8');
-        $this->shouldHaveCharset('unicode-1-1');
+        $this->shouldHaveTag('unicode-1-1');
     }
 
     function it_should_add_iso_8859_1_when_it_is_not_present_in_the_header_string()

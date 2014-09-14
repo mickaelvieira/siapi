@@ -81,6 +81,23 @@ abstract class Collection implements IteratorAggregate
     }
 
     /**
+     * @param string $tag
+     * @return bool
+     */
+    public function hasTag($tag)
+    {
+        $result = false;
+        foreach ($this->entities as $acceptHeader) {
+            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
+            if ($acceptHeader->hasTag($tag)) {
+                $result = true;
+                break;
+            }
+        }
+        return $result;
+    }
+
+    /**
      * @param string $value
      * @return bool
      */

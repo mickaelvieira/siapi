@@ -24,23 +24,6 @@ class Charset extends Collection
     }
 
     /**
-     * @param string $charset
-     * @return bool
-     */
-    public function hasCharset($charset)
-    {
-        $result = false;
-        foreach ($this->entities as $acceptHeader) {
-            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
-            if ($acceptHeader->hasTag($charset)) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
-
-    /**
      *
      */
     protected function sort()
@@ -102,7 +85,7 @@ class Charset extends Collection
      */
     private function addIso88591IfNotPresent()
     {
-        if (!$this->hasAcceptAll() && !$this->hasCharset(self::DEFAULT_VALUE)) {
+        if (!$this->hasAcceptAll() && !$this->hasTag(self::DEFAULT_VALUE)) {
             $className  = static::getEntityClassName();
             $valueRange = new $className('iso-8859-1;q=1');
             $this->add($valueRange);
