@@ -10,7 +10,7 @@ use SIAPI\Negotiation\Header\Accept\Collection;
  */
 class Charset extends Collection
 {
-    const DEFAULT_VALUE = 'ISO-8859-1;q=1';
+    const DEFAULT_VALUE = 'iso-8859-1;q=1';
 
     /**
      * @param string $charset
@@ -34,7 +34,25 @@ class Charset extends Collection
      */
     protected function sort()
     {
-        // @TODO Sortable logic
+        usort($this->entities, [$this, 'sortEntities']);
+        $this->entities = array_reverse($this->entities);
+    }
+
+    /**
+     * @param  \SIAPI\Negotiation\Header\Accept\Entity $item1
+     * @param  \SIAPI\Negotiation\Header\Accept\Entity $item2
+     * @return int
+     */
+    private function sortEntities($item1, $item2)
+    {
+        if ($item1->getQuality() === $item2->getQuality()) {
+            return 0;
+        }
+        if ($item1->getQuality() < $item2->getQuality()) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 
     /**
