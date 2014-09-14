@@ -48,7 +48,7 @@ class CharsetSpec extends ObjectBehavior
 
     function it_should_sort_the_entities_with_accept_all_tag()
     {
-        $this->beConstructedWith('utf-8, *;q=0.3, iso-8859-1, unicode-1-1;q=0.8');
-        $this->__toString()->shouldBeEqualTo('utf-8;q=1,iso-8859-1;q=1,unicode-1-1;q=0.8,*');
+        $this->beConstructedWith('utf-8, utf-7, *;q=0.3, iso-8859-1, unicode-1-1;q=0.8');
+        $this->__toString()->shouldBeEqualTo('utf-8;q=1,utf-7;q=1,iso-8859-1;q=1,unicode-1-1;q=0.8,*;q=0.3');
     }
 }

@@ -46,13 +46,17 @@ class Charset extends Collection
     private function sortEntities($item1, $item2)
     {
         if ($item1->getQuality() === $item2->getQuality()) {
-            return 0;
-        }
-        if ($item1->getQuality() < $item2->getQuality()) {
-            return -1;
+            if ($item1->getOriginalOrder() < $item2->getOriginalOrder()) {
+                $result = 1;
+            } else {
+                $result = -1;
+            }
+        } elseif ($item1->getQuality() < $item2->getQuality()) {
+            $result = -1;
         } else {
-            return 1;
+            $result = 1;
         }
+        return $result;
     }
 
     /**
