@@ -53,6 +53,13 @@ class CharsetSpec extends ObjectBehavior
         $this->shouldHaveAcceptAll();
     }
 
+    function it_should_be_aware_of_having_a_value_range()
+    {
+        $this->beConstructedWith('iso-8859-5;q=1,iso-8859-1;q=1,unicode-1-1;q=0.8');
+        $this->shouldHaveValueRange('unicode-1-1');
+        $this->shouldNotHaveValueRange('utf-8');
+    }
+
     function it_should_sort_the_entities()
     {
         $this->beConstructedWith('utf-7;q=0.5, iso-8859-5, unicode-1-1;q=0.8');

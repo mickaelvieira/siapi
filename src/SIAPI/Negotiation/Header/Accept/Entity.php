@@ -111,6 +111,15 @@ abstract class Entity
     }
 
     /**
+     * @param string $value
+     * @return bool
+     */
+    public function hasValueRange($value)
+    {
+        return ((string)$this->valueRange === $value);
+    }
+
+    /**
      * @param string $header
      * @return string
      */

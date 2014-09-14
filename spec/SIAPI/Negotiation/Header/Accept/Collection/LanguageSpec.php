@@ -52,4 +52,11 @@ class LanguageSpec extends ObjectBehavior
         $this->beConstructedWith('es-ES;q=0.7, es; q=0.6 ,fr; q=1.0, *;q=0.3, fr-CH');
         $this->__toString()->shouldBeEqualTo('fr;q=1,fr-CH;q=1,es-ES;q=0.7,es;q=0.6,*;q=0.3');
     }
+
+    function it_should_be_aware_of_having_a_value_range()
+    {
+        $this->beConstructedWith('es-ES;q=0.7, es; q=0.6 ,fr; q=1.0, *;q=0.3, fr-CH');
+        $this->shouldHaveValueRange('fr-CH');
+        $this->shouldNotHaveValueRange('en');
+    }
 }

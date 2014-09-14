@@ -81,6 +81,23 @@ abstract class Collection implements IteratorAggregate
     }
 
     /**
+     * @param string $value
+     * @return bool
+     */
+    public function hasValueRange($value)
+    {
+        $result = false;
+        foreach ($this->entities as $acceptHeader) {
+            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
+            if ($acceptHeader->hasValueRange($value)) {
+                $result = true;
+                break;
+            }
+        }
+        return $result;
+    }
+
+    /**
      * @param string $headers
      * @return array
      */

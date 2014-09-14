@@ -53,6 +53,13 @@ class CharsetSpec extends ObjectBehavior
         $this->shouldHaveAcceptAllTag();
     }
 
+    function it_should_be_aware_of_having_a_value_range()
+    {
+        $this->beConstructedWith('unicode-1-1;q=0.8');
+        $this->shouldHaveValueRange('unicode-1-1');
+        $this->shouldNotHaveValueRange('utf-8');
+    }
+
     function it_should_have_the_quality_equal_to_one_it_has_the_match_all_tag()
     {
         $this->beConstructedWith('*');

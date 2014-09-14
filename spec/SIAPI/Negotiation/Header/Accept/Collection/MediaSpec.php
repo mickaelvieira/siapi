@@ -53,6 +53,13 @@ class MediaSpec extends ObjectBehavior
         $this->shouldHaveAcceptAllSubTypes('image');
     }
 
+    function it_should_be_aware_of_having_a_value_range()
+    {
+        $this->beConstructedWith('audio/webm, audio/ogg, audio/wav, audio/*;q=0.9, application/ogg;q=0.7, video/*;q=0.6; */*;q=0.5');
+        $this->shouldHaveValueRange('audio/ogg');
+        $this->shouldNotHaveValueRange('text/html');
+    }
+
     /*function it_should_sort_the_entities()
     {
         $this->beConstructedWith('text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c');

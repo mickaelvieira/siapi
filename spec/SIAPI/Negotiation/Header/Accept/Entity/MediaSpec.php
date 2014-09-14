@@ -89,4 +89,11 @@ class MediaSpec extends ObjectBehavior
         $this->beConstructedWith('application/json;q=5');
         $this->shouldHaveSubTag('json');
     }
+
+    function it_should_be_aware_of_having_a_value_range()
+    {
+        $this->beConstructedWith('application/*;q=0.4');
+        $this->shouldHaveValueRange('application/*');
+        $this->shouldNotHaveValueRange('json');
+    }
 }
