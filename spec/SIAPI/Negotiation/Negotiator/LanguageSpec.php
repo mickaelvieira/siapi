@@ -20,22 +20,24 @@ class LanguageSpec extends ObjectBehavior
         $this->beConstructedWith($collection, $strategy);
     }
 
-    function it_is_initializable()
+    function it_is_initializable($collection, $strategy)
     {
         $this->shouldHaveType('SIAPI\Negotiation\Negotiator\Language');
     }
 
-    private function getTestHeaders()
+    function it_should_return_the_language_when_it_matches_a_supported_language($collection, $strategy)
     {
-        return array(
-            'Host' => 'localhost',
-            'User-Agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0',
-            'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language' => 'da, en-gb;q=0.8, en;q=0.5',
-            'Accept-Encoding' => 'gzip, deflate',
-            'Referer' => 'http://localhost/siapi/',
-            'Connection' => 'keep-alive',
-            'Cache-Control' => 'max-age=0'
-        );
+        $collection->hasValueRange('en')->willReturn(false);
+        $collection->hasValueRange('fr')->willReturn(true);
+
+        $this->guess(['en', 'fr'])->shouldReturn('fr');
+    }
+
+    function it_should_return_the_generic_language($collection, $strategy)
+    {
+        $collection->hasValueRange('en-US')->willReturn(false);
+        $collection->hasTag('en')->willReturn(false);
+
+        $this->guess(['en-US'])->shouldReturn('en');
     }
 }

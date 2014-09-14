@@ -27,6 +27,40 @@ class Language extends Negotiator implements Guesser
      */
     public function guess(array $supported)
     {
+        $found = null;
+        foreach ($supported as $language) {
+            if ($this->collection->hasValueRange($language)) {
+                $found = $language;
+                break;
+            }
+        }
 
+        if (!$found) {
+
+            $found = $this->guessGeneric($supported);
+
+        }
+
+        return $found;
+    }
+
+    /**
+     * @param array $supported
+     * @return null|string
+     */
+    protected function guessGeneric(array $supported)
+    {
+        $found = null;
+
+        foreach ($supported as $language) {
+
+            $split = explode('-', $language);
+            if (count($split) === 2) {
+                $this->collection->hasTag($split[0]);
+                $found = $split[0];
+                break;
+            }
+        }
+        return $found;
     }
 }
