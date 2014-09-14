@@ -22,16 +22,17 @@ abstract class Collection implements IteratorAggregate
      */
     public function __construct($headers = '')
     {
-        $this->entities = $this->parseHeadersString($headers);
+        $this->parseHeadersString($headers);
         $this->addDefaultValue();
         $this->sort();
     }
 
     /**
-     * @param $item
+     * @param \SIAPI\Negotiation\Header\Accept\Entity $item
      */
     public function add($item)
     {
+        $item->setOriginalOrder(count($this->entities));
         array_push($this->entities, $item);
     }
 
@@ -80,7 +81,7 @@ abstract class Collection implements IteratorAggregate
      */
     protected function parseHeadersString($headers)
     {
-        $entities = [];
+        //$entities = [];
 
         $values = is_string($headers) && !empty($headers) ? explode(",", $headers) : [];
 
@@ -95,10 +96,10 @@ abstract class Collection implements IteratorAggregate
              */
             $entity = new $className($value);
             if ($entity && $entity->getQuality() > 0) {
-                array_push($entities, $entity);
+                $this->add($entity);
             }
         }
-        return $entities;
+        //return $entities;
     }
 
     /**

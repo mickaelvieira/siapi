@@ -35,7 +35,29 @@ class Language extends Collection
      */
     protected function sort()
     {
-        // @TODO Sortable logic
+        usort($this->entities, [$this, 'sortEntities']);
+        $this->entities = array_reverse($this->entities);
+    }
+
+    /**
+     * @param  \SIAPI\Negotiation\Header\Accept\Entity $item1
+     * @param  \SIAPI\Negotiation\Header\Accept\Entity $item2
+     * @return int
+     */
+    private function sortEntities($item1, $item2)
+    {
+        if ($item1->getQuality() === $item2->getQuality()) {
+            if ($item1->getOriginalOrder() < $item2->getOriginalOrder()) {
+                $result = 1;
+            } else {
+                $result = -1;
+            }
+        } elseif ($item1->getQuality() < $item2->getQuality()) {
+            $result = -1;
+        } else {
+            $result = 1;
+        }
+        return $result;
     }
 
     /**

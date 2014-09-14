@@ -18,6 +18,11 @@ abstract class Entity
     protected $quality = 1.0;
 
     /**
+     * @var int
+     */
+    protected $originalOrder = 0;
+
+    /**
      * @param string $pieces
      */
     public function __construct($pieces)
@@ -43,6 +48,22 @@ abstract class Entity
     public function getQuality()
     {
         return $this->quality;
+    }
+
+    /**
+     * @param int $originalOrder
+     */
+    public function setOriginalOrder($originalOrder)
+    {
+        $this->originalOrder = $originalOrder;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOriginalOrder()
+    {
+        return $this->originalOrder;
     }
 
     /**
@@ -128,7 +149,7 @@ abstract class Entity
      */
     protected function joinQuantity($str)
     {
-        if (!empty($str) && !$this->hasAcceptAllTag()) {
+        if (!empty($str)) {
             $str .= ";" . "q=" . $this->quality;
         }
         return $str;
