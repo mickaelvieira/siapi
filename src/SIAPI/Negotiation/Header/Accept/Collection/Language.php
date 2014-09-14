@@ -65,6 +65,14 @@ class Language extends Collection
      */
     protected function getAcceptHeaderType()
     {
+        return 'Accept-Language';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getAcceptHeaderClassName()
+    {
         return 'Language';
     }
 

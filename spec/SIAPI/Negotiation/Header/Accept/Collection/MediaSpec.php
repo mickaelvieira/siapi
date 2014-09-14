@@ -11,8 +11,13 @@ use Prophecy\Argument;
  */
 class MediaSpec extends ObjectBehavior
 {
+    /**
+     *
+     */
+    // text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
     function it_is_initializable()
     {
+        $this->beConstructedWith(null);
         $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Collection\Media');
     }
 
@@ -47,4 +52,17 @@ class MediaSpec extends ObjectBehavior
         $this->beConstructedWith('text/html,image/*,application/xml;q=0.9,*/*;q=0.8');
         $this->shouldHaveAcceptAllSubTypes('image');
     }
+
+    /*function it_should_sort_the_entities()
+    {
+        $this->beConstructedWith('text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c');
+        $this->__toString()->shouldBeEqualTo('text/html;q=1,text/x-c;q=1,text/x-dvi;q=0.8,text/plain;q=0.5');
+    }*/
+
+    /*function it_should_sort_the_entities_with_accept_all_tag()
+    {
+        $this->beConstructedWith('text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c');
+        $this->__toString()->shouldBeEqualTo('text/html;q=1,text/x-c;q=1,text/x-dvi;q=0.8,text/plain;q=0.5');
+    }*/
+
 }

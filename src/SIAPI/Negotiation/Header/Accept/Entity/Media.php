@@ -135,16 +135,4 @@ class Media extends Entity
 
         return $str;
     }
-
-    /**
-     * @param string $str
-     * @return string
-     */
-    protected function joinQuantity($str)
-    {
-        if (!empty($str)) {
-            $str .= ";" . "q=" . $this->quality;
-        }
-        return $str;
-    }
 }

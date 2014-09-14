@@ -18,9 +18,9 @@ abstract class Collection implements IteratorAggregate
     protected $entities = [];
 
     /**
-     * @param string $headers
+     * @param string|array $headers
      */
-    public function __construct($headers = '')
+    public function __construct($headers)
     {
         $this->parseHeadersString($headers);
         $this->addDefaultValue();
@@ -57,6 +57,11 @@ abstract class Collection implements IteratorAggregate
     /**
      * @return string
      */
+    abstract protected function getAcceptHeaderClassName();
+
+    /**
+     * @return string
+     */
     abstract protected function getDefaultValue();
 
     /**
@@ -81,9 +86,10 @@ abstract class Collection implements IteratorAggregate
      */
     protected function parseHeadersString($headers)
     {
-        //$entities = [];
-
-        $values = is_string($headers) && !empty($headers) ? explode(",", $headers) : [];
+        if (is_array($headers)) {
+            $headers = $this->getHeaderStringFromHeadersArray($headers);
+        }
+        $values = $this->getValuesFromHeaderString($headers);
 
         $className = static::getEntityClassName();
 
@@ -99,7 +105,6 @@ abstract class Collection implements IteratorAggregate
                 $this->add($entity);
             }
         }
-        //return $entities;
     }
 
     /**
@@ -119,7 +124,26 @@ abstract class Collection implements IteratorAggregate
      */
     protected function getEntityClassName()
     {
-        return __NAMESPACE__ . "\\Entity\\" . static::getAcceptHeaderType();
+        return __NAMESPACE__ . "\\Entity\\" . static::getAcceptHeaderClassName();
+    }
+
+    /**
+     * @param array $headers
+     * @return string
+     */
+    private function getHeaderStringFromHeadersArray(array $headers)
+    {
+        $type = static::getAcceptHeaderType();
+        return (array_key_exists($type, $headers)) ? $headers[$type] : '';
+    }
+
+    /**
+     * @param string $headers
+     * @return array
+     */
+    private function getValuesFromHeaderString($headers)
+    {
+        return is_string($headers) && !empty($headers) ? explode(",", $headers) : [];
     }
 
     /**

@@ -13,6 +13,7 @@ class LanguageSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
+        $this->beConstructedWith(null);
         $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Collection\Language');
     }
 

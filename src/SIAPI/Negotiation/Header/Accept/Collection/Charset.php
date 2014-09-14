@@ -13,9 +13,9 @@ class Charset extends Collection
     const DEFAULT_VALUE = '*';
 
     /**
-     * @param string $headers
+     * {@inheritdoc}
      */
-    public function __construct($headers = '')
+    public function __construct($headers)
     {
         $this->parseHeadersString($headers);
         $this->addDefaultValue();
@@ -71,9 +71,17 @@ class Charset extends Collection
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     protected function getAcceptHeaderType()
+    {
+        return 'Accept-Charset';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getAcceptHeaderClassName()
     {
         return 'Charset';
     }

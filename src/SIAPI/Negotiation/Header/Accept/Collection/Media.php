@@ -43,6 +43,14 @@ class Media extends Collection
      */
     protected function getAcceptHeaderType()
     {
+        return 'Accept';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getAcceptHeaderClassName()
+    {
         return 'Media';
     }
 
