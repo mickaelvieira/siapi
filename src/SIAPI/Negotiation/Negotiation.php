@@ -5,6 +5,11 @@ namespace SIAPI\Negotiation;
 /**
  * Class Negotiation
  * @package SIAPI\Negotiation
+ * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec12
+ * - Server-driven Negotiation
+ * - Agent-driven Negotiation
+ * @TODO this is the server driven negotiation, we should change the name
+ *
  */
 class Negotiation
 {
@@ -42,7 +47,7 @@ class Negotiation
 
         $negotiator = $this->getNegotiator($name, $this->headers);
 
-        return $negotiator->match($arguments[0]);
+        return $negotiator->guess($arguments[0]);
     }
 
     /**
@@ -65,7 +70,7 @@ class Negotiation
     /**
      * @param string $name
      * @param array $headers
-     * @return \SIAPI\Negotiation\Matcher
+     * @return \SIAPI\Negotiation\Guesser
      */
     private function getNegotiator($name, array $headers)
     {

@@ -6,11 +6,11 @@ namespace SIAPI\Negotiation;
  * Interface Matcher
  * @package SIAPI\Negotiation
  */
-interface Matcher
+interface Guesser
 {
     /**
      * @param array $supported
      * @return mixed
      */
-    public function match(array $supported);
+    public function guess(array $supported);
 }

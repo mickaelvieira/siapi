@@ -3,7 +3,7 @@
 namespace SIAPI\Negotiation\Negotiator;
 
 use Traversable;
-use SIAPI\Negotiation\Matcher;
+use SIAPI\Negotiation\Guesser;
 use SIAPI\Negotiation\Strategy;
 use SIAPI\Negotiation\Negotiator;
 use SIAPI\Negotiation\Header\Accept\Collection;
@@ -12,7 +12,7 @@ use SIAPI\Negotiation\Header\Accept\Collection;
  * Class Language
  * @package SIAPI\Negotiation\Negotiator
  */
-class Language extends Negotiator implements Matcher
+class Language extends Negotiator implements Guesser
 {
     /**
      * {@inheritdoc}
@@ -25,7 +25,7 @@ class Language extends Negotiator implements Matcher
     /**
      * {@inheritdoc}
      */
-    public function match(array $supported)
+    public function guess(array $supported)
     {
 
     }
