@@ -27,6 +27,20 @@ class Charset extends Negotiator implements Guesser
      */
     public function guess(array $supported)
     {
+        $found = null;
+        foreach ($supported as $charset) {
+            if ($this->collection->hasValueRange($charset)) {
+                $found = $charset;
+                break;
+            }
+        }
 
+        if (!$found && $this->collection->hasAcceptAll()) {
+            if (!empty($supported)) {
+                $found = $supported[0];
+            }
+        }
+
+        return $found;
     }
 }
