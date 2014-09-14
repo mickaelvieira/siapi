@@ -87,8 +87,14 @@ abstract class Collection implements IteratorAggregate
         $className = static::getEntityClassName();
 
         foreach ($values as $value) {
+            /** @var \SIAPI\Negotiation\Header\Accept\Entity $entity */
+            /**
+             * See. http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.9
+             * If a parameter has a quality value of 0, then content
+             * with this parameter is `not acceptable' for the client.
+             */
             $entity = new $className($value);
-            if ($entity) {
+            if ($entity && $entity->getQuality() > 0) {
                 array_push($entities, $entity);
             }
         }
