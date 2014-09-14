@@ -10,7 +10,18 @@ use SIAPI\Negotiation\Header\Accept\Collection;
  */
 class Charset extends Collection
 {
-    const DEFAULT_VALUE = 'iso-8859-1;q=1';
+    const DEFAULT_VALUE = '*';
+
+    /**
+     * @param string $headers
+     */
+    public function __construct($headers = '')
+    {
+        $this->parseHeadersString($headers);
+        $this->addDefaultValue();
+        $this->addIso88591IfNotPresent();
+        $this->sort();
+    }
 
     /**
      * @param string $charset
@@ -81,11 +92,11 @@ class Charset extends Collection
      * then all character sets not explicitly mentioned get a quality value of 0,
      * except for ISO-8859-1, which gets a quality value of 1 if not explicitly mentioned.
      */
-    protected function addDefaultValue()
+    private function addIso88591IfNotPresent()
     {
         if (!$this->hasAcceptAll() && !$this->hasCharset(self::DEFAULT_VALUE)) {
             $className  = static::getEntityClassName();
-            $valueRange = new $className($this->getDefaultValue());
+            $valueRange = new $className('iso-8859-1;q=1');
             $this->add($valueRange);
         }
     }
