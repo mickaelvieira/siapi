@@ -136,13 +136,6 @@ abstract class Entity
         }
     }
 
-    protected function forceQualityWhenHasAcceptAllTag()
-    {
-        if ($this->valueRange && $this->hasAcceptAllTag()) {
-            $this->quality = 1.0;
-        }
-    }
-
     /**
      * @param string $str
      * @return string

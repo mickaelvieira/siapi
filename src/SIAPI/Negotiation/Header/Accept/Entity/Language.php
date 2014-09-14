@@ -16,15 +16,6 @@ class Language extends Entity
     //                   language-range  = ( ( 1*8ALPHA *( "-" 1*8ALPHA ) ) | "*" )
 
     /**
-     * @param string $pieces
-     */
-    /*public function __construct($pieces)
-    {
-        parent::__construct($pieces);
-        $this->forceQualityWhenHasAcceptAllTag();
-    }*/
-
-    /**
      * @return bool
      */
     public function hasAcceptAllSubTag()
