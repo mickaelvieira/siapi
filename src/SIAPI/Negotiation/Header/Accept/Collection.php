@@ -13,6 +13,21 @@ use SIAPI\Negotiation\Header\Accept\Entity;
 abstract class Collection implements IteratorAggregate
 {
     /**
+     * @var string
+     */
+    protected $defaultValue;
+
+    /**
+     * @var string
+     */
+    protected $acceptHeaderType;
+
+    /**
+     * @var string
+     */
+    protected $entityClassName;
+
+    /**
      * @var array
      */
     protected $entities = [];
@@ -30,7 +45,7 @@ abstract class Collection implements IteratorAggregate
     /**
      * @param \SIAPI\Negotiation\Header\Accept\Entity $item
      */
-    public function add($item)
+    public function add(Entity $item)
     {
         $item->setIndex(count($this->entities));
         array_push($this->entities, $item);
@@ -47,32 +62,38 @@ abstract class Collection implements IteratorAggregate
     /**
      * @return string
      */
-    abstract protected function sort();
+    protected function sort()
+    {
+        usort($this->entities, function ($ent1, $ent2) {
 
-    /**
-     * @return string
-     */
-    abstract protected function getAcceptHeaderType();
+            /* @var Entity $ent1
+             * @var Entity $ent2 */
 
-    /**
-     * @return string
-     */
-    abstract protected function getAcceptHeaderClassName();
+            $qua1 = $ent1->getQuality();
+            $qua2 = $ent2->getQuality();
 
-    /**
-     * @return string
-     */
-    abstract protected function getDefaultValue();
+            if ($qua1 === $qua2) {
+                $result = ($ent1->getIndex() < $ent2->getIndex()) ? 1 : -1;
+            } elseif ($qua1 < $qua2) {
+                $result = -1;
+            } else {
+                $result = 1;
+            }
+            return $result;
+        });
+
+        $this->entities = array_reverse($this->entities);
+    }
 
     /**
      * @return bool
      */
-    public function hasAcceptAll()
+    public function hasAcceptAllTag()
     {
         $result = false;
-        foreach ($this->entities as $acceptHeader) {
-            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
-            if ($acceptHeader->hasAcceptAllTag()) {
+        foreach ($this->entities as $item) {
+            /* @var Entity $item */
+            if ($item->hasAcceptAllTag()) {
                 $result = true;
                 break;
             }
@@ -87,9 +108,9 @@ abstract class Collection implements IteratorAggregate
     public function hasTag($tag)
     {
         $result = false;
-        foreach ($this->entities as $acceptHeader) {
-            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
-            if ($acceptHeader->hasTag($tag)) {
+        foreach ($this->entities as $item) {
+            /* @var Entity $item */
+            if ($item->hasTag($tag)) {
                 $result = true;
                 break;
             }
@@ -101,12 +122,12 @@ abstract class Collection implements IteratorAggregate
      * @param string $value
      * @return bool
      */
-    public function hasValueRange($value)
+    public function hasValue($value)
     {
         $result = false;
-        foreach ($this->entities as $acceptHeader) {
-            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Charset $acceptHeader */
-            if ($acceptHeader->hasValueRange($value)) {
+        foreach ($this->entities as $item) {
+            /* @var Entity $item */
+            if ($item->hasValue($value)) {
                 $result = true;
                 break;
             }
@@ -120,20 +141,11 @@ abstract class Collection implements IteratorAggregate
      */
     protected function parseHeadersString($headers)
     {
-        if (is_array($headers)) {
-            $headers = $this->getHeaderStringFromHeadersArray($headers);
-        }
-        $values = $this->getValuesFromHeaderString($headers);
-
         $className = static::getEntityClassName();
+        $values    = $this->getValuesFromHeaders($headers);
 
         foreach ($values as $value) {
-            /** @var \SIAPI\Negotiation\Header\Accept\Entity $entity */
-            /**
-             * See. http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.9
-             * If a parameter has a quality value of 0, then content
-             * with this parameter is `not acceptable' for the client.
-             */
+            /** @var Entity $entity */
             $entity = new $className($value);
             if ($entity && $entity->getQuality() > 0) {
                 $this->add($entity);
@@ -148,7 +160,7 @@ abstract class Collection implements IteratorAggregate
     {
         if ($this->isEmpty()) {
             $className  = static::getEntityClassName();
-            $valueRange = new $className($this->getDefaultValue());
+            $valueRange = new $className($this->defaultValue);
             $this->add($valueRange);
         }
     }
@@ -158,25 +170,19 @@ abstract class Collection implements IteratorAggregate
      */
     protected function getEntityClassName()
     {
-        return __NAMESPACE__ . "\\Entity\\" . static::getAcceptHeaderClassName();
+        return __NAMESPACE__ . "\\Entity\\" . $this->entityClassName;
     }
 
     /**
-     * @param array $headers
-     * @return string
-     */
-    private function getHeaderStringFromHeadersArray(array $headers)
-    {
-        $type = static::getAcceptHeaderType();
-        return (array_key_exists($type, $headers)) ? $headers[$type] : '';
-    }
-
-    /**
-     * @param string $headers
+     * @param string|array $headers
      * @return array
      */
-    private function getValuesFromHeaderString($headers)
+    private function getValuesFromHeaders($headers)
     {
+        if (is_array($headers)) {
+            $headers = (array_key_exists($this->acceptHeaderType, $headers)) ?
+                $headers[$this->acceptHeaderType] : '';
+        }
         return is_string($headers) && !empty($headers) ? explode(",", $headers) : [];
     }
 

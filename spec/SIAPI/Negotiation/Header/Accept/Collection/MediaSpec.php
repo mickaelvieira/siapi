@@ -44,7 +44,7 @@ class MediaSpec extends ObjectBehavior
     function it_should_be_aware_of_having_the_accept_all_tag()
     {
         $this->beConstructedWith('text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
-        $this->shouldHaveAcceptAll();
+        $this->shouldHaveAcceptAllTag();
     }
 
     function it_should_be_aware_of_having_the_accept_all_tag_for_a_specific_type()
@@ -56,8 +56,8 @@ class MediaSpec extends ObjectBehavior
     function it_should_be_aware_of_having_a_value_range()
     {
         $this->beConstructedWith('audio/webm, audio/ogg, audio/wav, audio/*;q=0.9, application/ogg;q=0.7, video/*;q=0.6; */*;q=0.5');
-        $this->shouldHaveValueRange('audio/ogg');
-        $this->shouldNotHaveValueRange('text/html');
+        $this->shouldHaveValue('audio/ogg');
+        $this->shouldNotHaveValue('text/html');
     }
 
     /*function it_should_sort_the_entities()

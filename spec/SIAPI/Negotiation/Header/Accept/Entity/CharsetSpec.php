@@ -32,7 +32,7 @@ class CharsetSpec extends ObjectBehavior
     function it_should_return_the_charset_when_it_is_present_in_the_header_string()
     {
         $this->beConstructedWith('iso-8859-5');
-        $this->getValueRange()->shouldBeEqualTo('iso-8859-5');
+        $this->getValue()->shouldBeEqualTo('iso-8859-5');
     }
 
     function it_should_have_a_quality_equal_to_one_when_it_is_not_present_in_the_header_string()
@@ -56,8 +56,8 @@ class CharsetSpec extends ObjectBehavior
     function it_should_be_aware_of_having_a_value_range()
     {
         $this->beConstructedWith('unicode-1-1;q=0.8');
-        $this->shouldHaveValueRange('unicode-1-1');
-        $this->shouldNotHaveValueRange('utf-8');
+        $this->shouldHaveValue('unicode-1-1');
+        $this->shouldNotHaveValue('utf-8');
     }
 
     function it_should_have_the_quality_equal_to_one_it_has_the_match_all_tag()

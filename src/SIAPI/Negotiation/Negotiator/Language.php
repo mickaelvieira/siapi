@@ -29,7 +29,7 @@ class Language extends Negotiator implements Guesser
     {
         $found = null;
         foreach ($supported as $language) {
-            if ($this->collection->hasValueRange($language)) {
+            if ($this->collection->hasValue($language)) {
                 $found = $language;
                 break;
             }

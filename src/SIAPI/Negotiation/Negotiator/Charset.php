@@ -29,13 +29,13 @@ class Charset extends Negotiator implements Guesser
     {
         $found = null;
         foreach ($supported as $charset) {
-            if ($this->collection->hasValueRange($charset)) {
+            if ($this->collection->hasValue($charset)) {
                 $found = $charset;
                 break;
             }
         }
 
-        if (!$found && $this->collection->hasAcceptAll()) {
+        if (!$found && $this->collection->hasAcceptAllTag()) {
             if (!empty($supported)) {
                 $found = $supported[0];
             }

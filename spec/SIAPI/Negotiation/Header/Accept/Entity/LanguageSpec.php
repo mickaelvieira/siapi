@@ -33,7 +33,7 @@ class LanguageSpec extends ObjectBehavior
     function it_should_return_the_language_range_when_it_is_present_in_the_header_string()
     {
         $this->beConstructedWith('da');
-        $this->getValueRange()->shouldBeEqualTo('da');
+        $this->getValue()->shouldBeEqualTo('da');
     }
 
     function it_should_have_the_quality_equal_to_one_when_it_is_not_present_in_the_header_string()
@@ -75,7 +75,7 @@ class LanguageSpec extends ObjectBehavior
     function it_should_be_aware_of_having_a_value_range()
     {
         $this->beConstructedWith('fr-be');
-        $this->shouldHaveValueRange('fr-be');
-        $this->shouldNotHaveValueRange('fr');
+        $this->shouldHaveValue('fr-be');
+        $this->shouldNotHaveValue('fr');
     }
 }

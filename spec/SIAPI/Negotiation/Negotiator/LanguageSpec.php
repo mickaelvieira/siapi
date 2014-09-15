@@ -27,8 +27,8 @@ class LanguageSpec extends ObjectBehavior
 
     function it_should_return_the_language_when_it_matches_a_supported_language($collection, $strategy)
     {
-        $collection->hasValueRange('en')->willReturn(false);
-        $collection->hasValueRange('fr')->willReturn(true);
+        $collection->hasValue('en')->willReturn(false);
+        $collection->hasValue('fr')->willReturn(true);
 
         $this->guess(['en', 'fr'])->shouldReturn('fr');
     }
@@ -39,7 +39,7 @@ class LanguageSpec extends ObjectBehavior
         /**
          * @TODO testing conditions should reflect user's preferences
          */
-        $collection->hasValueRange('en-US')->willReturn(false);
+        $collection->hasValue('en-US')->willReturn(false);
         $collection->hasTag('en')->willReturn(false);
 
         $this->guess(['en-US'])->shouldReturn('en');

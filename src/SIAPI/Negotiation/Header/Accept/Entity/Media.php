@@ -107,7 +107,7 @@ class Media extends Entity
      */
     public function __toString()
     {
-        $str = $this->getValueRange();
+        $str = $this->getValue();
         $str = $this->joinParameters($str, $this->mediaParams);
         $str = $this->joinQuantity($str);
         $str = $this->joinParameters($str, $this->extParams);

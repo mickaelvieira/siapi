@@ -27,10 +27,10 @@ class CharsetSpec extends ObjectBehavior
 
     function it_should_return_the_charset_when_it_matches_a_supported_charset($collection, $strategy)
     {
-        $collection->hasValueRange('iso-8859-5')->willReturn(false);
-        $collection->hasValueRange('iso-8859-1')->willReturn(false);
-        $collection->hasValueRange('unicode-1-1')->willReturn(true);
-        $collection->hasAcceptAll()->willReturn(true);
+        $collection->hasValue('iso-8859-5')->willReturn(false);
+        $collection->hasValue('iso-8859-1')->willReturn(false);
+        $collection->hasValue('unicode-1-1')->willReturn(true);
+        $collection->hasAcceptAllTag()->willReturn(true);
 
         $this->guess(['iso-8859-5', 'iso-8859-1', 'unicode-1-1'])->shouldReturn('unicode-1-1');
     }
@@ -40,20 +40,20 @@ class CharsetSpec extends ObjectBehavior
         $strategy
     )
     {
-        $collection->hasValueRange('iso-8859-5')->willReturn(false);
-        $collection->hasValueRange('iso-8859-1')->willReturn(false);
-        $collection->hasValueRange('unicode-1-1')->willReturn(false);
-        $collection->hasAcceptAll()->willReturn(false);
+        $collection->hasValue('iso-8859-5')->willReturn(false);
+        $collection->hasValue('iso-8859-1')->willReturn(false);
+        $collection->hasValue('unicode-1-1')->willReturn(false);
+        $collection->hasAcceptAllTag()->willReturn(false);
 
         $this->guess(['iso-8859-5', 'iso-8859-1', 'unicode-1-1'])->shouldReturn(null);
     }
 
     function it_should_return_the_1st_supported_charset_when_it_matches_several($collection, $strategy)
     {
-        $collection->hasValueRange('iso-8859-5')->willReturn(true);
-        $collection->hasValueRange('iso-8859-1')->willReturn(true);
-        $collection->hasValueRange('unicode-1-1')->willReturn(true);
-        $collection->hasAcceptAll()->willReturn(false);
+        $collection->hasValue('iso-8859-5')->willReturn(true);
+        $collection->hasValue('iso-8859-1')->willReturn(true);
+        $collection->hasValue('unicode-1-1')->willReturn(true);
+        $collection->hasAcceptAllTag()->willReturn(false);
 
         $this->guess(['iso-8859-5', 'iso-8859-1', 'unicode-1-1'])->shouldReturn('iso-8859-5');
     }
@@ -63,10 +63,10 @@ class CharsetSpec extends ObjectBehavior
         $strategy
     )
     {
-        $collection->hasValueRange('utf-8')->willReturn(false);
-        $collection->hasValueRange('utf-7')->willReturn(false);
-        $collection->hasValueRange('utf-16')->willReturn(false);
-        $collection->hasAcceptAll()->willReturn(true);
+        $collection->hasValue('utf-8')->willReturn(false);
+        $collection->hasValue('utf-7')->willReturn(false);
+        $collection->hasValue('utf-16')->willReturn(false);
+        $collection->hasAcceptAllTag()->willReturn(true);
 
         $this->guess(['utf-8', 'utf-7', 'utf-16'])->shouldReturn('utf-8');
     }

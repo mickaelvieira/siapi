@@ -69,7 +69,7 @@ abstract class Entity
     /**
      * @return string
      */
-    public function getValueRange()
+    public function getValue()
     {
         return (string)$this->valueRange;
     }
@@ -80,7 +80,7 @@ abstract class Entity
     public function __toString()
     {
         return $this->joinQuantity(
-            $this->getValueRange()
+            $this->getValue()
         );
     }
 
@@ -114,7 +114,7 @@ abstract class Entity
      * @param string $value
      * @return bool
      */
-    public function hasValueRange($value)
+    public function hasValue($value)
     {
         return ((string)$this->valueRange === $value);
     }
