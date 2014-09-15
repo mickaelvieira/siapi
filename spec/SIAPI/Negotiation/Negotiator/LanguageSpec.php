@@ -35,6 +35,10 @@ class LanguageSpec extends ObjectBehavior
 
     function it_should_return_the_generic_language($collection, $strategy)
     {
+        // fr;q=1,da;q=1,fr-BE;q=1,es-ES;q=0.7,es;q=0.6,en;q=0.5
+        /**
+         * @TODO testing conditions should reflect user's preferences
+         */
         $collection->hasValueRange('en-US')->willReturn(false);
         $collection->hasTag('en')->willReturn(false);
 
