@@ -47,7 +47,7 @@ class Language extends Collection
     private function sortEntities($item1, $item2)
     {
         if ($item1->getQuality() === $item2->getQuality()) {
-            if ($item1->getOriginalOrder() < $item2->getOriginalOrder()) {
+            if ($item1->getIndex() < $item2->getIndex()) {
                 $result = 1;
             } else {
                 $result = -1;

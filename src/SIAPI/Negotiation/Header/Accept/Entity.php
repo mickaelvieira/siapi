@@ -20,7 +20,7 @@ abstract class Entity
     /**
      * @var int
      */
-    protected $originalOrder = 0;
+    protected $index = 0;
 
     /**
      * @param string $pieces
@@ -53,17 +53,17 @@ abstract class Entity
     /**
      * @param int $originalOrder
      */
-    public function setOriginalOrder($originalOrder)
+    public function setIndex($originalOrder)
     {
-        $this->originalOrder = $originalOrder;
+        $this->index = $originalOrder;
     }
 
     /**
      * @return int
      */
-    public function getOriginalOrder()
+    public function getIndex()
     {
-        return $this->originalOrder;
+        return $this->index;
     }
 
     /**

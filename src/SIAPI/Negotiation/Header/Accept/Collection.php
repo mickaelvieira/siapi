@@ -32,7 +32,7 @@ abstract class Collection implements IteratorAggregate
      */
     public function add($item)
     {
-        $item->setOriginalOrder(count($this->entities));
+        $item->setIndex(count($this->entities));
         array_push($this->entities, $item);
     }
 
