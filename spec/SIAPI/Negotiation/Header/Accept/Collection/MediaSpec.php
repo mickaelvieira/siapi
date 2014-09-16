@@ -50,7 +50,7 @@ class MediaSpec extends ObjectBehavior
     function it_should_be_aware_of_having_the_accept_all_tag_for_a_specific_type()
     {
         $this->beConstructedWith('text/html,image/*,application/xml;q=0.9,*/*;q=0.8');
-        $this->shouldHaveAcceptAllSubTypes('image');
+        $this->shouldHaveAcceptAllSubTag('image');
     }
 
     function it_should_be_aware_of_having_a_value_range()

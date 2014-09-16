@@ -16,7 +16,7 @@ class Language extends Entity
     //                   language-range  = ( ( 1*8ALPHA *( "-" 1*8ALPHA ) ) | "*" )
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasAcceptAllSubTag()
     {

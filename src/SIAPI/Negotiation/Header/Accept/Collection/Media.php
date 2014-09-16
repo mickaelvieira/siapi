@@ -23,25 +23,7 @@ class Media extends Collection
     /**
      * {@inheritdoc}
      */
-    protected $entityClassName = 'Media';
-
-    /**
-     * @param string $type
-     * @return bool
-     */
-    public function hasAcceptAllSubTypes($type)
-    {
-        $result = false;
-        foreach ($this->entities as $item) {
-            /** @var \SIAPI\Negotiation\Header\Accept\Entity\Media $item */
-            if ($item->hasTag($type) &&
-                $item->hasAcceptAllSubTag()) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
+    protected $entityType = 'Media';
 
     /**
      *

@@ -5,12 +5,13 @@ namespace SIAPI\Negotiation\Header\Accept;
 use IteratorAggregate;
 use ArrayIterator;
 use SIAPI\Negotiation\Header\Accept\Entity;
+use SIAPI\Negotiation\Header\AcceptHeader;
 
 /**
  * Class Collection
  * @package SIAPI\Negotiation\Header\Accept
  */
-abstract class Collection implements IteratorAggregate
+abstract class Collection implements IteratorAggregate, AcceptHeader
 {
     /**
      * @var string
@@ -25,7 +26,7 @@ abstract class Collection implements IteratorAggregate
     /**
      * @var string
      */
-    protected $entityClassName;
+    protected $entityType;
 
     /**
      * @var array
@@ -43,12 +44,12 @@ abstract class Collection implements IteratorAggregate
     }
 
     /**
-     * @param \SIAPI\Negotiation\Header\Accept\Entity $item
+     * @param \SIAPI\Negotiation\Header\Accept\Entity $entity
      */
-    public function add(Entity $item)
+    public function add(Entity $entity)
     {
-        $item->setIndex(count($this->entities));
-        array_push($this->entities, $item);
+        $entity->setIndex(count($this->entities));
+        array_push($this->entities, $entity);
     }
 
     /**
@@ -91,9 +92,27 @@ abstract class Collection implements IteratorAggregate
     public function hasAcceptAllTag()
     {
         $result = false;
-        foreach ($this->entities as $item) {
-            /* @var Entity $item */
-            if ($item->hasAcceptAllTag()) {
+        foreach ($this->entities as $entity) {
+            /* @var AcceptHeader $entity */
+            if ($entity->hasAcceptAllTag()) {
+                $result = true;
+                break;
+            }
+        }
+        return $result;
+    }
+
+    /**
+     * @param string $subTag
+     * @return bool
+     */
+    public function hasAcceptAllSubTag($subTag = null)
+    {
+        $result = false;
+        foreach ($this->entities as $entity) {
+            /** @var Entity $entity */
+            if ($entity->hasTag($subTag) &&
+                $entity->hasAcceptAllSubTag()) {
                 $result = true;
                 break;
             }
@@ -108,9 +127,26 @@ abstract class Collection implements IteratorAggregate
     public function hasTag($tag)
     {
         $result = false;
-        foreach ($this->entities as $item) {
-            /* @var Entity $item */
-            if ($item->hasTag($tag)) {
+        foreach ($this->entities as $entity) {
+            /* @var AcceptHeader $entity */
+            if ($entity->hasTag($tag)) {
+                $result = true;
+                break;
+            }
+        }
+        return $result;
+    }
+
+    /**
+     * @param string $subTag
+     * @return bool
+     */
+    public function hasSubTag($subTag)
+    {
+        $result = false;
+        foreach ($this->entities as $entity) {
+            /* @var AcceptHeader $entity */
+            if ($entity->hasSubTag($subTag)) {
                 $result = true;
                 break;
             }
@@ -125,9 +161,9 @@ abstract class Collection implements IteratorAggregate
     public function hasValue($value)
     {
         $result = false;
-        foreach ($this->entities as $item) {
-            /* @var Entity $item */
-            if ($item->hasValue($value)) {
+        foreach ($this->entities as $entity) {
+            /* @var AcceptHeader $entity */
+            if ($entity->hasValue($value)) {
                 $result = true;
                 break;
             }
@@ -141,12 +177,11 @@ abstract class Collection implements IteratorAggregate
      */
     protected function parseHeadersString($headers)
     {
-        $className = static::getEntityClassName();
-        $values    = $this->getValuesFromHeaders($headers);
+        $values = $this->getValuesFromHeaders($headers);
 
         foreach ($values as $value) {
             /** @var Entity $entity */
-            $entity = new $className($value);
+            $entity = EntityFactory::build($this->entityType, $value);
             if ($entity && $entity->getQuality() > 0) {
                 $this->add($entity);
             }
@@ -159,18 +194,9 @@ abstract class Collection implements IteratorAggregate
     protected function addDefaultValue()
     {
         if ($this->isEmpty()) {
-            $className  = static::getEntityClassName();
-            $valueRange = new $className($this->defaultValue);
+            $valueRange = EntityFactory::build($this->entityType, $this->defaultValue);
             $this->add($valueRange);
         }
-    }
-
-    /**
-     * @return string
-     */
-    protected function getEntityClassName()
-    {
-        return __NAMESPACE__ . "\\Entity\\" . $this->entityClassName;
     }
 
     /**

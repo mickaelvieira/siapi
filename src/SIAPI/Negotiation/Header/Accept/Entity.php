@@ -2,16 +2,19 @@
 
 namespace SIAPI\Negotiation\Header\Accept;
 
+use SIAPI\Negotiation\Header\AcceptHeader;
+
 /**
  * Class Entity
  * @package SIAPI\Negotiation\Header\Accept
  */
-abstract class Entity
+abstract class Entity implements AcceptHeader
 {
     /**
      * @var \SIAPI\Negotiation\Header\Accept\ValueRange
      */
     protected $valueRange;
+
     /**
      * @var float
      */
@@ -35,6 +38,8 @@ abstract class Entity
             $this->addParams($pieces);
         }
     }
+
+    abstract public function hasAcceptAllSubTag();
 
     /**
      * @param string $values
@@ -102,12 +107,12 @@ abstract class Entity
     }
 
     /**
-     * @param string $subTag
+     * @param string $subSubTag
      * @return bool
      */
-    public function hasSubTag($subTag)
+    public function hasSubTag($subSubTag)
     {
-        return ($this->valueRange->getSubValue() === $subTag);
+        return ($this->valueRange->getSubValue() === $subSubTag);
     }
 
     /**

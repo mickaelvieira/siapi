@@ -2,6 +2,7 @@
 
 namespace SIAPI\Negotiation\Header\Accept\Collection;
 
+use SIAPI\Negotiation\Header\Accept\EntityFactory;
 use SIAPI\Negotiation\Header\Accept\Collection;
 
 /**
@@ -23,7 +24,7 @@ class Charset extends Collection
     /**
      * {@inheritdoc}
      */
-    protected $entityClassName = 'Charset';
+    protected $entityType = 'Charset';
 
     /**
      * {@inheritdoc}
@@ -45,8 +46,8 @@ class Charset extends Collection
     private function addIso88591IfNotPresent()
     {
         if (!$this->hasAcceptAllTag() && !$this->hasTag('iso-8859-1;q=1')) {
-            $className  = static::getEntityClassName();
-            $valueRange = new $className('iso-8859-1;q=1');
+            //$className  = static::getEntityType();
+            $valueRange = EntityFactory::build($this->entityType, 'iso-8859-1;q=1');//new $className('iso-8859-1;q=1');
             $this->add($valueRange);
         }
     }

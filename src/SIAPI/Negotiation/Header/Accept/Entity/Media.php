@@ -51,7 +51,7 @@ class Media extends Entity
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasAcceptAllSubTag()
     {

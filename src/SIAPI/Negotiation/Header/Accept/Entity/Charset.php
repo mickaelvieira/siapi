@@ -17,6 +17,14 @@ class Charset extends Entity
     /**
      * {@inheritdoc}
      */
+    public function hasAcceptAllSubTag()
+    {
+        return false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function getValueRangeEntity($values)
     {
         return new ValueRange($values);
