@@ -23,10 +23,10 @@ class Negotiator
     protected $collection;
 
     /**
-     * @param Traversable $collection
+     * @param Collection $collection
      * @param Strategy $strategy
      */
-    protected function __construct(Traversable $collection, Strategy $strategy)
+    protected function __construct(Collection $collection, Strategy $strategy)
     {
         $this->strategy   = $strategy;
         $this->collection = $collection;

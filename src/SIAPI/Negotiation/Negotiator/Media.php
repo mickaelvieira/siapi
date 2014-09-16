@@ -2,7 +2,6 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use Traversable;
 use SIAPI\Negotiation\Guesser;
 use SIAPI\Negotiation\Strategy;
 use SIAPI\Negotiation\Negotiator;
@@ -17,7 +16,7 @@ class Media extends Negotiator implements Guesser
     /**
      * {@inheritdoc}
      */
-    public function __construct(Traversable $collection, Strategy $strategy)
+    public function __construct(Collection $collection, Strategy $strategy)
     {
         parent::__construct($collection, $strategy);
     }

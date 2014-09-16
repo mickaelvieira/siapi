@@ -19,7 +19,7 @@ class Charset extends Entity
      */
     public function hasAcceptAllSubTag()
     {
-        return false;
+        return false; // @TODO should be true
     }
 
     /**

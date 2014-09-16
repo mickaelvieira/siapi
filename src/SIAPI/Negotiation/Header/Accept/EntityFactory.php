@@ -2,15 +2,12 @@
 
 namespace SIAPI\Negotiation\Header\Accept;
 
-use SIAPI\Negotiation\Header\AcceptHeader;
-
 /**
  * Class Factory
  * @package SIAPI\Negotiation\Header\Accept
  */
 class EntityFactory
 {
-
     /**
      * @param string $name
      * @param string $value

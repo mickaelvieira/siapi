@@ -2,16 +2,15 @@
 
 namespace SIAPI\Negotiation\Header\Accept;
 
-use IteratorAggregate;
-use ArrayIterator;
 use SIAPI\Negotiation\Header\Accept\Entity;
 use SIAPI\Negotiation\Header\AcceptHeader;
 
 /**
  * Class Collection
  * @package SIAPI\Negotiation\Header\Accept
+ * @SuppressWarnings(PHPMD)
  */
-abstract class Collection implements IteratorAggregate, AcceptHeader
+abstract class Collection implements AcceptHeader
 {
     /**
      * @var string
@@ -50,14 +49,6 @@ abstract class Collection implements IteratorAggregate, AcceptHeader
     {
         $entity->setIndex(count($this->entities));
         array_push($this->entities, $entity);
-    }
-
-    /**
-     * @return bool
-     */
-    public function isEmpty()
-    {
-        return (count($this->entities) === 0);
     }
 
     /**
@@ -193,7 +184,7 @@ abstract class Collection implements IteratorAggregate, AcceptHeader
      */
     protected function addDefaultValue()
     {
-        if ($this->isEmpty()) {
+        if (count($this->entities) === 0) {
             $valueRange = EntityFactory::build($this->entityType, $this->defaultValue);
             $this->add($valueRange);
         }
@@ -202,6 +193,7 @@ abstract class Collection implements IteratorAggregate, AcceptHeader
     /**
      * @param string|array $headers
      * @return array
+     * @TODO this is messy, we need to make a choice whether we want an array or a string
      */
     private function getValuesFromHeaders($headers)
     {
@@ -218,20 +210,12 @@ abstract class Collection implements IteratorAggregate, AcceptHeader
     public function __toString()
     {
         $str = "";
-        foreach ($this as $entity) {
+        foreach ($this->entities as $entity) {
             if (!empty($str)) {
                 $str .= ",";
             }
             $str .= (string)$entity;
         }
         return $str;
-    }
-
-    /**
-     * @return ArrayIterator
-     */
-    public function getIterator()
-    {
-        return new ArrayIterator($this->entities);
     }
 }
