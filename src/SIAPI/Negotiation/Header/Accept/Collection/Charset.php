@@ -27,14 +27,13 @@ class Charset extends Collection
     protected $entityType = 'Charset';
 
     /**
-     * {@inheritdoc}
+     * @param string $headers
+     * @return array|void
      */
-    public function __construct($headers)
+    protected function addEntities($headers)
     {
-        $this->parseHeadersString($headers);
-        $this->addDefaultValue();
+        parent::addEntities($headers);
         $this->addIso88591IfNotPresent();
-        $this->sort();
     }
 
     /**

@@ -51,11 +51,19 @@ abstract class Entity
     }
 
     /**
+     * @param float $quality
+     */
+    protected function setQuality($quality)
+    {
+        $this->quality = (float)$quality;
+    }
+
+    /**
      * @param int $index
      */
     public function setIndex($index)
     {
-        $this->index = $index;
+        $this->index = (int)$index;
     }
 
     /**
@@ -144,7 +152,7 @@ abstract class Entity
 
             if (count($param) === 2) {
                 if ($param[0] === 'q') {
-                    $this->quality = (float)$param[1];
+                    $this->setQuality($param[1]);
                 }
             }
         }

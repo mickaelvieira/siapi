@@ -81,7 +81,7 @@ class Media extends Entity
             if (count($param) === 2) {
                 if ($param[0] === 'q') {
                     $found = true;
-                    $this->quality = (float)$param[1];
+                    $this->setQuality($param[1]);
                 } else {
                     if (!$found) {
                         $this->addMediaParam($param[0], $param[1]);

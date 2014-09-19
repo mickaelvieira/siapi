@@ -36,9 +36,109 @@ abstract class Collection implements AcceptHeader
      */
     public function __construct($headers)
     {
-        $this->parseHeadersString($headers);
-        $this->addDefaultValue();
+        $this->addEntities($headers);
         $this->sort();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasAcceptAllTag()
+    {
+        $result = array_filter($this->entities, function ($entity) {
+            /* @var Entity $entity */
+            return $entity->hasAcceptAllTag();
+        });
+        return (count($result) > 0);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasAcceptAllSubTag($tag)
+    {
+        $result = array_filter($this->entities, function ($entity) use ($tag) {
+            /* @var Entity $entity */
+            return $entity->hasTag($tag) && $entity->hasAcceptAllSubTag();
+        });
+        return (count($result) > 0);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasTag($tag)
+    {
+        $result = array_filter($this->entities, function ($entity) use ($tag) {
+            /* @var Entity $entity */
+            return $entity->hasTag($tag);
+        });
+        return (count($result) > 0);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasSubTag($subTag)
+    {
+        $result = array_filter($this->entities, function ($entity) use ($subTag) {
+            /* @var Entity $entity */
+            return $entity->hasSubTag($subTag);
+        });
+        return (count($result) > 0);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasValue($value)
+    {
+        $result = array_filter($this->entities, function ($entity) use ($value) {
+            /* @var Entity $entity */
+            return $entity->hasValue($value);
+        });
+        return (count($result) > 0);
+    }
+
+    /**
+     * @param string $headers
+     * @return array
+     */
+    protected function addEntities($headers)
+    {
+        $values = $this->parseHeaderString($headers);
+
+        foreach ($values as $value) {
+            /** @var Entity $entity */
+            $entity = EntityFactory::build($this->entityType, $value);
+            if ($entity && $entity->getQuality() > 0) {
+                $this->add($entity);
+            }
+        }
+        $this->addDefaultValue();
+    }
+
+    /**
+     * @param string|array $headers
+     * @return array
+     * @TODO this is messy, we need to make a choice whether we want an array or a string
+     */
+    private function parseHeaderString($headers)
+    {
+        if (is_array($headers)) {
+            $headers = (array_key_exists($this->acceptHeaderType, $headers)) ?
+                $headers[$this->acceptHeaderType] : '';
+        }
+        return is_string($headers) && !empty($headers) ? explode(",", $headers) : [];
+    }
+
+    /**
+     * @param \SIAPI\Negotiation\Header\Accept\Entity $entity
+     */
+    protected function add(Entity $entity)
+    {
+        $entity->setIndex(count($this->entities));
+        array_push($this->entities, $entity);
     }
 
     /**
@@ -53,150 +153,34 @@ abstract class Collection implements AcceptHeader
     }
 
     /**
-     * @param \SIAPI\Negotiation\Header\Accept\Entity $entity
-     */
-    protected function add(Entity $entity)
-    {
-        $entity->setIndex(count($this->entities));
-        array_push($this->entities, $entity);
-    }
-
-    /**
      * @return string
      */
     protected function sort()
     {
-        usort($this->entities, function ($ent1, $ent2) {
+        usort(
+            $this->entities,
+            function ($ent1, $ent2) {
 
-            /* @var Entity $ent1
-             * @var Entity $ent2 */
+                /**
+                 * @var Entity $ent1
+                 * @var Entity $ent2
+                 */
 
-            $qua1 = $ent1->getQuality();
-            $qua2 = $ent2->getQuality();
+                $qua1 = $ent1->getQuality();
+                $qua2 = $ent2->getQuality();
 
-            if ($qua1 === $qua2) {
-                $result = ($ent1->getIndex() < $ent2->getIndex()) ? 1 : -1;
-            } elseif ($qua1 < $qua2) {
-                $result = -1;
-            } else {
-                $result = 1;
+                if ($qua1 === $qua2) {
+                    $result = ($ent1->getIndex() < $ent2->getIndex()) ? 1 : -1;
+                } elseif ($qua1 < $qua2) {
+                    $result = -1;
+                } else {
+                    $result = 1;
+                }
+                return $result;
             }
-            return $result;
-        });
+        );
 
         $this->entities = array_reverse($this->entities);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function hasAcceptAllTag()
-    {
-        $result = false;
-        foreach ($this->entities as $entity) {
-            /* @var Entity $entity */
-            if ($entity->hasAcceptAllTag()) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function hasAcceptAllSubTag($tag)
-    {
-        $result = false;
-        foreach ($this->entities as $entity) {
-            /** @var Entity $entity */
-            if ($entity->hasTag($tag) &&
-                $entity->hasAcceptAllSubTag()) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function hasTag($tag)
-    {
-        $result = false;
-        foreach ($this->entities as $entity) {
-            /* @var Entity $entity */
-            if ($entity->hasTag($tag)) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function hasSubTag($subTag)
-    {
-        $result = false;
-        foreach ($this->entities as $entity) {
-            /* @var Entity $entity */
-            if ($entity->hasSubTag($subTag)) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function hasValue($value)
-    {
-        $result = false;
-        foreach ($this->entities as $entity) {
-            /* @var Entity $entity */
-            if ($entity->hasValue($value)) {
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
-
-    /**
-     * @param string $headers
-     * @return array
-     */
-    protected function parseHeadersString($headers)
-    {
-        $values = $this->getValuesFromHeaders($headers);
-
-        foreach ($values as $value) {
-            /** @var Entity $entity */
-            $entity = EntityFactory::build($this->entityType, $value);
-            if ($entity && $entity->getQuality() > 0) {
-                $this->add($entity);
-            }
-        }
-    }
-
-    /**
-     * @param string|array $headers
-     * @return array
-     * @TODO this is messy, we need to make a choice whether we want an array or a string
-     */
-    private function getValuesFromHeaders($headers)
-    {
-        if (is_array($headers)) {
-            $headers = (array_key_exists($this->acceptHeaderType, $headers)) ?
-                $headers[$this->acceptHeaderType] : '';
-        }
-        return is_string($headers) && !empty($headers) ? explode(",", $headers) : [];
     }
 
     /**
