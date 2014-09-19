@@ -8,7 +8,6 @@ use SIAPI\Negotiation\Header\AcceptHeader;
 /**
  * Class Collection
  * @package SIAPI\Negotiation\Header\Accept
- * @SuppressWarnings(PHPMD)
  */
 abstract class Collection implements AcceptHeader
 {
@@ -30,7 +29,7 @@ abstract class Collection implements AcceptHeader
     /**
      * @var array
      */
-    protected $entities = [];
+    private $entities = [];
 
     /**
      * @param string|array $headers
@@ -43,9 +42,20 @@ abstract class Collection implements AcceptHeader
     }
 
     /**
+     * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
+     */
+    protected function addDefaultValue()
+    {
+        if (count($this->entities) === 0) {
+            $valueRange = EntityFactory::build($this->entityType, $this->defaultValue);
+            $this->add($valueRange);
+        }
+    }
+
+    /**
      * @param \SIAPI\Negotiation\Header\Accept\Entity $entity
      */
-    public function add(Entity $entity)
+    protected function add(Entity $entity)
     {
         $entity->setIndex(count($this->entities));
         array_push($this->entities, $entity);
@@ -78,13 +88,13 @@ abstract class Collection implements AcceptHeader
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasAcceptAllTag()
     {
         $result = false;
         foreach ($this->entities as $entity) {
-            /* @var AcceptHeader $entity */
+            /* @var Entity $entity */
             if ($entity->hasAcceptAllTag()) {
                 $result = true;
                 break;
@@ -94,15 +104,14 @@ abstract class Collection implements AcceptHeader
     }
 
     /**
-     * @param string $subTag
-     * @return bool
+     * {@inheritdoc}
      */
-    public function hasAcceptAllSubTag($subTag = null)
+    public function hasAcceptAllSubTag($tag)
     {
         $result = false;
         foreach ($this->entities as $entity) {
             /** @var Entity $entity */
-            if ($entity->hasTag($subTag) &&
+            if ($entity->hasTag($tag) &&
                 $entity->hasAcceptAllSubTag()) {
                 $result = true;
                 break;
@@ -112,14 +121,13 @@ abstract class Collection implements AcceptHeader
     }
 
     /**
-     * @param string $tag
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasTag($tag)
     {
         $result = false;
         foreach ($this->entities as $entity) {
-            /* @var AcceptHeader $entity */
+            /* @var Entity $entity */
             if ($entity->hasTag($tag)) {
                 $result = true;
                 break;
@@ -129,14 +137,13 @@ abstract class Collection implements AcceptHeader
     }
 
     /**
-     * @param string $subTag
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasSubTag($subTag)
     {
         $result = false;
         foreach ($this->entities as $entity) {
-            /* @var AcceptHeader $entity */
+            /* @var Entity $entity */
             if ($entity->hasSubTag($subTag)) {
                 $result = true;
                 break;
@@ -146,14 +153,13 @@ abstract class Collection implements AcceptHeader
     }
 
     /**
-     * @param string $value
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasValue($value)
     {
         $result = false;
         foreach ($this->entities as $entity) {
-            /* @var AcceptHeader $entity */
+            /* @var Entity $entity */
             if ($entity->hasValue($value)) {
                 $result = true;
                 break;
@@ -176,17 +182,6 @@ abstract class Collection implements AcceptHeader
             if ($entity && $entity->getQuality() > 0) {
                 $this->add($entity);
             }
-        }
-    }
-
-    /**
-     * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
-     */
-    protected function addDefaultValue()
-    {
-        if (count($this->entities) === 0) {
-            $valueRange = EntityFactory::build($this->entityType, $this->defaultValue);
-            $this->add($valueRange);
         }
     }
 

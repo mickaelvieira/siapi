@@ -3,7 +3,7 @@
 namespace SIAPI\Negotiation;
 
 use Traversable;
-use SIAPI\Negotiation\Header\Accept\Collection;
+use SIAPI\Negotiation\Header\AcceptHeader;
 
 /**
  * Class Negotiator
@@ -18,15 +18,15 @@ class Negotiator
     protected $strategy;
 
     /**
-     * @var \SIAPI\Negotiation\Header\Accept\Collection;
+     * @var \SIAPI\Negotiation\Header\AcceptHeader;
      */
     protected $collection;
 
     /**
-     * @param Collection $collection
+     * @param AcceptHeader $collection
      * @param Strategy $strategy
      */
-    protected function __construct(Collection $collection, Strategy $strategy)
+    protected function __construct(AcceptHeader $collection, Strategy $strategy)
     {
         $this->strategy   = $strategy;
         $this->collection = $collection;

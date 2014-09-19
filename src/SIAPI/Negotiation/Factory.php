@@ -16,6 +16,7 @@ final class Factory
     public static function build($name, array $headers)
     {
         $className  = self::getNegotiatorClassName($name);
+
         $collection = self::getCollectionInstance($name, $headers);
         $strategy   = self::getStrategyInstance($name);
 
@@ -28,7 +29,7 @@ final class Factory
      */
     private function getNegotiatorClassName($name)
     {
-        return __NAMESPACE__ . "\\Negotiator\\" . ucfirst(strtolower($name));
+        return __NAMESPACE__ . "\\Negotiator\\" . self::getClassName($name);
     }
 
     /**
@@ -37,18 +38,27 @@ final class Factory
      */
     private function getStrategyInstance($name)
     {
-        $className = __NAMESPACE__ . "\\Strategy\\" . ucfirst(strtolower($name));
+        $className = __NAMESPACE__ . "\\Strategy\\" . self::getClassName($name);
         return new $className();
     }
 
     /**
      * @param string $name
      * @param $header
-     * @return \SIAPI\Negotiation\Header\Accept\Collection
+     * @return \SIAPI\Negotiation\Header\AcceptHeader
      */
     private function getCollectionInstance($name, array $header)
     {
-        $className = __NAMESPACE__ . "\\Header\\Accept\\Collection\\" . ucfirst(strtolower($name));
+        $className = __NAMESPACE__ . "\\Header\\Accept\\Collection\\" . self::getClassName($name);
         return new $className($header);
+    }
+
+    /**
+     * @param string $name
+     * @return string
+     */
+    private function getClassName($name)
+    {
+        return ucfirst(strtolower($name));
     }
 }

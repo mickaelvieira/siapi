@@ -3,7 +3,6 @@
 namespace SIAPI\Negotiation\Header\Accept\Entity;
 
 use SIAPI\Negotiation\Header\Accept\Entity;
-use SIAPI\Negotiation\Header\Accept\ValueRange;
 
 /**
  * Class Charset
@@ -19,14 +18,6 @@ class Charset extends Entity
      */
     public function hasAcceptAllSubTag()
     {
-        return false; // @TODO should be true
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getValueRangeEntity($values)
-    {
-        return new ValueRange($values);
+        return false;
     }
 }

@@ -23,6 +23,12 @@ interface AcceptHeader
      * @param string $tag
      * @return bool
      */
+    public function hasAcceptAllSubTag($tag);
+
+    /**
+     * @param string $tag
+     * @return bool
+     */
     public function hasTag($tag);
 
     /**

@@ -35,10 +35,7 @@ class CharsetSpec extends ObjectBehavior
         $this->guess(['iso-8859-5', 'iso-8859-1', 'unicode-1-1'])->shouldReturn('unicode-1-1');
     }
 
-    function it_should_return_null_when_it_does_not_match_any_and_the_accept_tag_is_not_present(
-        $collection,
-        $strategy
-    )
+    function it_should_return_null_when_it_does_not_match_any_and_the_accept_tag_is_not_present($collection, $strategy)
     {
         $collection->hasValue('iso-8859-5')->willReturn(false);
         $collection->hasValue('iso-8859-1')->willReturn(false);
@@ -58,10 +55,7 @@ class CharsetSpec extends ObjectBehavior
         $this->guess(['iso-8859-5', 'iso-8859-1', 'unicode-1-1'])->shouldReturn('iso-8859-5');
     }
 
-    function it_should_return_the_1st_supported_when_it_does_not_match_any_but_the_accept_tag_is_present(
-        $collection,
-        $strategy
-    )
+    function it_should_return_the_1st_supported_when_it_does_not_match_any_but_the_accept_tag_is_present($collection, $strategy)
     {
         $collection->hasValue('utf-8')->willReturn(false);
         $collection->hasValue('utf-7')->willReturn(false);

@@ -5,7 +5,7 @@ namespace SIAPI\Negotiation\Negotiator;
 use SIAPI\Negotiation\Guesser;
 use SIAPI\Negotiation\Strategy;
 use SIAPI\Negotiation\Negotiator;
-use SIAPI\Negotiation\Header\Accept\Collection;
+use SIAPI\Negotiation\Header\AcceptHeader;
 
 /**
  * Class Media
@@ -16,7 +16,7 @@ class Media extends Negotiator implements Guesser
     /**
      * {@inheritdoc}
      */
-    public function __construct(Collection $collection, Strategy $strategy)
+    public function __construct(AcceptHeader $collection, Strategy $strategy)
     {
         parent::__construct($collection, $strategy);
     }

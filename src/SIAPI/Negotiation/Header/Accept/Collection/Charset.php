@@ -46,8 +46,7 @@ class Charset extends Collection
     private function addIso88591IfNotPresent()
     {
         if (!$this->hasAcceptAllTag() && !$this->hasTag('iso-8859-1;q=1')) {
-            //$className  = static::getEntityType();
-            $valueRange = EntityFactory::build($this->entityType, 'iso-8859-1;q=1');//new $className('iso-8859-1;q=1');
+            $valueRange = EntityFactory::build($this->entityType, 'iso-8859-1;q=1');
             $this->add($valueRange);
         }
     }

@@ -3,7 +3,6 @@
 namespace SIAPI\Negotiation\Header\Accept\Entity;
 
 use SIAPI\Negotiation\Header\Accept\Entity;
-use SIAPI\Negotiation\Header\Accept\ValueRange;
 
 /**
  * Class Language
@@ -14,6 +13,10 @@ class Language extends Entity
     // Accept-Language = "Accept-Language" ":"
     //                   1#( language-range [ ";" "q" "=" qvalue ] )
     //                   language-range  = ( ( 1*8ALPHA *( "-" 1*8ALPHA ) ) | "*" )
+    /**
+     * @var string
+     */
+    protected $valueRangeDelimiter = "-";
 
     /**
      * {@inheritdoc}
@@ -21,13 +24,5 @@ class Language extends Entity
     public function hasAcceptAllSubTag()
     {
         return $this->hasSubTag(null);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getValueRangeEntity($values)
-    {
-        return new ValueRange($values, "-");
     }
 }

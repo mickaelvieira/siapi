@@ -3,7 +3,6 @@
 namespace SIAPI\Negotiation\Header\Accept\Entity;
 
 use SIAPI\Negotiation\Header\Accept\Entity;
-use SIAPI\Negotiation\Header\Accept\ValueRange;
 
 /**
  * Class Media
@@ -22,6 +21,11 @@ class Media extends Entity
     // accept-extension = ";" token [ "=" ( token | quoted-string ) ]
 
     /**
+     * @var string
+     */
+    protected $valueRangeDelimiter = "/";
+
+    /**
      * @var array
      */
     private $mediaParams = [];
@@ -30,14 +34,6 @@ class Media extends Entity
      * @var array
      */
     private $extParams = [];
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getValueRangeEntity($values)
-    {
-        return new ValueRange($values, "/");
-    }
 
     /**
      * @return bool
@@ -56,6 +52,19 @@ class Media extends Entity
     public function hasAcceptAllSubTag()
     {
         return $this->hasSubTag('*');
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $str = $this->getValue();
+        $str = $this->joinParameters($str, $this->mediaParams);
+        $str = $this->joinQuantity($str);
+        $str = $this->joinParameters($str, $this->extParams);
+
+        return $str;
     }
 
     /**
@@ -100,19 +109,6 @@ class Media extends Entity
     private function addExtParam($key, $value)
     {
         $this->extParams[$key] = trim($value);
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        $str = $this->getValue();
-        $str = $this->joinParameters($str, $this->mediaParams);
-        $str = $this->joinQuantity($str);
-        $str = $this->joinParameters($str, $this->extParams);
-
-        return $str;
     }
 
     /**
