@@ -18,11 +18,6 @@ class Media extends Collection
     /**
      * {@inheritdoc}
      */
-    protected $acceptHeaderType = 'Charset';
-
-    /**
-     * {@inheritdoc}
-     */
     protected $entityType = 'Media';
 
     /**

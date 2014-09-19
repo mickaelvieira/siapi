@@ -18,10 +18,5 @@ class Language extends Collection
     /**
      * {@inheritdoc}
      */
-    protected $acceptHeaderType = 'Accept-Language';
-
-    /**
-     * {@inheritdoc}
-     */
     protected $entityType = 'Language';
 }

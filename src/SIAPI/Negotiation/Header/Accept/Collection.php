@@ -8,6 +8,7 @@ use SIAPI\Negotiation\Header\AcceptHeader;
 /**
  * Class Collection
  * @package SIAPI\Negotiation\Header\Accept
+ * @SuppressWarnings(PHPMD.TooManyMethods)
  */
 abstract class Collection implements AcceptHeader
 {
@@ -15,11 +16,6 @@ abstract class Collection implements AcceptHeader
      * @var string
      */
     protected $defaultValue;
-
-    /**
-     * @var string
-     */
-    protected $acceptHeaderType;
 
     /**
      * @var string
@@ -101,12 +97,12 @@ abstract class Collection implements AcceptHeader
     }
 
     /**
-     * @param string $headers
+     * @param string $headerValue
      * @return array
      */
-    protected function addEntities($headers)
+    protected function addEntities($headerValue)
     {
-        $values = $this->parseHeaderString($headers);
+        $values = (is_string($headerValue) && !empty($headerValue)) ? explode(",", $headerValue) : [];
 
         foreach ($values as $value) {
             /** @var Entity $entity */
@@ -116,20 +112,6 @@ abstract class Collection implements AcceptHeader
             }
         }
         $this->addDefaultValue();
-    }
-
-    /**
-     * @param string|array $headers
-     * @return array
-     * @TODO this is messy, we need to make a choice whether we want an array or a string
-     */
-    private function parseHeaderString($headers)
-    {
-        if (is_array($headers)) {
-            $headers = (array_key_exists($this->acceptHeaderType, $headers)) ?
-                $headers[$this->acceptHeaderType] : '';
-        }
-        return is_string($headers) && !empty($headers) ? explode(",", $headers) : [];
     }
 
     /**

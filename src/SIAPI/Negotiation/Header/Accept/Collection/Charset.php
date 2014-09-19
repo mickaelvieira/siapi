@@ -19,20 +19,15 @@ class Charset extends Collection
     /**
      * {@inheritdoc}
      */
-    protected $acceptHeaderType = 'Accept-Charset';
-
-    /**
-     * {@inheritdoc}
-     */
     protected $entityType = 'Charset';
 
     /**
-     * @param string $headers
+     * @param string $headerValue
      * @return array|void
      */
-    protected function addEntities($headers)
+    protected function addEntities($headerValue)
     {
-        parent::addEntities($headers);
+        parent::addEntities($headerValue);
         $this->addIso88591IfNotPresent();
     }
 

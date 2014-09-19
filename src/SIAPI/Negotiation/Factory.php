@@ -10,14 +10,14 @@ final class Factory
 {
     /**
      * @param string $name
-     * @param array $headers
+     * @param string $headerValue
      * @return \SIAPI\Negotiation\Negotiator
      */
-    public static function build($name, array $headers)
+    public static function build($name, $headerValue)
     {
         $className  = self::getNegotiatorClassName($name);
 
-        $collection = self::getCollectionInstance($name, $headers);
+        $collection = self::getCollectionInstance($name, $headerValue);
         $strategy   = self::getStrategyInstance($name);
 
         return new $className($collection, $strategy);
@@ -44,13 +44,13 @@ final class Factory
 
     /**
      * @param string $name
-     * @param $header
+     * @param string $headerValue
      * @return \SIAPI\Negotiation\Header\AcceptHeader
      */
-    private function getCollectionInstance($name, array $header)
+    private function getCollectionInstance($name, $headerValue)
     {
         $className = __NAMESPACE__ . "\\Header\\Accept\\Collection\\" . self::getClassName($name);
-        return new $className($header);
+        return new $className($headerValue);
     }
 
     /**

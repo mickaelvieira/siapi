@@ -45,7 +45,7 @@ class Negotiation
     {
         $this->checkArguments($name, $arguments);
 
-        $negotiator = $this->getNegotiator($name, $this->headers);
+        $negotiator = $this->getNegotiator($name, self::getAcceptHeaderValue($name));
 
         return $negotiator->guess($arguments[0]);
     }
@@ -69,11 +69,32 @@ class Negotiation
 
     /**
      * @param string $name
-     * @param array $headers
+     * @param string $headerValue
      * @return \SIAPI\Negotiation\Guesser
      */
-    private function getNegotiator($name, array $headers)
+    private function getNegotiator($name, $headerValue)
     {
-        return Factory::build($name, $headers);
+        return Factory::build($name, $headerValue);
+    }
+
+    /**
+     * @param string $name
+     * @return string
+     */
+    private function getAcceptHeaderValue($name)
+    {
+        $type = null;
+        switch ($name) {
+            case 'media':
+                $type = 'Accept';
+                break;
+            case 'charset':
+                $type = 'Accept-Charset';
+                break;
+            case 'language':
+                $type = 'Accept-Language';
+                break;
+        }
+        return ($type && array_key_exists($type, $this->headers)) ? $this->headers[$type] : '';
     }
 }
