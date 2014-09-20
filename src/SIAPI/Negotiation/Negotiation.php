@@ -9,7 +9,9 @@ namespace SIAPI\Negotiation;
  * - Server-driven Negotiation
  * - Agent-driven Negotiation
  * @TODO this is the server driven negotiation, we should change the name
- *
+ * @method media
+ * @method charset
+ * @method language
  */
 class Negotiation
 {
