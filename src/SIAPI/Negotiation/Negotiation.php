@@ -49,7 +49,7 @@ class Negotiation
 
         $negotiator = $this->getNegotiator($name, self::getAcceptHeaderValue($name));
 
-        return $negotiator->guess($arguments[0]);
+        return $negotiator->negotiate($arguments[0]);
     }
 
     /**
@@ -72,7 +72,7 @@ class Negotiation
     /**
      * @param string $name
      * @param string $headerValue
-     * @return \SIAPI\Negotiation\Guesser
+     * @return \SIAPI\Negotiation\Negotiator
      */
     private function getNegotiator($name, $headerValue)
     {

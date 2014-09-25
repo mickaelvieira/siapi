@@ -11,20 +11,32 @@ use SIAPI\Negotiation\Header\AcceptHeader;
  * Class Charset
  * @package SIAPI\Negotiation\Negotiator
  */
-class Charset extends Negotiator implements Guesser
+class Charset implements Negotiator
 {
     /**
-     * {@inheritdoc}
+     * @var \SIAPI\Negotiation\Strategy
+     */
+    private $strategy;
+
+    /**
+     * @var \SIAPI\Negotiation\Header\AcceptHeader;
+     */
+    private $collection;
+
+    /**
+     * @param AcceptHeader $collection
+     * @param Strategy $strategy
      */
     public function __construct(AcceptHeader $collection, Strategy $strategy)
     {
-        parent::__construct($collection, $strategy);
+        $this->strategy   = $strategy;
+        $this->collection = $collection;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function guess(array $supported)
+    public function negotiate(array $supported)
     {
         $found = null;
         foreach ($supported as $charset) {

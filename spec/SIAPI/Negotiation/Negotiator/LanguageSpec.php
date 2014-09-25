@@ -30,7 +30,7 @@ class LanguageSpec extends ObjectBehavior
         $collection->hasValue('en')->willReturn(false);
         $collection->hasValue('fr')->willReturn(true);
 
-        $this->guess(['en', 'fr'])->shouldReturn('fr');
+        $this->negotiate(['en', 'fr'])->shouldReturn('fr');
     }
 
     function it_should_return_the_generic_language($collection, $strategy)
@@ -42,6 +42,6 @@ class LanguageSpec extends ObjectBehavior
         $collection->hasValue('en-US')->willReturn(false);
         $collection->hasTag('en')->willReturn(false);
 
-        $this->guess(['en-US'])->shouldReturn('en');
+        $this->negotiate(['en-US'])->shouldReturn('en');
     }
 }
