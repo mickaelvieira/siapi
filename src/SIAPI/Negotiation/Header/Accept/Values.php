@@ -96,7 +96,7 @@ abstract class Values extends Collection implements AcceptHeader
 
         foreach ($values as $value) {
             /** @var Value $entity */
-            $entity = EntityFactory::build($this->entityType, $value);
+            $entity = ValueFactory::build($this->entityType, $value);
             if ($entity && $entity->getQuality() > 0) {
                 $this->add($entity);
             }
@@ -111,7 +111,7 @@ abstract class Values extends Collection implements AcceptHeader
     protected function addDefaultValue()
     {
         if (count($this->entities) === 0) {
-            $valueRange = EntityFactory::build($this->entityType, $this->defaultValue);
+            $valueRange = ValueFactory::build($this->entityType, $this->defaultValue);
             $this->add($valueRange);
         }
     }

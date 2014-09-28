@@ -6,7 +6,7 @@ namespace SIAPI\Negotiation\Header\Accept;
  * Class Factory
  * @package SIAPI\Negotiation\Header\Accept
  */
-class EntityFactory
+class ValueFactory
 {
     /**
      * @param string $name
