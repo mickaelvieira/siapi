@@ -25,7 +25,7 @@ abstract class Collection implements AcceptHeader
     /**
      * @var array
      */
-    private $entities = [];
+    protected $entities = [];
 
     /**
      * @param string|array $headers

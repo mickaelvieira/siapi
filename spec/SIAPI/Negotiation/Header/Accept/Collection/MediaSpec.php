@@ -33,14 +33,6 @@ class MediaSpec extends ObjectBehavior
         $this->__toString()->shouldBeEqualTo('*/*;q=1');
     }
 
-    function it_should_return_the_header_string_representation()
-    {
-        $this->beConstructedWith('text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
-        $this->__toString()->shouldBeEqualTo(
-            'text/html;q=1,application/xhtml+xml;q=1,application/xml;q=0.9,*/*;q=0.8'
-        );
-    }
-
     function it_should_be_aware_of_having_the_accept_all_tag()
     {
         $this->beConstructedWith('text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
@@ -60,16 +52,9 @@ class MediaSpec extends ObjectBehavior
         $this->shouldNotHaveValue('text/html');
     }
 
-    /*function it_should_sort_the_entities()
+    function it_should_sort_the_entities()
     {
-        $this->beConstructedWith('text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c');
-        $this->__toString()->shouldBeEqualTo('text/html;q=1,text/x-c;q=1,text/x-dvi;q=0.8,text/plain;q=0.5');
-    }*/
-
-    /*function it_should_sort_the_entities_with_accept_all_tag()
-    {
-        $this->beConstructedWith('text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c');
-        $this->__toString()->shouldBeEqualTo('text/html;q=1,text/x-c;q=1,text/x-dvi;q=0.8,text/plain;q=0.5');
-    }*/
-
+        $this->beConstructedWith('text/*,text/html,text/html;level=1,*/*');
+        $this->__toString()->shouldBeEqualTo('text/html;level=1;q=1,text/html;q=1,text/*;q=1,*/*;q=1');
+    }
 }
