@@ -2,9 +2,6 @@
 
 namespace SIAPI\Negotiation;
 
-use Traversable;
-use SIAPI\Negotiation\Header\AcceptHeader;
-
 /**
  * Class Negotiator
  * @package SIAPI\Negotiation

@@ -49,7 +49,7 @@ final class Factory
      */
     private function getCollectionInstance($name, $headerValue)
     {
-        $className = __NAMESPACE__ . "\\Header\\Accept\\Collection\\" . self::getClassName($name);
+        $className = __NAMESPACE__ . "\\Header\\Accept\\Values\\" . self::getClassName($name);
         return new $className($headerValue);
     }
 

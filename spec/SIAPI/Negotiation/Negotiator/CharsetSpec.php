@@ -12,7 +12,7 @@ use Prophecy\Argument;
 class CharsetSpec extends ObjectBehavior
 {
     /**
-     * @param \SIAPI\Negotiation\Header\Accept\Collection\Charset $collection
+     * @param \SIAPI\Negotiation\Header\Accept\Values\Charset $collection
      * @param \SIAPI\Negotiation\Strategy\Charset $strategy
      */
     function let($collection, $strategy)
@@ -55,7 +55,7 @@ class CharsetSpec extends ObjectBehavior
         $this->negotiate(['iso-8859-5', 'iso-8859-1', 'unicode-1-1'])->shouldReturn('iso-8859-5');
     }
 
-    function it_should_return_the_1st_supported_when_it_does_not_match_any_but_the_accept_tag_is_present($collection, $strategy)
+    function it_should_return_the_1st_supported_when_it_does_not_match_any_but_the_accept_all_tag_is_present($collection, $strategy)
     {
         $collection->hasValue('utf-8')->willReturn(false);
         $collection->hasValue('utf-7')->willReturn(false);

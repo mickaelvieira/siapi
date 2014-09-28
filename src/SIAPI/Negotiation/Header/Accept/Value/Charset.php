@@ -1,14 +1,14 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept\Entity;
+namespace SIAPI\Negotiation\Header\Accept\Value;
 
-use SIAPI\Negotiation\Header\Accept\Entity;
+use SIAPI\Negotiation\Header\Accept\Value;
 
 /**
  * Class Charset
- * @package SIAPI\Negotiation\Header\Accept\Entity
+ * @package SIAPI\Negotiation\Header\Accept\Value
  */
-class Charset extends Entity
+class Charset extends Value
 {
     // Accept-Charset = "Accept-Charset" ":"
     //                  1#( ( charset | "*" )[ ";" "q" "=" qvalue ] )

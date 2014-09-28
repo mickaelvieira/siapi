@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\SIAPI\Negotiation\Header\Accept\Entity;
+namespace spec\SIAPI\Negotiation\Header\Accept\Value;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
  * Class CharsetSpec
- * @package spec\SIAPI\Negotiation\Header\Accept\Entity
+ * @package spec\SIAPI\Negotiation\Header\Accept\Value
  */
 class CharsetSpec extends ObjectBehavior
 {
@@ -20,7 +20,7 @@ class CharsetSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->beConstructedWith('');
-        $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Entity\Charset');
+        $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Value\Charset');
     }
 
     function it_should_return_an_empty_string_when_input_is_empty()

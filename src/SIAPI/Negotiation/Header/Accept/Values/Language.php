@@ -1,14 +1,14 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept\Collection;
+namespace SIAPI\Negotiation\Header\Accept\Values;
 
-use SIAPI\Negotiation\Header\Accept\Collection;
+use SIAPI\Negotiation\Header\Accept\Values;
 
 /**
  * Class Language
  * @package SIAPI\Negotiation\Header\Accept\Collection
  */
-class Language extends Collection
+class Language extends Values
 {
     /**
      * {@inheritdoc}

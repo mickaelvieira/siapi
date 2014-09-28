@@ -11,7 +11,7 @@ class EntityFactory
     /**
      * @param string $name
      * @param string $value
-     * @return \SIAPI\Negotiation\Header\Accept\Entity
+     * @return \SIAPI\Negotiation\Header\Accept\Value
      */
     public static function build($name, $value)
     {
@@ -26,6 +26,6 @@ class EntityFactory
      */
     private function getEntityClassName($name)
     {
-        return __NAMESPACE__ . "\\Entity\\" . $name;
+        return __NAMESPACE__ . "\\Value\\" . $name;
     }
 }

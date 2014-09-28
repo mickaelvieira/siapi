@@ -2,7 +2,6 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Negotiation\Guesser;
 use SIAPI\Negotiation\Strategy;
 use SIAPI\Negotiation\Negotiator;
 use SIAPI\Negotiation\Header\AcceptHeader;
@@ -38,40 +37,62 @@ class Language implements Negotiator
      */
     public function negotiate(array $supported)
     {
-        $found = null;
-        foreach ($supported as $language) {
-            if ($this->collection->hasValue($language)) {
-                $found = $language;
-                break;
+        $value = null;
+        foreach ($supported as $val) {
+            if ($value = $this->guessExact($val)) {
+                return $value;
+            }
+            if ($value = $this->guessGeneric($val)) {
+                return $value;
             }
         }
 
-        if (!$found) {
-
-            $found = $this->guessGeneric($supported);
-
+        if ($value = $this->guessAll($supported)) {
+            return $value;
         }
 
-        return $found;
+        return $value;
+    }
+
+    /**
+     * @param string $val
+     * @return null|string
+     */
+    private function guessExact($val)
+    {
+        $value = null;
+        if ($this->collection->hasValue($val)) {
+            $value = $val;
+        }
+        return $value;
+    }
+
+    /**
+     * @param string $val
+     * @return null|string
+     */
+    private function guessGeneric($val)
+    {
+        $value = null;
+        $split = explode('-', $val);
+        if (count($split) === 2) {
+            if ($this->collection->hasTag($split[0]) && $this->collection->hasAcceptAllSubTag($split[0])) {
+                $value = $val;
+            }
+        }
+        return $value;
     }
 
     /**
      * @param array $supported
-     * @return null|string
+     * @return null
      */
-    protected function guessGeneric(array $supported)
+    private function guessAll(array $supported)
     {
-        $found = null;
-
-        foreach ($supported as $language) {
-
-            $split = explode('-', $language);
-            if (count($split) === 2) {
-                $this->collection->hasTag($split[0]);
-                $found = $split[0];
-                break;
-            }
+        $value = null;
+        if ($this->collection->hasAcceptAllTag() && !empty($supported)) {
+            $value = $supported[0];
         }
-        return $found;
+        return $value;
     }
 }

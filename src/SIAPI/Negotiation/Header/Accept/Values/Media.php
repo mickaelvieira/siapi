@@ -1,14 +1,14 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept\Collection;
+namespace SIAPI\Negotiation\Header\Accept\Values;
 
-use SIAPI\Negotiation\Header\Accept\Collection;
+use SIAPI\Negotiation\Header\Accept\Values;
 
 /**
  * Class Media
  * @package SIAPI\Negotiation\Header\Accept\Collection
  */
-class Media extends Collection
+class Media extends Values
 {
     /**
      * {@inheritdoc}
@@ -30,23 +30,23 @@ class Media extends Collection
     {
         usort(
             $this->entities,
-            function ($ent1, $ent2) {
+            function ($val1, $val2) {
 
                 /**
-                 * @var \SIAPI\Negotiation\Header\Accept\Entity $ent1
-                 * @var \SIAPI\Negotiation\Header\Accept\Entity $ent2
+                 * @var \SIAPI\Negotiation\Header\Accept\Value $val1
+                 * @var \SIAPI\Negotiation\Header\Accept\Value $val2
                  */
 
-                $qua1 = $ent1->getQuality();
-                $qua2 = $ent2->getQuality();
+                $qua1 = $val1->getQuality();
+                $qua2 = $val2->getQuality();
 
                 if ($qua1 === $qua2) {
 
-                    $len1 = strlen((string)$ent1);
-                    $len2 = strlen((string)$ent2);
+                    $len1 = strlen((string)$val1);
+                    $len2 = strlen((string)$val2);
 
                     if ($len1 === $len2) {
-                        $result = ($ent1->getIndex() < $ent2->getIndex()) ? 1 : -1;
+                        $result = ($val1->getIndex() < $val2->getIndex()) ? 1 : -1;
                     } elseif ($len1 < $len2) {
                         $result = -1;
                     } else {

@@ -1,15 +1,15 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept\Collection;
+namespace SIAPI\Negotiation\Header\Accept\Values;
 
 use SIAPI\Negotiation\Header\Accept\EntityFactory;
-use SIAPI\Negotiation\Header\Accept\Collection;
+use SIAPI\Negotiation\Header\Accept\Values;
 
 /**
  * Class Charset
  * @package SIAPI\Negotiation\Header\Accept\Collection
  */
-class Charset extends Collection
+class Charset extends Values
 {
     /**
      * {@inheritdoc}

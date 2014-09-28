@@ -1,14 +1,14 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept\Entity;
+namespace SIAPI\Negotiation\Header\Accept\Value;
 
-use SIAPI\Negotiation\Header\Accept\Entity;
+use SIAPI\Negotiation\Header\Accept\Value;
 
 /**
  * Class Media
- * @package SIAPI\Negotiation\Header\Accept\Entity
+ * @package SIAPI\Negotiation\Header\Accept\Value
  */
-class Media extends Entity
+class Media extends Value
 {
     // Accept         = "Accept" ":"
     //                  #( media-range [ accept-params ] )

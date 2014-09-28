@@ -1,20 +1,20 @@
 <?php
 
-namespace spec\SIAPI\Negotiation\Header\Accept\Collection;
+namespace spec\SIAPI\Negotiation\Header\Accept\Values;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
  * Class LanguageSpec
- * @package spec\SIAPI\Negotiation\Header\Accept\Collection
+ * @package spec\SIAPI\Negotiation\Header\Accept\Values
  */
 class LanguageSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
         $this->beConstructedWith(null);
-        $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Collection\Language');
+        $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Values\Language');
     }
 
     function it_should_return_the_accept_all_tag_when_the_header_string_is_null()

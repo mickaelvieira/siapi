@@ -2,7 +2,6 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Negotiation\Guesser;
 use SIAPI\Negotiation\Strategy;
 use SIAPI\Negotiation\Negotiator;
 use SIAPI\Negotiation\Header\AcceptHeader;
@@ -38,20 +37,38 @@ class Charset implements Negotiator
      */
     public function negotiate(array $supported)
     {
-        $found = null;
-        foreach ($supported as $charset) {
-            if ($this->collection->hasValue($charset)) {
-                $found = $charset;
+        $value = null;
+        if ($value = $this->guessExact($supported)) {
+            return $value;
+        }
+        if ($value = $this->guessAll($supported)) {
+            return $value;
+        }
+        return $value;
+    }
+
+    private function guessExact(array $supported)
+    {
+        $value = null;
+        foreach ($supported as $val) {
+            if ($this->collection->hasValue($val)) {
+                $value = $val;
                 break;
             }
         }
+        return $value;
+    }
 
-        if (!$found && $this->collection->hasAcceptAllTag()) {
-            if (!empty($supported)) {
-                $found = $supported[0];
-            }
+    /**
+     * @param array $supported
+     * @return null
+     */
+    private function guessAll(array $supported)
+    {
+        $value = null;
+        if ($this->collection->hasAcceptAllTag() && !empty($supported)) {
+            $value = $supported[0];
         }
-
-        return $found;
+        return $value;
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept\Entity;
+namespace SIAPI\Negotiation\Header\Accept\Value;
 
-use SIAPI\Negotiation\Header\Accept\Entity;
+use SIAPI\Negotiation\Header\Accept\Value;
 
 /**
  * Class Language
- * @package SIAPI\Negotiation\Header\Accept\Entity
+ * @package SIAPI\Negotiation\Header\Accept\Value
  */
-class Language extends Entity
+class Language extends Value
 {
     // Accept-Language = "Accept-Language" ":"
     //                   1#( language-range [ ";" "q" "=" qvalue ] )
