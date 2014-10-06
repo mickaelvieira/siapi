@@ -36,4 +36,16 @@ interface AcceptHeader
      * @return bool
      */
     public function hasValue($value);
+
+    /**
+     * @param array $values
+     * @return null|string
+     */
+    public function findFirstMatchingValue(array $values);
+
+    /**
+     * @param array $values
+     * @return null|string
+     */
+    public function findFirstMatchingSubValue(array $values);
 }

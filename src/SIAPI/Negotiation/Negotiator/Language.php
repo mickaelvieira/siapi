@@ -38,60 +38,14 @@ class Language implements Negotiator
     public function negotiate(array $supported)
     {
         $value = null;
-        foreach ($supported as $val) {
-            if ($value = $this->guessExact($val)) {
-                return $value;
-            }
-            if ($value = $this->guessGeneric($val)) {
-                return $value;
-            }
-        }
-
-        if ($value = $this->guessAll($supported)) {
+        if ($value = $this->collection->findFirstMatchingValue($supported)) {
             return $value;
         }
-
-        return $value;
-    }
-
-    /**
-     * @param string $val
-     * @return null|string
-     */
-    private function guessExact($val)
-    {
-        $value = null;
-        if ($this->collection->hasValue($val)) {
-            $value = $val;
+        if ($value = $this->collection->findFirstMatchingSubValue($supported)) {
+            return $value;
         }
-        return $value;
-    }
-
-    /**
-     * @param string $val
-     * @return null|string
-     */
-    private function guessGeneric($val)
-    {
-        $value = null;
-        $split = explode('-', $val);
-        if (count($split) === 2) {
-            if ($this->collection->hasTag($split[0]) && $this->collection->hasAcceptAllSubTag($split[0])) {
-                $value = $val;
-            }
-        }
-        return $value;
-    }
-
-    /**
-     * @param array $supported
-     * @return null
-     */
-    private function guessAll(array $supported)
-    {
-        $value = null;
-        if ($this->collection->hasAcceptAllTag() && !empty($supported)) {
-            $value = $supported[0];
+        if ($value = $this->collection->hasAcceptAllTag() && !empty($supported)) {
+            return $supported[0];
         }
         return $value;
     }

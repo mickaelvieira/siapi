@@ -86,6 +86,39 @@ class Values extends Collection implements AcceptHeader
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function findFirstMatchingValue(array $values)
+    {
+        $best = null;
+        foreach ($this->entities as $value) {
+            /** @var Value $value */
+            if (array_search($value->getValue(), $values, true) !== false) {
+                $best = $value->getValue();
+                break;
+            }
+        }
+        return $best;
+    }
+
+    /**
+     * @param array $values
+     * @return null
+     */
+    public function findFirstMatchingSubValue(array $values)
+    {
+        $value = null;
+        foreach ($values as $val) {
+            $range = new ValueRange($val, "/");
+            if ($this->hasTag($range->getValue()) && $this->hasAcceptAllSubTag($range->getValue())) {
+                $value = $val;
+                break;
+            }
+        }
+        return $value;
+    }
+
+    /**
      * @param string $headerValue
      * @return array
      */

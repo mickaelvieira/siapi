@@ -38,36 +38,11 @@ class Charset implements Negotiator
     public function negotiate(array $supported)
     {
         $value = null;
-        if ($value = $this->guessExact($supported)) {
+        if ($value = $this->collection->findFirstMatchingValue($supported)) {
             return $value;
         }
-        if ($value = $this->guessAll($supported)) {
-            return $value;
-        }
-        return $value;
-    }
-
-    private function guessExact(array $supported)
-    {
-        $value = null;
-        foreach ($supported as $val) {
-            if ($this->collection->hasValue($val)) {
-                $value = $val;
-                break;
-            }
-        }
-        return $value;
-    }
-
-    /**
-     * @param array $supported
-     * @return null
-     */
-    private function guessAll(array $supported)
-    {
-        $value = null;
         if ($this->collection->hasAcceptAllTag() && !empty($supported)) {
-            $value = $supported[0];
+            return $supported[0];
         }
         return $value;
     }
