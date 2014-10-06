@@ -2,7 +2,6 @@
 
 namespace SIAPI\Negotiation\Negotiator;
 
-use SIAPI\Negotiation\Strategy;
 use SIAPI\Negotiation\Negotiator;
 use SIAPI\Negotiation\AcceptHeader;
 
