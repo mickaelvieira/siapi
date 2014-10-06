@@ -40,10 +40,7 @@ class Media extends Value
      */
     public function hasAcceptAllTag()
     {
-        return (
-            $this->hasTag('*') &&
-            $this->hasSubTag('*')
-        );
+        return ($this->hasTag('*') && $this->hasSubTag('*'));
     }
 
     /**

@@ -4,7 +4,7 @@ namespace SIAPI\Negotiation\Header\Accept;
 
 use SIAPI\Negotiation\Header\AcceptHeader;
 
-abstract class Values extends Collection implements AcceptHeader
+class Values extends Collection implements AcceptHeader
 {
     /**
      * @var string
@@ -16,13 +16,12 @@ abstract class Values extends Collection implements AcceptHeader
      */
     protected $entityType;
 
-
     /**
      * @param string|array $headers
      */
     public function __construct($headers)
     {
-        $this->addEntities($headers);
+        $this->addValues($headers);
         $this->sort();
     }
 
@@ -90,7 +89,7 @@ abstract class Values extends Collection implements AcceptHeader
      * @param string $headerValue
      * @return array
      */
-    protected function addEntities($headerValue)
+    protected function addValues($headerValue)
     {
         $values = (is_string($headerValue) && !empty($headerValue)) ? explode(",", $headerValue) : [];
 
@@ -101,14 +100,13 @@ abstract class Values extends Collection implements AcceptHeader
                 $this->add($entity);
             }
         }
-        $this->addDefaultValue();
+        $this->addDefaultValueIfNoneIsDefined();
     }
-
 
     /**
      * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
      */
-    protected function addDefaultValue()
+    protected function addDefaultValueIfNoneIsDefined()
     {
         if (count($this->entities) === 0) {
             $valueRange = ValueFactory::build($this->entityType, $this->defaultValue);
@@ -116,35 +114,30 @@ abstract class Values extends Collection implements AcceptHeader
         }
     }
 
-    /**
-     * @return string
-     */
     protected function sort()
     {
-        usort(
-            $this->entities,
-            function ($ent1, $ent2) {
-
-                /**
-                 * @var Value $ent1
-                 * @var Value $ent2
-                 */
-
-                $qua1 = $ent1->getQuality();
-                $qua2 = $ent2->getQuality();
-
-                if ($qua1 === $qua2) {
-                    $result = ($ent1->getIndex() < $ent2->getIndex()) ? 1 : -1;
-                } elseif ($qua1 < $qua2) {
-                    $result = -1;
-                } else {
-                    $result = 1;
-                }
-                return $result;
-            }
-        );
-
+        usort($this->entities, array($this, 'sortCallback'));
         $this->entities = array_reverse($this->entities);
+    }
+
+    /**
+     * @param Value $val1
+     * @param Value $val2
+     * @return int
+     */
+    protected function sortCallback(Value $val1, Value $val2)
+    {
+        $qua1 = $val1->getQuality();
+        $qua2 = $val2->getQuality();
+
+        if ($qua1 === $qua2) {
+            $result = ($val1->getIndex() < $val2->getIndex()) ? 1 : -1;
+        } elseif ($qua1 < $qua2) {
+            $result = -1;
+        } else {
+            $result = 1;
+        }
+        return $result;
     }
 
     /**

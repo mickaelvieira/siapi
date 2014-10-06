@@ -2,6 +2,7 @@
 
 namespace SIAPI\Negotiation\Header\Accept\Values;
 
+use SIAPI\Negotiation\Header\Accept\Value;
 use SIAPI\Negotiation\Header\Accept\Values;
 
 /**
@@ -21,46 +22,30 @@ class Media extends Values
     protected $entityType = 'Media';
 
     /**
-     *
+     * {@inheritdoc}
      */
-    /**
-     * @return string
-     */
-    protected function sort()
+    protected function sortCallback(Value $val1, Value $val2)
     {
-        usort(
-            $this->entities,
-            function ($val1, $val2) {
+        $qua1 = $val1->getQuality();
+        $qua2 = $val2->getQuality();
 
-                /**
-                 * @var \SIAPI\Negotiation\Header\Accept\Value $val1
-                 * @var \SIAPI\Negotiation\Header\Accept\Value $val2
-                 */
+        if ($qua1 === $qua2) {
 
-                $qua1 = $val1->getQuality();
-                $qua2 = $val2->getQuality();
+            $len1 = strlen((string)$val1);
+            $len2 = strlen((string)$val2);
 
-                if ($qua1 === $qua2) {
-
-                    $len1 = strlen((string)$val1);
-                    $len2 = strlen((string)$val2);
-
-                    if ($len1 === $len2) {
-                        $result = ($val1->getIndex() < $val2->getIndex()) ? 1 : -1;
-                    } elseif ($len1 < $len2) {
-                        $result = -1;
-                    } else {
-                        $result = 1;
-                    }
-                } elseif ($qua1 < $qua2) {
-                    $result = -1;
-                } else {
-                    $result = 1;
-                }
-                return $result;
+            if ($len1 === $len2) {
+                $result = ($val1->getIndex() < $val2->getIndex()) ? 1 : -1;
+            } elseif ($len1 < $len2) {
+                $result = -1;
+            } else {
+                $result = 1;
             }
-        );
-
-        $this->entities = array_reverse($this->entities);
+        } elseif ($qua1 < $qua2) {
+            $result = -1;
+        } else {
+            $result = 1;
+        }
+        return $result;
     }
 }
