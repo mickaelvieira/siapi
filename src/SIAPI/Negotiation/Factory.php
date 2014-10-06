@@ -15,10 +15,12 @@ final class Factory
      */
     public static function build($name, $headerValue)
     {
-        $className  = self::getNegotiatorClassName($name);
-        $collection = self::getCollectionInstance($name, $headerValue);
+        $negotiatorClass   = self::getNegotiatorClassName($name);
+        $acceptHeaderClass = self::getAcceptHeaderClassName($name);
 
-        return new $className($collection);
+        $acceptHeader = new $acceptHeaderClass($headerValue);
+
+        return new $negotiatorClass($acceptHeader);
     }
 
     /**
@@ -32,13 +34,11 @@ final class Factory
 
     /**
      * @param string $name
-     * @param string $headerValue
      * @return \SIAPI\Negotiation\AcceptHeader
      */
-    private function getCollectionInstance($name, $headerValue)
+    private function getAcceptHeaderClassName($name)
     {
-        $className = __NAMESPACE__ . "\\AcceptHeader\\Values\\" . self::getClassName($name);
-        return new $className($headerValue);
+        return __NAMESPACE__ . "\\AcceptHeader\\Values\\" . self::getClassName($name);
     }
 
     /**
