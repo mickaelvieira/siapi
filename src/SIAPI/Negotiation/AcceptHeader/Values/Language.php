@@ -11,6 +11,11 @@ use SIAPI\Negotiation\AcceptHeader\Values;
 class Language extends Values
 {
     /**
+     * @var string
+     */
+    protected $valueRangeDelimiter = "-";
+
+    /**
      * {@inheritdoc}
      */
     protected $defaultValue = '*';

@@ -71,4 +71,22 @@ class CharsetSpec extends ObjectBehavior
         $this->beConstructedWith('utf-8, utf-7, *;q=0.3, iso-8859-1, unicode-1-1;q=0.8');
         $this->__toString()->shouldBeEqualTo('utf-8;q=1,utf-7;q=1,iso-8859-1;q=1,unicode-1-1;q=0.8,*;q=0.3');
     }
+
+    function it_should_return_the_first_matching_value()
+    {
+        $this->beConstructedWith('utf-8, utf-7, *;q=0.3, iso-8859-1, unicode-1-1;q=0.8');
+        $this->findFirstMatchingValue(['utf-8', 'utf-7'])->shouldBeEqualTo('utf-8');
+    }
+
+    function it_should_return_null_where_there_is_no_matching_value()
+    {
+        $this->beConstructedWith('utf-8, utf-7, *;q=0.3, unicode-1-1;q=0.8');
+        $this->findFirstMatchingValue(['iso-8859-1'])->shouldBeNull();
+    }
+
+    function it_should_return_always_return_null_when_search_a_sub_value()
+    {
+        $this->beConstructedWith('utf-8, utf-7, *;q=0.3, iso-8859-1, unicode-1-1;q=0.8');
+        $this->findFirstMatchingSubValue(['utf-8'])->shouldBeNull();
+    }
 }

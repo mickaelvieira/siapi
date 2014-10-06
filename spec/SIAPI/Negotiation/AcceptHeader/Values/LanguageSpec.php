@@ -59,4 +59,28 @@ class LanguageSpec extends ObjectBehavior
         $this->shouldHaveValue('fr-CH');
         $this->shouldNotHaveValue('en');
     }
+
+    function it_should_return_the_first_matching_value()
+    {
+        $this->beConstructedWith('es-ES;q=0.7, es;q=0.6, fr;q=1.0, *;q=0.3, fr-CH');
+        $this->findFirstMatchingValue(['fr-CH', 'fr-FR'])->shouldBeEqualTo('fr-CH');
+    }
+
+    function it_should_return_null_where_there_is_no_matching_value()
+    {
+        $this->beConstructedWith('es-ES;q=0.7, es;q=0.6, fr;q=1.0, *;q=0.3, fr-CH');
+        $this->findFirstMatchingValue(['de'])->shouldBeNull();
+    }
+
+    function it_should_return_the_first_matching_sub_value()
+    {
+        $this->beConstructedWith('es-ES;q=0.7, es; q=0.6 ,fr; q=1.0, *;q=0.3, fr-CH');
+        $this->findFirstMatchingSubValue(['fr-FR', 'fr-CH'])->shouldBeEqualTo('fr-FR');
+    }
+
+    function it_should_return_null_where_there_is_no_matching_sub_value()
+    {
+        $this->beConstructedWith('es-ES;q=0.7, es; q=0.6 ,fr; q=1.0, *;q=0.3, fr-CH');
+        $this->findFirstMatchingSubValue(['de', 'da'])->shouldBeNull();
+    }
 }

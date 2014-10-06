@@ -39,6 +39,7 @@ class CharsetSpec extends ObjectBehavior
         $supported = ['iso-8859-5', 'iso-8859-1', 'unicode-1-1'];
 
         $collection->findFirstMatchingValue($supported)->willReturn(null);
+        $collection->findFirstMatchingSubValue($supported)->willReturn(null);
         $collection->hasAcceptAllTag()->willReturn(false);
 
         $this->negotiate($supported)->shouldReturn(null);
@@ -49,6 +50,7 @@ class CharsetSpec extends ObjectBehavior
         $supported = ['utf-8', 'utf-7', 'utf-16'];
 
         $collection->findFirstMatchingValue($supported)->willReturn(null);
+        $collection->findFirstMatchingSubValue($supported)->willReturn(null);
         $collection->hasAcceptAllTag()->willReturn(true);
 
         $this->negotiate($supported)->shouldReturn('utf-8');

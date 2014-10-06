@@ -8,7 +8,7 @@ namespace SIAPI\Negotiation;
  * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec12
  * - Server-driven Negotiation
  * - Agent-driven Negotiation
- * @TODO this is the server driven negotiation, we should change the name
+ *
  * @method media
  * @method charset
  * @method language

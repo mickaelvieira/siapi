@@ -41,6 +41,9 @@ class Charset implements Negotiator
         if ($value = $this->collection->findFirstMatchingValue($supported)) {
             return $value;
         }
+        if ($value = $this->collection->findFirstMatchingSubValue($supported)) {
+            return $value;
+        }
         if ($this->collection->hasAcceptAllTag() && !empty($supported)) {
             return $supported[0];
         }

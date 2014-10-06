@@ -9,6 +9,11 @@ class Values extends Collection implements AcceptHeader
     /**
      * @var string
      */
+    protected $valueRangeDelimiter = "";
+
+    /**
+     * @var string
+     */
     protected $defaultValue;
 
     /**
@@ -109,7 +114,7 @@ class Values extends Collection implements AcceptHeader
     {
         $value = null;
         foreach ($values as $val) {
-            $range = new ValueRange($val, "/");
+            $range = new ValueRange($val, $this->valueRangeDelimiter);
             if ($this->hasTag($range->getValue()) && $this->hasAcceptAllSubTag($range->getValue())) {
                 $value = $val;
                 break;

@@ -44,7 +44,7 @@ class Language implements Negotiator
         if ($value = $this->collection->findFirstMatchingSubValue($supported)) {
             return $value;
         }
-        if ($value = $this->collection->hasAcceptAllTag() && !empty($supported)) {
+        if ($this->collection->hasAcceptAllTag() && !empty($supported)) {
             return $supported[0];
         }
         return $value;
