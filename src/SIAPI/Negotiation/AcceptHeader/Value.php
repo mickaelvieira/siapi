@@ -1,11 +1,11 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept;
+namespace SIAPI\Negotiation\AcceptHeader;
 
 abstract class Value extends Entity
 {
     /**
-     * @var \SIAPI\Negotiation\Header\Accept\ValueRange
+     * @var \SIAPI\Negotiation\AcceptHeader\ValueRange
      */
     protected $valueRange;
 

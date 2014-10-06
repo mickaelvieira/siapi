@@ -1,17 +1,17 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept;
+namespace SIAPI\Negotiation\AcceptHeader;
 
 /**
  * Class Factory
- * @package SIAPI\Negotiation\Header\Accept
+ * @package SIAPI\Negotiation\AcceptHeader
  */
 class ValueFactory
 {
     /**
      * @param string $name
      * @param string $value
-     * @return \SIAPI\Negotiation\Header\Accept\Value
+     * @return \SIAPI\Negotiation\AcceptHeader\Value
      */
     public static function build($name, $value)
     {

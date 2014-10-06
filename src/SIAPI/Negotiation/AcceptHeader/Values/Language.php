@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept\Values;
+namespace SIAPI\Negotiation\AcceptHeader\Values;
 
-use SIAPI\Negotiation\Header\Accept\Values;
+use SIAPI\Negotiation\AcceptHeader\Values;
 
 /**
  * Class Language
- * @package SIAPI\Negotiation\Header\Accept\Collection
+ * @package SIAPI\Negotiation\AcceptHeader\Collection
  */
 class Language extends Values
 {

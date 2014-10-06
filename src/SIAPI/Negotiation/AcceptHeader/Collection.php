@@ -1,10 +1,10 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept;
+namespace SIAPI\Negotiation\AcceptHeader;
 
 /**
  * Class Collection
- * @package SIAPI\Negotiation\Header\Accept
+ * @package SIAPI\Negotiation\AcceptHeader
  */
 class Collection implements \IteratorAggregate
 {
@@ -14,7 +14,7 @@ class Collection implements \IteratorAggregate
     protected $entities = [];
 
     /**
-     * @param \SIAPI\Negotiation\Header\Accept\Entity $entity
+     * @param \SIAPI\Negotiation\AcceptHeader\Entity $entity
      */
     protected function add(Entity $entity)
     {

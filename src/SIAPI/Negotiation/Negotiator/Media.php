@@ -4,7 +4,7 @@ namespace SIAPI\Negotiation\Negotiator;
 
 use SIAPI\Negotiation\Strategy;
 use SIAPI\Negotiation\Negotiator;
-use SIAPI\Negotiation\Header\AcceptHeader;
+use SIAPI\Negotiation\AcceptHeader;
 
 /**
  * Class Media
@@ -18,7 +18,7 @@ class Media implements Negotiator
     private $strategy;
 
     /**
-     * @var \SIAPI\Negotiation\Header\AcceptHeader;
+     * @var \SIAPI\Negotiation\AcceptHeader;
      */
     private $collection;
 

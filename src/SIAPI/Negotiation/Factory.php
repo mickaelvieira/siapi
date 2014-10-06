@@ -45,11 +45,11 @@ final class Factory
     /**
      * @param string $name
      * @param string $headerValue
-     * @return \SIAPI\Negotiation\Header\AcceptHeader
+     * @return \SIAPI\Negotiation\AcceptHeader
      */
     private function getCollectionInstance($name, $headerValue)
     {
-        $className = __NAMESPACE__ . "\\Header\\Accept\\Values\\" . self::getClassName($name);
+        $className = __NAMESPACE__ . "\\AcceptHeader\\Values\\" . self::getClassName($name);
         return new $className($headerValue);
     }
 

@@ -12,7 +12,7 @@ use Prophecy\Argument;
 class CharsetSpec extends ObjectBehavior
 {
     /**
-     * @param \SIAPI\Negotiation\Header\Accept\Values\Charset $collection
+     * @param \SIAPI\Negotiation\AcceptHeader\Values\Charset $collection
      * @param \SIAPI\Negotiation\Strategy\Charset $strategy
      */
     function let($collection, $strategy)

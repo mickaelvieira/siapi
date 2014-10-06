@@ -2,7 +2,7 @@
 
 namespace SIAPI\Negotiation;
 
-use SIAPI\Negotiation\Header\Accept\Collection;
+use SIAPI\Negotiation\AcceptHeader\Collection;
 
 /**
  * Class Strategy
@@ -11,12 +11,12 @@ use SIAPI\Negotiation\Header\Accept\Collection;
 abstract class Strategy
 {
     /**
-     * @var \SIAPI\Negotiation\Header\AcceptHeader
+     * @var \SIAPI\Negotiation\AcceptHeader
      */
     protected $acceptHeader;
 
     /**
-     * @param \SIAPI\Negotiation\Header\AcceptHeader $acceptHeader
+     * @param \SIAPI\Negotiation\AcceptHeader $acceptHeader
      */
     /*public function __construct(AcceptHeader $acceptHeader)
     {
@@ -24,8 +24,8 @@ abstract class Strategy
     }*/
 
     /**
-     * @return \SIAPI\Negotiation\Header\Accept\Collection
-     * @param \SIAPI\Negotiation\Header\Accept\Collection
+     * @return \SIAPI\Negotiation\AcceptHeader\Collection
+     * @param \SIAPI\Negotiation\AcceptHeader\Collection
      */
     abstract public function select(Collection $collection);
 /*

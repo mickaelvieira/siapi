@@ -1,10 +1,10 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept;
+namespace SIAPI\Negotiation\AcceptHeader;
 
 /**
  * Class Value
- * @package SIAPI\Negotiation\Header\Accept
+ * @package SIAPI\Negotiation\AcceptHeader
  */
 class Entity
 {

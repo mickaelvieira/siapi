@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mickael
- * Date: 16/09/14
- * Time: 07:56
- */
 
-namespace SIAPI\Negotiation\Header;
+namespace SIAPI\Negotiation;
 
 /**
  * Interface AcceptHeader
- * @package SIAPI\Negotiation\Header
+ * @package SIAPI\Negotiation\AcceptHeader
  */
 interface AcceptHeader
 {

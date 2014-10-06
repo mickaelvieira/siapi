@@ -12,7 +12,7 @@ use Prophecy\Argument;
 class LanguageSpec extends ObjectBehavior
 {
     /**
-     * @param \SIAPI\Negotiation\Header\Accept\Values\Language $collection
+     * @param \SIAPI\Negotiation\AcceptHeader\Values\Language $collection
      * @param \SIAPI\Negotiation\Strategy\Language $strategy
      */
     function let($collection, $strategy)

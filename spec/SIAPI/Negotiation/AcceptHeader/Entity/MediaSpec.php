@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\SIAPI\Negotiation\Header\Accept\Value;
+namespace spec\SIAPI\Negotiation\AcceptHeader\Value;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
  * Class MediaSpec
- * @package spec\SIAPI\Negotiation\Header\Accept\Value
+ * @package spec\SIAPI\Negotiation\AcceptHeader\Value
  */
 class MediaSpec extends ObjectBehavior
 {
@@ -23,7 +23,7 @@ class MediaSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->beConstructedWith("test");
-        $this->shouldHaveType('SIAPI\Negotiation\Header\Accept\Value\Media');
+        $this->shouldHaveType('SIAPI\Negotiation\AcceptHeader\Value\Media');
     }
 
     function it_should_return_an_empty_string_when_input_is_empty()

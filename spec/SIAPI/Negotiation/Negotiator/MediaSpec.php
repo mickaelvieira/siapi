@@ -12,7 +12,7 @@ use Prophecy\Argument;
 class MediaSpec extends ObjectBehavior
 {
     /**
-     * @param \SIAPI\Negotiation\Header\Accept\Values\Media $collection
+     * @param \SIAPI\Negotiation\AcceptHeader\Values\Media $collection
      * @param \SIAPI\Negotiation\Strategy\Media $strategy
      */
     function let($collection, $strategy)

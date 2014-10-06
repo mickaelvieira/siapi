@@ -3,7 +3,7 @@
 namespace SIAPI\Negotiation\Strategy;
 
 use SIAPI\Negotiation\Strategy;
-use SIAPI\Negotiation\Header\Accept\Collection;
+use SIAPI\Negotiation\AcceptHeader\Collection;
 
 /**
  * Class Language

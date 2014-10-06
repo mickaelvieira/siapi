@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept\Value;
+namespace SIAPI\Negotiation\AcceptHeader\Value;
 
-use SIAPI\Negotiation\Header\Accept\Value;
+use SIAPI\Negotiation\AcceptHeader\Value;
 
 /**
  * Class Charset
- * @package SIAPI\Negotiation\Header\Accept\Value
+ * @package SIAPI\Negotiation\AcceptHeader\Value
  */
 class Charset extends Value
 {

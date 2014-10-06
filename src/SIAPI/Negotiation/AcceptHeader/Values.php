@@ -1,8 +1,8 @@
 <?php
 
-namespace SIAPI\Negotiation\Header\Accept;
+namespace SIAPI\Negotiation\AcceptHeader;
 
-use SIAPI\Negotiation\Header\AcceptHeader;
+use SIAPI\Negotiation\AcceptHeader;
 
 class Values extends Collection implements AcceptHeader
 {

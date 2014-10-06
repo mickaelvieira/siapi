@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\SIAPI\Negotiation\Header\Accept;
+namespace spec\SIAPI\Negotiation\AcceptHeader;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
  * Class ValueRangeSpec
- * @package spec\SIAPI\Negotiation\Header\Accept
+ * @package spec\SIAPI\Negotiation\AcceptHeader
  */
 class ValueRangeSpec extends ObjectBehavior
 {
