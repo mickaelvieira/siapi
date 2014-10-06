@@ -16,7 +16,7 @@ class Language extends Value
     /**
      * @var string
      */
-    protected $valueRangeDelimiter = "-";
+    protected $delimiter = "-";
 
     /**
      * {@inheritdoc}

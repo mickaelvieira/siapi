@@ -152,7 +152,7 @@ class Values extends Collection implements AcceptHeader
         }
     }
 
-    protected function sort()
+    private function sort()
     {
         usort($this->entities, array($this, 'sortCallback'));
         $this->entities = array_reverse($this->entities);

@@ -23,7 +23,7 @@ class Media extends Value
     /**
      * @var string
      */
-    protected $valueRangeDelimiter = "/";
+    protected $delimiter = "/";
 
     /**
      * @var array

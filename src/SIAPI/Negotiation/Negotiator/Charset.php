@@ -11,7 +11,6 @@ use SIAPI\Negotiation\AcceptHeader;
  */
 class Charset implements Negotiator
 {
-
     /**
      * @var \SIAPI\Negotiation\AcceptHeader;
      */

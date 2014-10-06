@@ -12,7 +12,7 @@ abstract class Value extends Entity
     /**
      * @var string
      */
-    protected $valueRangeDelimiter = "";
+    protected $delimiter = "";
 
     /**
      * @var float
@@ -28,7 +28,7 @@ abstract class Value extends Entity
         $values = array_shift($pieces);
 
         if ($values) {
-            $this->valueRange = new ValueRange($values, $this->valueRangeDelimiter);
+            $this->valueRange = new ValueRange($values, $this->delimiter);
             $this->addParams($pieces);
         }
     }
