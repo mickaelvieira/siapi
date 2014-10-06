@@ -4,7 +4,7 @@ namespace spec\SIAPI\Negotiation\Negotiator;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Prophecy\Prophet;
+
 /**
  * Class MediaSpec
  * @package spec\SIAPI\Negotiation\Negotiator
@@ -13,11 +13,10 @@ class MediaSpec extends ObjectBehavior
 {
     /**
      * @param \SIAPI\Negotiation\AcceptHeader\Values\Media $collection
-     * @param \SIAPI\Negotiation\Strategy\Media $strategy
      */
-    function let($collection, $strategy)
+    function let($collection)
     {
-        $this->beConstructedWith($collection, $strategy);
+        $this->beConstructedWith($collection);
     }
 
     function it_is_initializable()

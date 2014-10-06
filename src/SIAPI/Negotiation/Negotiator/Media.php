@@ -13,23 +13,16 @@ use SIAPI\Negotiation\AcceptHeader;
 class Media implements Negotiator
 {
     /**
-     * @var \SIAPI\Negotiation\Strategy
-     */
-    private $strategy;
-
-    /**
      * @var \SIAPI\Negotiation\AcceptHeader;
      */
-    private $collection;
+    private $acceptHeader;
 
     /**
-     * @param AcceptHeader $collection
-     * @param Strategy $strategy
+     * @param AcceptHeader $acceptHeader
      */
-    public function __construct(AcceptHeader $collection, Strategy $strategy)
+    public function __construct(AcceptHeader $acceptHeader)
     {
-        $this->strategy   = $strategy;
-        $this->collection = $collection;
+        $this->acceptHeader = $acceptHeader;
     }
 
     /**
@@ -38,13 +31,13 @@ class Media implements Negotiator
     public function negotiate(array $supported)
     {
         $value = null;
-        if ($value = $this->collection->findFirstMatchingValue($supported)) {
+        if ($value = $this->acceptHeader->findFirstMatchingValue($supported)) {
             return $value;
         }
-        if ($value = $this->collection->findFirstMatchingSubValue($supported)) {
+        if ($value = $this->acceptHeader->findFirstMatchingSubValue($supported)) {
             return $value;
         }
-        if ($this->collection->hasAcceptAllTag() && !empty($supported)) {
+        if ($this->acceptHeader->hasAcceptAllTag() && !empty($supported)) {
             return $supported[0];
         }
         return $value;

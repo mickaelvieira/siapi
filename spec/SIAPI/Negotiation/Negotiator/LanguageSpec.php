@@ -13,11 +13,10 @@ class LanguageSpec extends ObjectBehavior
 {
     /**
      * @param \SIAPI\Negotiation\AcceptHeader\Values\Language $collection
-     * @param \SIAPI\Negotiation\Strategy\Language $strategy
      */
-    function let($collection, $strategy)
+    function let($collection)
     {
-        $this->beConstructedWith($collection, $strategy);
+        $this->beConstructedWith($collection);
     }
 
     function it_is_initializable($collection)

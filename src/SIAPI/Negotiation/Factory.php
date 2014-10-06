@@ -16,11 +16,9 @@ final class Factory
     public static function build($name, $headerValue)
     {
         $className  = self::getNegotiatorClassName($name);
-
         $collection = self::getCollectionInstance($name, $headerValue);
-        $strategy   = self::getStrategyInstance($name);
 
-        return new $className($collection, $strategy);
+        return new $className($collection);
     }
 
     /**
@@ -30,16 +28,6 @@ final class Factory
     private function getNegotiatorClassName($name)
     {
         return __NAMESPACE__ . "\\Negotiator\\" . self::getClassName($name);
-    }
-
-    /**
-     * @param $name
-     * @return \SIAPI\Negotiation\Strategy
-     */
-    private function getStrategyInstance($name)
-    {
-        $className = __NAMESPACE__ . "\\Strategy\\" . self::getClassName($name);
-        return new $className();
     }
 
     /**
