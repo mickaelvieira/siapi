@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Collection\JSON;
+namespace SIAPI\JsonCollection;
 
-use SIAPI\Collection\JsonConvertible;
+use SIAPI\JsonCollection;
 
 /**
  * Class Template
- * @package SIAPI\Collection\JSON
+ * @package SIAPI\JsonJsonCollection
  * @link http://amundsen.com/media-types/collection/format/
  * @link http://code.ge/media-types/collection-next-json/
  */
@@ -19,19 +19,19 @@ class Template extends JsonConvertible
     private $data = [];
 
     /**
-     * @var \SIAPI\Collection\JSON\Method
+     * @var \SIAPI\JsonCollection\Method
      * @link http://code.ge/media-types/collection-next-json/#object-method
      */
     private $method;
 
     /**
-     * @var \SIAPI\Collection\JSON\Enctype
+     * @var \SIAPI\JsonCollection\Enctype
      * @link http://code.ge/media-types/collection-next-json/#object-enctype
      */
     private $enctype;
 
     /**
-     * @param \SIAPI\Collection\JSON\Data $data
+     * @param \SIAPI\JsonCollection\Data $data
      */
     public function addData(Data $data)
     {
@@ -39,7 +39,7 @@ class Template extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Method $method
+     * @param \SIAPI\JsonCollection\Method $method
      */
     public function setMethod(Method $method)
     {
@@ -47,7 +47,7 @@ class Template extends JsonConvertible
     }
 
     /**
-     * @return \SIAPI\Collection\JSON\Method
+     * @return \SIAPI\JsonCollection\Method
      */
     public function getMethod()
     {
@@ -55,7 +55,7 @@ class Template extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Enctype $enctype
+     * @param \SIAPI\JsonCollection\Enctype $enctype
      */
     public function setEnctype(Enctype $enctype)
     {
@@ -63,7 +63,7 @@ class Template extends JsonConvertible
     }
 
     /**
-     * @return \SIAPI\Collection\JSON\Enctype
+     * @return \SIAPI\JsonCollection\Enctype
      */
     public function getEnctype()
     {

@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Collection\JSON;
+namespace SIAPI\JsonCollection;
 
-use SIAPI\Collection\JsonConvertible;
+use SIAPI\JsonCollection;
 
 /**
  * Class Item
- * @package SIAPI\Collection\JSON
+ * @package SIAPI\JsonJsonCollection
  * @link http://amundsen.com/media-types/collection/format/
  * @link http://code.ge/media-types/collection-next-json/
  */
@@ -47,7 +47,7 @@ class Item extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Data $data
+     * @param \SIAPI\JsonCollection\Data $data
      */
     public function addData(Data $data)
     {
@@ -55,7 +55,7 @@ class Item extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Link $link
+     * @param \SIAPI\JsonCollection\Link $link
      */
     public function addLink(Link $link)
     {

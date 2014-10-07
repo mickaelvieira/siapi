@@ -3,7 +3,7 @@
 namespace SIAPI\Negotiation\AcceptHeader;
 
 /**
- * Class Collection
+ * Class JsonCollection
  * @package SIAPI\Negotiation\AcceptHeader
  */
 class Collection implements \IteratorAggregate

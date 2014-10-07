@@ -1,28 +1,22 @@
 <?php
 
-namespace SIAPI\Collection\JSON;
+namespace SIAPI\JsonCollection;
 
-use SIAPI\Collection\JsonConvertible;
+use SIAPI\JsonCollection;
 
 /**
- * Class Message
- * @package SIAPI\Collection\JSON
+ * Class Status
+ * @package SIAPI\JsonJsonCollection
  * @link http://amundsen.com/media-types/collection/format/
  * @link http://code.ge/media-types/collection-next-json/
  */
-class Message extends JsonConvertible
+class Status extends JsonConvertible
 {
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-code
      */
     private $code;
-
-    /**
-     * @var string
-     * @link http://amundsen.com/media-types/collection/format/#properties-name
-     */
-    private $name;
 
     /**
      * @var string
@@ -60,22 +54,6 @@ class Message extends JsonConvertible
     public function getMessage()
     {
         return $this->message;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = (string)$name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

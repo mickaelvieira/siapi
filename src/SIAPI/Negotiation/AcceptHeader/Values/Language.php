@@ -6,7 +6,7 @@ use SIAPI\Negotiation\AcceptHeader\Values;
 
 /**
  * Class Language
- * @package SIAPI\Negotiation\AcceptHeader\Collection
+ * @package SIAPI\Negotiation\AcceptHeader\JsonCollection
  */
 class Language extends Values
 {

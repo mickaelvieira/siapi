@@ -1,16 +1,16 @@
 <?php
 
-namespace SIAPI\Collection\JSON;
+namespace SIAPI\JsonCollection;
 
-use SIAPI\Collection\JsonConvertible;
+use SIAPI\JsonCollection;
 
 /**
- * Class Query
- * @package SIAPI\Collection\JSON
+ * Class Link
+ * @package SIAPI\JsonJsonCollection
  * @link http://amundsen.com/media-types/collection/format/
  * @link http://code.ge/media-types/collection-next-json/
  */
-class Query extends JsonConvertible
+class Link extends JsonConvertible
 {
     /**
      * @var string
@@ -26,9 +26,21 @@ class Query extends JsonConvertible
 
     /**
      * @var string
+     * @link http://code.ge/media-types/collection-next-json/#property-type
+     */
+    private $type;
+
+    /**
+     * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-name
      */
     private $name;
+
+    /**
+     * @var string
+     * @link http://amundsen.com/media-types/collection/format/#properties-render
+     */
+    private $render;
 
     /**
      * @var string
@@ -37,17 +49,11 @@ class Query extends JsonConvertible
     private $prompt;
 
     /**
-     * @var array
-     * @link http://amundsen.com/media-types/collection/format/#arrays-data
-     */
-    private $data = [];
-
-    /**
      * @param string $href
      */
     public function setHref($href)
     {
-        $this->href = $href;
+        $this->href = (string)$href;
     }
 
     /**
@@ -59,11 +65,43 @@ class Query extends JsonConvertible
     }
 
     /**
+     * @param string $rel
+     */
+    public function setRel($rel)
+    {
+        $this->rel = (string)$rel;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRel()
+    {
+        return $this->rel;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = (string)$type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
      * @param string $name
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string)$name;
     }
 
     /**
@@ -79,7 +117,7 @@ class Query extends JsonConvertible
      */
     public function setPrompt($prompt)
     {
-        $this->prompt = $prompt;
+        $this->prompt = (string)$prompt;
     }
 
     /**
@@ -91,27 +129,19 @@ class Query extends JsonConvertible
     }
 
     /**
-     * @param string $rel
+     * @param string $render
      */
-    public function setRel($rel)
+    public function setRender($render)
     {
-        $this->rel = $rel;
+        $this->render = (string)$render;
     }
 
     /**
      * @return string
      */
-    public function getRel()
+    public function getRender()
     {
-        return $this->rel;
-    }
-
-    /**
-     * @param \SIAPI\Collection\JSON\Data $data
-     */
-    public function addData(Data $data)
-    {
-        array_push($this->data, $data);
+        return $this->render;
     }
 
     /**

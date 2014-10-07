@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Collection\JSON;
+namespace SIAPI\JsonCollection;
 
-use SIAPI\Collection\JsonConvertible;
+use SIAPI\JsonCollection;
 
 /**
- * Class Collection
- * @package SIAPI\Collection\JSON
+ * Class JsonCollection
+ * @package SIAPI\JsonJsonCollection
  * @link http://amundsen.com/media-types/collection/format/
  * @link http://code.ge/media-types/collection-next-json/
  */
@@ -42,19 +42,19 @@ class Collection extends JsonConvertible
     private $queries = [];
 
     /**
-     * @var \SIAPI\Collection\JSON\Error
+     * @var \SIAPI\JsonCollection\Error
      * @link http://amundsen.com/media-types/collection/format/#objects-error
      */
     private $error;
 
     /**
-     * @var \SIAPI\Collection\JSON\Status
+     * @var \SIAPI\JsonCollection\Status
      * @link http://code.ge/media-types/collection-next-json/#object-status
      */
     private $status;
 
     /**
-     * @var \SIAPI\Collection\JSON\Template
+     * @var \SIAPI\JsonCollection\Template
      * @link http://amundsen.com/media-types/collection/format/#ojects-template
      */
     private $template;
@@ -76,7 +76,7 @@ class Collection extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Link $link
+     * @param \SIAPI\JsonCollection\Link $link
      */
     public function addLink(Link $link)
     {
@@ -84,7 +84,7 @@ class Collection extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Item $item
+     * @param \SIAPI\JsonCollection\Item $item
      */
     public function addItem(Item $item)
     {
@@ -92,7 +92,7 @@ class Collection extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Query $query
+     * @param \SIAPI\JsonCollection\Query $query
      */
     public function addQuery(Query $query)
     {
@@ -100,7 +100,7 @@ class Collection extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Error $error
+     * @param \SIAPI\JsonCollection\Error $error
      */
     public function setError(Error $error)
     {
@@ -108,7 +108,7 @@ class Collection extends JsonConvertible
     }
 
     /**
-     * @return \SIAPI\Collection\JSON\Error
+     * @return \SIAPI\JsonCollection\Error
      */
     public function getError()
     {
@@ -116,7 +116,7 @@ class Collection extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Status $status
+     * @param \SIAPI\JsonCollection\Status $status
      */
     public function setStatus($status)
     {
@@ -124,7 +124,7 @@ class Collection extends JsonConvertible
     }
 
     /**
-     * @return \SIAPI\Collection\JSON\Status
+     * @return \SIAPI\JsonCollection\Status
      */
     public function getStatus()
     {
@@ -132,7 +132,7 @@ class Collection extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Template $template
+     * @param \SIAPI\JsonCollection\Template $template
      */
     public function setTemplate(Template $template)
     {
@@ -140,7 +140,7 @@ class Collection extends JsonConvertible
     }
 
     /**
-     * @return \SIAPI\Collection\JSON\Template
+     * @return \SIAPI\JsonCollection\Template
      */
     public function getTemplate()
     {

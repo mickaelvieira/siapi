@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\SIAPI\Collection\JSON;
+namespace spec\SIAPI\JsonCollection;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
  * Class CollectionSpec
- * @package spec\SIAPI\Collection\JSON
+ * @package spec\SIAPI\JsonCollection
  */
 class CollectionSpec extends ObjectBehavior
 {
@@ -28,7 +28,7 @@ class CollectionSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('SIAPI\Collection\JSON\Collection');
+        $this->shouldHaveType('SIAPI\JsonCollection\Collection');
     }
 
     function it_should_have_the_version_number()
@@ -41,7 +41,7 @@ class CollectionSpec extends ObjectBehavior
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Link $link
+     * @param \SIAPI\JsonCollection\Link $link
      */
     function it_should_be_able_to_a_link_object($link)
     {

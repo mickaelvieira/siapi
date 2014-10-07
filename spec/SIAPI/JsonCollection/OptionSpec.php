@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\SIAPI\Collection\JSON;
+namespace spec\SIAPI\JsonCollection;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
  * Class OptionSpec
- * @package spec\SIAPI\Collection\JSON
+ * @package spec\SIAPI\JsonCollection
  */
 class OptionSpec extends ObjectBehavior
 {
@@ -28,7 +28,7 @@ class OptionSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('SIAPI\Collection\JSON\Option');
+        $this->shouldHaveType('SIAPI\JsonCollection\Option');
     }
 
     function it_should_be_return_an_array_representation()

@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Collection;
+namespace SIAPI\JsonCollection;
 
 use JsonSerializable;
 
 /**
  * Class JsonConvertible
- * @package SIAPI\Collection
+ * @package SIAPI\JsonCollection
  */
 abstract class JsonConvertible implements JsonSerializable
 {

@@ -7,7 +7,7 @@ use SIAPI\Negotiation\AcceptHeader\Values;
 
 /**
  * Class Media
- * @package SIAPI\Negotiation\AcceptHeader\Collection
+ * @package SIAPI\Negotiation\AcceptHeader\JsonCollection
  */
 class Media extends Values
 {

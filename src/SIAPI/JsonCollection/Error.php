@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\Collection\JSON;
+namespace SIAPI\JsonCollection;
 
-use SIAPI\Collection\JsonConvertible;
+use SIAPI\JsonCollection;
 
 /**
  * Class Error
- * @package SIAPI\Collection\JSON
+ * @package SIAPI\JsonJsonCollection
  * @link http://amundsen.com/media-types/collection/format/
  * @link http://code.ge/media-types/collection-next-json/
  */
@@ -85,7 +85,7 @@ class Error extends JsonConvertible
     }
 
     /**
-     * @param \SIAPI\Collection\JSON\Message $message
+     * @param \SIAPI\JsonCollection\Message $message
      */
     public function addMessage(Message $message)
     {
