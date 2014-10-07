@@ -12,11 +12,6 @@ use SIAPI\Negotiation\AcceptHeader\Values;
 class Media extends Values
 {
     /**
-     * @var string
-     */
-    protected $valueRangeDelimiter = "/";
-
-    /**
      * {@inheritdoc}
      */
     protected $defaultValue = '*/*;q=1';

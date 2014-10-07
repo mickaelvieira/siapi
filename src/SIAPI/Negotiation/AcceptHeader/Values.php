@@ -13,11 +13,6 @@ abstract class Values extends Collection implements AcceptHeader
     /**
      * @var string
      */
-    protected $valueRangeDelimiter = "";
-
-    /**
-     * @var string
-     */
     protected $defaultValue;
 
     /**
