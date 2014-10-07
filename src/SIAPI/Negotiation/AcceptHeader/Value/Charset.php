@@ -10,14 +10,6 @@ use SIAPI\Negotiation\AcceptHeader\Value;
  */
 class Charset extends Value
 {
-    // Accept-Charset = "Accept-Charset" ":"
-    //                  1#( ( charset | "*" )[ ";" "q" "=" qvalue ] )
-
-    /**
-     * @var string
-     */
-    public static $delimiter = "";
-
     /**
      * {@inheritdoc}
      */

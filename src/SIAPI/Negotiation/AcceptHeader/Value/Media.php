@@ -10,16 +10,6 @@ use SIAPI\Negotiation\AcceptHeader\Value;
  */
 class Media extends Value
 {
-    // Accept         = "Accept" ":"
-    //                  #( media-range [ accept-params ] )
-    //
-    // media-range    = ( "*/*"
-    //                  | ( type "/" "*" )
-    //                  | ( type "/" subtype )
-    //                  ) *( ";" parameter )
-    // accept-params  = ";" "q" "=" qvalue *( accept-extension )
-    // accept-extension = ";" token [ "=" ( token | quoted-string ) ]
-
     /**
      * @var string
      */

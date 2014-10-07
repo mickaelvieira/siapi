@@ -10,9 +10,6 @@ use SIAPI\Negotiation\AcceptHeader\Value;
  */
 class Language extends Value
 {
-    // Accept-Language = "Accept-Language" ":"
-    //                   1#( language-range [ ";" "q" "=" qvalue ] )
-    //                   language-range  = ( ( 1*8ALPHA *( "-" 1*8ALPHA ) ) | "*" )
     /**
      * @var string
      */
