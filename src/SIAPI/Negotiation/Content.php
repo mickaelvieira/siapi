@@ -20,28 +20,36 @@ class Content implements Negotiation
     /**
      * {@inheritdoc}
      */
-    public function getMedia(array $arguments)
+    public function getMedia(array $supported)
     {
-        $negotiator = $this->getNegotiator('media');
-        return $negotiator->negotiate($arguments[0]);
+        return $this->negotiate('media', $supported);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getLanguage(array $arguments)
+    public function getLanguage(array $supported)
     {
-        $negotiator = $this->getNegotiator('language');
-        return $negotiator->negotiate($arguments[0]);
+        return $this->negotiate('language', $supported);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCharset(array $arguments)
+    public function getCharset(array $supported)
     {
-        $negotiator = $this->getNegotiator('charset');
-        return $negotiator->negotiate($arguments[0]);
+        return $this->negotiate('charset', $supported);
+    }
+
+    /**
+     * @param string $name
+     * @param array $supported
+     * @return null|string
+     */
+    private function negotiate($name, array $supported)
+    {
+        $negotiator = $this->getNegotiator($name);
+        return $negotiator->negotiate($supported);
     }
 
     /**

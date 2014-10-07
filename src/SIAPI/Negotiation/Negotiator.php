@@ -11,6 +11,7 @@ interface Negotiator
 {
     /**
      * @param array $supported
+     * @return string|null
      */
     public function negotiate(array $supported);
 }

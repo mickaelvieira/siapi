@@ -26,5 +26,4 @@ interface Negotiation
      * @return null|string
      */
     public function getCharset(array $supported);
-
 }
