@@ -26,7 +26,7 @@ abstract class Values extends Collection implements AcceptHeader
     protected $entityType;
 
     /**
-     * @param string|array $headers
+     * @param string $headers
      */
     public function __construct($headers)
     {
@@ -59,7 +59,8 @@ abstract class Values extends Collection implements AcceptHeader
     }
 
     /**
-     * {@inheritdoc}
+     * @param string $tag
+     * @return bool
      */
     public function hasTag($tag)
     {
@@ -71,7 +72,8 @@ abstract class Values extends Collection implements AcceptHeader
     }
 
     /**
-     * {@inheritdoc}
+     * @param string $subTag
+     * @return bool
      */
     public function hasSubTag($subTag)
     {
@@ -83,7 +85,8 @@ abstract class Values extends Collection implements AcceptHeader
     }
 
     /**
-     * {@inheritdoc}
+     * @param string $value
+     * @return bool
      */
     public function hasValue($value)
     {
