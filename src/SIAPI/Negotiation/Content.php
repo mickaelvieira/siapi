@@ -58,7 +58,7 @@ class Content implements Negotiation
      */
     private function getNegotiator($name)
     {
-        $headerValue = self::getAcceptHeaderValue($name);
+        $headerValue = $this->getAcceptHeaderValues($name);
         return Factory::build($name, $headerValue);
     }
 
@@ -66,7 +66,7 @@ class Content implements Negotiation
      * @param string $name
      * @return string
      */
-    private function getAcceptHeaderValue($name)
+    private function getAcceptHeaderValues($name)
     {
         $type = null;
         switch ($name) {
