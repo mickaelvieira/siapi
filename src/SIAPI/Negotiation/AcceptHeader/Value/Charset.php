@@ -14,6 +14,11 @@ class Charset extends Value
     //                  1#( ( charset | "*" )[ ";" "q" "=" qvalue ] )
 
     /**
+     * @var string
+     */
+    public static $delimiter = "";
+
+    /**
      * {@inheritdoc}
      */
     public function hasAcceptAllSubTag()

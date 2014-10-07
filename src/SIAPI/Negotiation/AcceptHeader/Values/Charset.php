@@ -2,7 +2,6 @@
 
 namespace SIAPI\Negotiation\AcceptHeader\Values;
 
-use SIAPI\Negotiation\AcceptHeader\ValueFactory;
 use SIAPI\Negotiation\AcceptHeader\Values;
 
 /**
@@ -20,6 +19,14 @@ class Charset extends Values
      * {@inheritdoc}
      */
     protected $entityType = 'Charset';
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasAcceptAllSubTag($tag)
+    {
+        return false;
+    }
 
     /**
      * @param string $headerValue
@@ -40,7 +47,7 @@ class Charset extends Values
     private function addIso88591IfNotPresent()
     {
         if (!$this->hasAcceptAllTag() && !$this->hasTag('iso-8859-1;q=1')) {
-            $valueRange = ValueFactory::build($this->entityType, 'iso-8859-1;q=1');
+            $valueRange = $this->getEntityInstance('iso-8859-1;q=1');
             $this->add($valueRange);
         }
     }

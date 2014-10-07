@@ -10,14 +10,14 @@ abstract class Value extends Entity
     protected $valueRange;
 
     /**
-     * @var string
-     */
-    protected $delimiter = "";
-
-    /**
      * @var float
      */
     protected $quality = 1.0;
+
+    /**
+     * @var string
+     */
+    public static $delimiter = "";
 
     /**
      * @param string $pieces
@@ -28,7 +28,7 @@ abstract class Value extends Entity
         $values = array_shift($pieces);
 
         if ($values) {
-            $this->valueRange = new ValueRange($values, $this->delimiter);
+            $this->valueRange = new ValueRange($values, static::getDelimiter());
             $this->addParams($pieces);
         }
     }
@@ -39,6 +39,14 @@ abstract class Value extends Entity
     public function getQuality()
     {
         return $this->quality;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getDelimiter()
+    {
+        return static::$delimiter;
     }
 
     /**

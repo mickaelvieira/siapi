@@ -4,7 +4,11 @@ namespace SIAPI\Negotiation\AcceptHeader;
 
 use SIAPI\Negotiation\AcceptHeader;
 
-class Values extends Collection implements AcceptHeader
+/**
+ * Class Values
+ * @package SIAPI\Negotiation\AcceptHeader
+ */
+abstract class Values extends Collection implements AcceptHeader
 {
     /**
      * @var string
@@ -95,15 +99,15 @@ class Values extends Collection implements AcceptHeader
      */
     public function findFirstMatchingValue(array $values)
     {
-        $best = null;
+        $match = null;
         foreach ($this->entities as $value) {
             /** @var Value $value */
             if (array_search($value->getValue(), $values, true) !== false) {
-                $best = $value->getValue();
+                $match = $value->getValue();
                 break;
             }
         }
-        return $best;
+        return $match;
     }
 
     /**
@@ -112,15 +116,30 @@ class Values extends Collection implements AcceptHeader
      */
     public function findFirstMatchingSubValue(array $values)
     {
-        $value = null;
-        foreach ($values as $val) {
-            $range = new ValueRange($val, $this->valueRangeDelimiter);
+        $match = null;
+        foreach ($values as $value) {
+            $range = new ValueRange($value, $this->getValueDelimiter());
             if ($this->hasTag($range->getValue()) && $this->hasAcceptAllSubTag($range->getValue())) {
-                $value = $val;
+                $match = $value;
                 break;
             }
         }
-        return $value;
+        return $match;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $str = "";
+        foreach ($this->entities as $entity) {
+            if (!empty($str)) {
+                $str .= ",";
+            }
+            $str .= (string)$entity;
+        }
+        return $str;
     }
 
     /**
@@ -133,7 +152,7 @@ class Values extends Collection implements AcceptHeader
 
         foreach ($values as $value) {
             /** @var Value $entity */
-            $entity = ValueFactory::build($this->entityType, $value);
+            $entity = $this->getEntityInstance($value);
             if ($entity && $entity->getQuality() > 0) {
                 $this->add($entity);
             }
@@ -147,12 +166,12 @@ class Values extends Collection implements AcceptHeader
     protected function addDefaultValueIfNoneIsDefined()
     {
         if (count($this->entities) === 0) {
-            $valueRange = ValueFactory::build($this->entityType, $this->defaultValue);
+            $valueRange = $this->getEntityInstance($this->defaultValue);
             $this->add($valueRange);
         }
     }
 
-    private function sort()
+    protected function sort()
     {
         usort($this->entities, array($this, 'sortCallback'));
         $this->entities = array_reverse($this->entities);
@@ -181,15 +200,27 @@ class Values extends Collection implements AcceptHeader
     /**
      * @return string
      */
-    public function __toString()
+    protected function getValueClassName()
     {
-        $str = "";
-        foreach ($this->entities as $entity) {
-            if (!empty($str)) {
-                $str .= ",";
-            }
-            $str .= (string)$entity;
-        }
-        return $str;
+        return __NAMESPACE__ . "\\Value\\" . $this->entityType;
+    }
+
+    /**
+     * @param string $value
+     * @return \SIAPI\Negotiation\AcceptHeader\Value
+     */
+    protected function getEntityInstance($value)
+    {
+        $className = $this->getValueClassName();
+        return new $className($value);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getValueDelimiter()
+    {
+        $className = $this->getValueClassName();
+        return $className::$delimiter;
     }
 }
