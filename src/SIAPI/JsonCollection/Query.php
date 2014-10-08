@@ -115,6 +115,14 @@ class Query extends JsonConvertible
     }
 
     /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function getObjectData()

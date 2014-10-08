@@ -1,6 +1,6 @@
 <?php
 
-namespace SIAPI\JsonCollection\Template\Query;
+namespace SIAPI\JsonCollection\Factory\Template\Query;
 
 use SIAPI\JsonCollection\Data;
 use SIAPI\JsonCollection\Query;
@@ -16,7 +16,7 @@ abstract class Base
     /**
      * @var array
      */
-    protected $data;
+    protected $data = array();
 
     /**
      * @param $queryData

@@ -1,6 +1,6 @@
 <?php
 
-namespace SIAPI\JsonCollection\Template\Query;
+namespace SIAPI\JsonCollection\Factory\Template\Query;
 
 
 class Image extends Base
@@ -9,8 +9,14 @@ class Image extends Base
     {
         $this->populateData(
             array(
-                'mission' => '',
-                'target'  => ''
+                array(
+                    'name' => 'mission',
+                    'value' => ''
+                ),
+                array(
+                    'name' => 'target',
+                    'value' => ''
+                )
             )
         );
     }

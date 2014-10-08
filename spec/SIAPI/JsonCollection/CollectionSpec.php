@@ -20,7 +20,7 @@ class CollectionSpec extends ObjectBehavior
     public function getMatchers()
     {
         return [
-            'haveBeEqualToJson' => function ($subject, $value) {
+            'beEqualToJson' => function ($subject, $value) {
                 return json_encode($subject, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
             }
         ];
@@ -51,6 +51,6 @@ class CollectionSpec extends ObjectBehavior
             ]
         );
         $this->addLink($link);
-        $this->jsonSerialize()->shouldHaveBeEqualToJson("{'version':'1.0','links':[{'href':'http://domain.com'}]}");
+        $this->jsonSerialize()->shouldBeEqualToJson("{'version':'1.0','links':[{'href':'http://domain.com'}]}");
     }
 }
