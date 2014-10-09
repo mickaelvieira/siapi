@@ -6,7 +6,7 @@ namespace SIAPI\Entity\Input;
  * Class Type
  * @package SIAPI\Entity\Input
  */
-final class Type
+final class Input
 {
     /**
      *
