@@ -24,5 +24,4 @@ class ElasticSearch
     {
         return new ElasticSearchResponse($this->client->getResults());
     }
-
 } 

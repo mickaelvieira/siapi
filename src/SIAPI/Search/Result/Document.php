@@ -4,6 +4,7 @@ namespace SIAPI\Search\Result;
 
 use JsonSerializable;
 use SIAPI\Search\Result;
+use SIAPI\Entity\Hydrator;
 
 class Document implements Result, JsonSerializable
 {
@@ -124,6 +125,12 @@ class Document implements Result, JsonSerializable
      */
     public function setFormats($formats)
     {
+        foreach ($formats as $format) {
+            if (is_array($format)) {
+                $format = Hydrator::populate(new Image(), $format);
+            }
+            $this->addFormat($format);
+        }
         $this->formats = $formats;
     }
 

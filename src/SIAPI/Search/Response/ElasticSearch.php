@@ -12,7 +12,7 @@ class ElasticSearch implements ResponseInterface
     /**
      * @var \SIAPI\Search\ResultSet
      */
-    private $set;
+    private $resultSet;
 
     /**
      * @var int
@@ -24,13 +24,8 @@ class ElasticSearch implements ResponseInterface
      */
     public function __construct(array $data)
     {
-        $this->total = $data['hits']['total'];
-
-        $this->set = new ResultSet();
-        foreach ($data['hits']['hits'] as $hit) {
-            $result = new Document();
-            $this->set->add(Hydrator::populate($result, $hit['_source']));
-        }
+        $this->total     = $this->extractTotalFromData($data);
+        $this->resultSet = $this->extractResultSetFromData($data);
     }
 
     /**
@@ -46,6 +41,28 @@ class ElasticSearch implements ResponseInterface
      */
     public function getResultSet()
     {
-        return $this->set;
+        return $this->resultSet;
+    }
+
+    /**
+     * @param array $data
+     * @return \SIAPI\Search\ResultSet
+     */
+    private function extractResultSetFromData(array $data)
+    {
+        $resultSet = new ResultSet();
+        foreach ($data['hits']['hits'] as $hit) {
+            $result = new Document();
+            $resultSet->add(Hydrator::populate($result, $hit['_source']));
+        }
+        return $resultSet;
+    }
+
+    /**
+     * @param array $data
+     */
+    private function extractTotalFromData(array $data)
+    {
+        return $data['hits']['total'];
     }
 } 
