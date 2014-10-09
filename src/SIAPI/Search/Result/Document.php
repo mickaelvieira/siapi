@@ -3,8 +3,9 @@
 namespace SIAPI\Search\Result;
 
 use JsonSerializable;
+use SIAPI\Search\Result;
 
-class Document implements JsonSerializable
+class Document implements Result, JsonSerializable
 {
     /**
      * @var string

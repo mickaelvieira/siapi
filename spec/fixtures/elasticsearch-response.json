@@ -1,0 +1,255 @@
+{
+    "took": 2,
+    "timed_out": false,
+    "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+    },
+    "hits": {
+        "total": 100,
+        "max_score": 1,
+        "hits": [
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "4",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "9",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "5",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "3",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "8",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "10",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "1",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "6",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "2",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "siapi",
+                "_type": "image",
+                "_id": "7",
+                "_score": 1,
+                "_source": {
+                    "target": "Saturn",
+                    "satelliteOf": "Sol (our sun)",
+                    "mission": "Cassini-Huygens",
+                    "spacecraft": "Cassini Orbiter",
+                    "instrument": "Imaging Science Subsystem - Wide Angle",
+                    "extra": null,
+                    "source": "Cassini Imaging Team",
+                    "formats": [
+                        {
+                            "width": "1000",
+                            "height": "1000",
+                            "imageType": "jpg",
+                            "mimeType": "image/jpg",
+                            "size": "56.59"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
