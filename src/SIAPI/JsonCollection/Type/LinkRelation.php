@@ -13,4 +13,7 @@ final class LinkRelation
 
     const FORM       = 'form';
     const COLLECTION = 'collection';
+    const ITEM       = 'item';
+    const TEMPLATE   = 'template';
+    const QUERIES    = 'queries';
 } 
