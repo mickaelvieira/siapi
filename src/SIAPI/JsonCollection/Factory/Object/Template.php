@@ -3,7 +3,7 @@
 namespace SIAPI\JsonCollection\Factory\Object;
 
 use SIAPI\JsonCollection\Data;
-use SIAPI\JsonCollection\Template as JsonCollectionTemplate;
+use SIAPI\JsonCollection\Template as ObjectTemplate;
 use SIAPI\Entity\Hydrator;
 
 abstract class Template
@@ -24,8 +24,8 @@ abstract class Template
 
     private function buildObjectTemplate()
     {
-        $this->template = new JsonCollectionTemplate();
-        $this->addData();
+        $this->template = new ObjectTemplate();
+        $this->addTemplateData();
     }
 
     /**
@@ -34,7 +34,7 @@ abstract class Template
     abstract protected function getConfigTemplate();
 
     /**
-     * @return Template
+     * @return \SIAPI\JsonCollection\Template
      */
     public function getTemplate()
     {
@@ -47,7 +47,7 @@ abstract class Template
     /**
      * @return array
      */
-    private function prepareData()
+    private function prepareTemplateData()
     {
         $data = array();
         foreach ($this->getConfigTemplate() as $config) {
@@ -56,9 +56,9 @@ abstract class Template
         return $data;
     }
 
-    private function addData()
+    private function addTemplateData()
     {
-        $allData = $this->prepareData();
+        $allData = $this->prepareTemplateData();
         foreach ($allData as $data) {
             $this->template->addData($data);
         }

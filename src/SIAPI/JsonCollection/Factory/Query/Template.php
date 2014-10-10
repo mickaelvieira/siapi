@@ -3,7 +3,7 @@
 namespace SIAPI\JsonCollection\Factory\Query;
 
 use SIAPI\JsonCollection\Data;
-use SIAPI\JsonCollection\Query;
+use SIAPI\JsonCollection\Query as QueryTemplate;
 use SIAPI\Entity\Hydrator;
 
 abstract class Template
@@ -11,7 +11,7 @@ abstract class Template
     /**
      * @var \SIAPI\JsonCollection\Query
      */
-    protected $query;
+    protected $template;
 
     /**
      * @param array $data
@@ -24,12 +24,12 @@ abstract class Template
 
     private function buildQuery()
     {
-        $this->query = new Query();
+        $this->template = new QueryTemplate();
 
-        $this->query->setHref('search');
-        $this->query->setRel($this->getHref());
-        $this->query->setName($this->getName());
-        $this->query->setPrompt($this->getPrompt());
+        $this->template->setHref('search');
+        $this->template->setRel($this->getHref());
+        $this->template->setName($this->getName());
+        $this->template->setPrompt($this->getPrompt());
 
         $this->addQueryParameters();
     }
@@ -55,14 +55,14 @@ abstract class Template
     abstract protected function getConfigParameters();
 
     /**
-     * @return Query
+     * @return \SIAPI\JsonCollection\Query
      */
-    public function getQuery()
+    public function getTemplate()
     {
-        if (is_null($this->query)) {
+        if (is_null($this->template)) {
             $this->buildQuery();
         }
-        return $this->query;
+        return $this->template;
     }
 
     /**
@@ -81,7 +81,7 @@ abstract class Template
     {
         $parameters = $this->prepareQueryParameters();
         foreach ($parameters as $parameter) {
-            $this->query->addData($parameter);
+            $this->template->addData($parameter);
         }
     }
 } 
