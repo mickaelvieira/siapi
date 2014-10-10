@@ -14,26 +14,6 @@ abstract class Template
     protected $template;
 
     /**
-     * @param array $data
-     * @return Data
-     */
-    protected function getDataEntity(array $data)
-    {
-        return Hydrator::populate(new Data(), $data);
-    }
-
-    private function buildObjectTemplate()
-    {
-        $this->template = new ObjectTemplate();
-        $this->addTemplateData();
-    }
-
-    /**
-     * @return array
-     */
-    abstract protected function getConfigTemplate();
-
-    /**
      * @return \SIAPI\JsonCollection\Template
      */
     public function getTemplate()
@@ -42,6 +22,20 @@ abstract class Template
             $this->buildObjectTemplate();
         }
         return $this->template;
+    }
+
+    private function buildObjectTemplate()
+    {
+        $this->template = new ObjectTemplate();
+        $this->addTemplateData();
+    }
+
+    private function addTemplateData()
+    {
+        $allData = $this->prepareTemplateData();
+        foreach ($allData as $data) {
+            $this->template->addData($data);
+        }
     }
 
     /**
@@ -56,11 +50,17 @@ abstract class Template
         return $data;
     }
 
-    private function addTemplateData()
+    /**
+     * @param array $data
+     * @return Data
+     */
+    protected function getDataEntity(array $data)
     {
-        $allData = $this->prepareTemplateData();
-        foreach ($allData as $data) {
-            $this->template->addData($data);
-        }
+        return Hydrator::populate(new Data(), $data);
     }
+
+    /**
+     * @return array
+     */
+    abstract protected function getConfigTemplate();
 } 

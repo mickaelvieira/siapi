@@ -14,12 +14,14 @@ abstract class Template
     protected $template;
 
     /**
-     * @param array $data
-     * @return Data
+     * @return \SIAPI\JsonCollection\Query
      */
-    protected function getDataEntity(array $data)
+    public function getTemplate()
     {
-        return Hydrator::populate(new Data(), $data);
+        if (is_null($this->template)) {
+            $this->buildQuery();
+        }
+        return $this->template;
     }
 
     private function buildQuery()
@@ -55,17 +57,6 @@ abstract class Template
     abstract protected function getConfigParameters();
 
     /**
-     * @return \SIAPI\JsonCollection\Query
-     */
-    public function getTemplate()
-    {
-        if (is_null($this->template)) {
-            $this->buildQuery();
-        }
-        return $this->template;
-    }
-
-    /**
      * @return array
      */
     private function prepareQueryParameters()
@@ -83,5 +74,14 @@ abstract class Template
         foreach ($parameters as $parameter) {
             $this->template->addData($parameter);
         }
+    }
+
+    /**
+     * @param array $data
+     * @return Data
+     */
+    protected function getDataEntity(array $data)
+    {
+        return Hydrator::populate(new Data(), $data);
     }
 } 
