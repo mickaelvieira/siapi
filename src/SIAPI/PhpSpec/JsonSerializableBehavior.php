@@ -26,7 +26,6 @@ class JsonSerializableBehavior extends ObjectBehavior
                     return $data->getName() === $name;
                 });
                 return (count($filtered) > 0);
-
             }
         ];
     }

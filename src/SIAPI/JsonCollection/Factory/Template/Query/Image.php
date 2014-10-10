@@ -16,6 +16,22 @@ class Image extends Base
                 array(
                     'name' => 'target',
                     'value' => ''
+                ),
+                array(
+                    'name' => 'satelliteof',
+                    'value' => ''
+                ),
+                array(
+                    'name' => 'spacecraft',
+                    'value' => ''
+                ),
+                array(
+                    'name' => 'instrument',
+                    'value' => ''
+                ),
+                array(
+                    'name' => 'extra',
+                    'value' => ''
                 )
             )
         );
