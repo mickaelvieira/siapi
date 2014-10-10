@@ -57,6 +57,10 @@ class Image extends Template
             array(
                 'name' => 'extra',
                 'value' => ''
+            ),
+            array(
+                'name' => 'source',
+                'value' => ''
             )
         );
     }

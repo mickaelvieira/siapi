@@ -50,6 +50,11 @@ class ImageSpec extends JsonSerializableBehavior
         $this->getTemplate()->getData()->shouldHaveDataWithName('extra');
     }
 
+    function it_should_add_the_source_parameter_to_the_query_template()
+    {
+        $this->getTemplate()->getData()->shouldHaveDataWithName('source');
+    }
+
     function it_should_have_the_correct_json_representation()
     {
         $json = '{'
@@ -63,7 +68,8 @@ class ImageSpec extends JsonSerializableBehavior
                 . '{"name":"satelliteof","value":""},'
                 . '{"name":"spacecraft","value":""},'
                 . '{"name":"instrument","value":""},'
-                . '{"name":"extra","value":""}'
+                . '{"name":"extra","value":""},'
+                . '{"name":"source","value":""}'
             . ']}';
 
         $this->getTemplate()->jsonSerialize()->shouldBeEqualToJson($json);
