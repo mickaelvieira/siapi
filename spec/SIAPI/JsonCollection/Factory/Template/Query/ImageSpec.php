@@ -19,7 +19,6 @@ class ImageSpec extends JsonSerializableBehavior
         $this->getQuery()->getHref()->shouldBeEqualTo('search');
         $this->getQuery()->getPrompt()->shouldBeEqualTo('Here my prompt Message');
         $this->getQuery()->getData()->shouldHaveCount(2);
-
-        $this->getQuery()->jsonSerialize()->shouldBeEqualToJson('{"value":"my value"');
+        $this->getQuery()->jsonSerialize()->shouldBeEqualToJson('{"href":"search","rel":"search","name":"image","prompt":"Here my prompt Message","data":[{"name":"mission"},{"name":"target"}]}');
     }
 }
