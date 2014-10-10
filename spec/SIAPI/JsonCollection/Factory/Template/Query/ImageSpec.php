@@ -52,6 +52,20 @@ class ImageSpec extends JsonSerializableBehavior
 
     function it_should_have_the_correct_json_representation()
     {
-        $this->getQuery()->jsonSerialize()->shouldBeEqualToJson('{"href":"search","rel":"search","name":"image","prompt":"Here my prompt Message","data":[{"name":"mission","value":""},{"name":"target","value":""},{"name":"satelliteof","value":""},{"name":"spacecraft","value":""},{"name":"instrument","value":""},{"name":"extra","value":""}]}');
+        $json = '{'
+            . '"href":"search",'
+            . '"rel":"search",'
+            . '"name":"image",'
+            . '"prompt":"Here my prompt Message",'
+            . '"data":['
+                . '{"name":"mission","value":""},'
+                . '{"name":"target","value":""},'
+                . '{"name":"satelliteof","value":""},'
+                . '{"name":"spacecraft","value":""},'
+                . '{"name":"instrument","value":""},'
+                . '{"name":"extra","value":""}'
+            . ']}';
+
+        $this->getQuery()->jsonSerialize()->shouldBeEqualToJson($json);
     }
 }

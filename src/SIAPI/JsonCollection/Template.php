@@ -39,6 +39,14 @@ class Template extends JsonConvertible
     }
 
     /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
      * @param \SIAPI\JsonCollection\Method $method
      */
     public function setMethod(Method $method)
