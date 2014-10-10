@@ -4,10 +4,8 @@ namespace SIAPI\ElasticSearch;
 
 interface Filter
 {
-
     /**
-     * @param string $value
-     * @return \Elastica\Filter\Term
+     * @return \Elastica\Filter\AbstractFilter
      */
-    public function getFilter($value);
+    public function getFilter();
 } 
