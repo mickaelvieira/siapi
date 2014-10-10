@@ -5,38 +5,6 @@ namespace SIAPI\JsonCollection\Factory\Template\Query;
 
 class Image extends Base
 {
-    public function __construct()
-    {
-        $this->populateData(
-            array(
-                array(
-                    'name' => 'mission',
-                    'value' => ''
-                ),
-                array(
-                    'name' => 'target',
-                    'value' => ''
-                ),
-                array(
-                    'name' => 'satelliteof',
-                    'value' => ''
-                ),
-                array(
-                    'name' => 'spacecraft',
-                    'value' => ''
-                ),
-                array(
-                    'name' => 'instrument',
-                    'value' => ''
-                ),
-                array(
-                    'name' => 'extra',
-                    'value' => ''
-                )
-            )
-        );
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -59,5 +27,38 @@ class Image extends Base
     protected function getHref()
     {
         return 'search';
+    }
+
+    /**
+     * {@inheritdoc
+     */
+    protected function getConfigParameters()
+    {
+        return array(
+            array(
+                'name' => 'mission',
+                'value' => ''
+            ),
+            array(
+                'name' => 'target',
+                'value' => ''
+            ),
+            array(
+                'name' => 'satelliteof',
+                'value' => ''
+            ),
+            array(
+                'name' => 'spacecraft',
+                'value' => ''
+            ),
+            array(
+                'name' => 'instrument',
+                'value' => ''
+            ),
+            array(
+                'name' => 'extra',
+                'value' => ''
+            )
+        );
     }
 }

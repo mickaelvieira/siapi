@@ -14,21 +14,6 @@ abstract class Base
     protected $query;
 
     /**
-     * @var array
-     */
-    protected $data = array();
-
-    /**
-     * @param $queryData
-     */
-    protected function populateData(array $queryData)
-    {
-        foreach ($queryData as $data) {
-            array_push($this->data, $this->getDataEntity($data));
-        }
-    }
-
-    /**
      * @param array $data
      * @return Data
      */
@@ -46,9 +31,7 @@ abstract class Base
         $this->query->setName($this->getName());
         $this->query->setPrompt($this->getPrompt());
 
-        foreach ($this->data as $data) {
-            $this->query->addData($data);
-        }
+        $this->addQueryParameters();
     }
 
     /**
@@ -67,6 +50,11 @@ abstract class Base
     abstract protected function getHref();
 
     /**
+     * @return array
+     */
+    abstract protected function getConfigParameters();
+
+    /**
      * @return Query
      */
     public function getQuery()
@@ -75,5 +63,25 @@ abstract class Base
             $this->buildQuery();
         }
         return $this->query;
+    }
+
+    /**
+     * @return array
+     */
+    private function prepareQueryParameters()
+    {
+        $parameters = array();
+        foreach ($this->getConfigParameters() as $parameter) {
+            array_push($parameters, $this->getDataEntity($parameter));
+        }
+        return $parameters;
+    }
+
+    private function addQueryParameters()
+    {
+        $parameters = $this->prepareQueryParameters();
+        foreach ($parameters as $parameter) {
+            $this->query->addData($parameter);
+        }
     }
 } 
