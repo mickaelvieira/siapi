@@ -37,7 +37,7 @@ class JsonSerializableBehavior extends ObjectBehavior
 
     private function dumpValue($returned, $expected)
     {
-        $message = sprintf("%s expected to be equal to %s, but it is not.", $returned, $expected);
+        $message = sprintf("%s expected to be equal to %s but it is not.", $returned, $expected);
         throw new Exception($message);
     }
 } 
