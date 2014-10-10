@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mickael
- * Date: 10/10/14
- * Time: 12:36
- */
 
-namespace SIAPI\JsonCollection\Factory\Template\Object;
+namespace SIAPI\JsonCollection\Factory\Object;
 
-
-class Image extends Base
+class Image extends Template
 {
     /**
      * {@inheritdoc

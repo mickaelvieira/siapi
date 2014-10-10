@@ -1,15 +1,15 @@
 <?php
 
-namespace spec\SIAPI\JsonCollection\Factory\Template\Query;
+namespace spec\SIAPI\JsonCollection\Factory\Query;
 
 use SIAPI\PhpSpec\JsonSerializableBehavior;
 
 class ImageSpec extends JsonSerializableBehavior
 {
-
     function it_is_initializable()
     {
         $this->shouldHaveType('SIAPI\JsonCollection\Factory\Query\Image');
+        $this->shouldBeAnInstanceOf('SIAPI\JsonCollection\Factory\Query\Template');
     }
 
     function it_should_return_a_json_collection_query()

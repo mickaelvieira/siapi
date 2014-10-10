@@ -1,9 +1,8 @@
 <?php
 
-namespace SIAPI\JsonCollection\Factory\Template\Query;
+namespace SIAPI\JsonCollection\Factory\Query;
 
-
-class Image extends Base
+class Image extends Template
 {
     /**
      * {@inheritdoc}
