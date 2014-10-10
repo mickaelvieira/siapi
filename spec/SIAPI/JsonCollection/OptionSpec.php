@@ -10,26 +10,6 @@ use SIAPI\PhpSpec\JsonSerializableBehavior;
  */
 class OptionSpec extends JsonSerializableBehavior
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getMatchers()
-    {
-        return [
-            'beEqualToJson' => function ($subject, $value) {
-                $json = json_encode($subject, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-
-                if (!($json === $value)) {
-                    var_dump($json);
-                    var_dump($value);
-                }
-
-
-                return $json === $value;
-            }
-        ];
-    }
-
     function it_is_initializable()
     {
         $this->shouldHaveType('SIAPI\JsonCollection\Option');
