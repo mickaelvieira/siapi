@@ -2,10 +2,9 @@
 
 namespace spec\SIAPI\JsonCollection\Factory\Template\Query;
 
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use SIAPI\PhpSpec\JsonSerializableBehavior;
 
-class ImageSpec extends ObjectBehavior
+class ImageSpec extends JsonSerializableBehavior
 {
 
     function it_is_initializable()
@@ -20,5 +19,7 @@ class ImageSpec extends ObjectBehavior
         $this->getQuery()->getHref()->shouldBeEqualTo('search');
         $this->getQuery()->getPrompt()->shouldBeEqualTo('Here my prompt Message');
         $this->getQuery()->getData()->shouldHaveCount(2);
+
+        $this->getQuery()->jsonSerialize()->shouldBeEqualToJson('{"value":"my value"');
     }
 }

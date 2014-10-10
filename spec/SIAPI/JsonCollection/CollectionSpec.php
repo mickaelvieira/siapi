@@ -2,29 +2,16 @@
 
 namespace spec\SIAPI\JsonCollection;
 
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use SIAPI\PhpSpec\JsonSerializableBehavior;
 
 /**
  * Class CollectionSpec
  * @package spec\SIAPI\JsonCollection
  */
-class CollectionSpec extends ObjectBehavior
+class CollectionSpec extends JsonSerializableBehavior
 {
 
     private $version = '1.0';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getMatchers()
-    {
-        return [
-            'beEqualToJson' => function ($subject, $value) {
-                return json_encode($subject, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-            }
-        ];
-    }
 
     function it_is_initializable()
     {
@@ -51,6 +38,6 @@ class CollectionSpec extends ObjectBehavior
             ]
         );
         $this->addLink($link);
-        $this->jsonSerialize()->shouldBeEqualToJson("{'version':'1.0','links':[{'href':'http://domain.com'}]}");
+        $this->jsonSerialize()->shouldBeEqualToJson('{"version":"1.0","links":[{"href":"http://domain.com"}]}');
     }
 }

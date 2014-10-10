@@ -2,18 +2,14 @@
 
 namespace spec\SIAPI\JsonCollection;
 
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use SIAPI\PhpSpec\JsonSerializableBehavior;
 
 /**
  * Class OptionSpec
  * @package spec\SIAPI\JsonCollection
  */
-class OptionSpec extends ObjectBehavior
+class OptionSpec extends JsonSerializableBehavior
 {
-
-    private $version = '1.0';
-
     /**
      * {@inheritdoc}
      */
@@ -21,7 +17,15 @@ class OptionSpec extends ObjectBehavior
     {
         return [
             'beEqualToJson' => function ($subject, $value) {
-                return json_encode($subject, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                $json = json_encode($subject, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+                if (!($json === $value)) {
+                    var_dump($json);
+                    var_dump($value);
+                }
+
+
+                return $json === $value;
             }
         ];
     }
@@ -35,7 +39,7 @@ class OptionSpec extends ObjectBehavior
     {
         $this->setValue('my value');
         $this->setPrompt('my prompt value');
-        $this->jsonSerialize()->shouldBeEqualToJson("{'value':'my value','prompt':'my prompt value'");
+        $this->jsonSerialize()->shouldBeEqualToJson('{"value":"my value","prompt":"my prompt value"}');
     }
 
     function it_should_have_accessor_to_get_the_data()
@@ -51,12 +55,12 @@ class OptionSpec extends ObjectBehavior
     {
         $this->setValue('my value');
         $this->setPrompt('');
-        $this->jsonSerialize()->shouldBeEqualToJson("{'value':'my value'");
+        $this->jsonSerialize()->shouldBeEqualToJson('{"value":"my value"}');
     }
 
     function it_should_not_return_null_values_in_the_array_representation()
     {
         $this->setValue('my value');
-        $this->jsonSerialize()->shouldBeEqualToJson("{'value':'my value'");
+        $this->jsonSerialize()->shouldBeEqualToJson('{"value":"my value"}');
     }
 }
