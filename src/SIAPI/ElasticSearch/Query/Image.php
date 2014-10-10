@@ -1,6 +1,6 @@
 <?php
 
-namespace SIAPI\ElasticSearch\Search;
+namespace SIAPI\ElasticSearch\Query;
 
 use JsonSerializable;
 use Elastica\Query as ElasticaQuery;
