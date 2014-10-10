@@ -34,7 +34,10 @@ abstract class JsonConvertible implements JsonSerializable
         return array_filter(
             $data,
             function ($value) {
-                return (!is_null($value) && !empty($value));
+                if (is_array($value)) {
+                    return !empty($value);
+                }
+                return (!is_null($value));
             }
         );
     }

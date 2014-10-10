@@ -31,13 +31,6 @@ class OptionSpec extends JsonSerializableBehavior
         $this->getPrompt()->shouldBeEqualTo('my prompt value');
     }
 
-    function it_should_not_return_empty_values_in_the_array_representation()
-    {
-        $this->setValue('my value');
-        $this->setPrompt('');
-        $this->jsonSerialize()->shouldBeEqualToJson('{"value":"my value"}');
-    }
-
     function it_should_not_return_null_values_in_the_array_representation()
     {
         $this->setValue('my value');

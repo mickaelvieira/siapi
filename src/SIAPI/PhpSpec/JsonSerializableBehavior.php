@@ -20,6 +20,13 @@ class JsonSerializableBehavior extends ObjectBehavior
                     $this->dumpValue($json, $expected);
                 }
                 return $json === $expected;
+            },
+            'haveDataWithName' => function($allData, $name) {
+                $filtered = array_filter($allData, function ($data) use ($name) {
+                    return $data->getName() === $name;
+                });
+                return (count($filtered) > 0);
+
             }
         ];
     }
