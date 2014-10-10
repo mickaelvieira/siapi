@@ -3,7 +3,7 @@
 namespace SIAPI\Search\Response;
 
 use SIAPI\Entity\Hydrator;
-use SIAPI\Search\Result\Document;
+use SIAPI\Search\Result\Image;
 use SIAPI\Search\ResultSet;
 use SIAPI\Search\Response as ResponseInterface;
 
@@ -52,7 +52,7 @@ class ElasticSearch implements ResponseInterface
     {
         $resultSet = new ResultSet();
         foreach ($data['hits']['hits'] as $hit) {
-            $result = new Document();
+            $result = new Image();
             $resultSet->add(Hydrator::populate($result, $hit['_source']));
         }
         return $resultSet;

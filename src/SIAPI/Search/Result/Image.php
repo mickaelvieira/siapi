@@ -3,112 +3,191 @@
 namespace SIAPI\Search\Result;
 
 use JsonSerializable;
+use SIAPI\Search\Result;
+use SIAPI\Entity\Hydrator;
 
-class Image implements JsonSerializable
+class Image implements Result, JsonSerializable
 {
     /**
      * @var string
      */
-    private $width;
+    private $target;
 
     /**
      * @var string
      */
-    private $height;
-
-    /**
-     * @var integer
-     */
-    private $imageType;
+    private $satelliteOf;
 
     /**
      * @var string
      */
-    private $mimeType;
+    private $mission;
 
     /**
      * @var string
      */
-    private $size;
+    private $spacecraft;
+
+    /**
+     * @var string
+     */
+    private $instrument;
+
+    /**
+     * @var string
+     */
+    private $extra;
+
+    /**
+     * @var string
+     */
+    private $source;
+
+    /**
+     * @var array
+     */
+    private $formats = [];
 
     /**
      * @return string
      */
-    public function getHeight()
+    public function getSource()
     {
-        return $this->height;
+        return $this->source;
     }
 
     /**
-     * @param string $height
+     * @param string $author
      */
-    public function setHeight($height)
+    public function setSource($author)
     {
-        $this->height = $height;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMimeType()
-    {
-        return $this->mimeType;
-    }
-
-    /**
-     * @param string $mimeType
-     */
-    public function setMimeType($mimeType)
-    {
-        $this->mimeType = $mimeType;
-    }
-
-    /**
-     * @return int
-     */
-    public function getImageType()
-    {
-        return $this->imageType;
-    }
-
-    /**
-     * @param int $imageType
-     */
-    public function setImageType($imageType)
-    {
-        $this->imageType = $imageType;
+        $this->source = $author;
     }
 
     /**
      * @return string
      */
-    public function getWidth()
+    public function getMission()
     {
-        return $this->width;
+        return $this->mission;
     }
 
     /**
-     * @param string $width
+     * @param string $mission
      */
-    public function setWidth($width)
+    public function setMission($mission)
     {
-        $this->width = $width;
+        $this->mission = $mission;
     }
 
     /**
      * @return string
      */
-    public function getSize()
+    public function getTarget()
     {
-        return $this->size;
+        return $this->target;
     }
 
     /**
-     * @param string $size
+     * @param string $target
      */
-    public function setSize($size)
+    public function setTarget($target)
     {
-        $this->size = $size;
+        $this->target = $target;
+    }
+
+    /**
+     * @return string
+     */
+    public function getExtra()
+    {
+        return $this->extra;
+    }
+
+    /**
+     * @param string $extra
+     */
+    public function setExtra($extra)
+    {
+        $this->extra = $extra;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFormats()
+    {
+        return $this->formats;
+    }
+
+    /**
+     * @param array $formats
+     */
+    public function setFormats($formats)
+    {
+        foreach ($formats as $format) {
+            if (is_array($format)) {
+                $format = Hydrator::populate(new Format(), $format);
+            }
+            $this->addFormat($format);
+        }
+        $this->formats = $formats;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInstrument()
+    {
+        return $this->instrument;
+    }
+
+    /**
+     * @param string $instrument
+     */
+    public function setInstrument($instrument)
+    {
+        $this->instrument = $instrument;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSatelliteOf()
+    {
+        return $this->satelliteOf;
+    }
+
+    /**
+     * @param string $satelliteOf
+     */
+    public function setSatelliteOf($satelliteOf)
+    {
+        $this->satelliteOf = $satelliteOf;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSpacecraft()
+    {
+        return $this->spacecraft;
+    }
+
+    /**
+     * @param string $spacecraft
+     */
+    public function setSpacecraft($spacecraft)
+    {
+        $this->spacecraft = $spacecraft;
+    }
+
+    /**
+     * @param Format $image
+     */
+    public function addFormat(Format $image)
+    {
+        array_push($this->formats, $image);
     }
 
     /**
