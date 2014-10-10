@@ -1,23 +1,24 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mickael
- * Date: 09/10/14
- * Time: 13:13
- */
 
 namespace SIAPI\ElasticSearch;
+
+use SIAPI\ElasticSearch\Client as ClientBuilder;
+use SIAPI\ElasticSearch\Query as QueryInterface;
 
 /**
  * Class Search
  * @package SIAPI\ElasticSearch
- *
- * @TODO we should have a interface
  */
-class Search
+interface Search
 {
-    public function getResults()
-    {
-        return null;
-    }
+    /**
+     * @param \SIAPI\ElasticSearch\Client $client
+     * @param \SIAPI\ElasticSearch\Query $query
+     */
+    public function __construct(ClientBuilder $client, QueryInterface $query);
+
+    /**
+     * @return array
+     */
+    public function getResults();
 } 

@@ -8,20 +8,20 @@ use SIAPI\Search\Response\ElasticSearch as ElasticSearchResponse;
 class ElasticSearch
 {
     /**
-     * @var \SIAPI\ElasticSearch\Search $client
+     * @var \SIAPI\ElasticSearch\Search $search
      */
-    protected $client;
+    protected $search;
 
     /**
-     * @param \SIAPI\ElasticSearch\Search $client
+     * @param \SIAPI\ElasticSearch\Search $search
      */
-    public function __construct(Search $client)
+    public function __construct(Search $search)
     {
-        $this->client = $client;
+        $this->search = $search;
     }
 
     public function getAll()
     {
-        return new ElasticSearchResponse($this->client->getResults());
+        return new ElasticSearchResponse($this->search->getResults());
     }
 } 

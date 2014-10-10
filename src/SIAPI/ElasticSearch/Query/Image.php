@@ -5,8 +5,9 @@ namespace SIAPI\ElasticSearch\Query;
 use JsonSerializable;
 use Elastica\Query as ElasticaQuery;
 use Elastica\Aggregation\Terms as AggrTerms;
+use SIAPI\ElasticSearch\Query as QueryInterface;
 
-class Image implements JsonSerializable
+class Image implements QueryInterface, JsonSerializable
 {
     /**
      * @var \Elastica\Query
