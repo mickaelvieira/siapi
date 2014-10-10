@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\JsonCollection\Factory\Template\Object;
+namespace SIAPI\JsonCollection\Factory\Object;
 
 use SIAPI\JsonCollection\Data;
-use SIAPI\JsonCollection\Template;
+use SIAPI\JsonCollection\Template as JsonCollectionTemplate;
 use SIAPI\Entity\Hydrator;
 
-abstract class Base
+abstract class Template
 {
     /**
      * @var \SIAPI\JsonCollection\Template
@@ -24,7 +24,7 @@ abstract class Base
 
     private function buildObjectTemplate()
     {
-        $this->template = new Template();
+        $this->template = new JsonCollectionTemplate();
         $this->addData();
     }
 

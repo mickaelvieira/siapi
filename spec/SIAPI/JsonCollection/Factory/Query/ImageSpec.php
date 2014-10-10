@@ -9,7 +9,7 @@ class ImageSpec extends JsonSerializableBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('SIAPI\JsonCollection\Factory\Template\Query\Image');
+        $this->shouldHaveType('SIAPI\JsonCollection\Factory\Query\Image');
     }
 
     function it_should_return_a_json_collection_query()

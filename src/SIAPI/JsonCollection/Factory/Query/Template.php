@@ -1,12 +1,12 @@
 <?php
 
-namespace SIAPI\JsonCollection\Factory\Template\Query;
+namespace SIAPI\JsonCollection\Factory\Query;
 
 use SIAPI\JsonCollection\Data;
 use SIAPI\JsonCollection\Query;
 use SIAPI\Entity\Hydrator;
 
-abstract class Base
+abstract class Template
 {
     /**
      * @var \SIAPI\JsonCollection\Query
