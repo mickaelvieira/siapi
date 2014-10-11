@@ -49,17 +49,7 @@ class ImageSpec extends JsonSerializableBehavior
 
     function it_should_have_the_correct_json_representation()
     {
-        $json = '{'
-            . '"data":['
-            . '{"name":"mission","value":""},'
-            . '{"name":"target","value":""},'
-            . '{"name":"satelliteof","value":""},'
-            . '{"name":"spacecraft","value":""},'
-            . '{"name":"instrument","value":""},'
-            . '{"name":"extra","value":""},'
-            . '{"name":"source","value":""}'
-            . ']}';
-
+        $json = $this->getJsonFixtureContent('jsoncollection/template.json');
         $this->jsonSerialize()->shouldBeEqualToJson($json);
     }
 }
