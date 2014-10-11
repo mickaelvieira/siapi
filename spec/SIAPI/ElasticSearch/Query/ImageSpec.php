@@ -18,11 +18,7 @@ class ImageSpec extends JsonSerializableBehavior
 
     function it_should_return_prepare_the_query()
     {
-        $json = '{'
-                . '"aggs":{"mission":{"terms":{"field":"mission","size":0}}},'
-                . '"query":{"match_all":{}}'
-                . '}';
-
+        $json = $this->getJsonFixtureContent('elasticsearch/global.json');
         $this->jsonSerialize()->shouldBeEqualToJson($json);
     }
 }

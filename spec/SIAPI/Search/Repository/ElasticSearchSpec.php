@@ -2,17 +2,17 @@
 
 namespace spec\SIAPI\Search\Repository;
 
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use SIAPI\PhpSpec\JsonSerializableBehavior;
 
-class ElasticSearchSpec extends ObjectBehavior
+class ElasticSearchSpec extends JsonSerializableBehavior
 {
     /**
      * @param \SIAPI\ElasticSearch\Search $search
      */
     function let($search)
     {
-        $json = file_get_contents(realpath('spec/fixtures/elasticsearch-response.json'));
+        $json = $this->getJsonFixtureContent('elasticsearch/response.json');
+
         $search->getResults()->willReturn(json_decode($json, true));
         $this->beConstructedWith($search);
     }

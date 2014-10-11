@@ -8,6 +8,8 @@ use Prophecy\Argument;
 
 class JsonSerializableBehavior extends ObjectBehavior
 {
+    const FIXTURES_DIR = 'spec/fixtures/';
+
     /**
      * {@inheritdoc}
      */
@@ -40,4 +42,29 @@ class JsonSerializableBehavior extends ObjectBehavior
         $message = sprintf("%s expected to be equal to %s but it is not.", $returned, $expected);
         throw new Exception($message);
     }
-} 
+
+    protected function getJsonFixtureContent($filename)
+    {
+        $json = $this->getFixtureContent($filename);
+        $json = json_decode($json);
+        $json = json_encode($json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        return $json;
+    }
+
+    protected function getFixtureContent($filename)
+    {
+        $filePath = realpath(self::FIXTURES_DIR . $filename);
+
+        if (!$filePath) {
+            throw new Exception(
+                sprintf(
+                    "Unable to file find file %s in dir %",
+                    $filename,
+                    self::FIXTURES_DIR
+                )
+            );
+        }
+
+        return file_get_contents($filePath);
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "query": {
+        "match_all": {}
+    },
+    "aggs": {
+        "mission": {
+            "terms": {
+                "field": "mission",
+                "size": 0
+            }
+        }
+    }
+}
