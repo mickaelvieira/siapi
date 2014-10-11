@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "107875f1ae750d269096f19cb0c55041",
+    "hash": "32d8dd5f8dd8369b47cd14a0981965a3",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -123,6 +123,52 @@
                 "stream"
             ],
             "time": "2014-08-17 21:15:53"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "0544bddcd574eab8c14a936288141db58a643dae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/0544bddcd574eab8c14a936288141db58a643dae",
+                "reference": "0544bddcd574eab8c14a936288141db58a643dae",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2014-10-01 16:15:43"
         },
         {
             "name": "ruflin/elastica",
@@ -1462,7 +1508,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "ruflin/elastica": 20
+        "ruflin/elastica": 20,
+        "psr/http-message": 20
     },
     "prefer-stable": false,
     "platform": {
