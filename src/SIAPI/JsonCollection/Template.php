@@ -10,7 +10,7 @@ use SIAPI\JsonCollection;
  * @link http://amundsen.com/media-types/collection/format/
  * @link http://code.ge/media-types/collection-next-json/
  */
-class Template extends JsonConvertible
+class Template extends JsonConvertible implements DataContainer
 {
     /**
      * @var array
@@ -22,13 +22,13 @@ class Template extends JsonConvertible
      * @var \SIAPI\JsonCollection\Method
      * @link http://code.ge/media-types/collection-next-json/#object-method
      */
-    private $method;
+    protected $method;
 
     /**
      * @var \SIAPI\JsonCollection\Enctype
      * @link http://code.ge/media-types/collection-next-json/#object-enctype
      */
-    private $enctype;
+    protected $enctype;
 
     /**
      * @param \SIAPI\JsonCollection\Data $data

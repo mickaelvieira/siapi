@@ -10,31 +10,31 @@ use SIAPI\JsonCollection;
  * @link http://amundsen.com/media-types/collection/format/
  * @link http://code.ge/media-types/collection-next-json/
  */
-class Query extends JsonConvertible
+class Query extends JsonConvertible implements DataContainer
 {
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-href
      */
-    private $href;
+    protected $href;
 
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-rel
      */
-    private $rel;
+    protected $rel;
 
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-name
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-prompt
      */
-    private $prompt;
+    protected $prompt;
 
     /**
      * @var array

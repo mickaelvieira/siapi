@@ -10,7 +10,7 @@ use SIAPI\JsonCollection;
  * @link http://amundsen.com/media-types/collection/format/
  * @link http://code.ge/media-types/collection-next-json/
  */
-class Item extends JsonConvertible
+class Item extends JsonConvertible implements DataContainer
 {
     /**
      * @var string
@@ -52,6 +52,14 @@ class Item extends JsonConvertible
     public function addData(Data $data)
     {
         array_push($this->data, $data);
+    }
+
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
     }
 
     /**
