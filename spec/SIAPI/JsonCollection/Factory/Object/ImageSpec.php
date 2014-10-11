@@ -8,6 +8,7 @@ class ImageSpec extends JsonSerializableBehavior
 {
     function it_is_initializable()
     {
+        $this->shouldImplement('SIAPI\JsonCollection\Factory\Template');
         $this->shouldHaveType('SIAPI\JsonCollection\Factory\Object\Image');
         $this->shouldBeAnInstanceOf('SIAPI\JsonCollection\Factory\Object\Template');
     }

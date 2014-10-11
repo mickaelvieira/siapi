@@ -4,9 +4,10 @@ namespace SIAPI\JsonCollection\Factory\Query;
 
 use SIAPI\JsonCollection\Data;
 use SIAPI\JsonCollection\Query as QueryTemplate;
+use SIAPI\JsonCollection\Factory\Template as TemplateInterface;
 use SIAPI\Entity\Hydrator;
 
-abstract class Template
+abstract class Template implements TemplateInterface
 {
     /**
      * @var \SIAPI\JsonCollection\Query

@@ -4,9 +4,10 @@ namespace SIAPI\JsonCollection\Factory\Object;
 
 use SIAPI\JsonCollection\Data;
 use SIAPI\JsonCollection\Template as ObjectTemplate;
+use SIAPI\JsonCollection\Factory\Template as TemplateInterface;
 use SIAPI\Entity\Hydrator;
 
-abstract class Template
+abstract class Template implements TemplateInterface
 {
     /**
      * @var \SIAPI\JsonCollection\Template
