@@ -17,7 +17,7 @@ abstract class Value extends Entity
     /**
      * @var string
      */
-    public static $delimiter = "";
+    protected static $delimiter = "";
 
     /**
      * @param string $pieces

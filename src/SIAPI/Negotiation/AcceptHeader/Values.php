@@ -218,7 +218,8 @@ abstract class Values extends Collection implements AcceptHeader
      */
     protected function getValueDelimiter()
     {
+        /** @var \SIAPI\Negotiation\AcceptHeader\Value $className */
         $className = $this->getValueClassName();
-        return $className::$delimiter;
+        return $className::getDelimiter();
     }
 }
