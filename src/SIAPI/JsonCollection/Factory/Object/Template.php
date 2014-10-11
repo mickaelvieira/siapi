@@ -10,18 +10,10 @@ use SIAPI\Entity\Hydrator;
 abstract class Template implements TemplateInterface
 {
     /**
-     * @var \SIAPI\JsonCollection\Template
-     */
-    protected $template;
-
-    /**
      * @return \SIAPI\JsonCollection\Template
      */
     public function getTemplate()
     {
-        if (is_null($this->template)) {
-            $this->buildObjectTemplate();
-        }
         return $this->buildObjectTemplate();
     }
 
@@ -54,7 +46,7 @@ abstract class Template implements TemplateInterface
      * @param array $data
      * @return Data
      */
-    protected function getDataEntity(array $data)
+    private function getDataEntity(array $data)
     {
         return Hydrator::populate(new Data(), $data);
     }
