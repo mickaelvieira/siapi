@@ -18,7 +18,11 @@ class Image implements QueryInterface, JsonSerializable
      * @var array
      */
     private $aggregations = [
-        'mission' => 'mission'
+        'target'     => 'target_raw',
+        'mission'    => 'mission_raw',
+        'spacecraft' => 'spacecraft_raw',
+        'instrument' => 'instrument_raw',
+        'source'     => 'source_raw'
     ];
 
     public function __construct()

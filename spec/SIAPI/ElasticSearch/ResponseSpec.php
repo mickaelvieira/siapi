@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\SIAPI\Search\Response;
+namespace spec\SIAPI\ElasticSearch;
 
 use SIAPI\PhpSpec\JsonSerializableBehavior;
 
-class ElasticSearchSpec extends JsonSerializableBehavior
+class ResponseSpec extends JsonSerializableBehavior
 {
     function let()
     {
@@ -14,7 +14,7 @@ class ElasticSearchSpec extends JsonSerializableBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('SIAPI\Search\Response\ElasticSearch');
+        $this->shouldHaveType('SIAPI\\ElasticSearch\Response');
     }
 
     function it_should_return_the_total_of_documents()

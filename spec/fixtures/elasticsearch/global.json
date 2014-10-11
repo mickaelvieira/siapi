@@ -5,31 +5,31 @@
     "aggs": {
         "target": {
             "terms": {
-                "field": "target",
+                "field": "target_raw",
                 "size": 0
             }
         },
         "mission": {
             "terms": {
-                "field": "mission",
+                "field": "mission_raw",
                 "size": 0
             }
         },
         "spacecraft": {
             "terms": {
-                "field": "spacecraft",
+                "field": "spacecraft_raw",
                 "size": 0
             }
         },
         "instrument": {
             "terms": {
-                "field": "instrument",
+                "field": "instrument_raw",
                 "size": 0
             }
         },
         "source": {
             "terms": {
-                "field": "source",
+                "field": "source_raw",
                 "size": 0
             }
         }
