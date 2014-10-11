@@ -10,31 +10,28 @@ use SIAPI\Entity\Hydrator;
 abstract class Template implements TemplateInterface
 {
     /**
-     * @var \SIAPI\JsonCollection\Query
-     */
-    protected $template;
-
-    /**
      * @return \SIAPI\JsonCollection\Query
      */
     public function getTemplate()
     {
-        if (is_null($this->template)) {
-            $this->buildQuery();
-        }
-        return $this->template;
+        return $this->buildQueryTemplate();
     }
 
-    private function buildQuery()
+    /**
+     * @return \SIAPI\JsonCollection\Query
+     */
+    private function buildQueryTemplate()
     {
-        $this->template = new QueryTemplate();
+        $template = new QueryTemplate();
 
-        $this->template->setHref('search');
-        $this->template->setRel($this->getHref());
-        $this->template->setName($this->getName());
-        $this->template->setPrompt($this->getPrompt());
+        $template->setHref('search');
+        $template->setRel($this->getHref());
+        $template->setName($this->getName());
+        $template->setPrompt($this->getPrompt());
 
-        $this->addQueryParameters();
+        $this->addQueryParameters($template);
+
+        return $template;
     }
 
     /**
@@ -58,23 +55,17 @@ abstract class Template implements TemplateInterface
     abstract protected function getConfigParameters();
 
     /**
-     * @return array
+     * @param \SIAPI\JsonCollection\Query $template
+     * @return \SIAPI\JsonCollection\Query
      */
-    private function prepareQueryParameters()
+    private function addQueryParameters($template)
     {
-        $parameters = array();
         foreach ($this->getConfigParameters() as $parameter) {
-            array_push($parameters, $this->getDataEntity($parameter));
+            $template->addData(
+                $this->getDataEntity($parameter)
+            );
         }
-        return $parameters;
-    }
-
-    private function addQueryParameters()
-    {
-        $parameters = $this->prepareQueryParameters();
-        foreach ($parameters as $parameter) {
-            $this->template->addData($parameter);
-        }
+        return $template;
     }
 
     /**
@@ -85,4 +76,4 @@ abstract class Template implements TemplateInterface
     {
         return Hydrator::populate(new Data(), $data);
     }
-} 
+}

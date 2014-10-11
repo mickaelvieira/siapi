@@ -15,7 +15,7 @@ abstract class JsonConvertible implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        return $this->filterNullAndEmptyData(
+        return $this->filterNullValueAndEmptyArray(
             $this->getObjectData()
         );
     }
@@ -29,7 +29,7 @@ abstract class JsonConvertible implements JsonSerializable
      * @param array $data
      * @return array
      */
-    private function filterNullAndEmptyData($data)
+    private function filterNullValueAndEmptyArray($data)
     {
         return array_filter(
             $data,

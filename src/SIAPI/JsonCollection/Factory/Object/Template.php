@@ -22,33 +22,32 @@ abstract class Template implements TemplateInterface
         if (is_null($this->template)) {
             $this->buildObjectTemplate();
         }
-        return $this->template;
-    }
-
-    private function buildObjectTemplate()
-    {
-        $this->template = new ObjectTemplate();
-        $this->addTemplateData();
-    }
-
-    private function addTemplateData()
-    {
-        $allData = $this->prepareTemplateData();
-        foreach ($allData as $data) {
-            $this->template->addData($data);
-        }
+        return $this->buildObjectTemplate();
     }
 
     /**
-     * @return array
+     * @return \SIAPI\JsonCollection\Template
      */
-    private function prepareTemplateData()
+    private function buildObjectTemplate()
     {
-        $data = array();
-        foreach ($this->getConfigTemplate() as $config) {
-            array_push($data, $this->getDataEntity($config));
+        $template = new ObjectTemplate();
+        $this->addTemplateData($template);
+
+        return $template;
+    }
+
+    /**
+     * @param \SIAPI\JsonCollection\Template $template
+     * @return \SIAPI\JsonCollection\Template
+     */
+    private function addTemplateData($template)
+    {
+        foreach ($this->getConfigTemplate() as $data) {
+            $template->addData(
+                $this->getDataEntity($data)
+            );
         }
-        return $data;
+        return $template;
     }
 
     /**
@@ -64,4 +63,4 @@ abstract class Template implements TemplateInterface
      * @return array
      */
     abstract protected function getConfigTemplate();
-} 
+}
