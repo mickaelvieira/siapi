@@ -2,19 +2,21 @@
 
 namespace SIAPI\Negotiation;
 
+use Psr\Http\Message\MessageInterface;
+
 class Content implements Negotiation
 {
     /**
      * @var array
      */
-    private $headers = [];
+    private $message = [];
 
     /**
-     * @param array $headers
+     * @param MessageInterface $message
      */
-    public function __construct(array $headers)
+    public function __construct(MessageInterface $message)
     {
-        $this->headers = $headers;
+        $this->message = $message;
     }
 
     /**
@@ -80,6 +82,7 @@ class Content implements Negotiation
                 $type = 'Accept-Language';
                 break;
         }
-        return ($type && array_key_exists($type, $this->headers)) ? $this->headers[$type] : '';
+        return ($type && $this->message->hasHeader($type)) ?
+            $this->message->getHeader($type) : '';
     }
 } 
