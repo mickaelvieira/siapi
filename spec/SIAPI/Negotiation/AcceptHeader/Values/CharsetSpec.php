@@ -53,7 +53,7 @@ class CharsetSpec extends ObjectBehavior
         $this->shouldHaveAcceptAllTag();
     }
 
-    function it_should_never_have_an_accept_all_tag()
+    function it_should_never_have_an_accept_all_sub_tag()
     {
         $this->beConstructedWith('iso-8859-5, *, unicode-1-1;q=0.8');
         $this->shouldNotHaveAcceptAllSubTag('iso-8859-5');
