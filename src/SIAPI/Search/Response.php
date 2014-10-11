@@ -10,7 +10,7 @@ interface Response
     public function getTotal();
 
     /**
-     * @return \Traversable
+     * @return \SIAPI\Search\ResultSet
      */
     public function getResultSet();
 } 

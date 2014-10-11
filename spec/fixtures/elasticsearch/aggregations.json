@@ -1,7 +1,4 @@
 {
-    "query": {
-        "match_all": {}
-    },
     "aggs": {
         "target": {
             "terms": {
@@ -33,5 +30,6 @@
                 "size": 0
             }
         }
-    }
+    },
+    "size": 0
 }

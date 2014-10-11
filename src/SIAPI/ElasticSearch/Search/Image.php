@@ -3,10 +3,13 @@
 namespace SIAPI\ElasticSearch\Search;
 
 use Elastica\Search as ElasticaSearch;
+use SIAPI\Search\Search as SearchInterface;
 
+use SIAPI\ElasticSearch\Type as DocumentType;
+use SIAPI\ElasticSearch\Index as IndexName;
 use SIAPI\ElasticSearch\Client as ClientBuilder;
-use SIAPI\ElasticSearch\Search as SearchInterface;
 use SIAPI\ElasticSearch\Query as QueryInterface;
+use SIAPI\ElasticSearch\Response;
 
 class Image implements SearchInterface
 {
@@ -27,13 +30,20 @@ class Image implements SearchInterface
     {
         $this->query  = $query;
         $this->search = new ElasticaSearch($client->getClient());
+        $this->search->addTypes(array(
+            DocumentType::IMAGE
+        ));
+        $this->search->addIndices(array(
+            IndexName::MAIN
+        ));
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getResults()
+    public function getResponse()
     {
-        return $this->search->search($this->query);
+        $resultSet = $this->search->search($this->query);
+        return new Response($resultSet->getResults());
     }
 } 

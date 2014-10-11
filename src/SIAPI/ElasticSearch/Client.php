@@ -4,7 +4,6 @@ namespace SIAPI\ElasticSearch;
 
 use Elastica\Client as ElasticaClient;
 
-
 class Client
 {
     /**

@@ -2,20 +2,20 @@
 
 namespace SIAPI\Search\Repository;
 
-use SIAPI\ElasticSearch\Search;
-use SIAPI\Search\Response\ElasticSearch as ElasticSearchResponse;
+use SIAPI\Search\Search as SearchInterface;
+use SIAPI\ElasticSearch\Response as ElasticSearchResponse;
 
 class ElasticSearch
 {
     /**
-     * @var \SIAPI\ElasticSearch\Search $search
+     * @var \SIAPI\Search\Search $search
      */
     protected $search;
 
     /**
-     * @param \SIAPI\ElasticSearch\Search $search
+     * @param \SIAPI\Search\Search $search
      */
-    public function __construct(Search $search)
+    public function __construct(SearchInterface $search)
     {
         $this->search = $search;
     }

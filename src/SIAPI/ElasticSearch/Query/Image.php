@@ -47,7 +47,7 @@ class Image implements QueryInterface, JsonSerializable
      */
     private function buildQuery()
     {
-        $this->query = new ElasticaQuery();
+        $this->query = new ElasticaQuery(new ElasticaQuery\MatchAll());
         $this->addAggregations();
     }
 

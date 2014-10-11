@@ -1,13 +1,13 @@
 <?php
 
-namespace SIAPI\Search\Response;
+namespace SIAPI\ElasticSearch;
 
 use SIAPI\Entity\Hydrator;
 use SIAPI\Search\Result\Image;
 use SIAPI\Search\ResultSet;
 use SIAPI\Search\Response as ResponseInterface;
 
-class ElasticSearch implements ResponseInterface
+class Response implements ResponseInterface
 {
     /**
      * @var \SIAPI\Search\ResultSet
