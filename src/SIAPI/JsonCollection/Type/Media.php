@@ -12,6 +12,6 @@ final class Media
     {
     }
 
-    const TIF = "image/tif";
-    const JPG = "image/jpg";
+    const TIFF = "image/tiff";
+    const JPEG = "image/jpeg";
 }
