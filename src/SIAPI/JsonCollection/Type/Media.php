@@ -1,15 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mickael
- * Date: 11/10/14
- * Time: 06:38
- */
 
 namespace SIAPI\JsonCollection\Type;
 
 
-class Media
+final class Media
 {
+    /**
+     *
+     */
+    private function __construct()
+    {
+    }
 
-} 
+    const TIF = "image/tif";
+    const JPG = "image/jpg";
+}
