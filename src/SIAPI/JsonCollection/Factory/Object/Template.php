@@ -44,7 +44,7 @@ abstract class Template implements TemplateInterface
 
     /**
      * @param array $data
-     * @return Data
+     * @return \SIAPI\JsonCollection\Data
      */
     private function getDataEntity(array $data)
     {
