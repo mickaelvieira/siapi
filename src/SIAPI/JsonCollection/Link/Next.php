@@ -5,20 +5,20 @@ namespace SIAPI\JsonCollection\Link;
 use SIAPI\JsonCollection\Link;
 use SIAPI\JsonCollection\Type;
 
-class ImageJpeg extends Link
+class Next
 {
     /**
      * {@inheritdoc}
      */
-    protected $rel = Type\Relation::ITEM;
+    protected $rel = Type\Relation::NEXT;
 
     /**
      * {@inheritdoc}
      */
-    protected $type = Type\Media::JPEG;
+    protected $type = Type\Media::COLLECTION_NEXT_JSON;
 
     /**
      * {@inheritdoc}
      */
-    protected $render = Type\Render::IMAGE;
+    protected $render = Type\Render::LINK;
 } 

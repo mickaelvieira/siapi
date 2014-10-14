@@ -3,24 +3,22 @@
 namespace SIAPI\JsonCollection\Link;
 
 use SIAPI\JsonCollection\Link;
-use SIAPI\JsonCollection\Type\Media as MediaType;
-use SIAPI\JsonCollection\Type\Render as RenderType;
-use SIAPI\JsonCollection\Type\Relation as RelationType;
+use SIAPI\JsonCollection\Type;
 
 class ImageTiff extends Link
 {
     /**
      * {@inheritdoc}
      */
-    protected $rel = RelationType::ITEM;
+    protected $rel = Type\Relation::ITEM;
 
     /**
      * {@inheritdoc}
      */
-    protected $type = MediaType::TIFF;
+    protected $type = Type\Media::TIFF;
 
     /**
      * {@inheritdoc}
      */
-    protected $render = RenderType::IMAGE;
+    protected $render = Type\Render::IMAGE;
 } 
