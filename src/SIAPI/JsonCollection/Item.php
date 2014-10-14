@@ -16,26 +16,28 @@ class Item extends JsonConvertible implements DataContainer
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#property-href
      */
-    private $href;
+    protected $href;
 
     /**
      * @var array
      * @link http://amundsen.com/media-types/collection/format/#arrays-data
      */
-    private $data = [];
+    protected $data = [];
 
     /**
      * @var array
      * @link http://amundsen.com/media-types/collection/format/#arrays-links
      */
-    private $links = [];
+    protected $links = [];
 
     /**
      * @param string $href
      */
     public function setHref($href)
     {
-        $this->href = (string)$href;
+        if (is_string($href)) {
+            $this->href = $href;
+        }
     }
 
     /**
@@ -75,6 +77,23 @@ class Item extends JsonConvertible implements DataContainer
      */
     protected function getObjectData()
     {
-        return get_object_vars($this);
+        $data = get_object_vars($this);
+        return array_filter(
+            $data,
+            function ($value) {
+                if (is_array($value)) {
+                    return !empty($value);
+                }
+                return $value;
+            }
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfigData()
+    {
+        return array();
     }
 }

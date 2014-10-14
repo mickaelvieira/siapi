@@ -35,7 +35,9 @@ class Message extends JsonConvertible
      */
     public function setCode($code)
     {
-        $this->code = (string)$code;
+        if (is_string($code)) {
+            $this->code = $code;
+        }
     }
 
     /**
@@ -51,7 +53,9 @@ class Message extends JsonConvertible
      */
     public function setMessage($message)
     {
-        $this->message = (string)$message;
+        if (is_string($message)) {
+            $this->message = $message;
+        }
     }
 
     /**
@@ -67,7 +71,9 @@ class Message extends JsonConvertible
      */
     public function setName($name)
     {
-        $this->name = (string)$name;
+        if (is_string($name)) {
+            $this->name = $name;
+        }
     }
 
     /**

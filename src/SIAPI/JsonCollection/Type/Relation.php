@@ -2,7 +2,7 @@
 
 namespace SIAPI\JsonCollection\Type;
 
-final class LinkRelation
+final class Relation
 {
     /**
      *

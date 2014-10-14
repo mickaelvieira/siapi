@@ -2,12 +2,16 @@
 
 namespace SIAPI\Search\Result;
 
-use JsonSerializable;
 use SIAPI\Search\Result;
 use SIAPI\Entity\Hydrator;
 
-class Image implements Result, JsonSerializable
+class Image extends Result
 {
+    /**
+     * @var int
+     */
+    private $id;
+
     /**
      * @var string
      */
@@ -47,6 +51,22 @@ class Image implements Result, JsonSerializable
      * @var array
      */
     private $formats = [];
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return string
@@ -188,13 +208,5 @@ class Image implements Result, JsonSerializable
     public function addFormat(Format $image)
     {
         array_push($this->formats, $image);
-    }
-
-    /**
-     * @return array
-     */
-    public function jsonSerialize()
-    {
-        return get_object_vars($this);
     }
 }

@@ -1,16 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mickael
- * Date: 11/10/14
- * Time: 06:54
- */
 
 namespace SIAPI\JsonCollection;
 
-
 interface DataContainer
 {
+    /**
+     * @param \SIAPI\JsonCollection\Data
+     */
+    public function addData(Data $data);
+
     /**
      * @return array
      */

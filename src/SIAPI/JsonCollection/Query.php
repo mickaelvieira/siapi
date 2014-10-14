@@ -47,7 +47,9 @@ class Query extends JsonConvertible implements DataContainer
      */
     public function setHref($href)
     {
-        $this->href = $href;
+        if (is_string($href)) {
+            $this->href = $href;
+        }
     }
 
     /**
@@ -63,7 +65,9 @@ class Query extends JsonConvertible implements DataContainer
      */
     public function setName($name)
     {
-        $this->name = $name;
+        if (is_string($name)) {
+            $this->name = $name;
+        }
     }
 
     /**
@@ -79,7 +83,9 @@ class Query extends JsonConvertible implements DataContainer
      */
     public function setPrompt($prompt)
     {
-        $this->prompt = $prompt;
+        if (is_string($prompt)) {
+            $this->prompt = $prompt;
+        }
     }
 
     /**
@@ -95,7 +101,9 @@ class Query extends JsonConvertible implements DataContainer
      */
     public function setRel($rel)
     {
-        $this->rel = $rel;
+        if (is_string($rel)) {
+            $this->rel = $rel;
+        }
     }
 
     /**
@@ -127,6 +135,15 @@ class Query extends JsonConvertible implements DataContainer
      */
     protected function getObjectData()
     {
-        return get_object_vars($this);
+        $data = get_object_vars($this);
+        return array_filter(
+            $data,
+            function ($value) {
+                if (is_array($value)) {
+                    return !empty($value);
+                }
+                return !is_null($value);
+            }
+        );
     }
 }

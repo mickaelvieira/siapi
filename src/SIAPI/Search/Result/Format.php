@@ -2,9 +2,9 @@
 
 namespace SIAPI\Search\Result;
 
-use JsonSerializable;
+use SIAPI\Search\Result;
 
-class Format implements JsonSerializable
+class Format extends Result
 {
     /**
      * @var string
@@ -109,13 +109,5 @@ class Format implements JsonSerializable
     public function setSize($size)
     {
         $this->size = $size;
-    }
-
-    /**
-     * @return array
-     */
-    public function jsonSerialize()
-    {
-        return get_object_vars($this);
     }
 }

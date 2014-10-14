@@ -6,6 +6,7 @@ use SIAPI\Entity\Hydrator;
 use SIAPI\Search\Result\Image;
 use SIAPI\Search\ResultSet;
 use SIAPI\Search\Response as ResponseInterface;
+use Elastica\ResultSet as ElasticaResultSet;
 
 class Response implements ResponseInterface
 {
@@ -20,12 +21,23 @@ class Response implements ResponseInterface
     private $total = 0;
 
     /**
-     * @param array $data
+     * @param ElasticaResultSet $resultSet
      */
-    public function __construct(array $data)
+    public function __construct(ElasticaResultSet $resultSet)
     {
-        $this->total     = $this->extractTotalFromData($data);
-        $this->resultSet = $this->extractResultSetFromData($data);
+        $results         = $resultSet->getResults();
+        $this->total     = $resultSet->getTotalHits();
+        $this->resultSet = new ResultSet();//$this->extractResultSetFromData($data);
+
+        foreach ($resultSet->getResults() as $result) {
+
+            $image = new Image();
+            $image->setId($result->getId());
+
+            $this->resultSet->add(
+                Hydrator::populate($image, $result->getSource())
+            );
+        }
     }
 
     /**

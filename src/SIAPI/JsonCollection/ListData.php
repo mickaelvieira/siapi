@@ -35,7 +35,9 @@ class ListData extends JsonConvertible
      */
     public function setMultiple($multiple)
     {
-        $this->multiple = (bool)$multiple;
+        if (is_bool($multiple)) {
+            $this->multiple = $multiple;
+        }
     }
 
     /**
@@ -51,7 +53,9 @@ class ListData extends JsonConvertible
      */
     public function setDefault($default)
     {
-        $this->default = (string)$default;
+        if (is_string($default)) {
+            $this->default = $default;
+        }
     }
 
     /**

@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mickael
- * Date: 11/10/14
- * Time: 07:00
- */
 
 namespace SIAPI\JsonCollection;
 
+use SIAPI\Entity\Hydrator;
 
 class DataValueInjector
 {
@@ -16,7 +11,7 @@ class DataValueInjector
      * @param $values
      * @return DataContainer
      */
-    public static function injectValues(DataContainer $object, $values)
+    public static function injectDataValues(DataContainer $object, $values)
     {
         foreach ($values as $name => $value) {
             foreach ($object->getData() as $data) {
@@ -28,5 +23,20 @@ class DataValueInjector
             }
         }
         return $object;
+    }
+
+    /**
+     * @param DataContainer $object
+     * @param $values
+     */
+    public static function injectData(DataContainer $object, $values)
+    {
+        foreach ($object->getConfigData() as $config) {
+            $name = $config['name'];
+            if (array_key_exists($name, $values)) {
+                $config['value'] = $values[$name];
+                $object->addData(Hydrator::populate(new Data(), $config));
+            }
+        }
     }
 } 

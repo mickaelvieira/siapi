@@ -29,7 +29,9 @@ class Status extends JsonConvertible
      */
     public function setCode($code)
     {
-        $this->code = (string)$code;
+        if (is_string($code)) {
+            $this->code = $code;
+        }
     }
 
     /**
@@ -45,7 +47,9 @@ class Status extends JsonConvertible
      */
     public function setMessage($message)
     {
-        $this->message = (string)$message;
+        if (is_string($message)) {
+            $this->message = $message;
+        }
     }
 
     /**

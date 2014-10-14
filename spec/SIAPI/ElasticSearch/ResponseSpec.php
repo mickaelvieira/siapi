@@ -6,10 +6,22 @@ use SIAPI\PhpSpec\JsonSerializableBehavior;
 
 class ResponseSpec extends JsonSerializableBehavior
 {
-    function let()
+    /**
+     * @param \Elastica\ResultSet $resultSet
+     * @param \Elastica\Result $result
+     */
+    function let($resultSet, $result)
     {
-        $json = $this->getJsonFixtureContent('elasticsearch/response.json');
-        $this->beConstructedWith(json_decode($json, true));
+        $jsonResponse = $this->getJsonFixtureContent('elasticsearch/response.json');
+        $jsonSource   = $this->getJsonFixtureContent('elasticsearch/source.json');
+
+        $result->getId()->willReturn(99);
+        $result->getSource()->willReturn(json_decode($jsonSource, true));
+
+        $resultSet->getResults()->willReturn(array($result));
+        $resultSet->getTotalHits()->willReturn(100);
+
+        $this->beConstructedWith($resultSet);
     }
 
     function it_is_initializable()
@@ -25,6 +37,6 @@ class ResponseSpec extends JsonSerializableBehavior
     function it_should_return_a_result_set()
     {
         $this->getResultSet()->shouldReturnAnInstanceOf('SIAPI\Search\ResultSet');
-        $this->getResultSet()->shouldHaveCount(10);
+        $this->getResultSet()->shouldHaveCount(1);
     }
 }

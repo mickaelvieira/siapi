@@ -3,7 +3,7 @@
 namespace SIAPI\JsonCollection;
 
 use SIAPI\JsonCollection;
-
+use SIAPI\JsonCollection\Type\Render as RenderType;
 /**
  * Class Link
  * @package SIAPI\JsonJsonCollection
@@ -16,44 +16,46 @@ class Link extends JsonConvertible
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-href
      */
-    private $href;
+    protected $href;
 
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-rel
      */
-    private $rel;
+    protected $rel;
 
     /**
      * @var string
      * @link http://code.ge/media-types/collection-next-json/#property-type
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-name
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-render
      */
-    private $render;
+    protected $render = RenderType::LINK;
 
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-prompt
      */
-    private $prompt;
+    protected $prompt;
 
     /**
      * @param string $href
      */
     public function setHref($href)
     {
-        $this->href = (string)$href;
+        if (is_string($href)) {
+            $this->href = $href;
+        }
     }
 
     /**
@@ -69,7 +71,9 @@ class Link extends JsonConvertible
      */
     public function setRel($rel)
     {
-        $this->rel = (string)$rel;
+        if (is_string($rel)) {
+            $this->rel = $rel;
+        }
     }
 
     /**
@@ -85,7 +89,9 @@ class Link extends JsonConvertible
      */
     public function setType($type)
     {
-        $this->type = (string)$type;
+        if (is_string($type)) {
+            $this->type = $type;
+        }
     }
 
     /**
@@ -101,7 +107,9 @@ class Link extends JsonConvertible
      */
     public function setName($name)
     {
-        $this->name = (string)$name;
+        if (is_string($name)) {
+            $this->name = $name;
+        }
     }
 
     /**
@@ -117,7 +125,9 @@ class Link extends JsonConvertible
      */
     public function setPrompt($prompt)
     {
-        $this->prompt = (string)$prompt;
+        if (is_string($prompt)) {
+            $this->prompt = $prompt;
+        }
     }
 
     /**
@@ -133,7 +143,9 @@ class Link extends JsonConvertible
      */
     public function setRender($render)
     {
-        $this->render = (string)$render;
+        if (is_string($render)) {
+            $this->render = $render;
+        }
     }
 
     /**

@@ -29,7 +29,9 @@ class Option extends JsonConvertible
      */
     public function setPrompt($prompt)
     {
-        $this->prompt = (string)$prompt;
+        if (is_string($prompt)) {
+            $this->prompt = $prompt;
+        }
     }
 
     /**
@@ -45,7 +47,9 @@ class Option extends JsonConvertible
      */
     public function setValue($value)
     {
-        $this->value = (string)$value;
+        if (is_string($value)) {
+            $this->value = $value;
+        }
     }
 
     /**

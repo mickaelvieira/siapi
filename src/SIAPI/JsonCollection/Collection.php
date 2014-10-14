@@ -64,7 +64,9 @@ class Collection extends JsonConvertible
      */
     public function setHref($href)
     {
-        $this->href = (string)$href;
+        if (is_string($href)) {
+            $this->href = $href;
+        }
     }
 
     /**
@@ -118,7 +120,7 @@ class Collection extends JsonConvertible
     /**
      * @param \SIAPI\JsonCollection\Status $status
      */
-    public function setStatus($status)
+    public function setStatus(Status $status)
     {
         $this->status = $status;
     }
@@ -158,6 +160,16 @@ class Collection extends JsonConvertible
         $data = [
             'version' => self::VERSION
         ];
-        return array_merge($data, get_object_vars($this));
+        $data = array_merge($data, get_object_vars($this));
+
+        return array_filter(
+            $data,
+            function ($value) {
+                if (is_array($value)) {
+                    return !empty($value);
+                }
+                return !is_null($value);
+            }
+        );
     }
 }

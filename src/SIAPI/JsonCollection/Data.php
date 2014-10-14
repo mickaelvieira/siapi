@@ -2,8 +2,6 @@
 
 namespace SIAPI\JsonCollection;
 
-use SIAPI\JsonCollection;
-
 /**
  * Class Data
  * @package SIAPI\JsonJsonCollection
@@ -16,38 +14,46 @@ class Data extends JsonConvertible
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-prompt
      */
-    private $prompt;
+    protected $prompt;
 
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-name
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      * @link http://amundsen.com/media-types/collection/format/#properties-value
      */
-    private $value;
+    protected $value;
 
     /**
      * @var string
      * @link http://code.ge/media-types/collection-next-json/#property-type
      */
-    private $type;
+    protected $type;
 
     /**
      * @var bool
      * @link http://code.ge/media-types/collection-next-json/#property-required
      */
-    private $required;
+    protected $required;
+
+    /**
+     * @var \SIAPI\JsonCollection\ListData
+     * @link http://code.ge/media-types/collection-next-json/#object-list
+     */
+    protected $list;
 
     /**
      * @param string $name
      */
     public function setName($name)
     {
-        $this->name = (string)$name;
+        if (is_string($name)) {
+            $this->name = $name;
+        }
     }
 
     /**
@@ -63,7 +69,9 @@ class Data extends JsonConvertible
      */
     public function setPrompt($prompt)
     {
-        $this->prompt = (string)$prompt;
+        if (is_string($prompt)) {
+            $this->prompt = $prompt;
+        }
     }
 
     /**
@@ -79,7 +87,9 @@ class Data extends JsonConvertible
      */
     public function setValue($value)
     {
-        $this->value = (string)$value;
+        if (is_string($value)) {
+            $this->value = $value;
+        }
     }
 
     /**
@@ -95,7 +105,9 @@ class Data extends JsonConvertible
      */
     public function setType($type)
     {
-        $this->type = (string)$type;
+        if (is_string($type)) {
+            $this->type = $type;
+        }
     }
 
     /**
@@ -111,7 +123,9 @@ class Data extends JsonConvertible
      */
     public function setRequired($required)
     {
-        $this->required = (bool)$required;
+        if (is_bool($required)) {
+            $this->required = $required;
+        }
     }
 
     /**
@@ -119,7 +133,23 @@ class Data extends JsonConvertible
      */
     public function isRequired()
     {
-        return $this->required;
+        return (bool)$this->required;
+    }
+
+    /**
+     * @return \SIAPI\JsonCollection\ListData
+     */
+    public function getList()
+    {
+        return $this->list;
+    }
+
+    /**
+     * @param \SIAPI\JsonCollection\ListData $list
+     */
+    public function setList(ListData $list)
+    {
+        $this->list = $list;
     }
 
     /**
@@ -127,6 +157,17 @@ class Data extends JsonConvertible
      */
     protected function getObjectData()
     {
-        return get_object_vars($this);
+        $filtered = array();
+        $data = get_object_vars($this);
+
+        array_walk(
+            $data,
+            function ($value, $key) use (&$filtered) {
+                if (!is_null($value) || $key === 'value') {
+                    $filtered[$key] = $value;
+                }
+            }
+        );
+        return $filtered;
     }
 }

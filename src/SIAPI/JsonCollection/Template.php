@@ -83,6 +83,15 @@ class Template extends JsonConvertible implements DataContainer
      */
     protected function getObjectData()
     {
-        return get_object_vars($this);
+        $data = get_object_vars($this);
+        return array_filter(
+            $data,
+            function ($value) {
+                if (is_array($value)) {
+                    return !empty($value);
+                }
+                return !is_null($value);
+            }
+        );
     }
 }

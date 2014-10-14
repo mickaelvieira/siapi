@@ -1,0 +1,18 @@
+{
+    "target": "Saturn",
+    "satelliteOf": "Sol (our sun)",
+    "mission": "Cassini-Huygens",
+    "spacecraft": "Cassini Orbiter",
+    "instrument": "Imaging Science Subsystem - Wide Angle",
+    "extra": null,
+    "source": "Cassini Imaging Team",
+    "formats": [
+        {
+            "width": "1000",
+            "height": "1000",
+            "imageType": "jpg",
+            "mimeType": "image/jpg",
+            "size": "56.59"
+        }
+    ]
+}

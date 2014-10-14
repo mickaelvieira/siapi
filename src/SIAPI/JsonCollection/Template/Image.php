@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mickael
- * Date: 11/10/14
- * Time: 07:09
- */
 
 namespace SIAPI\JsonCollection\Template;
 

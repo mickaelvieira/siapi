@@ -41,7 +41,9 @@ class Error extends JsonConvertible
      */
     public function setCode($code)
     {
-        $this->code = (string)$code;
+        if (is_string($code)) {
+            $this->code = $code;
+        }
     }
 
     /**
@@ -57,7 +59,9 @@ class Error extends JsonConvertible
      */
     public function setMessage($message)
     {
-        $this->message = (string)$message;
+        if (is_string($message)) {
+            $this->message = $message;
+        }
     }
 
     /**
@@ -73,7 +77,9 @@ class Error extends JsonConvertible
      */
     public function setTitle($title)
     {
-        $this->title = (string)$title;
+        if (is_string($title)) {
+            $this->title = $title;
+        }
     }
 
     /**
