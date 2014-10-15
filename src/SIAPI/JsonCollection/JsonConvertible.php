@@ -24,7 +24,7 @@ abstract class JsonConvertible implements JsonSerializable, ArrayConvertible
      */
     public function toArray()
     {
-        $data = get_object_vars($this);
+        $data = $this->getObjectData();
         array_walk(
             $data,
             function (&$value) {
@@ -40,21 +40,4 @@ abstract class JsonConvertible implements JsonSerializable, ArrayConvertible
      * @return mixed
      */
     abstract protected function getObjectData();
-
-    /**
-     * @param array $data
-     * @return array
-     */
-    private function filterNullValueAndEmptyArray($data)
-    {
-        return array_filter(
-            $data,
-            function ($value) {
-                if (is_array($value)) {
-                    return !empty($value);
-                }
-                return (!is_null($value));
-            }
-        );
-    }
 }
