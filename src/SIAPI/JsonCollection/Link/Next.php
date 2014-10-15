@@ -5,7 +5,7 @@ namespace SIAPI\JsonCollection\Link;
 use SIAPI\JsonCollection\Link;
 use SIAPI\JsonCollection\Type;
 
-class Next
+class Next extends Link
 {
     /**
      * {@inheritdoc}
