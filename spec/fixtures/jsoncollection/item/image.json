@@ -21,5 +21,19 @@
             "name": "source",
             "value": "Cassini Imaging Team"
         }
+    ],
+    "links": [
+        {
+            "type": "image/jpeg",
+            "rel": "item",
+            "render": "image",
+            "href": "/image/99.jpg"
+        },
+        {
+            "type": "image/tiff",
+            "rel": "item",
+            "render": "image",
+            "href": "/image/99.tif"
+        }
     ]
 }

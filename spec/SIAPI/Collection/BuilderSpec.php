@@ -24,13 +24,13 @@ class BuilderSpec extends JsonSerializableBehavior
      */
     function it_should_build_an_item_image($image)
     {
+        $prophet = $this->getProphet();
+
         $image->getId()->willReturn(99);
         $image->getTarget()->willReturn("Saturn");
-       // $image->getSatelliteOf()->willReturn("Sol (our sun)");
         $image->getMission()->willReturn("Cassini-Huygens");
         $image->getSpacecraft()->willReturn("Cassini Orbiter");
         $image->getInstrument()->willReturn("Imaging Science Subsystem - Wide Angle");
-        //$image->getExtra()->willReturn(null);
         $image->getSource()->willReturn("Cassini Imaging Team");
 
         $image->toArray()->willReturn(array(
@@ -43,6 +43,21 @@ class BuilderSpec extends JsonSerializableBehavior
             'extra'       => null,
             'source'      => 'Cassini Imaging Team',
         ));
+
+
+        $formatJpg = $prophet->prophesize('\SIAPI\Search\Result\Format');
+        $formatJpg->getMimeType()->willReturn('image/jpeg');
+
+        $formatTif = $prophet->prophesize('\SIAPI\Search\Result\Format');
+        $formatTif->getMimeType()->willReturn('image/tiff');
+
+        $image->getFormats()->willReturn(
+            array(
+                $formatJpg,
+                $formatTif
+            )
+        );
+
 
         $this->getItemFromImageResult($image)->shouldReturnAnInstanceOf('SIAPI\JsonCollection\Item');
 

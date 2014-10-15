@@ -161,6 +161,12 @@ class Link extends JsonConvertible
      */
     protected function getObjectData()
     {
-        return get_object_vars($this);
+        $data = get_object_vars($this);
+        return array_filter(
+            $data,
+            function ($value) {
+                return !is_null($value);
+            }
+        );
     }
 }

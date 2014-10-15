@@ -5,6 +5,7 @@ namespace SIAPI\PhpSpec;
 use PhpSpec\Exception\Exception;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Prophecy\Prophet;
 
 class JsonSerializableBehavior extends ObjectBehavior
 {
@@ -30,6 +31,14 @@ class JsonSerializableBehavior extends ObjectBehavior
                 return (count($filtered) > 0);
             }
         ];
+    }
+
+    /**
+     * @return \Prophecy\Prophet
+     */
+    protected function getProphet()
+    {
+        return new Prophet();
     }
 
     private function getJson($subject)

@@ -5,7 +5,7 @@ namespace SIAPI\JsonCollection\Link;
 use SIAPI\JsonCollection\Link;
 use SIAPI\JsonCollection\Type;
 
-class ImageJpeg extends Link
+class Image extends Link
 {
     /**
      * {@inheritdoc}
@@ -15,10 +15,5 @@ class ImageJpeg extends Link
     /**
      * {@inheritdoc}
      */
-    protected $type = Type\Media::JPEG;
-
-    /**
-     * {@inheritdoc}
-     */
     protected $render = Type\Render::IMAGE;
-} 
+}
