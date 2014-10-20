@@ -23,10 +23,10 @@ class ImageSpec extends JsonSerializableBehavior
         $this->getData()->shouldHaveDataWithName('target');
     }
 
-    function it_should_have_the_satelliteof_data()
+    /*function it_should_have_the_satelliteof_data()
     {
         $this->getData()->shouldHaveDataWithName('satelliteof');
-    }
+    }*/
 
     function it_should_have_the_spacecraft_data()
     {
@@ -38,10 +38,10 @@ class ImageSpec extends JsonSerializableBehavior
         $this->getData()->shouldHaveDataWithName('instrument');
     }
 
-    function it_should_have_the_extra_data()
+    /*function it_should_have_the_extra_data()
     {
         $this->getData()->shouldHaveDataWithName('extra');
-    }
+    }*/
     function it_should_have_the_source_data()
     {
         $this->getData()->shouldHaveDataWithName('source');

@@ -1,0 +1,217 @@
+{
+    "collection" :
+    {
+        "version" : "1.0",
+        "href" : "http://siapi.dev/search.php",
+        "links" : [
+            {
+                "rel": "prev",
+                "render": "link",
+                "href": "http://siapi.dev/search.php"
+            },
+            {
+                "rel": "next",
+                "render": "link",
+                "href": "http://siapi.dev/search.php"
+            }
+        ],
+        "items" : [
+            {
+                "href": "http://photojournal.jpl.nasa.gov/jpeg/PIA18278.jpg",
+                "data": [
+                    {
+                        "name": "mission",
+                        "value": "Cassini-Huygens"
+                    },
+                    {
+                        "name": "target",
+                        "value": "Saturn"
+                    },
+                    {
+                        "name": "spacecraft",
+                        "value": "Cassini Orbiter"
+                    },
+                    {
+                        "name": "instrument",
+                        "value": "Imaging Science Subsystem - Wide Angle"
+                    },
+                    {
+                        "name": "source",
+                        "value": "Cassini Imaging Team"
+                    }
+                ]
+            },
+            {
+                "href": "http://photojournal.jpl.nasa.gov/jpeg/PIA18275.jpg",
+                "data": [
+                    {
+                        "name": "mission",
+                        "value": "Cassini-Huygens"
+                    },
+                    {
+                        "name": "target",
+                        "value": "Saturn"
+                    },
+                    {
+                        "name": "spacecraft",
+                        "value": "Cassini Orbiter"
+                    },
+                    {
+                        "name": "instrument",
+                        "value": "Imaging Science Subsystem - Wide Angle"
+                    },
+                    {
+                        "name": "source",
+                        "value": "Cassini Imaging Team"
+                    }
+                ]
+            },
+            {
+                "href": "http://photojournal.jpl.nasa.gov/jpeg/PIA17168.jpg",
+                "data": [
+                    {
+                        "name": "mission",
+                        "value": "Cassini-Huygens"
+                    },
+                    {
+                        "name": "target",
+                        "value": "Saturn"
+                    },
+                    {
+                        "name": "spacecraft",
+                        "value": "Cassini Orbiter"
+                    },
+                    {
+                        "name": "instrument",
+                        "value": "Imaging Science Subsystem - Wide Angle"
+                    },
+                    {
+                        "name": "source",
+                        "value": "Cassini Imaging Team"
+                    }
+                ]
+            },
+            {
+                "href": "http://photojournal.jpl.nasa.gov/jpeg/PIA18410.jpg",
+                "data": [
+                    {
+                        "name": "mission",
+                        "value": "Cassini-Huygens"
+                    },
+                    {
+                        "name": "target",
+                        "value": "Saturn"
+                    },
+                    {
+                        "name": "spacecraft",
+                        "value": "Cassini Orbiter"
+                    },
+                    {
+                        "name": "instrument",
+                        "value": "Imaging Science Subsystem - Wide Angle"
+                    },
+                    {
+                        "name": "source",
+                        "value": "Cassini Imaging Team"
+                    }
+                ]
+            },
+            {
+                "href": "http://photojournal.jpl.nasa.gov/jpeg/PIA17168.jpg",
+                "data": [
+                    {
+                        "name": "mission",
+                        "value": "Cassini-Huygens"
+                    },
+                    {
+                        "name": "target",
+                        "value": "Saturn"
+                    },
+                    {
+                        "name": "spacecraft",
+                        "value": "Cassini Orbiter"
+                    },
+                    {
+                        "name": "instrument",
+                        "value": "Imaging Science Subsystem - Wide Angle"
+                    },
+                    {
+                        "name": "source",
+                        "value": "Cassini Imaging Team"
+                    }
+                ]
+            }
+        ],
+        "queries" : [
+            {
+                "href": "http://siapi.dev/search.php",
+                "rel": "search",
+                "name": "image",
+                "prompt": "Here my prompt Message",
+                "data": [
+                    {
+                        "name": "mission",
+                        "value": ""
+                    },
+                    {
+                        "name": "target",
+                        "value": ""
+                    },
+                    {
+                        "name": "satelliteof",
+                        "value": ""
+                    },
+                    {
+                        "name": "spacecraft",
+                        "value": ""
+                    },
+                    {
+                        "name": "instrument",
+                        "value": ""
+                    },
+                    {
+                        "name": "extra",
+                        "value": ""
+                    },
+                    {
+                        "name": "source",
+                        "value": ""
+                    }
+                ]
+            }
+        ],
+        "template" : {
+            "data": [
+                {
+                    "name": "mission",
+                    "value": ""
+                },
+                {
+                    "name": "target",
+                    "value": ""
+                },
+                {
+                    "name": "satelliteof",
+                    "value": ""
+                },
+                {
+                    "name": "spacecraft",
+                    "value": ""
+                },
+                {
+                    "name": "instrument",
+                    "value": ""
+                },
+                {
+                    "name": "extra",
+                    "value": ""
+                },
+                {
+                    "name": "source",
+                    "value": ""
+                }
+            ]
+        },
+        "error" : {}
+    }
+}
