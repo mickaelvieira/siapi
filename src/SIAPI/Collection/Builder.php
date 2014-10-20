@@ -2,12 +2,12 @@
 
 namespace SIAPI\Collection;
 
-use SIAPI\JsonCollection\Item;
+use SIAPI\Resource\JsonCollection\Item;
 use SIAPI\JsonCollection\Collection;
 use SIAPI\JsonCollection\DataValueInjector;
-use SIAPI\JsonCollection\Link;
-use SIAPI\JsonCollection\Query;
-use SIAPI\JsonCollection\Template;
+use SIAPI\Resource\JsonCollection\Link;
+use SIAPI\Resource\JsonCollection\Query;
+use SIAPI\Resource\JsonCollection\Template;
 use SIAPI\Search\ResultSet;
 use SIAPI\Search\Result\Image;
 
