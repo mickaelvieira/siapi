@@ -17,4 +17,9 @@ class SpacecraftSpec extends ObjectBehavior
     {
         $this->getValue()->shouldBeEqualTo('');
     }
+
+    function it_should_have_a_data_list_defined()
+    {
+        $this->getList()->shouldReturnAnInstanceOf('SIAPI\Component\Resource\JsonCollection\Query\ListData\Spacecraft');
+    }
 }
