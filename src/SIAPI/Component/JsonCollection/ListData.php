@@ -16,19 +16,19 @@ class ListData extends JsonConvertible
      * @var bool
      * @link http://code.ge/media-types/collection-next-json/#property-multiple
      */
-    private $multiple;
+    protected $multiple;
 
     /**
      * @var string
      * @link http://code.ge/media-types/collection-next-json/#property-default
      */
-    private $default;
+    protected $default;
 
     /**
      * @var array
      * @link http://code.ge/media-types/collection-next-json/#array-options
      */
-    private $options = [];
+    protected $options = [];
 
     /**
      * @param boolean $multiple
