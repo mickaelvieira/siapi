@@ -88,12 +88,4 @@ class Item extends JsonConvertible implements DataContainer
             }
         );
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigData()
-    {
-        return array();
-    }
 }
