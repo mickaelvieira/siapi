@@ -11,12 +11,9 @@ use Prophecy\Argument;
  */
 class ContentSpec extends ObjectBehavior
 {
-    /**
-     * @param \Psr\Http\Message\MessageInterface $message
-     */
-    function it_is_initializable($message)
+    function it_is_initializable()
     {
-        $this->beConstructedWith($message);
+        $this->beConstructedWith(array());
         $this->shouldHaveType('SIAPI\Component\Negotiation\Content');
     }
 }

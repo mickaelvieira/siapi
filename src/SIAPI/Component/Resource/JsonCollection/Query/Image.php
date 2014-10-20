@@ -36,5 +36,6 @@ class Image extends Query
         $this->addData(new QueryData\Spacecraft());
         $this->addData(new QueryData\Instrument());
         $this->addData(new QueryData\Source());
+        $this->addData(new QueryData\Size());
     }
 } 

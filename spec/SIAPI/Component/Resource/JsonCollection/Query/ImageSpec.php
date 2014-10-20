@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\SIAPI\Component\Resource\ReJsonCollection\Query;
+namespace spec\SIAPI\Component\Resource\JsonCollection\Query;
 
 use SIAPI\Component\PhpSpec\JsonSerializableBehavior;
 
@@ -53,6 +53,11 @@ class ImageSpec extends JsonSerializableBehavior
     function it_should_have_the_source_parameter()
     {
         $this->getData()->shouldHaveDataWithName('source');
+    }
+
+    function it_should_have_the_size_parameter()
+    {
+        $this->getData()->shouldHaveDataWithName('size');
     }
 
     /*function it_should_have_the_correct_json_representation()

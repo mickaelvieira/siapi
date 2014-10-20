@@ -20,6 +20,7 @@ class ResponseSpec extends JsonSerializableBehavior
 
         $resultSet->getResults()->willReturn(array($result));
         $resultSet->getTotalHits()->willReturn(100);
+        $resultSet->getAggregations()->willReturn(array());
 
         $this->beConstructedWith($resultSet);
     }

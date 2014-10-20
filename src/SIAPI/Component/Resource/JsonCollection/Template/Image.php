@@ -14,5 +14,6 @@ class Image extends Template
         $this->addData(new TemplateData\Spacecraft());
         $this->addData(new TemplateData\Instrument());
         $this->addData(new TemplateData\Source());
+        $this->addData(new TemplateData\Size());
     }
 } 
