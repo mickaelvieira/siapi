@@ -1,23 +1,24 @@
 <?php
 
+
 namespace SIAPI\JsonCollection\Data;
 
 use SIAPI\JsonCollection\Data;
 
-class Spacecraft extends Data
+class Size extends Data
 {
     /**
      * {@inheritdoc}
      */
-    protected $name = 'spacecraft';
+    protected $name = 'size';
 
     /**
      * {@inheritdoc}
      */
-    protected $prompt = 'Spacecraft';
+    protected $prompt = 'Size';
 
     /**
      * {@inheritdoc}
      */
-    protected $required = false;
+    protected $required = true;
 } 

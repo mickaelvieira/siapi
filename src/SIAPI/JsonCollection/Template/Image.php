@@ -10,7 +10,12 @@ class Image extends Template
 {
     public function __construct()
     {
-        $this->addTemplateData();
+        $this->addData(new Template\Data\Mission());
+        $this->addData(new Template\Data\Target());
+        $this->addData(new Template\Data\Spacecraft());
+        $this->addData(new Template\Data\Instrument());
+        $this->addData(new Template\Data\Source());
+        //$this->addTemplateData();
     }
 
 

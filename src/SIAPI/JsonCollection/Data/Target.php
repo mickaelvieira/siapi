@@ -10,4 +10,14 @@ class Target extends Data
      * {@inheritdoc}
      */
     protected $name = 'target';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $prompt = 'Target';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $required = false;
 } 

@@ -12,6 +12,7 @@ final class Media
     {
     }
 
+    const HTML                 = "text/html";
     const TIFF                 = "image/tiff";
     const JPEG                 = "image/jpeg";
     const COLLECTION_JSON      = "application/vnd.collection+json";

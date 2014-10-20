@@ -31,7 +31,12 @@ class Image extends Query
 
     public function __construct()
     {
-        $this->addQueryParameters();
+        $this->addData(new Query\Data\Mission());
+        $this->addData(new Query\Data\Target());
+        $this->addData(new Query\Data\Spacecraft());
+        $this->addData(new Query\Data\Instrument());
+        $this->addData(new Query\Data\Source());
+        //$this->addQueryParameters();
     }
 
     private function addQueryParameters()
