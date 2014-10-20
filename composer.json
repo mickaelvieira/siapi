@@ -13,7 +13,6 @@
         "php": "~5.4",
         "ruflin/Elastica": "dev-master",
         "guzzlehttp/guzzle": "~4.0",
-        "psr/http-message": "1.0.*@dev",
         "symfony/routing": "2.6.*@dev",
         "symfony/http-foundation": "2.6.*@dev"
     },

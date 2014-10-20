@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4e8c94dbf093561a79248ddd90431a4f",
+    "hash": "6090f46a2f6544d863ae8717caeb44a4",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -123,52 +123,6 @@
                 "stream"
             ],
             "time": "2014-08-17 21:15:53"
-        },
-        {
-            "name": "psr/http-message",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message.git",
-                "reference": "05f67fe3f44fa213b543160452cfc202304a7e06"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/05f67fe3f44fa213b543160452cfc202304a7e06",
-                "reference": "05f67fe3f44fa213b543160452cfc202304a7e06",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP messages",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "time": "2014-10-17 16:13:56"
         },
         {
             "name": "ruflin/elastica",
@@ -1629,7 +1583,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "ruflin/elastica": 20,
-        "psr/http-message": 20,
         "symfony/routing": 20,
         "symfony/http-foundation": 20
     },
