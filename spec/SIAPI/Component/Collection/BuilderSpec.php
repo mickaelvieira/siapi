@@ -16,7 +16,7 @@ class BuilderSpec extends JsonSerializableBehavior
      */
     function it_should_build_a_collection($resultSet)
     {
-        $this->getCollection($resultSet)->shouldReturnAnInstanceOf('SIAPI\Component\JsonCollection\Collection');
+        $this->getCollection($resultSet)->shouldReturnAnInstanceOf('JsonCollection\Collection');
     }
 
     /**
@@ -59,7 +59,7 @@ class BuilderSpec extends JsonSerializableBehavior
         );
 
 
-        $this->getItemFromImageResult($image)->shouldReturnAnInstanceOf('SIAPI\Component\JsonCollection\Item');
+        $this->getItemFromImageResult($image)->shouldReturnAnInstanceOf('JsonCollection\Item');
 
         $json = $this->getJsonFixtureContent('jsoncollection/item/image.json');
         //$this->getItemFromImageResult($image)->jsonSerialize()->shouldBeEqualToJson($json);

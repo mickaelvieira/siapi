@@ -2,8 +2,8 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Link;
 
-use SIAPI\Component\JsonCollection\Link;
-use SIAPI\Component\JsonCollection\Type;
+use JsonCollection\Link;
+use JsonCollection\Type;
 
 class Prev extends Link
 {

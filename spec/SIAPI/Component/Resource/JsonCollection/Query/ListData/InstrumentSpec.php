@@ -10,7 +10,7 @@ class InstrumentSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('SIAPI\Component\Resource\JsonCollection\Query\ListData\Instrument');
-        $this->shouldBeAnInstanceOf('SIAPI\Component\JsonCollection\ListData');
+        $this->shouldBeAnInstanceOf('JsonCollection\ListData');
     }
 
     function it_should_not_be_required()

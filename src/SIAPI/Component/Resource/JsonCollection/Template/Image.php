@@ -2,7 +2,7 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Template;
 
-use SIAPI\Component\JsonCollection\Template;
+use JsonCollection\Template;
 use SIAPI\Component\Resource\JsonCollection\Template\Data as TemplateData;
 
 class Image extends Template

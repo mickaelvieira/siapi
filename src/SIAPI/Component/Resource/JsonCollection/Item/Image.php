@@ -3,7 +3,7 @@
 namespace SIAPI\Component\Resource\JsonCollection\Item;
 
 use SIAPI\Component\Resource\JsonCollection\Data;
-use SIAPI\Component\JsonCollection\Item;
+use JsonCollection\Item;
 
 class Image extends Item
 {
@@ -31,13 +31,13 @@ class Image extends Item
 
     /**
      * @param string $name
-     * @return null|\SIAPI\Component\JsonCollection\Data
+     * @return null|\JsonCollection\Data
      */
     public function getDataByName($name)
     {
         $entity = null;
-        foreach ($this->getData() as $data) {
-            /** @var \SIAPI\Component\JsonCollection\Data $data */
+        foreach ($this->getDataSet() as $data) {
+            /** @var \JsonCollection\Data $data */
             if ($data->getName() === $name) {
                 $entity = $data;
                 break;

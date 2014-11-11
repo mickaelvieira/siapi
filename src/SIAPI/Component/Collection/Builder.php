@@ -3,8 +3,8 @@
 namespace SIAPI\Component\Collection;
 
 use SIAPI\Component\Resource\JsonCollection\Item;
-use SIAPI\Component\JsonCollection\Collection;
-use SIAPI\Component\JsonCollection\DataValueInjector;
+use JsonCollection\Collection;
+//use JsonCollection\DataValueInjector;
 use SIAPI\Component\Resource\JsonCollection\Link;
 use SIAPI\Component\Resource\JsonCollection\Query;
 use SIAPI\Component\Resource\JsonCollection\Template;
@@ -38,14 +38,14 @@ class Builder
 
     /**
      * @param \SIAPI\Component\Search\Result\Image $image
-     * @return \SIAPI\Component\JsonCollection\Item
+     * @return \JsonCollection\Item
      */
     public function getItemFromImageResult(Image $image)
     {
-        $item = new Item\Image();
+        $item = new Item\Image($image->toArray());
         $item->setHref("/image/" . $image->getId());
 
-        DataValueInjector::injectDataValues($item, $image->toArray());
+        //DataValueInjector::injectDataValues($item, $image->toArray());
 
         foreach ($image->getFormats() as $format) {
 

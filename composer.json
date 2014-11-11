@@ -9,12 +9,19 @@
             "email": "contact@mickael-vieira.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://github.com/mickaelvieira/JsonCollection.git"
+        }
+    ],
     "require": {
         "php": "~5.4",
         "ruflin/Elastica": "dev-master",
         "guzzlehttp/guzzle": "~4.0",
         "symfony/routing": "2.6.*@dev",
-        "symfony/http-foundation": "2.6.*@dev"
+        "symfony/http-foundation": "2.6.*@dev",
+        "mvieira/json-collection": "dev-master"
     },
     "require-dev": {
         "phpspec/phpspec": "~2.0",

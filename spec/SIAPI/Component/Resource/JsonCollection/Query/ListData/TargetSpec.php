@@ -10,7 +10,7 @@ class TargetSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('SIAPI\Component\Resource\JsonCollection\Query\ListData\Target');
-        $this->shouldBeAnInstanceOf('SIAPI\Component\JsonCollection\ListData');
+        $this->shouldBeAnInstanceOf('JsonCollection\ListData');
     }
 
     function it_should_not_be_required()

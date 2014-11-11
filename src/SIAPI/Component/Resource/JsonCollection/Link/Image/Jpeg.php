@@ -3,7 +3,7 @@
 namespace SIAPI\Component\Resource\JsonCollection\Link\Image;
 
 use SIAPI\Component\Resource\JsonCollection\Link;
-use SIAPI\Component\JsonCollection\Type;
+use JsonCollection\Type;
 
 class Jpeg extends Link\Image
 {

@@ -3,7 +3,7 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Data;
 
-use SIAPI\Component\JsonCollection\Data;
+use JsonCollection\Data;
 
 class Size extends Data
 {
