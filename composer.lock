@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2e3cf5c460e3de37e916187bfd71eac8",
+    "hash": "903edfd09b219c1184025bf1931ea604",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -125,17 +125,61 @@
             "time": "2014-08-17 21:15:53"
         },
         {
+            "name": "mvieira/content-negotiation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mickaelvieira/ContentNegotiation.git",
+                "reference": "76215cb15108fac1e05803106efc805f42d5fc20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mickaelvieira/ContentNegotiation/zipball/76215cb15108fac1e05803106efc805f42d5fc20",
+                "reference": "76215cb15108fac1e05803106efc805f42d5fc20",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~5.4"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "~0.2",
+                "phpmd/phpmd": "2.0.*",
+                "phpspec/nyan-formatters": "1.*",
+                "phpspec/phpspec": "~2.0",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ContentNegotiation\\": "src/ContentNegotiation/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Mickael Vieira",
+                    "email": "contact@mickael-vieira.com",
+                    "homepage": "http://mickael-vieira.com"
+                }
+            ],
+            "description": "PHP implementation server driven negotiation",
+            "support": {
+                "source": "https://github.com/mickaelvieira/ContentNegotiation/tree/v0.0.1",
+                "issues": "https://github.com/mickaelvieira/ContentNegotiation/issues"
+            },
+            "time": "2014-11-11 16:14:52"
+        },
+        {
             "name": "mvieira/json-collection",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mickaelvieira/JsonCollection.git",
-                "reference": "1d1e65b77f5be9ae59fa26f5dc208ea9fa8d5e89"
+                "reference": "1580e6a0d32a52e9f0970dcd6ddf49c028e78b27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mickaelvieira/JsonCollection/zipball/1d1e65b77f5be9ae59fa26f5dc208ea9fa8d5e89",
-                "reference": "1d1e65b77f5be9ae59fa26f5dc208ea9fa8d5e89",
+                "url": "https://api.github.com/repos/mickaelvieira/JsonCollection/zipball/1580e6a0d32a52e9f0970dcd6ddf49c028e78b27",
+                "reference": "1580e6a0d32a52e9f0970dcd6ddf49c028e78b27",
                 "shasum": ""
             },
             "require": {
@@ -172,10 +216,10 @@
                 "RESTful"
             ],
             "support": {
-                "source": "https://github.com/mickaelvieira/JsonCollection/tree/v0.0.2",
+                "source": "https://github.com/mickaelvieira/JsonCollection/tree/master",
                 "issues": "https://github.com/mickaelvieira/JsonCollection/issues"
             },
-            "time": "2014-11-11 12:18:43"
+            "time": "2014-11-11 16:20:41"
         },
         {
             "name": "ruflin/elastica",
@@ -1636,7 +1680,8 @@
         "ruflin/elastica": 20,
         "symfony/routing": 20,
         "symfony/http-foundation": 20,
-        "mvieira/json-collection": 20
+        "mvieira/json-collection": 20,
+        "mvieira/content-negotiation": 20
     },
     "prefer-stable": false,
     "platform": {
