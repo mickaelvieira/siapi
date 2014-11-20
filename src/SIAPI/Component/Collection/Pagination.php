@@ -12,7 +12,7 @@ class Pagination
     /**
      * @var int
      */
-    private $page = 1;
+    private $currentPage = 1;
 
     /**
      * @var int
@@ -25,11 +25,11 @@ class Pagination
     private $totalResult = 0;
 
     /**
-     * @param int $page
+     * @param int $currentPage
      */
-    public function setPage($page)
+    public function setCurrentPage($currentPage)
     {
-        $this->page = (int)$page;
+        $this->currentPage = (int)$currentPage;
     }
 
     /**
@@ -61,7 +61,7 @@ class Pagination
      */
     public function getPrevPage()
     {
-        $prevPage = $this->page - 1;
+        $prevPage = $this->currentPage - 1;
         if ($prevPage < $this->getFirstPage()) {
             $prevPage = null;
         }
@@ -73,7 +73,7 @@ class Pagination
      */
     public function getNextPage()
     {
-        $nextPage = $this->page + 1;
+        $nextPage = $this->currentPage + 1;
         if ($nextPage > $this->getLastPage()) {
             $nextPage = null;
         }
@@ -89,6 +89,6 @@ class Pagination
         if ($this->totalResult > 0 && $this->pageSize > 0) {
             $lastPage = (int)floor($this->totalResult / $this->pageSize);
         }
-        return $lastPage ;
+        return $lastPage;
     }
-} 
+}

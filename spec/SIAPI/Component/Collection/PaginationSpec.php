@@ -34,7 +34,7 @@ class PaginationSpec extends ObjectBehavior
     {
         $this->setTotalResult(83);
         $this->setPageSize(10);
-        $this->setPage(5);
+        $this->setCurrentPage(5);
         $this->getPrevPage()->shouldBeEqualTo(4);
     }
 
@@ -42,7 +42,7 @@ class PaginationSpec extends ObjectBehavior
     {
         $this->setTotalResult(83);
         $this->setPageSize(10);
-        $this->setPage(1);
+        $this->setCurrentPage(1);
         $this->getPrevPage()->shouldBeNull(1);
     }
 
@@ -55,7 +55,7 @@ class PaginationSpec extends ObjectBehavior
     {
         $this->setTotalResult(83);
         $this->setPageSize(10);
-        $this->setPage(5);
+        $this->setCurrentPage(5);
         $this->getNextPage()->shouldBeEqualTo(6);
     }
 
@@ -63,7 +63,7 @@ class PaginationSpec extends ObjectBehavior
     {
         $this->setTotalResult(83);
         $this->setPageSize(10);
-        $this->setPage(8);
+        $this->setCurrentPage(8);
         $this->getNextPage()->shouldBeNull();
     }
 
