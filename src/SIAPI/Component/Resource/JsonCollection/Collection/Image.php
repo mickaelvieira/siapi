@@ -2,7 +2,7 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Collection;
 
-use JsonCollection\Collection;
+use CollectionNextJson\Entity\Collection;
 
 class Image extends Collection
 {

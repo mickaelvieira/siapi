@@ -2,23 +2,25 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Link;
 
-use JsonCollection\Link;
-use JsonCollection\Type;
+use CollectionNextJson\Entity\Link;
+use CollectionJson\Type\Render;
+use CollectionJson\Type\Relation;
+use CollectionNextJson\Type\Media;
 
 class First extends Link
 {
     /**
      * {@inheritdoc}
      */
-    protected $rel = Type\Relation::FIRST;
+    protected $rel = Relation::FIRST;
 
     /**
      * {@inheritdoc}
      */
-    protected $type = Type\Media::COLLECTION_NEXT_JSON;
+    protected $type = Media::COLLECTION_NEXT_JSON;
 
     /**
      * {@inheritdoc}
      */
-    protected $render = Type\Render::LINK;
-} 
+    protected $render = Render::LINK;
+}

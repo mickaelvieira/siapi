@@ -12,7 +12,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url":  "https://github.com/mickaelvieira/JsonCollection.git"
+            "url":  "https://github.com/mickaelvieira/CollectionNextJson.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/mickaelvieira/CollectionJson.git"
         },
         {
             "type": "vcs",
@@ -25,7 +29,8 @@
         "guzzlehttp/guzzle": "~4.0",
         "symfony/routing": "2.6.*@dev",
         "symfony/http-foundation": "2.6.*@dev",
-        "mvieira/json-collection": "dev-master",
+        "mvieira/collection-json": "dev-master",
+        "mvieira/collection-next-json": "dev-master",
         "mvieira/content-negotiation": "dev-master"
     },
     "require-dev": {

@@ -2,7 +2,7 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Query\ListData;
 
-use JsonCollection\ListData;
+use CollectionNextJson\Entity\ListData;
 
 class Spacecraft extends ListData
 {

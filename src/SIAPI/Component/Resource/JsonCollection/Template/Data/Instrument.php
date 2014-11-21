@@ -10,4 +10,4 @@ class Instrument extends DataInstrument
      * {@inheritdoc}
      */
     protected $value = '';
-} 
+}

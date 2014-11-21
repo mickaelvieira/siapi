@@ -2,7 +2,7 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Template;
 
-use JsonCollection\Template;
+use CollectionNextJson\Entity\Template;
 use SIAPI\Component\Resource\JsonCollection\Template\Data as TemplateData;
 
 class Image extends Template
@@ -16,4 +16,4 @@ class Image extends Template
         $this->addData(new TemplateData\Source());
         $this->addData(new TemplateData\Size());
     }
-} 
+}

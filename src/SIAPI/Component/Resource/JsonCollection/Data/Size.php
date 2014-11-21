@@ -3,7 +3,7 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Data;
 
-use JsonCollection\Data;
+use CollectionNextJson\Entity\Data;
 
 class Size extends Data
 {
@@ -21,4 +21,4 @@ class Size extends Data
      * {@inheritdoc}
      */
     protected $required = true;
-} 
+}

@@ -2,7 +2,7 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Data;
 
-use JsonCollection\Data;
+use CollectionNextJson\Entity\Data;
 
 class Spacecraft extends Data
 {
@@ -20,4 +20,4 @@ class Spacecraft extends Data
      * {@inheritdoc}
      */
     protected $required = false;
-} 
+}

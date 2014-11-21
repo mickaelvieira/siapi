@@ -3,7 +3,7 @@
 namespace SIAPI\Component\Collection;
 
 use SIAPI\Component\Resource\JsonCollection\Item;
-use JsonCollection\Collection;
+use CollectionNextJson\Entity\Collection;
 //use JsonCollection\DataValueInjector;
 use SIAPI\Component\Resource\JsonCollection\Link;
 use SIAPI\Component\Resource\JsonCollection\Query;
@@ -38,7 +38,7 @@ class Builder
 
     /**
      * @param \SIAPI\Component\Search\Result\Image $image
-     * @return \JsonCollection\Item
+     * @return \CollectionNextJson\Entity\Item
      */
     public function getItemFromImageResult(Image $image)
     {

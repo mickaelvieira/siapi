@@ -2,7 +2,7 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Query\ListData;
 
-use JsonCollection\ListData;
+use CollectionNextJson\Entity\ListData;
 
 class Mission extends ListData
 {
@@ -10,4 +10,4 @@ class Mission extends ListData
      * {@inheritdoc}
      */
     protected $multiple = true;
-} 
+}

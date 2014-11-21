@@ -16,4 +16,4 @@ class Instrument extends DataInstrument
     {
         $this->list = new ListDataInstrument();
     }
-} 
+}

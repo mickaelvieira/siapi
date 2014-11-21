@@ -10,4 +10,4 @@ class Source extends DataSource
      * {@inheritdoc}
      */
     protected $value = '';
-} 
+}

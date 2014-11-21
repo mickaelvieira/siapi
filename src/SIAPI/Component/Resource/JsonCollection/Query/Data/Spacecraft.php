@@ -16,4 +16,4 @@ class Spacecraft extends DataSpacecraft
     {
         $this->list = new ListDataSpacecraft();
     }
-} 
+}

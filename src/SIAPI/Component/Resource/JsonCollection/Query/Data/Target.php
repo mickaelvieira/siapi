@@ -16,4 +16,4 @@ class Target extends DataTarget
     {
         $this->list = new ListDataTarget();
     }
-} 
+}

@@ -10,4 +10,4 @@ class Spacecraft extends DataSpacecraft
      * {@inheritdoc}
      */
     protected $value = '';
-} 
+}

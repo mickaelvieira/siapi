@@ -4,7 +4,7 @@ namespace SIAPI\Component\Resource\JsonCollection\Query;
 
 use SIAPI\Component\Resource\JsonCollection\Data;
 use SIAPI\Component\Resource\JsonCollection\Query\Data as QueryData;
-use JsonCollection\Query;
+use CollectionNextJson\Entity\Query;
 
 class Image extends Query
 {
@@ -45,28 +45,10 @@ class Image extends Query
      */
     public function setValueToQueryParameters($name, array $values)
     {
+        /** @var \CollectionNextJson\Entity\Data $data */
         $data = $this->getDataByName($name);
         if ($data) {
-            foreach ($values as $value) {
-                $data->addOptionToList($value['value'], $value['prompt']);
-            }
+            $data->addOptionsToList($values);
         }
     }
-
-    /**
-     * @param string $name
-     * @return null|\JsonCollection\Data
-     */
-    public function getDataByName($name)
-    {
-        $entity = null;
-        foreach ($this->getDataSet() as $data) {
-            /** @var \JsonCollection\Data $data */
-            if ($data->getName() === $name) {
-                $entity = $data;
-                break;
-            }
-        }
-        return $entity;
-    }
-} 
+}

@@ -10,4 +10,4 @@ class Target extends DataTarget
      * {@inheritdoc}
      */
     protected $value = '';
-} 
+}

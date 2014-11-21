@@ -2,18 +2,19 @@
 
 namespace SIAPI\Component\Resource\JsonCollection\Link;
 
-use JsonCollection\Link;
-use JsonCollection\Type;
+use CollectionNextJson\Entity\Link;
+use CollectionJson\Type\Render;
+use CollectionJson\Type\Relation;
 
 class Image extends Link
 {
     /**
      * {@inheritdoc}
      */
-    protected $rel = Type\Relation::ITEM;
+    protected $rel = Relation::ITEM;
 
     /**
      * {@inheritdoc}
      */
-    protected $render = Type\Render::IMAGE;
+    protected $render = Render::IMAGE;
 }
