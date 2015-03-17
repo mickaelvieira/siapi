@@ -2,7 +2,7 @@
 
 namespace SIAPI\Component\Search\Query;
 
-class Params implements \Countable, \IteratorAggregate
+final class Params implements \Countable, \IteratorAggregate
 {
     /**
      * @var array
