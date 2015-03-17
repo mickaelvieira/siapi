@@ -3,9 +3,8 @@
 namespace SIAPI\Component\Search\Result;
 
 use SIAPI\Component\Search\Result;
-use SIAPI\Component\Entity\Hydrator;
 
-class Image extends Result
+final class Image implements Result
 {
     /**
      * @var int
@@ -53,6 +52,14 @@ class Image extends Result
     private $formats = [];
 
     /**
+     * @param $id
+     */
+    public function __construct($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -61,11 +68,47 @@ class Image extends Result
     }
 
     /**
-     * @param int $id
+     * @param $target
+     * @return \SIAPI\Component\Search\Result\Image
      */
-    public function setId($id)
+    public function withTarget($target)
     {
-        $this->id = $id;
+        $copy = clone $this;
+        $copy->target = $target;
+        return $copy;
+    }
+
+    /**
+     * @param $mission
+     * @return \SIAPI\Component\Search\Result\Image
+     */
+    public function withMission($mission)
+    {
+        $copy = clone $this;
+        $copy->mission = $mission;
+        return $copy;
+    }
+
+    /**
+     * @param $spacecraft
+     * @return \SIAPI\Component\Search\Result\Image
+     */
+    public function withSpacecraft($spacecraft)
+    {
+        $copy = clone $this;
+        $copy->spacecraft = $spacecraft;
+        return $copy;
+    }
+
+    /**
+     * @param $instrument
+     * @return \SIAPI\Component\Search\Result\Image
+     */
+    public function withInstrument($instrument)
+    {
+        $copy = clone $this;
+        $copy->instrument = $instrument;
+        return $copy;
     }
 
     /**
@@ -77,27 +120,11 @@ class Image extends Result
     }
 
     /**
-     * @param string $author
-     */
-    public function setSource($author)
-    {
-        $this->source = $author;
-    }
-
-    /**
      * @return string
      */
     public function getMission()
     {
         return $this->mission;
-    }
-
-    /**
-     * @param string $mission
-     */
-    public function setMission($mission)
-    {
-        $this->mission = $mission;
     }
 
     /**
@@ -109,27 +136,11 @@ class Image extends Result
     }
 
     /**
-     * @param string $target
-     */
-    public function setTarget($target)
-    {
-        $this->target = $target;
-    }
-
-    /**
      * @return string
      */
     public function getExtra()
     {
         return $this->extra;
-    }
-
-    /**
-     * @param string $extra
-     */
-    public function setExtra($extra)
-    {
-        $this->extra = $extra;
     }
 
     /**
@@ -143,7 +154,7 @@ class Image extends Result
     /**
      * @param array $formats
      */
-    public function setFormats($formats)
+   /* public function setFormats($formats)
     {
         foreach ($formats as $format) {
             if (is_array($format)) {
@@ -152,7 +163,7 @@ class Image extends Result
             $this->addFormat($format);
         }
         $this->formats = $formats;
-    }
+    }*/
 
     /**
      * @return string
@@ -160,14 +171,6 @@ class Image extends Result
     public function getInstrument()
     {
         return $this->instrument;
-    }
-
-    /**
-     * @param string $instrument
-     */
-    public function setInstrument($instrument)
-    {
-        $this->instrument = $instrument;
     }
 
     /**
@@ -179,14 +182,6 @@ class Image extends Result
     }
 
     /**
-     * @param string $satelliteOf
-     */
-    public function setSatelliteOf($satelliteOf)
-    {
-        $this->satelliteOf = $satelliteOf;
-    }
-
-    /**
      * @return string
      */
     public function getSpacecraft()
@@ -195,18 +190,11 @@ class Image extends Result
     }
 
     /**
-     * @param string $spacecraft
-     */
-    public function setSpacecraft($spacecraft)
-    {
-        $this->spacecraft = $spacecraft;
-    }
-
-    /**
      * @param Format $image
      */
-    public function addFormat(Format $image)
+    /*public function addFormat(Format $image)
     {
         array_push($this->formats, $image);
-    }
+    }*/
+
 }
