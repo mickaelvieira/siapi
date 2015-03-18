@@ -47,6 +47,6 @@ final class Param
      */
     public function __toString()
     {
-        return urlencode(sprintf("%s=%s", $this->name, $this->value));
+        return sprintf("%s=%s", urlencode($this->name), urlencode($this->value));
     }
 }
