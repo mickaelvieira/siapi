@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\SIAPI\Component\Collection;
+namespace spec\SIAPI\Component\Resource;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -10,7 +10,7 @@ class PaginatorSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->beConstructedWith(0, 0);
-        $this->shouldHaveType('SIAPI\Component\Collection\Paginator');
+        $this->shouldHaveType('SIAPI\Component\Resource\Paginator');
     }
 
     function it_should_return_the_first_page()
