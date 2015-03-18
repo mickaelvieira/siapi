@@ -1,9 +1,14 @@
 <?php
 
-namespace SIAPI\Component\Collection;
+namespace SIAPI\Component\Resource;
 
-class Pagination
+class Paginator implements Pagination
 {
+    /**
+     * @var int
+     */
+    protected $pointer = 0;
+
     /**
      * @var int
      */
@@ -25,27 +30,20 @@ class Pagination
     private $totalResult = 0;
 
     /**
+     * @param int $totalResult
+     * @param int $pageSize
      * @param int $currentPage
      */
-    public function setCurrentPage($currentPage)
-    {
-        $this->currentPage = (int)$currentPage;
-    }
-
-    /**
-     * @param int $totalResult
-     */
-    public function setTotalResult($totalResult)
+    public function __construct($totalResult, $pageSize, $currentPage = 1)
     {
         $this->totalResult = (int)$totalResult;
-    }
+        $this->pageSize    = (int)$pageSize;
+        $this->currentPage = (int)$currentPage;
 
-    /**
-     * @param int $pageSize
-     */
-    public function setPageSize($pageSize)
-    {
-        $this->pageSize = (int)$pageSize;
+        $this->lastPage = $this->firstPage;
+        if ($this->totalResult > 0 && $this->pageSize > 0) {
+            $this->lastPage = (int)floor($this->totalResult / $this->pageSize);
+        }
     }
 
     /**
@@ -62,7 +60,7 @@ class Pagination
     public function getPrevPage()
     {
         $prevPage = $this->currentPage - 1;
-        if ($prevPage < $this->getFirstPage()) {
+        if ($prevPage < $this->firstPage) {
             $prevPage = null;
         }
         return $prevPage;
@@ -74,7 +72,7 @@ class Pagination
     public function getNextPage()
     {
         $nextPage = $this->currentPage + 1;
-        if ($nextPage > $this->getLastPage()) {
+        if ($nextPage > $this->lastPage) {
             $nextPage = null;
         }
         return $nextPage;
@@ -85,10 +83,6 @@ class Pagination
      */
     public function getLastPage()
     {
-        $lastPage = $this->firstPage;
-        if ($this->totalResult > 0 && $this->pageSize > 0) {
-            $lastPage = (int)floor($this->totalResult / $this->pageSize);
-        }
-        return $lastPage;
+        return $this->lastPage;
     }
 }
