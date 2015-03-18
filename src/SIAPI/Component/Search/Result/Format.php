@@ -4,110 +4,27 @@ namespace SIAPI\Component\Search\Result;
 
 use SIAPI\Component\Search\Result;
 
-class Format extends Result
+final class Format
 {
-    /**
-     * @var string
-     */
-    private $width;
 
     /**
      * @var string
      */
-    private $height;
+    private $fileName;
 
     /**
-     * @var integer
+     * @param $fileName
      */
-    private $imageType;
-
-    /**
-     * @var string
-     */
-    private $mimeType;
-
-    /**
-     * @var string
-     */
-    private $size;
-
-    /**
-     * @return string
-     */
-    public function getHeight()
+    public function __construct($fileName)
     {
-        return $this->height;
-    }
-
-    /**
-     * @param string $height
-     */
-    public function setHeight($height)
-    {
-        $this->height = $height;
+        $this->fileName = $fileName;
     }
 
     /**
      * @return string
      */
-    public function getMimeType()
+    public function getFileName()
     {
-        return $this->mimeType;
-    }
-
-    /**
-     * @param string $mimeType
-     */
-    public function setMimeType($mimeType)
-    {
-        $this->mimeType = $mimeType;
-    }
-
-    /**
-     * @return int
-     */
-    public function getImageType()
-    {
-        return $this->imageType;
-    }
-
-    /**
-     * @param int $imageType
-     */
-    public function setImageType($imageType)
-    {
-        $this->imageType = $imageType;
-    }
-
-    /**
-     * @return string
-     */
-    public function getWidth()
-    {
-        return $this->width;
-    }
-
-    /**
-     * @param string $width
-     */
-    public function setWidth($width)
-    {
-        $this->width = $width;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSize()
-    {
-        return $this->size;
-    }
-
-    /**
-     * @param string $size
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
+        return $this->fileName;
     }
 }
