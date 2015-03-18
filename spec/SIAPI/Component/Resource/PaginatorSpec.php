@@ -48,4 +48,11 @@ class PaginatorSpec extends ObjectBehavior
         $this->beConstructedWith(83, 10, 8);
         $this->getNextPage()->shouldBeNull();
     }
+
+    function it_should_calculate_the_current_page_number()
+    {
+        $this->beConstructedWith(83, 10, 3);
+        $this->getCurrentPage()->shouldBeEqualTo(3);
+    }
+
 }

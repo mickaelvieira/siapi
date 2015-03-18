@@ -27,4 +27,9 @@ interface Pagination
      * @return int
      */
     public function getLastPage();
+
+    /**
+     * @return int
+     */
+    public function getCurrentPage();
 }

@@ -84,4 +84,12 @@ class Paginator implements Pagination
     {
         return $this->lastPage;
     }
+
+    /**
+     * @return int
+     */
+    public function getCurrentPage()
+    {
+        return $this->currentPage;
+    }
 }
