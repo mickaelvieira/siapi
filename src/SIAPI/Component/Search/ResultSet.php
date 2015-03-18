@@ -5,19 +5,19 @@ namespace SIAPI\Component\Search;
 use ArrayIterator;
 use SIAPI\Component\Search\Result;
 
-class ResultSet implements \IteratorAggregate, \Countable
+final class ResultSet implements \IteratorAggregate, \Countable
 {
     /**
      * @var array
      */
-    protected $entities = [];
+    private $results = [];
 
     /**
      * @param \SIAPI\Component\Search\Result $entity
      */
     public function add(Result $entity)
     {
-        array_push($this->entities, $entity);
+        array_push($this->results, $entity);
     }
 
     /**
@@ -25,7 +25,7 @@ class ResultSet implements \IteratorAggregate, \Countable
      */
     public function count()
     {
-        return count($this->entities);
+        return count($this->results);
     }
 
     /**
@@ -33,6 +33,6 @@ class ResultSet implements \IteratorAggregate, \Countable
      */
     public function getIterator()
     {
-        return new ArrayIterator($this->entities);
+        return new ArrayIterator($this->results);
     }
-} 
+}
