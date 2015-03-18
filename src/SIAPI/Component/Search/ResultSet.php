@@ -13,11 +13,11 @@ final class ResultSet implements \IteratorAggregate, \Countable
     private $results = [];
 
     /**
-     * @param \SIAPI\Component\Search\Result $entity
+     * @param \SIAPI\Component\Search\Result $result
      */
-    public function add(Result $entity)
+    public function add(Result $result)
     {
-        array_push($this->results, $entity);
+        array_push($this->results, $result);
     }
 
     /**
