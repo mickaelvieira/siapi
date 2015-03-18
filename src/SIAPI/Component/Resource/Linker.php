@@ -8,7 +8,7 @@ use SIAPI\Component\Search\Query\Params;
  * Class Linker
  * @package SIAPI\Component\Resource
  */
-class Linker
+final class Linker
 {
     /**
      * @var \SIAPI\Component\Resource\Pagination
