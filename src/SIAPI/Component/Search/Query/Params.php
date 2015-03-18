@@ -8,7 +8,7 @@ final class Params implements \Countable, \IteratorAggregate
     /**
      * @var array
      */
-    private $whitelist = [
+    private $whiteList = [
         'target',
         'satellite_of',
         'mission',
@@ -28,7 +28,7 @@ final class Params implements \Countable, \IteratorAggregate
     public function __construct(array $params)
     {
         foreach ($params as $name => $value) {
-            if (in_array($name, $this->whitelist)) {
+            if (in_array($name, $this->whiteList)) {
                 array_push($this->params, new Param($name, $value));
             }
         }

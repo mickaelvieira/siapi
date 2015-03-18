@@ -50,6 +50,5 @@ class ParamsSpec extends ObjectBehavior
         ]);
 
         $this->count()->shouldBeEqualTo(6);
-
     }
 }
