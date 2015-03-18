@@ -29,9 +29,27 @@ class ParamsSpec extends ObjectBehavior
     function it_should_add_elements_when_it_is_initialized()
     {
         $this->beConstructedWith([
-            'name' => 'value'
+            'q' => 'value'
         ]);
 
         $this->count()->shouldBeEqualTo(1);
+    }
+
+    function it_should_only_add_allowed_parameters()
+    {
+        $this->beConstructedWith([
+            'target'       => 'value',
+            'satellite_of' => 'value',
+            'mission'      => 'value',
+            'spacecraft'   => 'value',
+            'instrument'   => 'value',
+            'q'            => 'value',
+
+            'other1'       => 'value',
+            'other2'       => 'value'
+        ]);
+
+        $this->count()->shouldBeEqualTo(6);
+
     }
 }

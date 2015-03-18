@@ -4,6 +4,19 @@ namespace SIAPI\Component\Search\Query;
 
 final class Params implements \Countable, \IteratorAggregate
 {
+
+    /**
+     * @var array
+     */
+    private $whitelist = [
+        'target',
+        'satellite_of',
+        'mission',
+        'spacecraft',
+        'instrument',
+        'q',
+    ];
+
     /**
      * @var array
      */
@@ -15,7 +28,9 @@ final class Params implements \Countable, \IteratorAggregate
     public function __construct(array $params)
     {
         foreach ($params as $name => $value) {
-            array_push($this->params, new Param($name, $value));
+            if (in_array($name, $this->whitelist)) {
+                array_push($this->params, new Param($name, $value));
+            }
         }
     }
 
