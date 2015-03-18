@@ -4,6 +4,7 @@ namespace spec\SIAPI\Component\Search\Result;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use SIAPI\Component\Search\Result\Format;
 
 class ImageSpec extends ObjectBehavior
 {
@@ -12,6 +13,21 @@ class ImageSpec extends ObjectBehavior
         $this->beConstructedWith('id');
         $this->getId()->shouldBeEqualTo('id');
         $this->shouldHaveType('SIAPI\Component\Search\Result\Image');
+    }
+
+    function it_should_be_countable()
+    {
+        $this->beConstructedWith('id');
+        $this->getId()->shouldBeEqualTo('id');
+        $this->shouldImplement('Countable');
+        $this->count()->shouldBeEqualTo(0);
+    }
+
+    function it_should_be_traversable()
+    {
+        $this->beConstructedWith('id');
+        $this->getId()->shouldBeEqualTo('id');
+        $this->shouldImplement('Traversable');
     }
 
     function it_should_return_an_new_image_with_target_name()
@@ -60,5 +76,14 @@ class ImageSpec extends ObjectBehavior
         $this->withInstrument('test')->getId()->shouldBeEqualTo('id');
 
         $this->getInstrument()->shouldBeNull();
+    }
+
+    function it_should_return_an_new_image_with_a_format()
+    {
+        $this->beConstructedWith('id');
+        $this->getId()->shouldBeEqualTo('id');
+
+        $this->withFormat(new Format("name"))->shouldNotBeEqualTo($this);
+        $this->withFormat(new Format("name"))->count()->shouldBeEqualTo(1);
     }
 }

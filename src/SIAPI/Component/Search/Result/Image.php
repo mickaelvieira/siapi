@@ -4,7 +4,7 @@ namespace SIAPI\Component\Search\Result;
 
 use SIAPI\Component\Search\Result;
 
-final class Image implements Result
+final class Image implements Result, \Countable, \IteratorAggregate
 {
     /**
      * @var int
@@ -112,6 +112,25 @@ final class Image implements Result
     }
 
     /**
+     * @param \SIAPI\Component\Search\Result\Format $format
+     * @return \SIAPI\Component\Search\Result\Image
+     */
+    public function withFormat(Format $format)
+    {
+        $copy = clone $this;
+        $copy->addFormat($format);
+        return $copy;
+    }
+
+    /**
+     * @param \SIAPI\Component\Search\Result\Format $format
+     */
+    private function addFormat(Format $format)
+    {
+        array_push($this->formats, $format);
+    }
+
+    /**
      * @return string
      */
     public function getSource()
@@ -144,28 +163,6 @@ final class Image implements Result
     }
 
     /**
-     * @return array
-     */
-    public function getFormats()
-    {
-        return $this->formats;
-    }
-
-    /**
-     * @param array $formats
-     */
-   /* public function setFormats($formats)
-    {
-        foreach ($formats as $format) {
-            if (is_array($format)) {
-                $format = Hydrator::populate(new Format(), $format);
-            }
-            $this->addFormat($format);
-        }
-        $this->formats = $formats;
-    }*/
-
-    /**
      * @return string
      */
     public function getInstrument()
@@ -190,11 +187,18 @@ final class Image implements Result
     }
 
     /**
-     * @param Format $image
+     * @return int
      */
-    /*public function addFormat(Format $image)
+    public function count()
     {
-        array_push($this->formats, $image);
-    }*/
+        return count($this->formats);
+    }
 
+    /**
+     * @return \ArrayIterator
+     */
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->formats);
+    }
 }
