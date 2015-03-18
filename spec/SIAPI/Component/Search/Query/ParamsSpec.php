@@ -51,4 +51,14 @@ class ParamsSpec extends ObjectBehavior
 
         $this->count()->shouldBeEqualTo(6);
     }
+
+    function it_should_return_a_string_representation()
+    {
+        $this->beConstructedWith([
+            'target'       => 'value',
+            'q'            => 'value1 value2',
+        ]);
+
+        $this->__toString()->shouldBeEqualTo('target=value&q=value1+value2');
+    }
 }

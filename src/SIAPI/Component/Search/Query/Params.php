@@ -49,4 +49,14 @@ final class Params implements \Countable, \IteratorAggregate
     {
         return new \ArrayIterator($this->params);
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return implode("&", array_map(function (Param $param) {
+            return (string)$param;
+        }, $this->params));
+    }
 }
