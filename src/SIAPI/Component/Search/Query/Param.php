@@ -35,10 +35,18 @@ final class Param
     }
 
     /**
-     * @retunn string
+     * @return string
      */
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return urlencode(sprintf("%s=%s", $this->name, $this->value));
     }
 }

@@ -25,4 +25,10 @@ class ParamSpec extends ObjectBehavior
         $this->beConstructedWith("my name", "my value");
         $this->getValue()->shouldBeEqualTo("my value");
     }
+
+    function it_should_return_a_string_representation()
+    {
+        $this->beConstructedWith("my name", "my value");
+        $this->__toString()->shouldBeEqualTo('my+name%3Dmy+value');
+    }
 }
