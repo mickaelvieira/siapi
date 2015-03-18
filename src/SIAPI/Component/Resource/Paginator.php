@@ -2,13 +2,12 @@
 
 namespace SIAPI\Component\Resource;
 
+/**
+ * Class Paginator
+ * @package SIAPI\Component\Resource
+ */
 class Paginator implements Pagination
 {
-    /**
-     * @var int
-     */
-    protected $pointer = 0;
-
     /**
      * @var int
      */
