@@ -31,4 +31,12 @@ class ResultSetSpec extends ObjectBehavior
         $this->getTotal()->shouldBeEqualTo(10);
         $this->count()->shouldBeEqualTo(4);
     }
+
+    function it_should_add_a_result()
+    {
+        $this->beConstructedWith(10);
+        $this->add(new Image(1));
+        $this->getTotal()->shouldBeEqualTo(10);
+        $this->count()->shouldBeEqualTo(1);
+    }
 }
