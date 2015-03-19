@@ -63,4 +63,19 @@ class ParamsSpec extends ObjectBehavior
 
         $this->__toString()->shouldBeEqualTo('target=value&q=value1+value2');
     }
+
+    function it_should_return_the_param_value_when_it_does_exist()
+    {
+        $this->beConstructedWith([
+            'target'       => 'value',
+            'q'            => 'value1 value2',
+        ]);
+        $this->getParamValue('target')->shouldBeEqualTo('value');
+    }
+
+    function it_should_return_the_param_value_when_it_does_not_exist()
+    {
+        $this->beConstructedWith([]);
+        $this->getParamValue('target')->shouldBeNull();
+    }
 }

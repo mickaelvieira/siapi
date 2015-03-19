@@ -20,7 +20,7 @@ final class Params implements \Countable, \IteratorAggregate
     ];
 
     /**
-     * @var array
+     * @var Param[]
      */
     private $params = [];
 
@@ -60,5 +60,20 @@ final class Params implements \Countable, \IteratorAggregate
         return implode("&", array_map(function (Param $param) {
             return (string)$param;
         }, $this->params));
+    }
+
+    /**
+     * @param string $name
+     * @return null|string
+     */
+    public function getParamValue($name)
+    {
+        $value = null;
+        foreach ($this->params as $param) {
+            if ($param->getName() === $name) {
+                $value = $param->getValue();
+            }
+        }
+        return $value;
     }
 }
