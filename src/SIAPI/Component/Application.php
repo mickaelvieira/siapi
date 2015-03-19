@@ -54,15 +54,15 @@ final class Application
     /**
      * @param \SIAPI\Component\Search\ResultSet    $resultSet
      * @param \SIAPI\Component\Search\Query\Params $params
-     * @param                                      $page
+     * @param                                      $currentPage
      * @return \SIAPI\Component\Resource\Json
      */
-    public function getResponse(ResultSet $resultSet, Params $params, $page = 1)
+    public function getResponse(ResultSet $resultSet, Params $params, $currentPage = 1)
     {
         $pagination = new Paginator(
             $resultSet->getTotal(),
             $this->getConfig('collection_size'),
-            $page
+            $currentPage
         );
 
         $linker = new Linker(
