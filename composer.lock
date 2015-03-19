@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bbaead8d6f1847d6244d1a332f3b68f1",
+    "hash": "a08c37299fdba115d857bbf20462af3b",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -271,16 +271,16 @@
         },
         {
             "name": "ruflin/elastica",
-            "version": "dev-master",
+            "version": "v1.4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "a163767b78052647a74afc187afb38e9fb60db60"
+                "reference": "bfa9363bf2aa62af5907135863661c6c78a68ee4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/a163767b78052647a74afc187afb38e9fb60db60",
-                "reference": "a163767b78052647a74afc187afb38e9fb60db60",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/bfa9363bf2aa62af5907135863661c6c78a68ee4",
+                "reference": "bfa9363bf2aa62af5907135863661c6c78a68ee4",
                 "shasum": ""
             },
             "require": {
@@ -326,7 +326,7 @@
                 "client",
                 "search"
             ],
-            "time": "2015-03-18 21:28:56"
+            "time": "2015-02-17 19:57:36"
         },
         {
             "name": "symfony/http-foundation",
@@ -1516,7 +1516,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "ruflin/elastica": 20,
         "symfony/routing": 20,
         "symfony/http-foundation": 20,
         "mvieira/collection-json": 20,
