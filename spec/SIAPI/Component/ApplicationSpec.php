@@ -33,4 +33,13 @@ class ApplicationSpec extends ObjectBehavior
         ]);
         $this->getConfig('test')->shouldBeNull();
     }
+
+    function it_should_override_default_configuration()
+    {
+        $this->beConstructedWith([
+            'search_endpoint' => 'new-search'
+        ]);
+        $this->getConfig('search_endpoint')->shouldBeEqualTo('new-search');
+        $this->getConfig('image_endpoint')->shouldBeEqualTo('image');
+    }
 }
