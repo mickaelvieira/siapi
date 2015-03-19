@@ -51,12 +51,13 @@ class Image implements SearchInterface
 
         foreach ($results->getResults() as $result) {
 
-            $image = new ResultImage($result->getId());
+            $source = $result->getSource();
+            $image  = new ResultImage($result->getId());
 
-            $image->withInstrument($result->getInstrument())
-                ->withMission($result->getMission())
-                ->withSpacecraft($result->getSpacecraft())
-                ->withTarget($result->getTarget());
+            $image = $image->withInstrument($source['instrument'])
+                ->withMission($source['mission'])
+                ->withSpacecraft($source['spacecraft'])
+                ->withTarget($source['target']);
 
             $resultSet->add($image);
         }
