@@ -92,4 +92,12 @@ class Paginator implements Pagination
     {
         return $this->currentPage;
     }
+
+    /**
+     * @return int
+     */
+    public function getPageSize()
+    {
+        return $this->pageSize;
+    }
 }

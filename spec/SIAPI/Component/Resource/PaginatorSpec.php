@@ -55,4 +55,11 @@ class PaginatorSpec extends ObjectBehavior
         $this->getCurrentPage()->shouldBeEqualTo(3);
     }
 
+    function it_should_return_the_page_size()
+    {
+        $this->beConstructedWith(83, 10, 3);
+        $this->getPageSize()->shouldBeEqualTo(10);
+    }
+
+
 }
