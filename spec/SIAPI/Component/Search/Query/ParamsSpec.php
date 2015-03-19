@@ -43,13 +43,15 @@ class ParamsSpec extends ObjectBehavior
             'mission'      => 'value',
             'spacecraft'   => 'value',
             'instrument'   => 'value',
+            'page'         => 'value',
+            'pretty'       => 'value',
             'q'            => 'value',
 
             'other1'       => 'value',
             'other2'       => 'value'
         ]);
 
-        $this->count()->shouldBeEqualTo(6);
+        $this->count()->shouldBeEqualTo(8);
     }
 
     function it_should_return_a_string_representation()

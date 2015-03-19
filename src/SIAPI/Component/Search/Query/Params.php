@@ -14,6 +14,8 @@ final class Params implements \Countable, \IteratorAggregate
         'mission',
         'spacecraft',
         'instrument',
+        'pretty',
+        'page',
         'q',
     ];
 
