@@ -72,8 +72,17 @@ final class Params implements \Countable, \IteratorAggregate
         foreach ($this->params as $param) {
             if ($param->getName() === $name) {
                 $value = $param->getValue();
+                break;
             }
         }
         return $value;
+    }
+
+    public function hasParam($name)
+    {
+        $filtered = array_filter($this->params, function (Param $param) use ($name) {
+            return ($param->getName() === $name);
+        });
+        return (count($filtered) > 0);
     }
 }

@@ -78,4 +78,12 @@ class ParamsSpec extends ObjectBehavior
         $this->beConstructedWith([]);
         $this->getParamValue('target')->shouldBeNull();
     }
+
+    function it_should_know_when_it_has_a_specific_param()
+    {
+        $this->beConstructedWith([
+            'target' => 'value'
+        ]);
+        $this->hasParam('target')->shouldBeEqualTo(true);
+    }
 }
