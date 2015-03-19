@@ -9,7 +9,7 @@ namespace SIAPI\Component\Search;
 interface Search
 {
     /**
-     * @return \SIAPI\Component\Search\Response
+     * @return \SIAPI\Component\Search\ResultSet
      */
-    public function getResponse();
-} 
+    public function getResultSet();
+}

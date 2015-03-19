@@ -2,7 +2,6 @@
 
 namespace SIAPI\Component\ElasticSearch;
 
-use SIAPI\Component\Entity\Hydrator;
 use SIAPI\Component\Search\Result\Image;
 use SIAPI\Component\Search\ResultSet;
 use SIAPI\Component\Search\Response as ResponseInterface;
@@ -21,22 +20,41 @@ class Response implements ResponseInterface
     private $total = 0;
 
     /**
+     * @var array
+     */
+    private $facets = [];
+
+    /**
      * @param ElasticaResultSet $resultSet
      */
     public function __construct(ElasticaResultSet $resultSet)
     {
-        $results         = $resultSet->getResults();
         $this->total     = $resultSet->getTotalHits();
-        $this->resultSet = new ResultSet();//$this->extractResultSetFromData($data);
+        $this->resultSet = new ResultSet($resultSet->getTotalHits());
 
         foreach ($resultSet->getResults() as $result) {
 
-            $image = new Image();
-            $image->setId($result->getId());
+            $image = new Image($result->getId());
 
-            $this->resultSet->add(
-                Hydrator::populate($image, $result->getSource())
-            );
+            $image->withInstrument($result->getInstrument())
+                    ->withMission($result->getMission())
+                    ->withSpacecraft($result->getSpacecraft())
+                    ->withTarget($result->getTarget());
+
+            $this->resultSet->add($image);
+        }
+
+        foreach ($resultSet->getAggregations() as $name => $aggregation) {
+            $this->facets[$name] = array();
+            foreach ($aggregation['buckets'] as $value) {
+                array_push(
+                    $this->facets[$name],
+                    array(
+                        'value' => $value['key'],
+                        'prompt' => $value['key'] . " (" . $value['doc_count'] . ")"
+                    )
+                );
+            }
         }
     }
 
@@ -57,24 +75,11 @@ class Response implements ResponseInterface
     }
 
     /**
-     * @param array $data
-     * @return \SIAPI\Component\Search\ResultSet
+     * {@inheritdoc}
      */
-    private function extractResultSetFromData(array $data)
+    public function getFacets()
     {
-        $resultSet = new ResultSet();
-        foreach ($data['hits']['hits'] as $hit) {
-            $result = new Image();
-            $resultSet->add(Hydrator::populate($result, $hit['_source']));
-        }
-        return $resultSet;
+        return $this->facets;
     }
 
-    /**
-     * @param array $data
-     */
-    private function extractTotalFromData(array $data)
-    {
-        return $data['hits']['total'];
-    }
 } 

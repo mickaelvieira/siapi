@@ -3,13 +3,14 @@
 namespace SIAPI\Component\ElasticSearch\Search;
 
 use Elastica\Search as ElasticaSearch;
+use SIAPI\Component\Search\ResultSet;
+use SIAPI\Component\Search\Result\Image as ResultImage;
 use SIAPI\Component\Search\Search as SearchInterface;
 
 use SIAPI\Component\ElasticSearch\Type as DocumentType;
 use SIAPI\Component\ElasticSearch\Index as IndexName;
 use SIAPI\Component\ElasticSearch\Client as ClientBuilder;
 use SIAPI\Component\ElasticSearch\Query as QueryInterface;
-use SIAPI\Component\ElasticSearch\Response;
 
 class Image implements SearchInterface
 {
@@ -30,20 +31,36 @@ class Image implements SearchInterface
     {
         $this->query  = $query;
         $this->search = new ElasticaSearch($client->getClient());
-        $this->search->addTypes(array(
+
+        $this->search->addTypes([
             DocumentType::IMAGE
-        ));
-        $this->search->addIndices(array(
+        ]);
+        $this->search->addIndices([
             IndexName::MAIN
-        ));
+        ]);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getResponse()
+    public function getResultSet()
     {
-        $resultSet = $this->search->search($this->query);
-        return new Response($resultSet->getResults());
+        $results = $this->search->search($this->query->getQuery());
+
+        $resultSet = new ResultSet($results->getTotalHits());
+
+        foreach ($results->getResults() as $result) {
+
+            $image = new ResultImage($result->getId());
+
+            $image->withInstrument($result->getInstrument())
+                ->withMission($result->getMission())
+                ->withSpacecraft($result->getSpacecraft())
+                ->withTarget($result->getTarget());
+
+            $resultSet->add($image);
+        }
+
+        return $resultSet;
     }
-} 
+}

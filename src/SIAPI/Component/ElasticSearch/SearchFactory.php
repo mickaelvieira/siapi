@@ -9,7 +9,7 @@ use SIAPI\Component\ElasticSearch\Search\Image as SearchImage;
 class SearchFactory
 {
     /**
-     * @return \SIAPI\Component\ElasticSearch\Search $name
+     * @return \SIAPI\Component\ElasticSearch\Search\Image
      */
     public static function create()
     {
