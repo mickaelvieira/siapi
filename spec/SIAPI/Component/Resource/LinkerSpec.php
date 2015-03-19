@@ -13,7 +13,7 @@ class LinkerSpec extends ObjectBehavior
 
     function it_is_initializable(Pagination $pagination)
     {
-        $this->beConstructedWith($pagination, new Params([]));
+        $this->beConstructedWith("/endpoint", $pagination, new Params([]));
         $this->shouldHaveType('SIAPI\Component\Resource\Linker');
     }
 
@@ -22,9 +22,9 @@ class LinkerSpec extends ObjectBehavior
         $pagination = new Paginator(100, 10, 1);
         $params = new Params([]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getFirstPageUrl()->shouldBeEqualTo('page=1');
+        $this->getFirstPageUrl()->shouldBeEqualTo('/endpoint?page=1');
     }
 
     function it_should_return_the_first_page_url_when_there_are_params()
@@ -34,9 +34,9 @@ class LinkerSpec extends ObjectBehavior
             'q' => 'value'
         ]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getFirstPageUrl()->shouldBeEqualTo('q=value&page=1');
+        $this->getFirstPageUrl()->shouldBeEqualTo('/endpoint?q=value&page=1');
     }
 
     function it_should_return_the_last_page_url_when_there_is_no_params()
@@ -44,9 +44,9 @@ class LinkerSpec extends ObjectBehavior
         $pagination = new Paginator(100, 10);
         $params = new Params([]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getLastPageUrl()->shouldBeEqualTo('page=10');
+        $this->getLastPageUrl()->shouldBeEqualTo('/endpoint?page=10');
     }
 
     function it_should_return_the_last_page_url_when_there_are_params()
@@ -56,9 +56,9 @@ class LinkerSpec extends ObjectBehavior
             'q' => 'value'
         ]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getLastPageUrl()->shouldBeEqualTo('q=value&page=10');
+        $this->getLastPageUrl()->shouldBeEqualTo('/endpoint?q=value&page=10');
     }
 
     function it_should_return_the_current_page_url_when_there_is_no_params()
@@ -66,9 +66,9 @@ class LinkerSpec extends ObjectBehavior
         $pagination = new Paginator(100, 10, 2);
         $params = new Params([]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getCurrentPageUrl()->shouldBeEqualTo('page=2');
+        $this->getCurrentPageUrl()->shouldBeEqualTo('/endpoint?page=2');
     }
 
     function it_should_return_the_current_page_url_when_there_are_params()
@@ -78,9 +78,9 @@ class LinkerSpec extends ObjectBehavior
             'q' => 'value'
         ]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getCurrentPageUrl()->shouldBeEqualTo('q=value&page=2');
+        $this->getCurrentPageUrl()->shouldBeEqualTo('/endpoint?q=value&page=2');
     }
 
     function it_should_return_the_next_page_url_when_there_is_no_params()
@@ -88,9 +88,9 @@ class LinkerSpec extends ObjectBehavior
         $pagination = new Paginator(100, 10, 2);
         $params = new Params([]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getNextPageUrl()->shouldBeEqualTo('page=3');
+        $this->getNextPageUrl()->shouldBeEqualTo('/endpoint?page=3');
     }
 
     function it_should_return_the_next_page_url_when_there_are_params()
@@ -100,9 +100,9 @@ class LinkerSpec extends ObjectBehavior
             'q' => 'value'
         ]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getNextPageUrl()->shouldBeEqualTo('q=value&page=3');
+        $this->getNextPageUrl()->shouldBeEqualTo('/endpoint?q=value&page=3');
     }
 
     function it_should_return_null_when_there_is_no_next_page()
@@ -110,7 +110,7 @@ class LinkerSpec extends ObjectBehavior
         $pagination = new Paginator(100, 10, 10);
         $params = new Params([]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
         $this->getNextPageUrl()->shouldBeNull();
     }
@@ -120,9 +120,9 @@ class LinkerSpec extends ObjectBehavior
         $pagination = new Paginator(100, 10, 2);
         $params = new Params([]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getPrevPageUrl()->shouldBeEqualTo('page=1');
+        $this->getPrevPageUrl()->shouldBeEqualTo('/endpoint?page=1');
     }
 
     function it_should_return_the_prev_page_url_when_there_are_params()
@@ -132,9 +132,9 @@ class LinkerSpec extends ObjectBehavior
             'q' => 'value'
         ]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
-        $this->getPrevPageUrl()->shouldBeEqualTo('q=value&page=1');
+        $this->getPrevPageUrl()->shouldBeEqualTo('/endpoint?q=value&page=1');
     }
 
     function it_should_return_null_when_there_is_no_prev_page()
@@ -142,7 +142,7 @@ class LinkerSpec extends ObjectBehavior
         $pagination = new Paginator(100, 10, 1);
         $params = new Params([]);
 
-        $this->beConstructedWith($pagination, $params);
+        $this->beConstructedWith("/endpoint", $pagination, $params);
 
         $this->getPrevPageUrl()->shouldBeNull();
     }

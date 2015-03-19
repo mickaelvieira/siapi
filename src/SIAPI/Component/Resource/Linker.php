@@ -10,6 +10,12 @@ use SIAPI\Component\Search\Query\Params;
  */
 final class Linker
 {
+
+    /**
+     * @var string
+     */
+    private $endPoint;
+
     /**
      * @var \SIAPI\Component\Resource\Pagination
      */
@@ -21,11 +27,13 @@ final class Linker
     private $params;
 
     /**
+     * @param string                               $endPoint
      * @param \SIAPI\Component\Resource\Pagination $pagination
      * @param \SIAPI\Component\Search\Query\Params $params
      */
-    public function __construct(Pagination $pagination, Params $params)
+    public function __construct($endPoint, Pagination $pagination, Params $params)
     {
+        $this->endPoint   = (string)$endPoint;
         $this->pagination = $pagination;
         $this->params     = $params;
     }
@@ -83,9 +91,10 @@ final class Linker
     private function format($page)
     {
         if ($this->params->count() > 0) {
-            return sprintf("%s&page=%s", (string)$this->params, $page);
+            $queryString = sprintf("%s&page=%s", (string)$this->params, $page);
         } else {
-            return sprintf("page=%s", $page);
+            $queryString =  sprintf("page=%s", $page);
         }
+        return sprintf("%s?%s", $this->endPoint, $queryString);
     }
 }
