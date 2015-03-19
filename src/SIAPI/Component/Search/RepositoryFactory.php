@@ -11,13 +11,13 @@ final class RepositoryFactory
 {
     /**
      * @param string $name
-     * @param \SIAPI\Component\Application $app
+     * @param \SIAPI\Component\Application $application
      * @return \SIAPI\Component\Search\Repository\ImageRepository
      */
-    public static function make($name, Application $app)
+    public static function make($name, Application $application)
     {
         if ($name === 'image') {
-            return new ImageRepository();
+            return new ImageRepository($application);
         } else {
             throw new LogicException(
                 sprintf(

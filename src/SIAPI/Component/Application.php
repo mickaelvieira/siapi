@@ -18,7 +18,11 @@ final class Application
     private $config = [
         'collection_size' => 10,
         'search_endpoint' => 'search',
-        'image_endpoint'  => 'image'
+        'image_endpoint'  => 'image',
+        'elastic_search'  => [
+            'host' => '127.0.0.1',
+            'port' => 9200
+        ]
     ];
 
     /**

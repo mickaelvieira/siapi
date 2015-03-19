@@ -12,16 +12,11 @@ class Client
     private $client;
 
     /**
-     * @var array
+     * @param array $config
      */
-    private $config = [
-        'host' => '127.0.0.1',
-        'port' => 9200
-    ];
-
-    public function __construct()
+    public function __construct(array $config = [])
     {
-        $this->client = new ElasticaClient($this->config);
+        $this->client = new ElasticaClient($config);
     }
 
     /**
@@ -31,4 +26,4 @@ class Client
     {
         return $this->client;
     }
-} 
+}

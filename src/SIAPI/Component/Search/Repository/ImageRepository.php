@@ -4,6 +4,7 @@
 namespace SIAPI\Component\Search\Repository;
 
 use Elastica\Exception\NotImplementedException;
+use SIAPI\Component\Application;
 use SIAPI\Component\Search\ImageRepository as ImageRepositoryInterface;
 use SIAPI\Component\Search\Query\Params;
 use SIAPI\Component\ElasticSearch\SearchFactory;
@@ -17,11 +18,11 @@ final class ImageRepository implements ImageRepositoryInterface
     private $search;
 
     /**
-     *
+     * @param \SIAPI\Component\Application $application
      */
-    public function __construct()
+    public function __construct(Application $application)
     {
-        $this->search = SearchFactory::make();
+        $this->search = SearchFactory::make($application);
     }
 
     /**
