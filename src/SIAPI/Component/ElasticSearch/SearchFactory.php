@@ -11,11 +11,11 @@ class SearchFactory
     /**
      * @return \SIAPI\Component\ElasticSearch\Search\Image
      */
-    public static function create()
+    public static function make()
     {
         $client = new SearchClient();
         $query  = new QueryImage();
 
         return new SearchImage($client, $query);
     }
-} 
+}
