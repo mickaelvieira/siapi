@@ -8,9 +8,35 @@ use SIAPI\Component\Search\Result;
 final class ResultSet implements \IteratorAggregate, \Countable
 {
     /**
+     * @var int
+     */
+    private $total;
+
+    /**
      * @var array
      */
     private $results = [];
+
+    /**
+     * @param int $total
+     * @param array $set
+     */
+    public function __construct($total, array $set = [])
+    {
+        $this->total = (int)$total;
+
+        foreach ($set as $result) {
+            $this->add($result);
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
 
     /**
      * @param \SIAPI\Component\Search\Result $result
