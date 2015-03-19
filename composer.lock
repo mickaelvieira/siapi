@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "be63cae3d9b18ae7e4afb2b827607ca6",
+    "hash": "209f127ea53e8e254f2576ec4df4ce40",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -178,60 +178,6 @@
             "time": "2015-03-17 15:26:33"
         },
         {
-            "name": "mvieira/collection-next-json",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mickaelvieira/CollectionNextJson.git",
-                "reference": "e463bdf5b41ff836888d62330d3496a102661893"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mickaelvieira/CollectionNextJson/zipball/e463bdf5b41ff836888d62330d3496a102661893",
-                "reference": "e463bdf5b41ff836888d62330d3496a102661893",
-                "shasum": ""
-            },
-            "require": {
-                "mvieira/collection-json": "dev-master",
-                "php": "~5.4"
-            },
-            "require-dev": {
-                "phpspec/phpspec": "~2.0",
-                "squizlabs/php_codesniffer": "1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "CollectionNextJson\\": "src/CollectionNextJson/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mickael Vieira",
-                    "email": "contact@mickael-vieira.com",
-                    "homepage": "http://mickael-vieira.com"
-                }
-            ],
-            "description": "PHP implementation of the Collection.next+JSON Media Type",
-            "homepage": "https://github.com/mickaelvieira/CollectionNextJson",
-            "keywords": [
-                "HATEOAS",
-                "HTTP",
-                "Hypermedia",
-                "JSON",
-                "REST",
-                "RESTful"
-            ],
-            "support": {
-                "source": "https://github.com/mickaelvieira/CollectionNextJson/tree/master",
-                "issues": "https://github.com/mickaelvieira/CollectionNextJson/issues"
-            },
-            "time": "2014-11-20 23:30:23"
-        },
-        {
             "name": "mvieira/content-negotiation",
             "version": "dev-master",
             "source": {
@@ -329,12 +275,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "59c1a4c3e20ef6b5362dab1fef34cecec4f4a5ef"
+                "reference": "a163767b78052647a74afc187afb38e9fb60db60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/59c1a4c3e20ef6b5362dab1fef34cecec4f4a5ef",
-                "reference": "59c1a4c3e20ef6b5362dab1fef34cecec4f4a5ef",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/a163767b78052647a74afc187afb38e9fb60db60",
+                "reference": "a163767b78052647a74afc187afb38e9fb60db60",
                 "shasum": ""
             },
             "require": {
@@ -380,7 +326,7 @@
                 "client",
                 "search"
             ],
-            "time": "2015-03-12 21:05:21"
+            "time": "2015-03-18 21:28:56"
         },
         {
             "name": "symfony/http-foundation",
@@ -1574,7 +1520,6 @@
         "symfony/routing": 20,
         "symfony/http-foundation": 20,
         "mvieira/collection-json": 20,
-        "mvieira/collection-next-json": 20,
         "mvieira/content-negotiation": 20
     },
     "prefer-stable": false,
