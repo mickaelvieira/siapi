@@ -86,4 +86,17 @@ class ParamsSpec extends ObjectBehavior
         ]);
         $this->hasParam('target')->shouldBeEqualTo(true);
     }
+
+
+    function it_should_return_an_new_image_with_target_name()
+    {
+        $this->beConstructedWith([
+            'target' => 'value'
+        ]);
+
+        $this->withoutParam('target')->shouldNotBeEqualTo($this);
+        $this->withoutParam('target')->hasParam('target')->shouldBeEqualTo(false);
+
+        $this->hasParam('target')->shouldBeEqualTo(true);
+    }
 }

@@ -78,11 +78,31 @@ final class Params implements \Countable, \IteratorAggregate
         return $value;
     }
 
+    /**
+     * @param string $name
+     * @return bool
+     */
     public function hasParam($name)
     {
         $filtered = array_filter($this->params, function (Param $param) use ($name) {
             return ($param->getName() === $name);
         });
         return (count($filtered) > 0);
+    }
+
+    /**
+     * @param string $name
+     * @return \SIAPI\Component\Search\Query\Params
+     */
+    public function withoutParam($name)
+    {
+        $copy = clone $this;
+        foreach ($copy->params as $key => $param) {
+            if ($param->getName() === $name) {
+                unset($copy->params[$key]);
+                break;
+            }
+        }
+        return $copy;
     }
 }
