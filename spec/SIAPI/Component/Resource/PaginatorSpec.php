@@ -61,5 +61,21 @@ class PaginatorSpec extends ObjectBehavior
         $this->getPageSize()->shouldBeEqualTo(10);
     }
 
+    function it_should_return_start_result_equal_to_zero_when_on_page_une()
+    {
+        $this->beConstructedWith(83, 10);
+        $this->getFirstResult()->shouldBeEqualTo(0);
+    }
 
+    function it_should_return_start_result_value()
+    {
+        $this->beConstructedWith(83, 10, 2);
+        $this->getFirstResult()->shouldBeEqualTo(10);
+    }
+
+    function it_should_return_end_result_value()
+    {
+        $this->beConstructedWith(83, 10, 2);
+        $this->getLastResult()->shouldBeEqualTo(19);
+    }
 }

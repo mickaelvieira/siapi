@@ -29,6 +29,16 @@ class Paginator implements Pagination
     private $totalResult = 0;
 
     /**
+     * @var int
+     */
+    private $firstResult = 0;
+
+    /**
+     * @var int
+     */
+    private $lastResult = 0;
+
+    /**
      * @param int $totalResult
      * @param int $pageSize
      * @param int $currentPage
@@ -41,7 +51,9 @@ class Paginator implements Pagination
 
         $this->lastPage = $this->firstPage;
         if ($this->totalResult > 0 && $this->pageSize > 0) {
-            $this->lastPage = (int)floor($this->totalResult / $this->pageSize);
+            $this->lastPage    = (int)floor($this->totalResult / $this->pageSize);
+            $this->firstResult = ($this->currentPage - 1) * $this->pageSize;
+            $this->lastResult  = ($this->firstResult + $this->pageSize) - 1;
         }
     }
 
@@ -99,5 +111,21 @@ class Paginator implements Pagination
     public function getPageSize()
     {
         return $this->pageSize;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFirstResult()
+    {
+        return $this->firstResult;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLastResult()
+    {
+        return $this->lastResult;
     }
 }
