@@ -20,7 +20,9 @@ class LinkerSpec extends ObjectBehavior
     function it_should_return_the_first_page_url_when_there_is_no_params()
     {
         $pagination = new Paginator(100, 10, 1);
-        $params = new Params([]);
+        $params = new Params([
+            'page' => 1
+        ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
 
@@ -31,7 +33,8 @@ class LinkerSpec extends ObjectBehavior
     {
         $pagination = new Paginator(100, 10, 1);
         $params = new Params([
-            'q' => 'value'
+            'q' => 'value',
+            'page' => 1
         ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
@@ -42,7 +45,9 @@ class LinkerSpec extends ObjectBehavior
     function it_should_return_the_last_page_url_when_there_is_no_params()
     {
         $pagination = new Paginator(100, 10);
-        $params = new Params([]);
+        $params = new Params([
+            'page' => 1
+        ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
 
@@ -53,7 +58,8 @@ class LinkerSpec extends ObjectBehavior
     {
         $pagination = new Paginator(100, 10);
         $params = new Params([
-            'q' => 'value'
+            'q' => 'value',
+            'page' => 1
         ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
@@ -64,7 +70,9 @@ class LinkerSpec extends ObjectBehavior
     function it_should_return_the_current_page_url_when_there_is_no_params()
     {
         $pagination = new Paginator(100, 10, 2);
-        $params = new Params([]);
+        $params = new Params([
+            'page' => 1
+        ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
 
@@ -75,7 +83,8 @@ class LinkerSpec extends ObjectBehavior
     {
         $pagination = new Paginator(100, 10, 2);
         $params = new Params([
-            'q' => 'value'
+            'q' => 'value',
+            'page' => 1
         ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
@@ -86,7 +95,9 @@ class LinkerSpec extends ObjectBehavior
     function it_should_return_the_next_page_url_when_there_is_no_params()
     {
         $pagination = new Paginator(100, 10, 2);
-        $params = new Params([]);
+        $params = new Params([
+            'page' => 1
+        ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
 
@@ -97,7 +108,8 @@ class LinkerSpec extends ObjectBehavior
     {
         $pagination = new Paginator(100, 10, 2);
         $params = new Params([
-            'q' => 'value'
+            'q' => 'value',
+            'page' => 1
         ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
@@ -108,7 +120,9 @@ class LinkerSpec extends ObjectBehavior
     function it_should_return_null_when_there_is_no_next_page()
     {
         $pagination = new Paginator(100, 10, 10);
-        $params = new Params([]);
+        $params = new Params([
+            'page' => 1
+        ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
 
@@ -118,7 +132,9 @@ class LinkerSpec extends ObjectBehavior
     function it_should_return_the_prev_page_url_when_there_is_no_params()
     {
         $pagination = new Paginator(100, 10, 2);
-        $params = new Params([]);
+        $params = new Params([
+            'page' => 1
+        ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
 
@@ -129,7 +145,8 @@ class LinkerSpec extends ObjectBehavior
     {
         $pagination = new Paginator(100, 10, 2);
         $params = new Params([
-            'q' => 'value'
+            'q' => 'value',
+            'page' => 1
         ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
@@ -140,7 +157,9 @@ class LinkerSpec extends ObjectBehavior
     function it_should_return_null_when_there_is_no_prev_page()
     {
         $pagination = new Paginator(100, 10, 1);
-        $params = new Params([]);
+        $params = new Params([
+            'page' => 1
+        ]);
 
         $this->beConstructedWith("/endpoint", $pagination, $params);
 

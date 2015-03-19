@@ -35,7 +35,7 @@ final class Linker
     {
         $this->endPoint   = (string)$endPoint;
         $this->pagination = $pagination;
-        $this->params     = $params;
+        $this->params     = ($params->hasParam('page')) ? $params->withoutParam('page') : $params;
     }
 
     /**
@@ -93,7 +93,7 @@ final class Linker
         if ($this->params->count() > 0) {
             $queryString = sprintf("%s&page=%s", (string)$this->params, $page);
         } else {
-            $queryString =  sprintf("page=%s", $page);
+            $queryString = sprintf("page=%s", $page);
         }
         return sprintf("%s?%s", $this->endPoint, $queryString);
     }
