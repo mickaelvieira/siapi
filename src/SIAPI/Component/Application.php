@@ -71,7 +71,7 @@ final class Application
             $params
         );
 
-        return JsonFactory::makeJsonCollection($resultSet, $linker);
+        return JsonFactory::makeJsonCollection($this, $resultSet, $linker);
     }
 
     /**

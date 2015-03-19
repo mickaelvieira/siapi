@@ -5,6 +5,7 @@ namespace SIAPI\Component\Resource\Converter;
 use CollectionJson\Entity;
 use CollectionJson\Type;
 
+use SIAPI\Component\Application;
 use SIAPI\Component\Resource\Converter;
 use SIAPI\Component\Resource\Linker;
 use SIAPI\Component\Search\Result;
@@ -14,17 +15,25 @@ use SIAPI\Component\Search\ResultSet;
 
 final class JsonCollection implements Converter
 {
+
+    /**
+     * @var \SIAPI\Component\Application
+     */
+    private $application;
+
     /**
      * @var \SIAPI\Component\Resource\Linker
      */
     private $linker;
 
     /**
+     * @param \SIAPI\Component\Application     $application
      * @param \SIAPI\Component\Resource\Linker $linker
      */
-    public function __construct(Linker $linker)
+    public function __construct(Application $application, Linker $linker)
     {
-        $this->linker = $linker;
+        $this->application = $application;
+        $this->linker      = $linker;
     }
 
     /**
@@ -66,7 +75,7 @@ final class JsonCollection implements Converter
     private function getItem(Image $result)
     {
         $item = new Entity\Item();
-        $item->setHref("/image" . $result->getId());
+        $item->setHref($this->application->getImageEndPoint() . $result->getId());
 
         //$item->addData(new Entity\Data(['name' => 'target', 'value' => $result->getTarget()]));
 
